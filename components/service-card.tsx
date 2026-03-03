@@ -20,38 +20,50 @@ interface ServiceCardProps {
     }
 }
 
+const categoryColors: Record<string, string> = {
+    "Laundry": "bg-cyan-300",
+    "Grooming": "bg-pink-300",
+    "Tech Support": "bg-purple-300",
+    "Food Delivery": "bg-orange-300",
+    "Coffee Run": "bg-lime-300",
+    "Tutoring": "bg-yellow-300",
+}
+
 export function ServiceCard({ id, title, description, category, status, price, provider }: ServiceCardProps) {
-    // Determine status color
-    const statusColor = status === "Available" ? "bg-green-500/10 text-green-500 hover:bg-green-500/20" : "bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20"
+    const categoryColor = categoryColors[category] || "bg-purple-200"
+    const statusColor = status === "Available"
+        ? "bg-green-300 text-black"
+        : "bg-yellow-300 text-black"
 
     return (
         <Link href={`/services/${id}`}>
-            <Card className="h-full hover:shadow-lg hover:scale-[1.02] hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden border-border/50 bg-background/50 backdrop-blur-sm group">
+            <Card className="h-full cursor-pointer overflow-hidden group bg-white">
                 <CardHeader className="pb-3">
                     <div className="flex justify-between items-start gap-2">
-                        <Badge variant="outline" className="text-primary bg-primary/5 border-primary/20 font-medium mb-2 group-hover:bg-primary/10 transition-colors">
+                        <Badge variant="outline" className={`${categoryColor} border-black font-black`}>
                             {category}
                         </Badge>
-                        <Badge variant="secondary" className={statusColor}>
+                        <Badge variant="outline" className={`${statusColor} border-black font-black`}>
                             {status}
                         </Badge>
                     </div>
-                    <CardTitle className="text-xl line-clamp-1 group-hover:text-primary transition-colors">{title}</CardTitle>
+                    <CardTitle className="text-xl line-clamp-1 group-hover:text-pink-500 transition-colors">{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="pb-3">
-                    <p className="text-muted-foreground text-sm line-clamp-2 min-h-[2.5rem]">
+                    <p className="text-muted-foreground text-sm font-bold line-clamp-2 min-h-[2.5rem]">
                         {description}
                     </p>
                     {price && (
-                        <div className="mt-3 font-semibold text-foreground flex items-center gap-1">
-                            <span className="text-primary">●</span> {price}
+                        <div className="mt-3 font-black text-foreground flex items-center gap-1">
+                            <span className="inline-block bg-yellow-300 border-2 border-black px-2 py-0.5 text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                                {price}
+                            </span>
                         </div>
                     )}
                 </CardContent>
-                <CardFooter className="pt-3 border-t bg-muted/30 flex justify-between items-center text-xs text-muted-foreground group-hover:bg-muted/50 transition-colors">
+                <CardFooter className="pt-3 border-t-4 border-black bg-muted/30 flex justify-between items-center text-xs font-bold group-hover:bg-accent/30 transition-colors">
                     <div className="flex items-center gap-2">
-                        {/* Use Avatar if available, or just name */}
-                        <div className="font-medium text-foreground">{provider.name}</div>
+                        <div className="font-black text-foreground">{provider.name}</div>
                     </div>
                     {provider.location && (
                         <div className="flex items-center gap-1">

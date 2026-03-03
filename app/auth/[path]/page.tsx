@@ -17,13 +17,15 @@ export default async function AuthPage({
 
     return (
         <main className="flex grow flex-col items-center justify-center gap-4 self-center p-4 md:p-6">
-            <AuthView path={path} />
+            <div className="w-full max-w-sm border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6">
+                <AuthView path={path} />
+            </div>
 
             {!["callback", "sign-out"].includes(path) && (
-                <p className="w-3xs text-center text-muted-foreground text-xs">
+                <p className="w-3xs text-center font-bold text-xs">
                     By continuing, you agree to our{" "}
                     <Link
-                        className="text-warning underline"
+                        className="underline font-black"
                         href="/terms"
                         target="_blank"
                     >
@@ -31,7 +33,7 @@ export default async function AuthPage({
                     </Link>{" "}
                     and{" "}
                     <Link
-                        className="text-warning underline"
+                        className="underline font-black"
                         href="/privacy"
                         target="_blank"
                     >

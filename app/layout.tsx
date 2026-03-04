@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import "./styles.css";
+import "./global.css";
 import { Toaster } from "@/components/ui/sonner"
 import BetterAuthUIProvider from "@/providers/better-auth-ui-provider"
 import { SiteHeader } from "@/components/site-header"

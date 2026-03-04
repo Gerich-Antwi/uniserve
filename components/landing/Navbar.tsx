@@ -15,7 +15,7 @@ export default function Navbar() {
         {/* Links */}
         <ul className="flex items-center gap-6 text-white">
           <li>
-            <Link href="#" className="hover:text-teal-200 transition">
+            <Link href="/services" className="hover:text-teal-200 transition">
               Services
             </Link>
           </li>
@@ -29,7 +29,7 @@ export default function Navbar() {
               </ul>
           <div>
             <Link 
-              href="#"
+              href="/account/path"
               className="bg-white text-teal-600 px-4 py-2 rounded-md font-medium hover:bg-teal-100 transition"
             >
               Get Started

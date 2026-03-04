@@ -4,7 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./styles.css";
 import { Toaster } from "@/components/ui/sonner"
 import BetterAuthUIProvider from "@/providers/better-auth-ui-provider"
-import { SiteHeader } from "@/components/site-header"
+
+// import { SiteHeader } from "@/components/site-header"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <BetterAuthUIProvider>
-          <SiteHeader />
+          {/* <SiteHeader /> */}
           {children}
         </BetterAuthUIProvider>
         <Toaster />

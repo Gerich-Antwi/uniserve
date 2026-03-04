@@ -8,7 +8,7 @@ import FAQ from "@/components/landing/FAQ";
 
 export default function Home() {
   return (
-    <div className="bg-gray-50 min-h-screen display-block relative">
+    <main className="bg-gray-50 min-h-screen block relative overflow">
       <Navbar />
       <Hero />
       <Features/>
@@ -16,6 +16,6 @@ export default function Home() {
       <FAQ />
       <Footer />
 
-    </div>
+    </main>
   );
 }

@@ -25,16 +25,16 @@ export function CategoryFilter({ categories }: CategoryFilterProps) {
     }
 
     return (
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-hide">
+        <div className="flex items-center gap-3 overflow-x-auto pb-4 scrollbar-hide">
             <Button
                 variant={currentCategory === null ? "default" : "outline"}
                 size="sm"
                 onClick={() => handleSelect(null)}
                 className={cn(
-                    "rounded-full transition-all",
+                    "transition-all font-black uppercase",
                     currentCategory === null
-                        ? "bg-primary text-primary-foreground shadow-md hover:bg-primary/90"
-                        : "hover:border-primary/50 hover:bg-primary/5 text-muted-foreground"
+                        ? "bg-black text-white"
+                        : ""
                 )}
             >
                 All
@@ -46,10 +46,10 @@ export function CategoryFilter({ categories }: CategoryFilterProps) {
                     size="sm"
                     onClick={() => handleSelect(category)}
                     className={cn(
-                        "rounded-full transition-all whitespace-nowrap",
+                        "transition-all whitespace-nowrap font-black uppercase",
                         currentCategory === category
-                            ? "bg-primary text-primary-foreground shadow-md hover:bg-primary/90"
-                            : "hover:border-primary/50 hover:bg-primary/5 text-muted-foreground"
+                            ? "bg-black text-white"
+                            : ""
                     )}
                 >
                     {category}

@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ["@prisma/client", "pg"],
+  turbopack: {
+    resolveAlias: {
+      "@prisma/client": path.resolve(__dirname, "lib/generated/prisma"),
+    },
+  },
 };
 
 export default nextConfig;

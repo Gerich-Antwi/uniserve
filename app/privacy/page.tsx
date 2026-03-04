@@ -1,7 +1,9 @@
 export default function PrivacyPage() {
   return (
     <main className="container flex flex-col gap-4 self-center p-4 text-sm md:p-6">
-      <h1 className="font-bold text-2xl">Privacy Policy</h1>
+      <div className="inline-block self-start bg-pink-300 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] px-6 py-3 -rotate-1 mb-2">
+        <h1 className="font-black text-2xl uppercase">Privacy Policy</h1>
+      </div>
 
       <p>Last updated: January 14, 2026</p>
 

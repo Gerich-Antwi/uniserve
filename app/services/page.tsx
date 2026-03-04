@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma"
 import { ServiceCard } from "@/components/service-card"
 import { ServiceSearch } from "@/components/service-search"
 import { CategoryFilter } from "@/components/category-filter"
-import { Prisma } from "@prisma/client"
+import { Prisma } from "@/lib/generated/prisma/client"
 
 export const dynamic = 'force-dynamic'
 
@@ -55,8 +55,12 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
         <div className="container py-8 max-w-7xl mx-auto px-4 md:px-6">
             <div className="flex flex-col gap-6 mb-8">
                 <div className="flex flex-col gap-2">
-                    <h1 className="text-3xl font-bold tracking-tight">Services</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="inline-block text-4xl sm:text-5xl font-black tracking-tight">
+                        <span className="bg-yellow-300 border-4 border-black px-4 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] inline-block -rotate-1">
+                            SERVICES
+                        </span>
+                    </h1>
+                    <p className="text-lg font-bold mt-4">
                         Browse available services from verified providers in your area.
                     </p>
                 </div>
@@ -69,9 +73,9 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
             </div>
 
             {services.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center border rounded-lg bg-muted/10">
-                    <p className="text-muted-foreground mb-2">No services found.</p>
-                    <p className="text-sm text-muted-foreground/80">
+                <div className="flex flex-col items-center justify-center py-12 text-center border-4 border-black bg-purple-100 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                    <p className="font-black text-xl mb-2">No services found.</p>
+                    <p className="font-bold text-muted-foreground">
                         {query || category
                             ? "Try adjusting your search or filters."
                             : "Check back later for new listings."}

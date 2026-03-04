@@ -1,42 +1,44 @@
 'use client';
 
-import Link from "next/dist/client/link";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="bg-teal-600 w-full fixed">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-white text-xl font-bold">
-          Uniserve
+        <Link href="/" className="flex items-center gap-1">
+          <span className="font-black text-xl tracking-tight">
+            Campus<span className="text-pink-500">Services</span>
+          </span>
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center gap-6">
+          <Link href="/services" className="font-bold text-sm hover:text-pink-500 transition-colors">
+            Services
+          </Link>
+          <Link href="/announcements" className="font-bold text-sm hover:text-pink-500 transition-colors">
+            Announcements
+          </Link>
         </div>
 
-        {/* Links */}
-        <ul className="flex items-center gap-6 text-white">
-          <li>
-            <Link href="#" className="hover:text-teal-200 transition">
-              Services
-            </Link>
-          </li>
-
-          <li>
-            <Link href="/announcements" className="hover:text-teal-200 transition">
-              Announcements
-            </Link>
-          </li>
-
-              </ul>
-          <div>
-            <Link 
-              href="#"
-              className="bg-white text-teal-600 px-4 py-2 rounded-md font-medium hover:bg-teal-100 transition"
-            >
-              Get Started
-            </Link>
-          </div>
-
+        {/* Auth Buttons */}
+        <div className="flex items-center gap-3">
+          <Link href="/auth/sign-in" className="font-bold text-sm hover:text-pink-500 transition-colors">
+            Log In
+          </Link>
+          <Link href="/auth/sign-up" className="font-bold text-sm hover:text-pink-500 transition-colors hidden sm:inline">
+            Sign Up
+          </Link>
+          <Link
+            href="/auth/sign-up"
+            className="bg-black text-white px-5 py-2 font-black text-sm border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+          >
+            Get Started
+          </Link>
+        </div>
       </div>
     </nav>
-  )
+  );
 }

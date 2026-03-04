@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider          = "prisma-client"
+  output            = "../lib/generated/prisma"
+  connectionTimeout = "30000"
 }
 
 datasource db {
@@ -15,14 +16,12 @@ model User {
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  // Contact & Provider details
   phoneNumber   String?
   location      String?
-  bio           String? // Brief provider description
-  
-  sessions      Session[]
+  bio           String?
   accounts      Account[]
   services      Service[]
+  sessions      Session[]
 
   @@map("user")
 }
@@ -63,19 +62,17 @@ model Account {
 }
 
 model Service {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  category    String
-  status      String   @default("Available") // Available, Busy, Offline
-  price       String?  // Optional, e.g. "$20/hr"
-  operatingHours String? // e.g. "Mon-Fri: 9AM - 5PM"
-  
-  providerId  String
-  provider    User     @relation(fields: [providerId], references: [id], onDelete: Cascade)
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @default(cuid())
+  title          String
+  description    String
+  category       String
+  status         String   @default("Available")
+  price          String?
+  providerId     String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  operatingHours String?
+  provider       User     @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@index([providerId])
   @@map("service")
@@ -92,10 +89,11 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
 model Announcement {
   id           String   @id @default(cuid())
   title        String
-  content      String   @db.Text
+  content      String
   summary      String?
   category     String
   isVerified   Boolean  @default(false)

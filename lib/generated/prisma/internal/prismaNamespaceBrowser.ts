@@ -56,7 +56,10 @@ export const ModelName = {
   Account: 'Account',
   Service: 'Service',
   Verification: 'Verification',
-  Announcement: 'Announcement'
+  Announcement: 'Announcement',
+  booking: 'booking',
+  conversation: 'conversation',
+  message: 'message'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -85,7 +88,8 @@ export const UserScalarFieldEnum = {
   updatedAt: 'updatedAt',
   phoneNumber: 'phoneNumber',
   location: 'location',
-  bio: 'bio'
+  bio: 'bio',
+  role: 'role'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -158,6 +162,7 @@ export const AnnouncementScalarFieldEnum = {
   content: 'content',
   summary: 'summary',
   category: 'category',
+  imageUrl: 'imageUrl',
   isVerified: 'isVerified',
   isActive: 'isActive',
   externalLink: 'externalLink',
@@ -167,6 +172,41 @@ export const AnnouncementScalarFieldEnum = {
 } as const
 
 export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]
+
+
+export const BookingScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  providerId: 'providerId',
+  serviceId: 'serviceId',
+  bookedAt: 'bookedAt',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  content: 'content',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const SortOrder = {

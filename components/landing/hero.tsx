@@ -1,53 +1,92 @@
 "use client"
-// import Image from "next/image";
-import Navbar from "./Navbar";
+
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div>
-       <Navbar /> 
-      <section className="min-h-screen pt-20 flex items-center justify-between bg-gray-100"
-      >
-        <div className="max-w-6xl mx-auto px-4 w-full flex flex-col md:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
-          <div className="flex flex-col gap-5 text-center md:text-left max-w-xl w-full">
-            <h1 className="font-bold text-4xl md:text-5xl leading-tight text-gray-900">
-              No Stress. No Searching.
-            </h1>
+    <section className="relative min-h-screen flex items-center justify-center bg-purple-100 overflow-hidden border-b-8 border-black pt-16">
+      {/* Decorative floating shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Yellow circle */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-300 rounded-full border-4 border-black animate-float" style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+        {/* Pink diamond */}
+        <div className="absolute top-40 right-20 w-24 h-24 bg-pink-400 rotate-45 border-4 border-black animate-float-reverse" style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
+        {/* Cyan square */}
+        <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-cyan-400 border-4 border-black animate-float" style={{ "--float-rotate": "-5deg" } as React.CSSProperties} />
+        {/* Lime circle */}
+        <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-lime-300 rounded-full border-4 border-black animate-float-reverse" style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+        
+        {/* Sticker elements */}
+        <div className="absolute top-32 right-1/4 bg-orange-400 border-4 border-black px-4 py-2 font-black text-lg rotate-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] animate-float" style={{ "--float-rotate": "12deg" } as React.CSSProperties}>
+          HOT! 🔥
+        </div>
+        <div className="absolute bottom-40 left-20 bg-pink-300 border-4 border-black px-4 py-2 font-black -rotate-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] animate-float-reverse" style={{ "--float-rotate": "-12deg" } as React.CSSProperties}>
+          NEW ⚡
+        </div>
+      </div>
 
-            <h3 className="font-medium text-lg text-teal-700">
-              Just Student Services Made Easy
-            </h3>
-
-            <p className="text-gray-600">
-              Your gateway to seamless university services — from food and
-              laundry to announcements and campus opportunities.
-            </p>
-
-            <div className="flex justify-center md:justify-start gap-4 mt-4">
-              <button className="bg-teal-600 text-white px-6 py-3 rounded-md hover:bg-teal-700 transition">
-                Get Started
-              </button>
-
-              <button className="border border-teal-600 text-teal-600 px-6 py-3 rounded-md hover:bg-teal-50 transition">
-                Explore Services
-              </button>
-            </div>
-          </div>
-
-          {/* Visual / Image Placeholder */}
-          <div className="bg-emerald-950 w-full h-72 md:w-96 md:h-96 rounded-3xl flex items-center justify-center shadow-lg shrink-0 ">
-            {/* future image or illustration */}
-            {/* <Image
-              src="/landing_assets/students.jpg"
-              alt="Students using campus services"
-              fill
-              className="object-cover rounded-3xl opacity-90 -z-10"
-              priority
-            /> */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center z-10">
+        {/* Trust badge */}
+        <div className="inline-block mb-8 animate-slide-in-up">
+          <div className="bg-black text-white px-8 py-3 font-black text-sm border-4 border-black rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            ✨ 10,000+ STUDENTS TRUST US ✨
           </div>
         </div>
-      </section>
-    </div>
+        
+        {/* Main heading - stacked brutalist blocks */}
+        <h1 className="text-6xl sm:text-7xl lg:text-9xl font-black mb-8 leading-none tracking-tighter">
+          <span className="inline-block bg-white border-8 border-black px-8 py-4 -rotate-1 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] mb-6">
+            CAMPUS
+          </span>
+          <br />
+          <span className="inline-block bg-yellow-300 border-8 border-black px-8 py-4 rotate-1 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+            LIFE
+          </span>
+          <br />
+          <span className="inline-block bg-pink-400 border-8 border-black px-8 py-4 -rotate-1 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] mt-6">
+            SIMPLIFIED!
+          </span>
+        </h1>
+        
+        <p className="text-xl sm:text-2xl font-bold max-w-3xl mx-auto mb-12 leading-relaxed">
+          Everything you need on campus—laundry, food, tech fixes—all in one place. 
+          No BS, just services that work. 🎯
+        </p>
+        
+        {/* CTA buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+          <Link href="/services" className="group">
+            <div className="bg-black text-white px-10 py-6 font-black text-xl border-6 border-black hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center gap-3 active:translate-y-0.5 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              BROWSE SERVICES
+              <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
+            </div>
+          </Link>
+          <Link href="/auth/sign-up">
+            <div className="bg-cyan-300 text-black px-10 py-6 font-black text-xl border-6 border-black hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              SIGN UP FREE
+            </div>
+          </Link>
+        </div>
+
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {[
+            { value: "10K+", label: "Students", color: "bg-blue-300" },
+            { value: "50+", label: "Providers", color: "bg-purple-300" },
+            { value: "99%", label: "Happy", color: "bg-orange-300" },
+            { value: "24/7", label: "Available", color: "bg-green-300" },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className={`${stat.color} border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all ${index % 2 === 0 ? "rotate-1" : "-rotate-1"}`}
+            >
+              <div className="text-4xl font-black mb-1">{stat.value}</div>
+              <div className="text-sm font-black uppercase">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

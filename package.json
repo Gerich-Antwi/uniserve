@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@better-auth/prisma-adapter": "^1.5.3",
     "@captchafox/react": "^1.10.0",
     "@daveyplate/better-auth-ui": "^3.3.15",
     "@gsap/react": "^2.1.2",

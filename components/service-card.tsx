@@ -39,15 +39,15 @@ export function ServiceCard({ id, title, description, category, status, price, p
         <Link href={`/services/${id}`}>
             <Card className="h-full cursor-pointer overflow-hidden group bg-white">
                 <CardHeader className="pb-3">
-                    <div className="flex justify-between items-start gap-2">
-                        <Badge variant="outline" className={`${categoryColor} border-black font-black`}>
+                    <div className="flex flex-wrap items-start gap-2 mb-2">
+                        <Badge variant="outline" className={`${categoryColor} border-black font-black whitespace-normal text-left`}>
                             {category}
                         </Badge>
-                        <Badge variant="outline" className={`${statusColor} border-black font-black`}>
+                        <Badge variant="outline" className={`${statusColor} border-black font-black whitespace-normal text-left`}>
                             {status}
                         </Badge>
                     </div>
-                    <CardTitle className="text-xl line-clamp-1 group-hover:text-pink-500 transition-colors">{title}</CardTitle>
+                    <CardTitle className="text-xl group-hover:text-pink-500 transition-colors whitespace-normal leading-tight">{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="pb-3">
                     <p className="text-muted-foreground text-sm font-bold line-clamp-2 min-h-[2.5rem]">

@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma"
 import { ServiceCard } from "@/components/service-card"
 import { ServiceSearch } from "@/components/service-search"
 import { CategoryFilter } from "@/components/category-filter"
-import { Prisma } from "@prisma/client"
+import { Prisma } from "@/lib/generated/prisma/client"
 
 export const dynamic = 'force-dynamic'
 

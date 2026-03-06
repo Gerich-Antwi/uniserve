@@ -202,7 +202,8 @@ export const AnnouncementScalarFieldEnum = {
   externalLink: 'externalLink',
   contactInfo: 'contactInfo',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  imageUrl: 'imageUrl'
 } as const
 
 export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]

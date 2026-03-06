@@ -45,7 +45,7 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
         console.error("Failed to mark booking as attended")
         return
       }
-      setBookings((prev) => prev.filter((b) => b.id !== id))
+      setBookings((prev) => prev.map((b) => b.id === id ? { ...b, status: BookingStatus.ATTENDED } : b))
     } finally {
       setLoadingId(null)
     }
@@ -64,10 +64,16 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
     )
   }
 
+  const sortedBookings = [...bookings].sort((a, b) => {
+    if (a.status === BookingStatus.PENDING && b.status === BookingStatus.ATTENDED) return -1;
+    if (a.status === BookingStatus.ATTENDED && b.status === BookingStatus.PENDING) return 1;
+    return new Date(b.bookedAt).getTime() - new Date(a.bookedAt).getTime();
+  });
+
   return (
     <section className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2">
-        {bookings.map((booking, index) => (
+        {sortedBookings.map((booking, index) => (
           <article
             key={booking.id}
             className={cn(
@@ -119,50 +125,60 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
                   <MessageCircle className="h-4 w-4" />
                 </Link>
 
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      className="border-2 border-black bg-red-500 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] shadow-[4px_4px_0_0_#000]"
-                      disabled={loadingId === booking.id}
-                    >
-                      <CheckCircle2 className="mr-1 h-3 w-3" />
-                      {loadingId === booking.id ? "Updating..." : "Mark attended"}
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent className="border-4 border-black bg-amber-50 shadow-[8px_8px_0_0_#000]">
-                    <AlertDialogHeader>
-                      <AlertDialogTitle className="text-xl font-extrabold uppercase tracking-[0.2em]">
-                        Confirm completion
-                      </AlertDialogTitle>
-                      <AlertDialogDescription className="text-sm font-medium text-foreground">
-                        You&apos;re about to mark{" "}
-                        <span className="font-semibold">
-                          {booking.service.title}
-                        </span>{" "}
-                        for{" "}
-                        <span className="font-semibold">
-                          {booking.student.name}
-                        </span>{" "}
-                        as <span className="underline">attended</span>. This will remove the
-                        booking from your active list, but it will remain stored safely in the
-                        system.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel className="border-2 border-black bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] shadow-[3px_3px_0_0_#000]">
-                        Keep as pending
-                      </AlertDialogCancel>
-                      <AlertDialogAction
-                        className="border-2 border-black bg-green-500 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-black shadow-[3px_3px_0_0_#000] hover:bg-green-400"
-                        onClick={() => handleMarkAttended(booking.id)}
+                {booking.status === BookingStatus.PENDING ? (
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        className="border-2 border-black bg-red-500 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] shadow-[4px_4px_0_0_#000]"
+                        disabled={loadingId === booking.id}
                       >
-                        Yes, mark attended
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
+                        <CheckCircle2 className="mr-1 h-3 w-3" />
+                        {loadingId === booking.id ? "Updating..." : "Mark attended"}
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent className="border-4 border-black bg-amber-50 shadow-[8px_8px_0_0_#000]">
+                      <AlertDialogHeader>
+                        <AlertDialogTitle className="text-xl font-extrabold uppercase tracking-[0.2em]">
+                          Confirm completion
+                        </AlertDialogTitle>
+                        <AlertDialogDescription className="text-sm font-medium text-foreground">
+                          You&apos;re about to mark{" "}
+                          <span className="font-semibold">
+                            {booking.service.title}
+                          </span>{" "}
+                          for{" "}
+                          <span className="font-semibold">
+                            {booking.student.name}
+                          </span>{" "}
+                          as <span className="underline">attended</span>. This will update the booking status.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel className="border-2 border-black bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] shadow-[3px_3px_0_0_#000]">
+                          Keep as pending
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                          className="border-2 border-black bg-green-500 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-black shadow-[3px_3px_0_0_#000] hover:bg-green-400"
+                          onClick={() => handleMarkAttended(booking.id)}
+                        >
+                          Yes, mark attended
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-2 border-black bg-gray-200 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-gray-500 cursor-not-allowed opacity-70 shadow-none hover:bg-gray-200"
+                    disabled
+                  >
+                    <CheckCircle2 className="mr-1 h-3 w-3" />
+                    Completed
+                  </Button>
+                )}
               </div>
             </div>
           </article>

@@ -9,19 +9,23 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  name          String
-  email         String    @unique
-  emailVerified Boolean   @default(false)
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  phoneNumber   String?
-  location      String?
-  bio           String?
-  accounts      Account[]
-  services      Service[]
-  sessions      Session[]
+  id                               String    @id
+  name                             String
+  email                            String    @unique
+  emailVerified                    Boolean   @default(false)
+  image                            String?
+  createdAt                        DateTime  @default(now())
+  updatedAt                        DateTime  @updatedAt
+  phoneNumber                      String?
+  location                         String?
+  bio                              String?
+  role                             Role      @default(STUDENT)
+  accounts                         Account[]
+  booking_booking_providerIdTouser booking[] @relation("booking_providerIdTouser")
+  booking_booking_studentIdTouser  booking[] @relation("booking_studentIdTouser")
+  message                          message[]
+  services                         Service[]
+  sessions                         Session[]
 
   @@map("user")
 }
@@ -62,17 +66,18 @@ model Account {
 }
 
 model Service {
-  id             String   @id @default(cuid())
+  id             String    @id @default(cuid())
   title          String
   description    String
   category       String
-  status         String   @default("Available")
+  status         String    @default("Available")
   price          String?
   providerId     String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
   operatingHours String?
-  provider       User     @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  booking        booking[]
+  provider       User      @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@index([providerId])
   @@map("service")
@@ -96,6 +101,7 @@ model Announcement {
   content      String
   summary      String?
   category     String
+  imageUrl     String?  // Add this line
   isVerified   Boolean  @default(false)
   isActive     Boolean  @default(true)
   externalLink String?
@@ -107,4 +113,57 @@ model Announcement {
   @@index([isVerified])
   @@index([createdAt])
   @@map("announcement")
+}
+
+model booking {
+  id                            String        @id
+  studentId                     String
+  providerId                    String
+  serviceId                     String
+  bookedAt                      DateTime      @default(now())
+  status                        BookingStatus @default(PENDING)
+  createdAt                     DateTime      @default(now())
+  updatedAt                     DateTime
+  user_booking_providerIdTouser User          @relation("booking_providerIdTouser", fields: [providerId], references: [id], onDelete: Cascade)
+  service                       Service       @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  user_booking_studentIdTouser  User          @relation("booking_studentIdTouser", fields: [studentId], references: [id], onDelete: Cascade)
+  conversation                  conversation?
+
+  @@index([providerId])
+  @@index([serviceId])
+  @@index([status])
+  @@index([studentId])
+}
+
+model conversation {
+  id        String    @id
+  bookingId String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  booking   booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  message   message[]
+}
+
+model message {
+  id             String       @id
+  conversationId String
+  senderId       String
+  content        String
+  createdAt      DateTime     @default(now())
+  conversation   conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([senderId])
+}
+
+enum BookingStatus {
+  PENDING
+  ATTENDED
+}
+
+enum Role {
+  STUDENT
+  PROVIDER
+  ADMIN
 }

@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
     resolveAlias: {
       "@prisma/client": path.resolve(__dirname, "lib/generated/prisma"),
     },
+  },images: {remotePatterns: [
+    {
+      protocol: "https",
+    hostname: "**",
+    },]
   },
 };
 

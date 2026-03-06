@@ -11,6 +11,7 @@
   "dependencies": {
     "@captchafox/react": "^1.10.0",
     "@daveyplate/better-auth-ui": "^3.3.15",
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.2",
     "@marsidev/react-turnstile": "^1.4.1",
     "@prisma/adapter-pg": "^7.4.2",

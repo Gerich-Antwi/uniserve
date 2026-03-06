@@ -22,14 +22,14 @@ const faqs = [
     answer:
       "Multiple options! Cash, UPI, cards - whatever works for you. Payments are secure and you only pay after the service. No shady business here.",
     color: "bg-yellow-200",
-    rotation: "rotate-2",
+    rotation: "rotate-1",
   },
   {
     question: "Can I cancel if plans change?",
     answer:
       "Yep! Cancel anytime before the service starts. No questions asked. We get it, student life is unpredictable.",
     color: "bg-lime-200",
-    rotation: "-rotate-2",
+    rotation: "-rotate-1",
   },
   {
     question: "How fast is 'fast'?",
@@ -59,7 +59,7 @@ function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
         className="w-full p-6 text-left flex items-center justify-between gap-4 font-black text-lg"
       >
         <span>{faq.question}</span>
-        <div className="flex-shrink-0 w-10 h-10 bg-black border-2 border-black flex items-center justify-center">
+        <div className="shrink-0 w-10 h-10 bg-black border-2 border-black flex items-center justify-center">
           {isOpen ? (
             <Minus className="text-white" size={20} />
           ) : (
@@ -85,7 +85,7 @@ function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
 
 export default function FAQ() {
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-100 to-purple-100 border-b-8 border-black relative overflow-hidden">
+    <section className="py-24 bg-linear-to-br from-blue-100 to-purple-100 border-b-8 border-black relative overflow-hidden">
       {/* Decorative stickers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 right-10 bg-yellow-300 border-4 border-black px-4 py-2 font-black text-sm rotate-12 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
@@ -114,7 +114,7 @@ export default function FAQ() {
 
         {/* Still have questions CTA */}
         <div className="mt-12 text-center">
-          <div className="inline-block bg-gradient-to-r from-pink-300 to-orange-300 border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1">
+          <div className="inline-block bg-gradient-linear-to-r from-pink-300 to-orange-300 border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1">
             <p className="font-black text-xl mb-4">Still got questions?</p>
             <a
               href="#"

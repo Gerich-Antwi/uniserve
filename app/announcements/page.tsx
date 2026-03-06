@@ -1,17 +1,20 @@
+import { getImageKitUrl } from "@/lib/imagekit/config";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
+import { Suspense } from "react";
+import SearchBar from "./search-bar";
 
 const CATEGORIES = ["All", "Events", "Scholarships", "Tuition", "Internships", "Deadlines", "Academic"];
 
 interface PageProps {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; search?: string }>;
 }
 
 export default async function AnnouncementsPage({ searchParams }: PageProps) {
-  const { category } = await searchParams;
+  const { category, search } = await searchParams;
   const activeCategory = category || "All";
 
   const announcements = await prisma.announcement.findMany({
@@ -19,6 +22,12 @@ export default async function AnnouncementsPage({ searchParams }: PageProps) {
       isActive: true,
       isVerified: true,
       ...(activeCategory !== "All" && { category: activeCategory }),
+      ...(search && {
+        title: {
+          contains: search,
+          mode: "insensitive",
+        },
+      }),
     },
     orderBy: {
       createdAt: "desc",
@@ -32,14 +41,34 @@ export default async function AnnouncementsPage({ searchParams }: PageProps) {
         <p className="text-muted-foreground">
           Stay updated with the latest events, internships, and campus news
         </p>
+        
+        {/* Test ImageKit image */}
+        <div className="mt-4">
+          <img 
+            src={getImageKitUrl('image_a4645388.png', 'w-400,h-300')} 
+            alt="Test" 
+            className="rounded-lg"
+          />
+        </div>
       </div>
+
+      {/* Search Bar */}
+      <Suspense fallback={<div className="h-10 bg-muted rounded-md mb-6 animate-pulse" />}>
+        <SearchBar />
+      </Suspense>
 
       {/* Category Filter Tabs */}
       <div className="flex gap-2 flex-wrap mb-6">
         {CATEGORIES.map((cat) => (
           <Link
             key={cat}
-            href={cat === "All" ? "/announcements" : `/announcements?category=${cat}`}
+            href={
+              cat === "All"
+                ? search ? `/announcements?search=${search}` : "/announcements"
+                : search
+                ? `/announcements?category=${cat}&search=${search}`
+                : `/announcements?category=${cat}`
+            }
           >
             <Badge
               variant={activeCategory === cat ? "default" : "outline"}
@@ -55,6 +84,7 @@ export default async function AnnouncementsPage({ searchParams }: PageProps) {
       <p className="text-sm text-muted-foreground mb-4">
         {announcements.length} announcement{announcements.length !== 1 ? "s" : ""} found
         {activeCategory !== "All" && ` in ${activeCategory}`}
+        {search && ` matching "${search}"`}
       </p>
 
       {/* Announcements List */}
@@ -62,7 +92,7 @@ export default async function AnnouncementsPage({ searchParams }: PageProps) {
         <Card>
           <CardContent className="pt-6">
             <p className="text-center text-muted-foreground">
-              No announcements found {activeCategory !== "All" && `in ${activeCategory}`}. Check back soon!
+              No announcements found. Try a different search or category!
             </p>
           </CardContent>
         </Card>

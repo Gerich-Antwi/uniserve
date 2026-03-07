@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
 import { revalidatePath } from "next/cache"
+import { sendEmail } from "@/lib/email"
 
 export async function submitAdminReply(messageId: string, replyText: string) {
     try {
@@ -21,7 +22,8 @@ export async function submitAdminReply(messageId: string, replyText: string) {
         }
 
         const message = await prisma.supportMessage.findUnique({
-            where: { id: messageId }
+            where: { id: messageId },
+            include: { user: true }
         })
 
         if (!message) {
@@ -39,6 +41,14 @@ export async function submitAdminReply(messageId: string, replyText: string) {
                 status: "Resolved"
             }
         })
+
+        if (message.user?.email) {
+            void sendEmail({
+                to: message.user.email,
+                subject: `Uniserve support reply: ${message.subject}`,
+                text: `Hi ${message.user.name ?? "there"},\n\nYou have received a reply from the Uniserve support team:\n\n${replyText}\n\nIf you have any further questions, you can reply from your support area.\n\nBest,\nUniserve Support`,
+            })
+        }
 
         revalidatePath(`/admin/support/${messageId}`)
         revalidatePath('/admin/support')

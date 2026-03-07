@@ -33,7 +33,8 @@ export default function Footer() {
           start: "top 80%",
           scrub: true,
         },
-         y: -100,
+         y: 100,
+         x: -100,
       });
 
       gsap.from(".box3",{
@@ -71,8 +72,8 @@ export default function Footer() {
       className="py-32 bg-cyan-300 border-b-8 border-black relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="box1 absolute top-10 left-10 w-20 h-20 bg-pink-400 border-4 border-black rotate-45 " style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
-          <div className="box2 absolute top-20 right-20 w-24 h-24 bg-yellow-300 rounded-full border-4 border-black " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+          <div className="box1 absolute top-30 left-10 w-20 h-20 bg-pink-400 border-4 border-black rotate-45 animate-float" style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
+          <div className="box2 absolute top-70 right-20 w-24 h-24 bg-yellow-300 rounded-full border-4 border-black animate-float " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
           <div className="box3 absolute bottom-10 left-1/4 w-16 h-16 bg-orange-400 border-4 border-black " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
           <div className="box4 absolute bottom-20 right-1/3 w-20 h-20 bg-lime-300 border-4 border-black rotate-12 " style={{ "--float-rotate": "12deg" } as React.CSSProperties} />
         </div>

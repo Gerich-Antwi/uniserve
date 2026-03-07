@@ -60,6 +60,7 @@ export const ModelName = {
   booking: 'booking',
   conversation: 'conversation',
   message: 'message'
+  SupportMessage: 'SupportMessage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -180,6 +181,11 @@ export const BookingScalarFieldEnum = {
   providerId: 'providerId',
   serviceId: 'serviceId',
   bookedAt: 'bookedAt',
+export const SupportMessageScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  subject: 'subject',
+  message: 'message',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -207,6 +213,7 @@ export const MessageScalarFieldEnum = {
 } as const
 
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+export type SupportMessageScalarFieldEnum = (typeof SupportMessageScalarFieldEnum)[keyof typeof SupportMessageScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -236,6 +236,7 @@ export type UserWhereInput = {
   message?: Prisma.MessageListRelationFilter
   services?: Prisma.ServiceListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
+  supportMessages?: Prisma.SupportMessageListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -256,6 +257,7 @@ export type UserOrderByWithRelationInput = {
   message?: Prisma.messageOrderByRelationAggregateInput
   services?: Prisma.ServiceOrderByRelationAggregateInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
+  supportMessages?: Prisma.SupportMessageOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -279,6 +281,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   message?: Prisma.MessageListRelationFilter
   services?: Prisma.ServiceListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
+  supportMessages?: Prisma.SupportMessageListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -333,6 +336,7 @@ export type UserCreateInput = {
   message?: Prisma.messageCreateNestedManyWithoutUserInput
   services?: Prisma.ServiceCreateNestedManyWithoutProviderInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  supportMessages?: Prisma.SupportMessageCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -353,6 +357,7 @@ export type UserUncheckedCreateInput = {
   message?: Prisma.messageUncheckedCreateNestedManyWithoutUserInput
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProviderInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  supportMessages?: Prisma.SupportMessageUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -373,6 +378,7 @@ export type UserUpdateInput = {
   message?: Prisma.messageUpdateManyWithoutUserNestedInput
   services?: Prisma.ServiceUpdateManyWithoutProviderNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  supportMessages?: Prisma.SupportMessageUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -393,6 +399,7 @@ export type UserUncheckedUpdateInput = {
   message?: Prisma.messageUncheckedUpdateManyWithoutUserNestedInput
   services?: Prisma.ServiceUncheckedUpdateManyWithoutProviderNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  supportMessages?: Prisma.SupportMessageUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -605,6 +612,7 @@ export type UserCreateWithoutSessionsInput = {
   booking_booking_studentIdTouser?: Prisma.bookingCreateNestedManyWithoutUser_booking_studentIdTouserInput
   message?: Prisma.messageCreateNestedManyWithoutUserInput
   services?: Prisma.ServiceCreateNestedManyWithoutProviderInput
+  supportMessages?: Prisma.SupportMessageCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -624,6 +632,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   booking_booking_studentIdTouser?: Prisma.bookingUncheckedCreateNestedManyWithoutUser_booking_studentIdTouserInput
   message?: Prisma.messageUncheckedCreateNestedManyWithoutUserInput
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProviderInput
+  supportMessages?: Prisma.SupportMessageUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -659,6 +668,7 @@ export type UserUpdateWithoutSessionsInput = {
   booking_booking_studentIdTouser?: Prisma.bookingUpdateManyWithoutUser_booking_studentIdTouserNestedInput
   message?: Prisma.messageUpdateManyWithoutUserNestedInput
   services?: Prisma.ServiceUpdateManyWithoutProviderNestedInput
+  supportMessages?: Prisma.SupportMessageUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -678,6 +688,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   booking_booking_studentIdTouser?: Prisma.bookingUncheckedUpdateManyWithoutUser_booking_studentIdTouserNestedInput
   message?: Prisma.messageUncheckedUpdateManyWithoutUserNestedInput
   services?: Prisma.ServiceUncheckedUpdateManyWithoutProviderNestedInput
+  supportMessages?: Prisma.SupportMessageUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -697,6 +708,7 @@ export type UserCreateWithoutAccountsInput = {
   message?: Prisma.messageCreateNestedManyWithoutUserInput
   services?: Prisma.ServiceCreateNestedManyWithoutProviderInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  supportMessages?: Prisma.SupportMessageCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -716,6 +728,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   message?: Prisma.messageUncheckedCreateNestedManyWithoutUserInput
   services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProviderInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  supportMessages?: Prisma.SupportMessageUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -751,6 +764,7 @@ export type UserUpdateWithoutAccountsInput = {
   message?: Prisma.messageUpdateManyWithoutUserNestedInput
   services?: Prisma.ServiceUpdateManyWithoutProviderNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  supportMessages?: Prisma.SupportMessageUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -770,6 +784,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   message?: Prisma.messageUncheckedUpdateManyWithoutUserNestedInput
   services?: Prisma.ServiceUncheckedUpdateManyWithoutProviderNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  supportMessages?: Prisma.SupportMessageUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutServicesInput = {
@@ -789,6 +804,7 @@ export type UserCreateWithoutServicesInput = {
   booking_booking_studentIdTouser?: Prisma.bookingCreateNestedManyWithoutUser_booking_studentIdTouserInput
   message?: Prisma.messageCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  supportMessages?: Prisma.SupportMessageCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutServicesInput = {
@@ -808,6 +824,7 @@ export type UserUncheckedCreateWithoutServicesInput = {
   booking_booking_studentIdTouser?: Prisma.bookingUncheckedCreateNestedManyWithoutUser_booking_studentIdTouserInput
   message?: Prisma.messageUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  supportMessages?: Prisma.SupportMessageUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutServicesInput = {
@@ -843,6 +860,7 @@ export type UserUpdateWithoutServicesInput = {
   booking_booking_studentIdTouser?: Prisma.bookingUpdateManyWithoutUser_booking_studentIdTouserNestedInput
   message?: Prisma.messageUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  supportMessages?: Prisma.SupportMessageUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutServicesInput = {
@@ -1138,6 +1156,87 @@ export type UserUncheckedUpdateWithoutMessageInput = {
   booking_booking_studentIdTouser?: Prisma.bookingUncheckedUpdateManyWithoutUser_booking_studentIdTouserNestedInput
   services?: Prisma.ServiceUncheckedUpdateManyWithoutProviderNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  supportMessages?: Prisma.SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSupportMessagesInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  phoneNumber?: string | null
+  location?: string | null
+  bio?: string | null
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  services?: Prisma.ServiceCreateNestedManyWithoutProviderInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSupportMessagesInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  phoneNumber?: string | null
+  location?: string | null
+  bio?: string | null
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProviderInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSupportMessagesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSupportMessagesInput, Prisma.UserUncheckedCreateWithoutSupportMessagesInput>
+}
+
+export type UserUpsertWithoutSupportMessagesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSupportMessagesInput, Prisma.UserUncheckedUpdateWithoutSupportMessagesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSupportMessagesInput, Prisma.UserUncheckedCreateWithoutSupportMessagesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSupportMessagesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSupportMessagesInput, Prisma.UserUncheckedUpdateWithoutSupportMessagesInput>
+}
+
+export type UserUpdateWithoutSupportMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  services?: Prisma.ServiceUpdateManyWithoutProviderNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSupportMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutProviderNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1152,6 +1251,7 @@ export type UserCountOutputType = {
   message: number
   services: number
   sessions: number
+  supportMessages: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1161,6 +1261,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   message?: boolean | UserCountOutputTypeCountMessageArgs
   services?: boolean | UserCountOutputTypeCountServicesArgs
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+  supportMessages?: boolean | UserCountOutputTypeCountSupportMessagesArgs
 }
 
 /**
@@ -1215,6 +1316,13 @@ export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.SessionWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSupportMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SupportMessageWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1234,6 +1342,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   message?: boolean | Prisma.User$messageArgs<ExtArgs>
   services?: boolean | Prisma.User$servicesArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
+  supportMessages?: boolean | Prisma.User$supportMessagesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1287,6 +1396,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   message?: boolean | Prisma.User$messageArgs<ExtArgs>
   services?: boolean | Prisma.User$servicesArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
+  supportMessages?: boolean | Prisma.User$supportMessagesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1301,6 +1411,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     message: Prisma.$messagePayload<ExtArgs>[]
     services: Prisma.$ServicePayload<ExtArgs>[]
     sessions: Prisma.$SessionPayload<ExtArgs>[]
+    supportMessages: Prisma.$SupportMessagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1714,6 +1825,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   message<T extends Prisma.User$messageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$messagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   services<T extends Prisma.User$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  supportMessages<T extends Prisma.User$supportMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$supportMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2283,6 +2395,30 @@ export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
+}
+
+/**
+ * User.supportMessages
+ */
+export type User$supportMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SupportMessage
+   */
+  select?: Prisma.SupportMessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SupportMessage
+   */
+  omit?: Prisma.SupportMessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SupportMessageInclude<ExtArgs> | null
+  where?: Prisma.SupportMessageWhereInput
+  orderBy?: Prisma.SupportMessageOrderByWithRelationInput | Prisma.SupportMessageOrderByWithRelationInput[]
+  cursor?: Prisma.SupportMessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SupportMessageScalarFieldEnum | Prisma.SupportMessageScalarFieldEnum[]
 }
 
 /**

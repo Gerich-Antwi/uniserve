@@ -62,3 +62,7 @@ export type conversation = Prisma.conversationModel
  * 
  */
 export type message = Prisma.messageModel
+ * Model SupportMessage
+ * 
+ */
+export type SupportMessage = Prisma.SupportMessageModel

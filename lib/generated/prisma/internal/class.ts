@@ -265,6 +265,14 @@ export interface PrismaClient<
     * ```
     */
   get message(): Prisma.messageDelegate<ExtArgs, { omit: OmitOpts }>;
+   * `prisma.supportMessage`: Exposes CRUD operations for the **SupportMessage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SupportMessages
+    * const supportMessages = await prisma.supportMessage.findMany()
+    * ```
+    */
+  get supportMessage(): Prisma.SupportMessageDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

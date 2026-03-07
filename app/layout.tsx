@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CampusServices — Campus Life Simplified",
+  title: "Uniserve — Campus Life Simplified",
   description: "Everything you need on campus — laundry, food, tech fixes — all in one place. No BS, just services that work.",
 };
 
@@ -36,8 +36,9 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <BetterAuthUIProvider>

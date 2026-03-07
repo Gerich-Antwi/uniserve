@@ -30,7 +30,6 @@ export type AnnouncementMinAggregateOutputType = {
   content: string | null
   summary: string | null
   category: string | null
-  imageUrl: string | null
   isVerified: boolean | null
   isActive: boolean | null
   externalLink: string | null
@@ -46,7 +45,6 @@ export type AnnouncementMaxAggregateOutputType = {
   content: string | null
   summary: string | null
   category: string | null
-  imageUrl: string | null
   isVerified: boolean | null
   isActive: boolean | null
   externalLink: string | null
@@ -62,7 +60,6 @@ export type AnnouncementCountAggregateOutputType = {
   content: number
   summary: number
   category: number
-  imageUrl: number
   isVerified: number
   isActive: number
   externalLink: number
@@ -80,7 +77,6 @@ export type AnnouncementMinAggregateInputType = {
   content?: true
   summary?: true
   category?: true
-  imageUrl?: true
   isVerified?: true
   isActive?: true
   externalLink?: true
@@ -96,7 +92,6 @@ export type AnnouncementMaxAggregateInputType = {
   content?: true
   summary?: true
   category?: true
-  imageUrl?: true
   isVerified?: true
   isActive?: true
   externalLink?: true
@@ -112,7 +107,6 @@ export type AnnouncementCountAggregateInputType = {
   content?: true
   summary?: true
   category?: true
-  imageUrl?: true
   isVerified?: true
   isActive?: true
   externalLink?: true
@@ -201,7 +195,6 @@ export type AnnouncementGroupByOutputType = {
   content: string
   summary: string | null
   category: string
-  imageUrl: string | null
   isVerified: boolean
   isActive: boolean
   externalLink: string | null
@@ -238,7 +231,6 @@ export type AnnouncementWhereInput = {
   content?: Prisma.StringFilter<"Announcement"> | string
   summary?: Prisma.StringNullableFilter<"Announcement"> | string | null
   category?: Prisma.StringFilter<"Announcement"> | string
-  imageUrl?: Prisma.StringNullableFilter<"Announcement"> | string | null
   isVerified?: Prisma.BoolFilter<"Announcement"> | boolean
   isActive?: Prisma.BoolFilter<"Announcement"> | boolean
   externalLink?: Prisma.StringNullableFilter<"Announcement"> | string | null
@@ -254,7 +246,6 @@ export type AnnouncementOrderByWithRelationInput = {
   content?: Prisma.SortOrder
   summary?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   externalLink?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -273,7 +264,6 @@ export type AnnouncementWhereUniqueInput = Prisma.AtLeast<{
   content?: Prisma.StringFilter<"Announcement"> | string
   summary?: Prisma.StringNullableFilter<"Announcement"> | string | null
   category?: Prisma.StringFilter<"Announcement"> | string
-  imageUrl?: Prisma.StringNullableFilter<"Announcement"> | string | null
   isVerified?: Prisma.BoolFilter<"Announcement"> | boolean
   isActive?: Prisma.BoolFilter<"Announcement"> | boolean
   externalLink?: Prisma.StringNullableFilter<"Announcement"> | string | null
@@ -289,7 +279,6 @@ export type AnnouncementOrderByWithAggregationInput = {
   content?: Prisma.SortOrder
   summary?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   externalLink?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -311,7 +300,6 @@ export type AnnouncementScalarWhereWithAggregatesInput = {
   content?: Prisma.StringWithAggregatesFilter<"Announcement"> | string
   summary?: Prisma.StringNullableWithAggregatesFilter<"Announcement"> | string | null
   category?: Prisma.StringWithAggregatesFilter<"Announcement"> | string
-  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Announcement"> | string | null
   isVerified?: Prisma.BoolWithAggregatesFilter<"Announcement"> | boolean
   isActive?: Prisma.BoolWithAggregatesFilter<"Announcement"> | boolean
   externalLink?: Prisma.StringNullableWithAggregatesFilter<"Announcement"> | string | null
@@ -327,7 +315,6 @@ export type AnnouncementCreateInput = {
   content: string
   summary?: string | null
   category: string
-  imageUrl?: string | null
   isVerified?: boolean
   isActive?: boolean
   externalLink?: string | null
@@ -343,7 +330,6 @@ export type AnnouncementUncheckedCreateInput = {
   content: string
   summary?: string | null
   category: string
-  imageUrl?: string | null
   isVerified?: boolean
   isActive?: boolean
   externalLink?: string | null
@@ -359,7 +345,6 @@ export type AnnouncementUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -375,7 +360,6 @@ export type AnnouncementUncheckedUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -391,7 +375,6 @@ export type AnnouncementCreateManyInput = {
   content: string
   summary?: string | null
   category: string
-  imageUrl?: string | null
   isVerified?: boolean
   isActive?: boolean
   externalLink?: string | null
@@ -407,7 +390,6 @@ export type AnnouncementUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -423,7 +405,6 @@ export type AnnouncementUncheckedUpdateManyInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.StringFieldUpdateOperationsInput | string
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   externalLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -439,7 +420,6 @@ export type AnnouncementCountOrderByAggregateInput = {
   content?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   externalLink?: Prisma.SortOrder
@@ -455,7 +435,6 @@ export type AnnouncementMaxOrderByAggregateInput = {
   content?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   externalLink?: Prisma.SortOrder
@@ -471,7 +450,6 @@ export type AnnouncementMinOrderByAggregateInput = {
   content?: Prisma.SortOrder
   summary?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  imageUrl?: Prisma.SortOrder
   isVerified?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   externalLink?: Prisma.SortOrder
@@ -489,7 +467,6 @@ export type AnnouncementSelect<ExtArgs extends runtime.Types.Extensions.Internal
   content?: boolean
   summary?: boolean
   category?: boolean
-  imageUrl?: boolean
   isVerified?: boolean
   isActive?: boolean
   externalLink?: boolean
@@ -505,7 +482,6 @@ export type AnnouncementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   content?: boolean
   summary?: boolean
   category?: boolean
-  imageUrl?: boolean
   isVerified?: boolean
   isActive?: boolean
   externalLink?: boolean
@@ -521,7 +497,6 @@ export type AnnouncementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   content?: boolean
   summary?: boolean
   category?: boolean
-  imageUrl?: boolean
   isVerified?: boolean
   isActive?: boolean
   externalLink?: boolean
@@ -537,7 +512,6 @@ export type AnnouncementSelectScalar = {
   content?: boolean
   summary?: boolean
   category?: boolean
-  imageUrl?: boolean
   isVerified?: boolean
   isActive?: boolean
   externalLink?: boolean
@@ -558,7 +532,6 @@ export type $AnnouncementPayload<ExtArgs extends runtime.Types.Extensions.Intern
     content: string
     summary: string | null
     category: string
-    imageUrl: string | null
     isVerified: boolean
     isActive: boolean
     externalLink: string | null
@@ -994,7 +967,6 @@ export interface AnnouncementFieldRefs {
   readonly content: Prisma.FieldRef<"Announcement", 'String'>
   readonly summary: Prisma.FieldRef<"Announcement", 'String'>
   readonly category: Prisma.FieldRef<"Announcement", 'String'>
-  readonly imageUrl: Prisma.FieldRef<"Announcement", 'String'>
   readonly isVerified: Prisma.FieldRef<"Announcement", 'Boolean'>
   readonly isActive: Prisma.FieldRef<"Announcement", 'Boolean'>
   readonly externalLink: Prisma.FieldRef<"Announcement", 'String'>

@@ -1,4 +1,3 @@
-import { getImageKitUrl } from "@/lib/imagekit/config";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
@@ -9,70 +8,95 @@ import { CheckCircle2, ArrowLeft, ExternalLink, Mail } from "lucide-react";
 
 export default async function AnnouncementDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-
+  
   const announcement = await prisma.announcement.findUnique({
     where: { id },
   });
-
+  
   if (!announcement || !announcement.isActive || !announcement.isVerified) {
     notFound();
   }
-
+  
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      {/* Back Button */}
       <Link href="/announcements">
-        <Button variant="outline" className="mb-6">
+        <Button 
+          variant="outline" 
+          className="mb-6 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all font-black"
+        >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Announcements
+          BACK
         </Button>
       </Link>
 
-      <Card>
-        <CardHeader>
+      {/* Main Card */}
+      <Card className="border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+        {/* Hero Image */}
+        {announcement.imageUrl && (
+          <div className="w-full h-96 overflow-hidden border-b-4 border-black">
+            <img 
+              src={announcement.imageUrl} 
+              alt={announcement.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+        
+        <CardHeader className="bg-white">
+          {/* Category & Verified Badge */}
           <div className="flex items-center gap-3 mb-4">
-            <Badge variant="secondary" className="bg-purple-200">{announcement.category}</Badge>
-            <div className="bg-green-300 border-2 border-black px-2 py-0.5 text-xs font-black flex items-center gap-1">
-              <CheckCircle2 className="w-3 h-3" />
-              Official
+            <Badge className="bg-purple-300 text-black border-2 border-black font-black text-sm px-3 py-1">
+              {announcement.category}
+            </Badge>
+            <div className="bg-green-300 border-2 border-black px-3 py-1 text-sm font-black flex items-center gap-1">
+              <CheckCircle2 className="w-4 h-4" />
+              VERIFIED
             </div>
           </div>
 
-          <h1 className="text-3xl font-black mb-2">{announcement.title}</h1>
+          {/* Title */}
+          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+            {announcement.title}
+          </h1>
 
-          <time className="text-sm font-bold text-muted-foreground bg-yellow-300 border-2 border-black px-2 py-1 inline-block">
-            Posted on {new Date(announcement.createdAt).toLocaleDateString("en-US", {
+          {/* Date */}
+          <div className="inline-block bg-yellow-300 border-2 border-black px-4 py-2 font-black text-sm -rotate-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            📅 {new Date(announcement.createdAt).toLocaleDateString("en-US", {
               weekday: "long",
               year: "numeric",
               month: "long",
               day: "numeric",
             })}
-          </time>
+          </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="prose prose-sm max-w-none">
-            <p className="whitespace-pre-wrap text-base leading-relaxed font-bold">
+        <CardContent className="space-y-6 bg-white p-8">
+          {/* Content */}
+          <div className="prose prose-lg max-w-none">
+            <p className="whitespace-pre-wrap text-lg leading-relaxed font-medium">
               {announcement.content}
             </p>
           </div>
 
+          {/* Call to Actions */}
           {(announcement.externalLink || announcement.contactInfo) && (
-            <div className="pt-4 border-t-4 border-black space-y-3">
+            <div className="pt-6 border-t-4 border-black space-y-4">
               {announcement.externalLink && (
                 <a href={announcement.externalLink} target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full sm:w-auto">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Learn More
-                  </Button>
+                  <button className="bg-black text-white px-8 py-4 font-black text-lg border-4 border-black hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-3">
+                    <ExternalLink className="w-5 h-5" />
+                    LEARN MORE / APPLY
+                  </button>
                 </a>
               )}
 
               {announcement.contactInfo && (
-                <div className="flex items-start gap-2 p-4 bg-cyan-100 border-2 border-black">
-                  <Mail className="w-5 h-5 mt-0.5" />
+                <div className="flex items-start gap-3 p-6 bg-cyan-100 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <Mail className="w-6 h-6 mt-1" />
                   <div>
-                    <p className="text-sm font-black">Contact Information</p>
-                    <p className="text-sm font-bold">{announcement.contactInfo}</p>
+                    <p className="font-black text-lg mb-1">CONTACT INFORMATION</p>
+                    <p className="font-bold text-base">{announcement.contactInfo}</p>
                   </div>
                 </div>
               )}

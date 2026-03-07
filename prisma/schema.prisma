@@ -26,7 +26,10 @@ model User {
   sentMessages     Message[]
   services         Service[]
   sessions         Session[]
-
+  booking_booking_providerIdTouser booking[] @relation("booking_providerIdTouser")
+  booking_booking_studentIdTouser  booking[] @relation("booking_studentIdTouser")
+  message                          message[]
+  supportMessages SupportMessage[]
   @@map("user")
 }
 
@@ -77,6 +80,7 @@ model Service {
   updatedAt      DateTime  @updatedAt
   operatingHours String?
   bookings       Booking[]
+  booking        booking[]
   provider       User      @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@index([providerId])
@@ -96,7 +100,6 @@ model Booking {
   service      Service       @relation(fields: [serviceId], references: [id], onDelete: Cascade)
   student      User          @relation("StudentBookings", fields: [studentId], references: [id], onDelete: Cascade)
   conversation Conversation?
-
   @@index([studentId])
   @@index([providerId])
   @@index([serviceId])
@@ -147,6 +150,7 @@ model Announcement {
   content      String
   summary      String?
   category     String
+  imageUrl     String?  // Add this line
   isVerified   Boolean  @default(false)
   isActive     Boolean  @default(true)
   externalLink String?
@@ -161,13 +165,70 @@ model Announcement {
   @@map("announcement")
 }
 
-enum Role {
-  STUDENT
-  PROVIDER
-  ADMIN
+model booking {
+  id                            String        @id
+  studentId                     String
+  providerId                    String
+  serviceId                     String
+  bookedAt                      DateTime      @default(now())
+  status                        BookingStatus @default(PENDING)
+  createdAt                     DateTime      @default(now())
+  updatedAt                     DateTime
+  user_booking_providerIdTouser User          @relation("booking_providerIdTouser", fields: [providerId], references: [id], onDelete: Cascade)
+  service                       Service       @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  user_booking_studentIdTouser  User          @relation("booking_studentIdTouser", fields: [studentId], references: [id], onDelete: Cascade)
+  conversation                  conversation?
+
+  @@index([providerId])
+  @@index([serviceId])
+  @@index([status])
+  @@index([studentId])
+}
+
+model conversation {
+  id        String    @id
+  bookingId String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime
+  booking   booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  message   message[]
+}
+
+model message {
+  id             String       @id
+  conversationId String
+  senderId       String
+  content        String
+  createdAt      DateTime     @default(now())
+  conversation   conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([senderId])
 }
 
 enum BookingStatus {
   PENDING
   ATTENDED
+}
+
+enum Role {
+  STUDENT
+  PROVIDER
+  ADMIN
+  }
+  
+model SupportMessage {
+  id        String   @id @default(cuid())
+  userId    String
+  subject   String
+  message   String
+  status    String   @default("Open")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("support_message")
 }

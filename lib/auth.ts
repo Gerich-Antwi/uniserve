@@ -1,9 +1,7 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import {prisma} from "@/lib/prisma"//your prisma instance
-
-
-
+import { prisma } from "@/lib/prisma"; // your prisma instance
+import { sendEmail } from "@/lib/email";
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -21,6 +19,19 @@ export const auth = betterAuth({
   },
   emailAndPassword: {
     enabled: true,
+    requireEmailVerification: true,
+  },
+  emailVerification: {
+    sendOnSignUp: true,
+    sendOnSignIn: true,
+    async sendVerificationEmail({ user, url }) {
+      void sendEmail({
+        to: user.email,
+        subject: "Verify your Uniserve account",
+        text: `Click the link to verify your email: ${url}`,
+      });
+    },
+    autoSignInAfterVerification: true,
   },
   socialProviders: {
     google: {
@@ -29,3 +40,4 @@ export const auth = betterAuth({
     },
   },
 });
+

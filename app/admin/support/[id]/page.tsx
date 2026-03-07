@@ -2,7 +2,6 @@ import { prisma } from "@/lib/prisma"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
-import { SiteHeader } from "@/components/site-header"
 import Link from "next/link"
 import { ArrowLeft, User, Calendar, Tag } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -24,7 +23,6 @@ export default async function AdminMessageDetailPage({ params }: { params: { id:
 
     return (
         <div className="min-h-screen bg-gray-50/50">
-            <SiteHeader />
             <main className="container py-8 max-w-4xl mx-auto px-4 md:px-6">
                 <div className="mb-6 flex flex-col items-start gap-4">
                     <Link href="/admin/support">

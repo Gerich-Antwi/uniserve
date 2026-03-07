@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
-import { SiteHeader } from "@/components/site-header"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -28,7 +27,6 @@ export default async function AdminDashboardPage() {
 
     return (
         <div className="min-h-screen bg-gray-50/50">
-            <SiteHeader />
             <main className="container py-8 max-w-7xl mx-auto px-4 md:px-6">
                 <div className="mb-8">
                     <h1 className="inline-block text-4xl sm:text-5xl font-black tracking-tight">

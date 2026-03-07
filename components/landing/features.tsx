@@ -149,7 +149,7 @@ export default function Features() {
             {
               y: 0,
               opacity: 1,
-              rotate: 0,
+              rotate: index => index % 2 === 0 ? 2 : -2,
               duration: 0.5,
               stagger: 0.15,
               ease: "power3.out",

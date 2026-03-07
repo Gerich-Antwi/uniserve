@@ -71,3 +71,8 @@ export type Verification = Prisma.VerificationModel
  * 
  */
 export type Announcement = Prisma.AnnouncementModel
+/**
+ * Model SupportMessage
+ * 
+ */
+export type SupportMessage = Prisma.SupportMessageModel

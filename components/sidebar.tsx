@@ -10,7 +10,8 @@ import {
     Bell,
     LogOut,
     User as UserIcon,
-    Settings
+    Settings,
+    LifeBuoy
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -48,6 +49,12 @@ export function Sidebar() {
             href: "/announcements",
             icon: Bell,
             active: pathname.startsWith("/announcements"),
+        },
+        {
+            title: "Support",
+            href: "/support",
+            icon: LifeBuoy, 
+            active: pathname.startsWith("/support"),
         },
     ]
 

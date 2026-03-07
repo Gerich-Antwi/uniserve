@@ -2,6 +2,7 @@ import { Sidebar } from "@/components/sidebar"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
+import { ChatBot } from "@/components/chat/bot"
 
 export default function ServicesLayout({
     children,
@@ -38,6 +39,7 @@ export default function ServicesLayout({
                     {children}
                 </main>
             </div>
+            <ChatBot />
         </div>
     )
 }

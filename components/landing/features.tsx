@@ -144,8 +144,7 @@ export default function Features() {
             { 
                y:50,
                rotate: index => index % 2 === 0 ? 5 : -5,
-    
-        },
+            },
 
             {
               y: 0,
@@ -158,7 +157,7 @@ export default function Features() {
             }
           ),
         
-        start: "top 85%",
+        //start: "top 85%",
       })
       }, rocksectionRef)
 
@@ -188,7 +187,7 @@ export default function Features() {
             { 
                y:100,
                opacity: 0.8 ,
-               trigger: sectionRef.current,               
+               // trigger: sectionRef.current,               
            },
 
             {
@@ -201,7 +200,7 @@ export default function Features() {
             }
           ),
         
-        start: "top 85%",
+       // start: "top 85%",
       })
 
    

@@ -4,6 +4,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import {useRef, useEffect} from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChatBot } from "@/components/chat/bot";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,16 +13,17 @@ export default function Footer() {
 
   useEffect(() => {
     const ctx = gsap.context(() =>{
-      gsap.from(".box1",{
+      gsap.to(".box1",{
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
-          toggleActions: "play none reverse none",
+          toggleActions: "play restart reverse none",
           scrub: true,
         },
-        x: -100,
-        rotate: 30,
-        duration: 1,
+        x: 200,
+        y:500,
+        rotation: 300,
+        duration: 1.5,
         
       });
 
@@ -31,13 +33,14 @@ export default function Footer() {
           start: "top 80%",
           scrub: true,
         },
-         y: -10,
+         y: -100,
       });
 
       gsap.from(".box3",{
         scrollTrigger: {
           trigger: sectionRef.current,  
           start: "top 80%",
+          scrub:true
         },
          y: 20,
          opacity: 0,
@@ -47,6 +50,7 @@ export default function Footer() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
+          scrub:true
 
         },
          x: 200,
@@ -67,10 +71,10 @@ export default function Footer() {
       className="py-32 bg-cyan-300 border-b-8 border-black relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="box1 absolute top-20 left-10 w-20 h-20 bg-pink-400 border-4 border-black rotate-45 animate-float" style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
-          <div className="box2 absolute top-20 right-20 w-24 h-24 bg-yellow-300 rounded-full border-4 border-black animate-float-reverse" style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
-          <div className="box3 absolute bottom-10 left-1/4 w-16 h-16 bg-orange-400 border-4 border-black animate-float" style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
-          <div className="box4 absolute bottom-20 right-1/3 w-20 h-20 bg-lime-300 border-4 border-black rotate-12 animate-float-reverse" style={{ "--float-rotate": "12deg" } as React.CSSProperties} />
+          <div className="box1 absolute top-10 left-10 w-20 h-20 bg-pink-400 border-4 border-black rotate-45 " style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
+          <div className="box2 absolute top-20 right-20 w-24 h-24 bg-yellow-300 rounded-full border-4 border-black " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+          <div className="box3 absolute bottom-10 left-1/4 w-16 h-16 bg-orange-400 border-4 border-black " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+          <div className="box4 absolute bottom-20 right-1/3 w-20 h-20 bg-lime-300 border-4 border-black rotate-12 " style={{ "--float-rotate": "12deg" } as React.CSSProperties} />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
@@ -196,6 +200,7 @@ export default function Footer() {
 
         </div>
       </footer>
+      <ChatBot />
     </>
   );
 }

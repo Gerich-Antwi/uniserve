@@ -1,0 +1,39 @@
+Campus Services FAQ Knowledge Base
+Document Name: Uniserve FAQ v1.0
+
+# 1. Laundry Services
+Q: How does the laundry service work?
+A: You can schedule a pickup through the Uniserve app. We come to your dorm, pick up your clothes, wash, dry, fold them, and return them within 24 hours. [1]
+
+Q: How much does laundry cost?
+A: Our standard wash & fold service is $1.50 per pound. We also offer a monthly subscription for $45/month which covers up to 40 pounds of laundry. [1]
+
+Q: What if I have delicate items?
+A: Please place delicate items in a separate bag inside your main laundry bag and leave a note in the app. These items will be air-dried. [1]
+
+# 2. Grooming Services
+Q: Where are the grooming services located?
+A: We partner with several local barbers and salons right off-campus. You can book an appointment directly through the Uniserve app and show your student ID for a 15% discount. [2]
+
+Q: Can someone come to my dorm for a haircut?
+A: Yes! We have a select group of mobile barbers who can come to your dorm common area. You can filter by "Mobile Barber" in the booking section. [2]
+
+# 3. Tech Support
+Q: My laptop won't turn on. Can you help?
+A: Yes. Our student-led IT support team can run diagnostics on your laptop. Submit a ticket in the app, and someone will meet you at the campus library tech desk. [3]
+
+Q: Do you repair phone screens?
+A: Yes, we provide screen repair services for most major smartphone brands. Screen repairs typically take 2-4 hours and start at $75 depending on the model. [3]
+
+# 4. Food Delivery
+Q: What restaurants do you deliver from?
+A: We deliver from all dining halls on campus, as well as our 15 partnered restaurants on Main Street. [4]
+
+Q: How late do you deliver food?
+A: Our student dashers deliver until 2:00 AM on weekdays, and 3:00 AM on weekends to fuel your late-night study sessions. [4]
+
+# Sources:
+[1] LaundryTerms.doc
+[2] GroomingPartners.doc
+[3] TechSupportGuidelines.doc
+[4] FoodDeliveryHours.doc

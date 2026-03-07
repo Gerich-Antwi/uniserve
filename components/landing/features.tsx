@@ -1,6 +1,9 @@
 "use client"
 
 import Link from "next/link";
+import Image from "next/image";
+import gsap from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
   Zap,
@@ -16,7 +19,9 @@ import {
   Coffee,
   BookOpen,
 } from "lucide-react";
+import { useRef, useEffect } from "react";
 
+gsap.registerPlugin(ScrollTrigger)
 const services = [
   {
     id: 1,
@@ -114,19 +119,115 @@ const features = [
 ];
 
 export default function Features() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const rocksectionRef = useRef<HTMLHeadingElement>(null)
+
+  //Animate why We Rock section
+  useEffect(() => {
+    const ctx1 = gsap.context(() => {
+        gsap.from(".rock-heading", {
+  scrollTrigger: {
+    trigger: rocksectionRef.current,
+    start: "top 80%",
+    scrub: true,
+    toggleActions: "play none reverse none",
+  },
+   scaleX: 0.6,
+  duration: 0.8,
+  ease: "power3.out",
+})
+
+ ScrollTrigger.batch(".features-card", {
+        onEnter: (elements) =>
+          gsap.fromTo(
+            elements,
+            { 
+               y:50,
+               rotate: index => index % 2 === 0 ? 5 : -5,
+            },
+
+            {
+              y: 0,
+              opacity: 1,
+              rotate: index => index % 2 === 0 ? 2 : -2,
+              duration: 0.5,
+              stagger: 0.15,
+              ease: "power3.out",
+              overwrite: true, // ← prevents conflicting tweens
+            }
+          ),
+        
+        //start: "top 85%",
+      })
+      }, rocksectionRef)
+
+      return () => ctx1.revert()
+  }, [])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate heading
+      gsap.from(".features-heading", {
+  scrollTrigger: {
+    trigger: sectionRef.current,
+    start: "top 80%",
+    scrub: true,
+    toggleActions: "play none reverse none",
+  },
+   scaleX: 0.6,
+  duration: 1,
+  ease: "power3.out",
+})
+    
+
+    ScrollTrigger.batch(".services-card", {
+        onEnter: (elements) =>
+          gsap.fromTo(
+            elements,
+            { 
+               y:100,
+               opacity: 0.8 ,
+               // trigger: sectionRef.current,               
+           },
+
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1.6,
+              stagger: 0.15,
+              ease: "power3.out",
+              overwrite: true, // ← prevents conflicting tweens
+            }
+          ),
+        
+       // start: "top 85%",
+      })
+
+   
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
+
     <>
       {/* Services - Horizontal Scroll with Neo-Brutalism */}
-      <section className="py-24 bg-white border-b-8 border-black">
+      <section
+       ref={sectionRef}
+      className="py-24 bg-white border-b-8 border-black"
+      >
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="text-center">
-            <h2 className="inline-block text-5xl sm:text-6xl font-black mb-4 bg-yellow-300 border-6 border-black px-8 py-4 rotate-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <h2 className="features-heading inline-block text-5xl sm:text-6xl font-black mb-4 bg-yellow-300 border-6 border-black px-8 py-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               WHAT WE OFFER
             </h2>
             <p className="text-xl font-bold mt-8 max-w-2xl mx-auto">
-              All the essentials, zero hassle 💪
+              All the essentials, zero hassle 
             </p>
           </div>
+
         </div>
 
         <div className="relative">
@@ -136,18 +237,24 @@ export default function Features() {
               return (
                 <div
                   key={service.id}
-                  className="flex-shrink-0 w-80 sm:w-96"
+                  className="services-card  shrink-0 w-80 sm:w-96"
                 >
                   <Link href={`/services`}>
                     <div
-                      className={`group relative h-[500px] border-6 border-black ${service.rotation} hover:rotate-0 transition-all shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 overflow-hidden`}
+                      className={`group relative h-500px border-6 border-black ${service.rotation} hover:rotate-0 transition-all shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 overflow-hidden`}
                     >
                       {/* Image */}
                       <div className="absolute inset-0">
-                        <img
+                        {/* <img
                           src={service.image}
                           alt={service.name}
                           className="w-full h-full object-cover"
+                        /> */}
+                        <Image
+                          src={service.image}
+                          alt={service.name}
+                          className="w-full h-full object-cover"
+                          fill
                         />
                         {/* Color overlay for mixed-media style */}
                         <div
@@ -195,6 +302,7 @@ export default function Features() {
           </div>
         </div>
 
+
         <div className="text-center mt-12">
           <Link href="/services" className="inline-block">
             <div className="bg-pink-300 border-4 border-black px-8 py-4 font-black text-lg hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-1 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
@@ -205,10 +313,12 @@ export default function Features() {
       </section>
 
       {/* Features Grid - WHY WE ROCK */}
-      <section className="py-24 bg-lime-100 border-b-8 border-black">
+      <section 
+      ref={rocksectionRef}
+      className="py-24 bg-lime-100 border-b-8 border-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="inline-block text-5xl sm:text-6xl font-black mb-4 bg-white border-6 border-black px-8 py-4 -rotate-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <h2 className="rock-heading inline-block text-5xl sm:text-6xl font-black mb-4 bg-white border-6 border-black px-8 py-4 -rotate-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               WHY WE ROCK
             </h2>
             <p className="text-xl font-bold mt-8">
@@ -222,7 +332,7 @@ export default function Features() {
               return (
                 <div
                   key={index}
-                  className={`${feature.color} border-6 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${index % 2 === 0 ? "rotate-1" : "-rotate-1"} hover:rotate-0`}
+                  className={`features-card ${feature.color} border-6 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${index % 2 === 0 ? "rotate-1" : "-rotate-1"} hover:rotate-0`}
                 >
                   <div className="w-16 h-16 bg-black border-4 border-black flex items-center justify-center mb-6 rotate-12">
                     <Icon className="text-white" size={32} />
@@ -240,3 +350,4 @@ export default function Features() {
     </>
   );
 }
+

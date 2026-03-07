@@ -109,7 +109,7 @@ export default async function ChatListPage() {
           },
         },
       },
-      message: {
+      messages: {
         orderBy: {
           createdAt: "desc",
         },
@@ -144,13 +144,13 @@ export default async function ChatListPage() {
       </div>
       <div className="space-y-4">
         {conversations.map((conversation) => {
-          const { booking, message } = conversation;
+          const { booking, messages } = conversation;
           const isStudent = booking.studentId === userId;
 
           // The "other" person in the chat
           const chatPartner = isStudent ? booking.provider : booking.student;
           const partnerRole = isStudent ? "Provider" : "Student";
-          const latestMessage = message[0];
+          const latestMessage = messages[0];
 
           return (
             <Link key={conversation.id} href={`/chat/${conversation.id}`}>

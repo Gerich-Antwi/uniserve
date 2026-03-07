@@ -62,16 +62,6 @@ export type Account = Prisma.AccountModel
  */
 export type Service = Prisma.ServiceModel
 /**
- * Model Verification
- * 
- */
-export type Verification = Prisma.VerificationModel
-/**
- * Model Announcement
- * 
- */
-export type Announcement = Prisma.AnnouncementModel
-/**
  * Model Booking
  * 
  */
@@ -82,7 +72,22 @@ export type Booking = Prisma.BookingModel
  */
 export type Conversation = Prisma.ConversationModel
 /**
- * Model message
+ * Model Message
  * 
  */
-export type message = Prisma.messageModel
+export type Message = Prisma.MessageModel
+/**
+ * Model Verification
+ * 
+ */
+export type Verification = Prisma.VerificationModel
+/**
+ * Model Announcement
+ * 
+ */
+export type Announcement = Prisma.AnnouncementModel
+/**
+ * Model SupportMessage
+ * 
+ */
+export type SupportMessage = Prisma.SupportMessageModel

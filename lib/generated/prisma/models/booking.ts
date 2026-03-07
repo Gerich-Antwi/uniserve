@@ -280,7 +280,7 @@ export type BookingCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   provider: Prisma.UserCreateNestedOneWithoutProviderBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingInput
+  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
   student: Prisma.UserCreateNestedOneWithoutStudentBookingsInput
   conversation?: Prisma.ConversationCreateNestedOneWithoutBookingInput
 }
@@ -304,7 +304,7 @@ export type BookingUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   provider?: Prisma.UserUpdateOneRequiredWithoutProviderBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
   student?: Prisma.UserUpdateOneRequiredWithoutStudentBookingsNestedInput
   conversation?: Prisma.ConversationUpdateOneWithoutBookingNestedInput
 }
@@ -549,7 +549,7 @@ export type BookingCreateWithoutProviderInput = {
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  service: Prisma.ServiceCreateNestedOneWithoutBookingInput
+  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
   student: Prisma.UserCreateNestedOneWithoutStudentBookingsInput
   conversation?: Prisma.ConversationCreateNestedOneWithoutBookingInput
 }
@@ -582,7 +582,7 @@ export type BookingCreateWithoutStudentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   provider: Prisma.UserCreateNestedOneWithoutProviderBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingInput
+  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
   conversation?: Prisma.ConversationCreateNestedOneWithoutBookingInput
 }
 
@@ -708,7 +708,7 @@ export type BookingCreateWithoutConversationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   provider: Prisma.UserCreateNestedOneWithoutProviderBookingsInput
-  service: Prisma.ServiceCreateNestedOneWithoutBookingInput
+  service: Prisma.ServiceCreateNestedOneWithoutBookingsInput
   student: Prisma.UserCreateNestedOneWithoutStudentBookingsInput
 }
 
@@ -746,7 +746,7 @@ export type BookingUpdateWithoutConversationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   provider?: Prisma.UserUpdateOneRequiredWithoutProviderBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
   student?: Prisma.UserUpdateOneRequiredWithoutStudentBookingsNestedInput
 }
 
@@ -787,7 +787,7 @@ export type BookingUpdateWithoutProviderInput = {
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
   student?: Prisma.UserUpdateOneRequiredWithoutStudentBookingsNestedInput
   conversation?: Prisma.ConversationUpdateOneWithoutBookingNestedInput
 }
@@ -820,7 +820,7 @@ export type BookingUpdateWithoutStudentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   provider?: Prisma.UserUpdateOneRequiredWithoutProviderBookingsNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutBookingsNestedInput
   conversation?: Prisma.ConversationUpdateOneWithoutBookingNestedInput
 }
 

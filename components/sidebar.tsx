@@ -11,6 +11,7 @@ import {
     LogOut,
     User as UserIcon,
     Settings,
+    LifeBuoy,
     MessageCircle
 } from "lucide-react"
 
@@ -55,6 +56,12 @@ export function Sidebar() {
             href: "/chat",
             icon: MessageCircle,
             active: pathname.startsWith("/chat"),
+        },
+        {
+            title: "Support",
+            href: "/support",
+            icon: LifeBuoy, 
+            active: pathname.startsWith("/support"),
         },
     ]
 

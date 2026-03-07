@@ -24,7 +24,7 @@ export default async function ChatPage({
     where: { id: conversationId },
     include: {
       booking: true,
-      message: {
+      messages: {
         orderBy: {
           createdAt: "asc",
         },
@@ -59,7 +59,7 @@ export default async function ChatPage({
     timestamp: string;
   };
 
-  const initialMessages: ChatMessage[] = conversation.message.map((msg) => ({
+  const initialMessages: ChatMessage[] = conversation.messages.map((msg) => ({
     id: msg.id,
     senderId: msg.senderId,
     message: msg.content,

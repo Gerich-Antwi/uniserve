@@ -9,14 +9,6 @@
 * 🟢 You can import this file directly.
 */
 
-export const BookingStatus = {
-  PENDING: 'PENDING',
-  ATTENDED: 'ATTENDED'
-} as const
-
-export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]
-
-
 export const Role = {
   STUDENT: 'STUDENT',
   PROVIDER: 'PROVIDER',
@@ -24,3 +16,11 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const BookingStatus = {
+  PENDING: 'PENDING',
+  ATTENDED: 'ATTENDED'
+} as const
+
+export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]

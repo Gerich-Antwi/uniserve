@@ -4,6 +4,7 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import "./global.css";
 import { Toaster } from "@/components/ui/sonner"
 import BetterAuthUIProvider from "@/providers/better-auth-ui-provider"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-geist-sans",
@@ -29,17 +30,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}
       >
-        <BetterAuthUIProvider>
-          {children}
-        </BetterAuthUIProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <BetterAuthUIProvider>
+            {children}
+          </BetterAuthUIProvider>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>
-
   );
 }

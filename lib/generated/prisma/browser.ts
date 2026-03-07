@@ -38,6 +38,21 @@ export type Account = Prisma.AccountModel
  */
 export type Service = Prisma.ServiceModel
 /**
+ * Model Booking
+ * 
+ */
+export type Booking = Prisma.BookingModel
+/**
+ * Model Conversation
+ * 
+ */
+export type Conversation = Prisma.ConversationModel
+/**
+ * Model Message
+ * 
+ */
+export type Message = Prisma.MessageModel
+/**
  * Model Verification
  * 
  */

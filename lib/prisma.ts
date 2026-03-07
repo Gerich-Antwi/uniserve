@@ -20,10 +20,27 @@ if (process.env.NODE_ENV !== "production") globalForPrisma.pool = pool;
 
 const adapter = new PrismaPg(pool);
 
+const pool =
+  globalForPrisma.pool ??
+  new Pool({
+    connectionString,
+    max: 10,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 10000,
+  });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.pool = pool;
+}
+
+const adapter = new PrismaPg(pool);
+
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
     adapter,
   });
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma;
+}

@@ -55,6 +55,9 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Service: 'Service',
+  Booking: 'Booking',
+  Conversation: 'Conversation',
+  Message: 'Message',
   Verification: 'Verification',
   Announcement: 'Announcement',
   booking: 'booking',
@@ -145,6 +148,41 @@ export const ServiceScalarFieldEnum = {
 export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
 
 
+export const BookingScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  providerId: 'providerId',
+  serviceId: 'serviceId',
+  bookedAt: 'bookedAt',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  content: 'content',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
 export const VerificationScalarFieldEnum = {
   id: 'id',
   identifier: 'identifier',
@@ -169,7 +207,8 @@ export const AnnouncementScalarFieldEnum = {
   externalLink: 'externalLink',
   contactInfo: 'contactInfo',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  imageUrl: 'imageUrl'
 } as const
 
 export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]

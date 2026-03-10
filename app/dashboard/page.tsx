@@ -3,7 +3,7 @@ import { headers } from "next/headers"
 
 import { prisma } from "@/lib/prisma"
 import type { Prisma, Service } from "@/lib/generated/prisma/client"
-import { BookingStatus, Role as RoleEnum } from "@/lib/generated/prisma/enums"
+import { BookingStatus, Role as RoleEnum } from "@/lib/generated/prisma/client"
 
 
 export const dynamic = "force-dynamic"

@@ -15,7 +15,7 @@ const pool =
     connectionString,
     max: 10,
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 10000,
+    connectionTimeoutMillis: 30000, // Increased from 10000 to 30000
   });
 
 if (process.env.NODE_ENV !== "production") {

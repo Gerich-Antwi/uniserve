@@ -1,4 +1,3 @@
-
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { Badge } from "@/components/ui/badge"
@@ -81,6 +80,13 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                     <span>{service.operatingHours}</span>
                                 </div>
                             )}
+                            
+                            {/* Book Now Button */}
+                            <Link href={`/book/${service.id}`} className="w-full mt-4">
+                                <button className="w-full bg-black text-white px-8 py-4 font-black text-xl border-4 border-black hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                                    BOOK NOW →
+                                </button>
+                            </Link>
                         </div>
                     </div>
 

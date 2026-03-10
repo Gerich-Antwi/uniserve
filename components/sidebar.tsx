@@ -11,7 +11,8 @@ import {
     LogOut,
     User as UserIcon,
     Settings,
-    LifeBuoy
+    LifeBuoy,
+    MessageCircle
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -49,6 +50,12 @@ export function Sidebar() {
             href: "/announcements",
             icon: Bell,
             active: pathname.startsWith("/announcements"),
+        },
+        {
+            title: "Messages",
+            href: "/chat",
+            icon: MessageCircle,
+            active: pathname.startsWith("/chat"),
         },
         {
             title: "Support",

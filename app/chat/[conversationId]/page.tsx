@@ -4,6 +4,8 @@ import ChatRoom from "./ChatRoom";
 import { notFound, redirect } from "next/navigation";
 import { headers } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export default async function ChatPage({
   params,
 }: {
@@ -14,7 +16,7 @@ export default async function ChatPage({
   });
 
   if (!session?.user) {
-    redirect("/login");
+    redirect("/auth/sign-in");
   }
 
   const { conversationId } = await params;
@@ -23,7 +25,12 @@ export default async function ChatPage({
   const conversation = await prisma.conversation.findUnique({
     where: { id: conversationId },
     include: {
-      booking: true,
+      booking: {
+        include: {
+          student: { select: { id: true, name: true } },
+          provider: { select: { id: true, name: true } },
+        },
+      },
       messages: {
         orderBy: {
           createdAt: "asc",
@@ -66,13 +73,19 @@ export default async function ChatPage({
     timestamp: msg.createdAt.toISOString(),
   }));
 
+  const isCurrentUserStudent = conversation.booking.studentId === session.user.id;
+  const partnerName = isCurrentUserStudent
+    ? conversation.booking.provider.name ?? "Provider"
+    : conversation.booking.student.name ?? "Student";
+
   return (
     <div className="container mx-auto max-w-4xl py-8">
-      <h1 className="text-2xl font-bold mb-6">Chat Room</h1>
+      <h1 className="text-2xl font-bold mb-6">Chat with {partnerName}</h1>
       <ChatRoom
         conversationId={conversationId}
         currentUserId={session.user.id}
         initialMessages={initialMessages}
+        partnerName={partnerName}
       />
     </div>
   );

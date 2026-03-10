@@ -29,15 +29,10 @@ export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
  */
 export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
 /**
- * Model Verification
+ * Model Service
  * 
  */
-export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
-/**
- * Model ServiceProvider
- * 
- */
-export type ServiceProvider = $Result.DefaultSelection<Prisma.$ServiceProviderPayload>
+export type Service = $Result.DefaultSelection<Prisma.$ServicePayload>
 /**
  * Model Booking
  * 
@@ -48,6 +43,71 @@ export type Booking = $Result.DefaultSelection<Prisma.$BookingPayload>
  * 
  */
 export type Conversation = $Result.DefaultSelection<Prisma.$ConversationPayload>
+/**
+ * Model MessageGroup
+ * 
+ */
+export type MessageGroup = $Result.DefaultSelection<Prisma.$MessageGroupPayload>
+/**
+ * Model Message
+ * 
+ */
+export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
+/**
+ * Model Verification
+ * 
+ */
+export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
+/**
+ * Model Announcement
+ * 
+ */
+export type Announcement = $Result.DefaultSelection<Prisma.$AnnouncementPayload>
+/**
+ * Model SupportMessage
+ * 
+ */
+export type SupportMessage = $Result.DefaultSelection<Prisma.$SupportMessagePayload>
+/**
+ * Model provider_wallet
+ * 
+ */
+export type provider_wallet = $Result.DefaultSelection<Prisma.$provider_walletPayload>
+/**
+ * Model transaction
+ * 
+ */
+export type transaction = $Result.DefaultSelection<Prisma.$transactionPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const BookingStatus: {
+  PENDING: 'PENDING',
+  ATTENDED: 'ATTENDED'
+};
+
+export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]
+
+
+export const Role: {
+  STUDENT: 'STUDENT',
+  PROVIDER: 'PROVIDER',
+  ADMIN: 'ADMIN'
+};
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+}
+
+export type BookingStatus = $Enums.BookingStatus
+
+export const BookingStatus: typeof $Enums.BookingStatus
+
+export type Role = $Enums.Role
+
+export const Role: typeof $Enums.Role
 
 /**
  * ##  Prisma Client ʲˢ
@@ -201,24 +261,14 @@ export class PrismaClient<
   get account(): Prisma.AccountDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.verification`: Exposes CRUD operations for the **Verification** model.
+   * `prisma.service`: Exposes CRUD operations for the **Service** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Verifications
-    * const verifications = await prisma.verification.findMany()
+    * // Fetch zero or more Services
+    * const services = await prisma.service.findMany()
     * ```
     */
-  get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.serviceProvider`: Exposes CRUD operations for the **ServiceProvider** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ServiceProviders
-    * const serviceProviders = await prisma.serviceProvider.findMany()
-    * ```
-    */
-  get serviceProvider(): Prisma.ServiceProviderDelegate<ExtArgs, ClientOptions>;
+  get service(): Prisma.ServiceDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.booking`: Exposes CRUD operations for the **Booking** model.
@@ -239,6 +289,76 @@ export class PrismaClient<
     * ```
     */
   get conversation(): Prisma.ConversationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.messageGroup`: Exposes CRUD operations for the **MessageGroup** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MessageGroups
+    * const messageGroups = await prisma.messageGroup.findMany()
+    * ```
+    */
+  get messageGroup(): Prisma.MessageGroupDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.message`: Exposes CRUD operations for the **Message** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Messages
+    * const messages = await prisma.message.findMany()
+    * ```
+    */
+  get message(): Prisma.MessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.verification`: Exposes CRUD operations for the **Verification** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Verifications
+    * const verifications = await prisma.verification.findMany()
+    * ```
+    */
+  get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.announcement`: Exposes CRUD operations for the **Announcement** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Announcements
+    * const announcements = await prisma.announcement.findMany()
+    * ```
+    */
+  get announcement(): Prisma.AnnouncementDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.supportMessage`: Exposes CRUD operations for the **SupportMessage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SupportMessages
+    * const supportMessages = await prisma.supportMessage.findMany()
+    * ```
+    */
+  get supportMessage(): Prisma.SupportMessageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.provider_wallet`: Exposes CRUD operations for the **provider_wallet** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Provider_wallets
+    * const provider_wallets = await prisma.provider_wallet.findMany()
+    * ```
+    */
+  get provider_wallet(): Prisma.provider_walletDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transaction`: Exposes CRUD operations for the **transaction** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transactions
+    * const transactions = await prisma.transaction.findMany()
+    * ```
+    */
+  get transaction(): Prisma.transactionDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -676,10 +796,16 @@ export namespace Prisma {
     User: 'User',
     Session: 'Session',
     Account: 'Account',
-    Verification: 'Verification',
-    ServiceProvider: 'ServiceProvider',
+    Service: 'Service',
     Booking: 'Booking',
-    Conversation: 'Conversation'
+    Conversation: 'Conversation',
+    MessageGroup: 'MessageGroup',
+    Message: 'Message',
+    Verification: 'Verification',
+    Announcement: 'Announcement',
+    SupportMessage: 'SupportMessage',
+    provider_wallet: 'provider_wallet',
+    transaction: 'transaction'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -695,7 +821,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "serviceProvider" | "booking" | "conversation"
+      modelProps: "user" | "session" | "account" | "service" | "booking" | "conversation" | "messageGroup" | "message" | "verification" | "announcement" | "supportMessage" | "provider_wallet" | "transaction"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -921,151 +1047,77 @@ export namespace Prisma {
           }
         }
       }
-      Verification: {
-        payload: Prisma.$VerificationPayload<ExtArgs>
-        fields: Prisma.VerificationFieldRefs
+      Service: {
+        payload: Prisma.$ServicePayload<ExtArgs>
+        fields: Prisma.ServiceFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.VerificationFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload> | null
+            args: Prisma.ServiceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.VerificationFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+            args: Prisma.ServiceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>
           }
           findFirst: {
-            args: Prisma.VerificationFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload> | null
+            args: Prisma.ServiceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.VerificationFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+            args: Prisma.ServiceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>
           }
           findMany: {
-            args: Prisma.VerificationFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+            args: Prisma.ServiceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>[]
           }
           create: {
-            args: Prisma.VerificationCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+            args: Prisma.ServiceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>
           }
           createMany: {
-            args: Prisma.VerificationCreateManyArgs<ExtArgs>
+            args: Prisma.ServiceCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.VerificationCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+            args: Prisma.ServiceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>[]
           }
           delete: {
-            args: Prisma.VerificationDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+            args: Prisma.ServiceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>
           }
           update: {
-            args: Prisma.VerificationUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+            args: Prisma.ServiceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>
           }
           deleteMany: {
-            args: Prisma.VerificationDeleteManyArgs<ExtArgs>
+            args: Prisma.ServiceDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.VerificationUpdateManyArgs<ExtArgs>
+            args: Prisma.ServiceUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.VerificationUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+            args: Prisma.ServiceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>[]
           }
           upsert: {
-            args: Prisma.VerificationUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+            args: Prisma.ServiceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServicePayload>
           }
           aggregate: {
-            args: Prisma.VerificationAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateVerification>
+            args: Prisma.ServiceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateService>
           }
           groupBy: {
-            args: Prisma.VerificationGroupByArgs<ExtArgs>
-            result: $Utils.Optional<VerificationGroupByOutputType>[]
+            args: Prisma.ServiceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ServiceGroupByOutputType>[]
           }
           count: {
-            args: Prisma.VerificationCountArgs<ExtArgs>
-            result: $Utils.Optional<VerificationCountAggregateOutputType> | number
-          }
-        }
-      }
-      ServiceProvider: {
-        payload: Prisma.$ServiceProviderPayload<ExtArgs>
-        fields: Prisma.ServiceProviderFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ServiceProviderFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ServiceProviderFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>
-          }
-          findFirst: {
-            args: Prisma.ServiceProviderFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ServiceProviderFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>
-          }
-          findMany: {
-            args: Prisma.ServiceProviderFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>[]
-          }
-          create: {
-            args: Prisma.ServiceProviderCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>
-          }
-          createMany: {
-            args: Prisma.ServiceProviderCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ServiceProviderCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>[]
-          }
-          delete: {
-            args: Prisma.ServiceProviderDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>
-          }
-          update: {
-            args: Prisma.ServiceProviderUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>
-          }
-          deleteMany: {
-            args: Prisma.ServiceProviderDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ServiceProviderUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ServiceProviderUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>[]
-          }
-          upsert: {
-            args: Prisma.ServiceProviderUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ServiceProviderPayload>
-          }
-          aggregate: {
-            args: Prisma.ServiceProviderAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateServiceProvider>
-          }
-          groupBy: {
-            args: Prisma.ServiceProviderGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ServiceProviderGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ServiceProviderCountArgs<ExtArgs>
-            result: $Utils.Optional<ServiceProviderCountAggregateOutputType> | number
+            args: Prisma.ServiceCountArgs<ExtArgs>
+            result: $Utils.Optional<ServiceCountAggregateOutputType> | number
           }
         }
       }
@@ -1217,6 +1269,524 @@ export namespace Prisma {
           }
         }
       }
+      MessageGroup: {
+        payload: Prisma.$MessageGroupPayload<ExtArgs>
+        fields: Prisma.MessageGroupFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MessageGroupFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MessageGroupFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>
+          }
+          findFirst: {
+            args: Prisma.MessageGroupFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MessageGroupFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>
+          }
+          findMany: {
+            args: Prisma.MessageGroupFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>[]
+          }
+          create: {
+            args: Prisma.MessageGroupCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>
+          }
+          createMany: {
+            args: Prisma.MessageGroupCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MessageGroupCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>[]
+          }
+          delete: {
+            args: Prisma.MessageGroupDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>
+          }
+          update: {
+            args: Prisma.MessageGroupUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>
+          }
+          deleteMany: {
+            args: Prisma.MessageGroupDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MessageGroupUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MessageGroupUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>[]
+          }
+          upsert: {
+            args: Prisma.MessageGroupUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessageGroupPayload>
+          }
+          aggregate: {
+            args: Prisma.MessageGroupAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMessageGroup>
+          }
+          groupBy: {
+            args: Prisma.MessageGroupGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MessageGroupCountArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupCountAggregateOutputType> | number
+          }
+        }
+      }
+      Message: {
+        payload: Prisma.$MessagePayload<ExtArgs>
+        fields: Prisma.MessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          findFirst: {
+            args: Prisma.MessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          findMany: {
+            args: Prisma.MessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          create: {
+            args: Prisma.MessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          createMany: {
+            args: Prisma.MessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          delete: {
+            args: Prisma.MessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          update: {
+            args: Prisma.MessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.MessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          }
+          upsert: {
+            args: Prisma.MessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MessagePayload>
+          }
+          aggregate: {
+            args: Prisma.MessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMessage>
+          }
+          groupBy: {
+            args: Prisma.MessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MessageCountArgs<ExtArgs>
+            result: $Utils.Optional<MessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Verification: {
+        payload: Prisma.$VerificationPayload<ExtArgs>
+        fields: Prisma.VerificationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VerificationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VerificationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+          }
+          findFirst: {
+            args: Prisma.VerificationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VerificationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+          }
+          findMany: {
+            args: Prisma.VerificationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+          }
+          create: {
+            args: Prisma.VerificationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+          }
+          createMany: {
+            args: Prisma.VerificationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VerificationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+          }
+          delete: {
+            args: Prisma.VerificationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+          }
+          update: {
+            args: Prisma.VerificationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+          }
+          deleteMany: {
+            args: Prisma.VerificationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VerificationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VerificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+          }
+          upsert: {
+            args: Prisma.VerificationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
+          }
+          aggregate: {
+            args: Prisma.VerificationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVerification>
+          }
+          groupBy: {
+            args: Prisma.VerificationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VerificationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VerificationCountArgs<ExtArgs>
+            result: $Utils.Optional<VerificationCountAggregateOutputType> | number
+          }
+        }
+      }
+      Announcement: {
+        payload: Prisma.$AnnouncementPayload<ExtArgs>
+        fields: Prisma.AnnouncementFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AnnouncementFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AnnouncementFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>
+          }
+          findFirst: {
+            args: Prisma.AnnouncementFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AnnouncementFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>
+          }
+          findMany: {
+            args: Prisma.AnnouncementFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>[]
+          }
+          create: {
+            args: Prisma.AnnouncementCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>
+          }
+          createMany: {
+            args: Prisma.AnnouncementCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AnnouncementCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>[]
+          }
+          delete: {
+            args: Prisma.AnnouncementDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>
+          }
+          update: {
+            args: Prisma.AnnouncementUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>
+          }
+          deleteMany: {
+            args: Prisma.AnnouncementDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AnnouncementUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AnnouncementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>[]
+          }
+          upsert: {
+            args: Prisma.AnnouncementUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnnouncementPayload>
+          }
+          aggregate: {
+            args: Prisma.AnnouncementAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAnnouncement>
+          }
+          groupBy: {
+            args: Prisma.AnnouncementGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AnnouncementGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AnnouncementCountArgs<ExtArgs>
+            result: $Utils.Optional<AnnouncementCountAggregateOutputType> | number
+          }
+        }
+      }
+      SupportMessage: {
+        payload: Prisma.$SupportMessagePayload<ExtArgs>
+        fields: Prisma.SupportMessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SupportMessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SupportMessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>
+          }
+          findFirst: {
+            args: Prisma.SupportMessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SupportMessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>
+          }
+          findMany: {
+            args: Prisma.SupportMessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>[]
+          }
+          create: {
+            args: Prisma.SupportMessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>
+          }
+          createMany: {
+            args: Prisma.SupportMessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SupportMessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>[]
+          }
+          delete: {
+            args: Prisma.SupportMessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>
+          }
+          update: {
+            args: Prisma.SupportMessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.SupportMessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SupportMessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SupportMessageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>[]
+          }
+          upsert: {
+            args: Prisma.SupportMessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupportMessagePayload>
+          }
+          aggregate: {
+            args: Prisma.SupportMessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSupportMessage>
+          }
+          groupBy: {
+            args: Prisma.SupportMessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SupportMessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SupportMessageCountArgs<ExtArgs>
+            result: $Utils.Optional<SupportMessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      provider_wallet: {
+        payload: Prisma.$provider_walletPayload<ExtArgs>
+        fields: Prisma.provider_walletFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.provider_walletFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.provider_walletFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+          }
+          findFirst: {
+            args: Prisma.provider_walletFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.provider_walletFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+          }
+          findMany: {
+            args: Prisma.provider_walletFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>[]
+          }
+          create: {
+            args: Prisma.provider_walletCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+          }
+          createMany: {
+            args: Prisma.provider_walletCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.provider_walletCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>[]
+          }
+          delete: {
+            args: Prisma.provider_walletDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+          }
+          update: {
+            args: Prisma.provider_walletUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+          }
+          deleteMany: {
+            args: Prisma.provider_walletDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.provider_walletUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.provider_walletUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>[]
+          }
+          upsert: {
+            args: Prisma.provider_walletUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+          }
+          aggregate: {
+            args: Prisma.Provider_walletAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProvider_wallet>
+          }
+          groupBy: {
+            args: Prisma.provider_walletGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Provider_walletGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.provider_walletCountArgs<ExtArgs>
+            result: $Utils.Optional<Provider_walletCountAggregateOutputType> | number
+          }
+        }
+      }
+      transaction: {
+        payload: Prisma.$transactionPayload<ExtArgs>
+        fields: Prisma.transactionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.transactionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.transactionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+          }
+          findFirst: {
+            args: Prisma.transactionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.transactionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+          }
+          findMany: {
+            args: Prisma.transactionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>[]
+          }
+          create: {
+            args: Prisma.transactionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+          }
+          createMany: {
+            args: Prisma.transactionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.transactionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>[]
+          }
+          delete: {
+            args: Prisma.transactionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+          }
+          update: {
+            args: Prisma.transactionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+          }
+          deleteMany: {
+            args: Prisma.transactionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.transactionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.transactionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>[]
+          }
+          upsert: {
+            args: Prisma.transactionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+          }
+          aggregate: {
+            args: Prisma.TransactionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransaction>
+          }
+          groupBy: {
+            args: Prisma.transactionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransactionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.transactionCountArgs<ExtArgs>
+            result: $Utils.Optional<TransactionCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1328,10 +1898,16 @@ export namespace Prisma {
     user?: UserOmit
     session?: SessionOmit
     account?: AccountOmit
-    verification?: VerificationOmit
-    serviceProvider?: ServiceProviderOmit
+    service?: ServiceOmit
     booking?: BookingOmit
     conversation?: ConversationOmit
+    messageGroup?: MessageGroupOmit
+    message?: MessageOmit
+    verification?: VerificationOmit
+    announcement?: AnnouncementOmit
+    supportMessage?: SupportMessageOmit
+    provider_wallet?: provider_walletOmit
+    transaction?: transactionOmit
   }
 
   /* Types for Logging */
@@ -1412,17 +1988,27 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    bookings: number
+    accounts: number
+    providerBookings: number
+    studentBookings: number
+    sentMessages: number
     services: number
     sessions: number
-    accounts: number
+    supportMessages: number
+    transaction_transaction_providerIdTouser: number
+    transaction_transaction_studentIdTouser: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bookings?: boolean | UserCountOutputTypeCountBookingsArgs
+    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    providerBookings?: boolean | UserCountOutputTypeCountProviderBookingsArgs
+    studentBookings?: boolean | UserCountOutputTypeCountStudentBookingsArgs
+    sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
     services?: boolean | UserCountOutputTypeCountServicesArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    supportMessages?: boolean | UserCountOutputTypeCountSupportMessagesArgs
+    transaction_transaction_providerIdTouser?: boolean | UserCountOutputTypeCountTransaction_transaction_providerIdTouserArgs
+    transaction_transaction_studentIdTouser?: boolean | UserCountOutputTypeCountTransaction_transaction_studentIdTouserArgs
   }
 
   // Custom InputTypes
@@ -1439,15 +2025,36 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AccountWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProviderBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BookingWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountStudentBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountServicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ServiceProviderWhereInput
+    where?: ServiceWhereInput
   }
 
   /**
@@ -1460,39 +2067,124 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AccountWhereInput
+  export type UserCountOutputTypeCountSupportMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SupportMessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTransaction_transaction_providerIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: transactionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTransaction_transaction_studentIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: transactionWhereInput
   }
 
 
   /**
-   * Count Type ServiceProviderCountOutputType
+   * Count Type ServiceCountOutputType
    */
 
-  export type ServiceProviderCountOutputType = {
+  export type ServiceCountOutputType = {
     bookings: number
   }
 
-  export type ServiceProviderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bookings?: boolean | ServiceProviderCountOutputTypeCountBookingsArgs
+  export type ServiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookings?: boolean | ServiceCountOutputTypeCountBookingsArgs
   }
 
   // Custom InputTypes
   /**
-   * ServiceProviderCountOutputType without action
+   * ServiceCountOutputType without action
    */
-  export type ServiceProviderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ServiceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ServiceProviderCountOutputType
+     * Select specific fields to fetch from the ServiceCountOutputType
      */
-    select?: ServiceProviderCountOutputTypeSelect<ExtArgs> | null
+    select?: ServiceCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * ServiceProviderCountOutputType without action
+   * ServiceCountOutputType without action
    */
-  export type ServiceProviderCountOutputTypeCountBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ServiceCountOutputTypeCountBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BookingWhereInput
+  }
+
+
+  /**
+   * Count Type BookingCountOutputType
+   */
+
+  export type BookingCountOutputType = {
+    transaction: number
+  }
+
+  export type BookingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    transaction?: boolean | BookingCountOutputTypeCountTransactionArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BookingCountOutputType without action
+   */
+  export type BookingCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookingCountOutputType
+     */
+    select?: BookingCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BookingCountOutputType without action
+   */
+  export type BookingCountOutputTypeCountTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: transactionWhereInput
+  }
+
+
+  /**
+   * Count Type ConversationCountOutputType
+   */
+
+  export type ConversationCountOutputType = {
+    messages: number
+    messageGroups: number
+  }
+
+  export type ConversationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | ConversationCountOutputTypeCountMessagesArgs
+    messageGroups?: boolean | ConversationCountOutputTypeCountMessageGroupsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ConversationCountOutputType
+     */
+    select?: ConversationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+  /**
+   * ConversationCountOutputType without action
+   */
+  export type ConversationCountOutputTypeCountMessageGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageGroupWhereInput
   }
 
 
@@ -1518,6 +2210,10 @@ export namespace Prisma {
     image: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    phoneNumber: string | null
+    location: string | null
+    bio: string | null
+    role: $Enums.Role | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1528,6 +2224,10 @@ export namespace Prisma {
     image: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    phoneNumber: string | null
+    location: string | null
+    bio: string | null
+    role: $Enums.Role | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1538,6 +2238,10 @@ export namespace Prisma {
     image: number
     createdAt: number
     updatedAt: number
+    phoneNumber: number
+    location: number
+    bio: number
+    role: number
     _all: number
   }
 
@@ -1550,6 +2254,10 @@ export namespace Prisma {
     image?: true
     createdAt?: true
     updatedAt?: true
+    phoneNumber?: true
+    location?: true
+    bio?: true
+    role?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1560,6 +2268,10 @@ export namespace Prisma {
     image?: true
     createdAt?: true
     updatedAt?: true
+    phoneNumber?: true
+    location?: true
+    bio?: true
+    role?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1570,6 +2282,10 @@ export namespace Prisma {
     image?: true
     createdAt?: true
     updatedAt?: true
+    phoneNumber?: true
+    location?: true
+    bio?: true
+    role?: true
     _all?: true
   }
 
@@ -1653,6 +2369,10 @@ export namespace Prisma {
     image: string | null
     createdAt: Date
     updatedAt: Date
+    phoneNumber: string | null
+    location: string | null
+    bio: string | null
+    role: $Enums.Role
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1680,10 +2400,20 @@ export namespace Prisma {
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    bookings?: boolean | User$bookingsArgs<ExtArgs>
+    phoneNumber?: boolean
+    location?: boolean
+    bio?: boolean
+    role?: boolean
+    accounts?: boolean | User$accountsArgs<ExtArgs>
+    providerBookings?: boolean | User$providerBookingsArgs<ExtArgs>
+    studentBookings?: boolean | User$studentBookingsArgs<ExtArgs>
+    sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
+    provider_wallet?: boolean | User$provider_walletArgs<ExtArgs>
     services?: boolean | User$servicesArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
+    supportMessages?: boolean | User$supportMessagesArgs<ExtArgs>
+    transaction_transaction_providerIdTouser?: boolean | User$transaction_transaction_providerIdTouserArgs<ExtArgs>
+    transaction_transaction_studentIdTouser?: boolean | User$transaction_transaction_studentIdTouserArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1695,6 +2425,10 @@ export namespace Prisma {
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    phoneNumber?: boolean
+    location?: boolean
+    bio?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1705,6 +2439,10 @@ export namespace Prisma {
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    phoneNumber?: boolean
+    location?: boolean
+    bio?: boolean
+    role?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1715,14 +2453,24 @@ export namespace Prisma {
     image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    phoneNumber?: boolean
+    location?: boolean
+    bio?: boolean
+    role?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "createdAt" | "updatedAt" | "phoneNumber" | "location" | "bio" | "role", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bookings?: boolean | User$bookingsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
+    providerBookings?: boolean | User$providerBookingsArgs<ExtArgs>
+    studentBookings?: boolean | User$studentBookingsArgs<ExtArgs>
+    sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
+    provider_wallet?: boolean | User$provider_walletArgs<ExtArgs>
     services?: boolean | User$servicesArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
-    accounts?: boolean | User$accountsArgs<ExtArgs>
+    supportMessages?: boolean | User$supportMessagesArgs<ExtArgs>
+    transaction_transaction_providerIdTouser?: boolean | User$transaction_transaction_providerIdTouserArgs<ExtArgs>
+    transaction_transaction_studentIdTouser?: boolean | User$transaction_transaction_studentIdTouserArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1731,10 +2479,16 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      bookings: Prisma.$BookingPayload<ExtArgs>[]
-      services: Prisma.$ServiceProviderPayload<ExtArgs>[]
-      sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
+      providerBookings: Prisma.$BookingPayload<ExtArgs>[]
+      studentBookings: Prisma.$BookingPayload<ExtArgs>[]
+      sentMessages: Prisma.$MessagePayload<ExtArgs>[]
+      provider_wallet: Prisma.$provider_walletPayload<ExtArgs> | null
+      services: Prisma.$ServicePayload<ExtArgs>[]
+      sessions: Prisma.$SessionPayload<ExtArgs>[]
+      supportMessages: Prisma.$SupportMessagePayload<ExtArgs>[]
+      transaction_transaction_providerIdTouser: Prisma.$transactionPayload<ExtArgs>[]
+      transaction_transaction_studentIdTouser: Prisma.$transactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1744,6 +2498,10 @@ export namespace Prisma {
       image: string | null
       createdAt: Date
       updatedAt: Date
+      phoneNumber: string | null
+      location: string | null
+      bio: string | null
+      role: $Enums.Role
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2138,10 +2896,16 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    bookings<T extends User$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    services<T extends User$servicesArgs<ExtArgs> = {}>(args?: Subset<T, User$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerBookings<T extends User$providerBookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$providerBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    studentBookings<T extends User$studentBookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$studentBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sentMessages<T extends User$sentMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    provider_wallet<T extends User$provider_walletArgs<ExtArgs> = {}>(args?: Subset<T, User$provider_walletArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    services<T extends User$servicesArgs<ExtArgs> = {}>(args?: Subset<T, User$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    supportMessages<T extends User$supportMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$supportMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transaction_transaction_providerIdTouser<T extends User$transaction_transaction_providerIdTouserArgs<ExtArgs> = {}>(args?: Subset<T, User$transaction_transaction_providerIdTouserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transaction_transaction_studentIdTouser<T extends User$transaction_transaction_studentIdTouserArgs<ExtArgs> = {}>(args?: Subset<T, User$transaction_transaction_studentIdTouserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2178,6 +2942,10 @@ export namespace Prisma {
     readonly image: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly phoneNumber: FieldRef<"User", 'String'>
+    readonly location: FieldRef<"User", 'String'>
+    readonly bio: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'Role'>
   }
     
 
@@ -2566,9 +3334,33 @@ export namespace Prisma {
   }
 
   /**
-   * User.bookings
+   * User.accounts
    */
-  export type User$bookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: AccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: AccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccountInclude<ExtArgs> | null
+    where?: AccountWhereInput
+    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
+    cursor?: AccountWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+  }
+
+  /**
+   * User.providerBookings
+   */
+  export type User$providerBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Booking
      */
@@ -2590,27 +3382,94 @@ export namespace Prisma {
   }
 
   /**
+   * User.studentBookings
+   */
+  export type User$studentBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    cursor?: BookingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * User.sentMessages
+   */
+  export type User$sentMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.provider_wallet
+   */
+  export type User$provider_walletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    where?: provider_walletWhereInput
+  }
+
+  /**
    * User.services
    */
   export type User$servicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ServiceProvider
+     * Select specific fields to fetch from the Service
      */
-    select?: ServiceProviderSelect<ExtArgs> | null
+    select?: ServiceSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ServiceProvider
+     * Omit specific fields from the Service
      */
-    omit?: ServiceProviderOmit<ExtArgs> | null
+    omit?: ServiceOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    where?: ServiceProviderWhereInput
-    orderBy?: ServiceProviderOrderByWithRelationInput | ServiceProviderOrderByWithRelationInput[]
-    cursor?: ServiceProviderWhereUniqueInput
+    include?: ServiceInclude<ExtArgs> | null
+    where?: ServiceWhereInput
+    orderBy?: ServiceOrderByWithRelationInput | ServiceOrderByWithRelationInput[]
+    cursor?: ServiceWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ServiceProviderScalarFieldEnum | ServiceProviderScalarFieldEnum[]
+    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
   }
 
   /**
@@ -2638,27 +3497,75 @@ export namespace Prisma {
   }
 
   /**
-   * User.accounts
+   * User.supportMessages
    */
-  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$supportMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Account
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: AccountSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Account
+     * Omit specific fields from the SupportMessage
      */
-    omit?: AccountOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AccountInclude<ExtArgs> | null
-    where?: AccountWhereInput
-    orderBy?: AccountOrderByWithRelationInput | AccountOrderByWithRelationInput[]
-    cursor?: AccountWhereUniqueInput
+    include?: SupportMessageInclude<ExtArgs> | null
+    where?: SupportMessageWhereInput
+    orderBy?: SupportMessageOrderByWithRelationInput | SupportMessageOrderByWithRelationInput[]
+    cursor?: SupportMessageWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
+    distinct?: SupportMessageScalarFieldEnum | SupportMessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.transaction_transaction_providerIdTouser
+   */
+  export type User$transaction_transaction_providerIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    where?: transactionWhereInput
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    cursor?: transactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * User.transaction_transaction_studentIdTouser
+   */
+  export type User$transaction_transaction_studentIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    where?: transactionWhereInput
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    cursor?: transactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
@@ -4940,6 +5847,5535 @@ export namespace Prisma {
 
 
   /**
+   * Model Service
+   */
+
+  export type AggregateService = {
+    _count: ServiceCountAggregateOutputType | null
+    _min: ServiceMinAggregateOutputType | null
+    _max: ServiceMaxAggregateOutputType | null
+  }
+
+  export type ServiceMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    category: string | null
+    status: string | null
+    price: string | null
+    providerId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    operatingHours: string | null
+  }
+
+  export type ServiceMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    description: string | null
+    category: string | null
+    status: string | null
+    price: string | null
+    providerId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    operatingHours: string | null
+  }
+
+  export type ServiceCountAggregateOutputType = {
+    id: number
+    title: number
+    description: number
+    category: number
+    status: number
+    price: number
+    providerId: number
+    createdAt: number
+    updatedAt: number
+    operatingHours: number
+    _all: number
+  }
+
+
+  export type ServiceMinAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    category?: true
+    status?: true
+    price?: true
+    providerId?: true
+    createdAt?: true
+    updatedAt?: true
+    operatingHours?: true
+  }
+
+  export type ServiceMaxAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    category?: true
+    status?: true
+    price?: true
+    providerId?: true
+    createdAt?: true
+    updatedAt?: true
+    operatingHours?: true
+  }
+
+  export type ServiceCountAggregateInputType = {
+    id?: true
+    title?: true
+    description?: true
+    category?: true
+    status?: true
+    price?: true
+    providerId?: true
+    createdAt?: true
+    updatedAt?: true
+    operatingHours?: true
+    _all?: true
+  }
+
+  export type ServiceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Service to aggregate.
+     */
+    where?: ServiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Services to fetch.
+     */
+    orderBy?: ServiceOrderByWithRelationInput | ServiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ServiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Services from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Services.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Services
+    **/
+    _count?: true | ServiceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ServiceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ServiceMaxAggregateInputType
+  }
+
+  export type GetServiceAggregateType<T extends ServiceAggregateArgs> = {
+        [P in keyof T & keyof AggregateService]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateService[P]>
+      : GetScalarType<T[P], AggregateService[P]>
+  }
+
+
+
+
+  export type ServiceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceWhereInput
+    orderBy?: ServiceOrderByWithAggregationInput | ServiceOrderByWithAggregationInput[]
+    by: ServiceScalarFieldEnum[] | ServiceScalarFieldEnum
+    having?: ServiceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ServiceCountAggregateInputType | true
+    _min?: ServiceMinAggregateInputType
+    _max?: ServiceMaxAggregateInputType
+  }
+
+  export type ServiceGroupByOutputType = {
+    id: string
+    title: string
+    description: string
+    category: string
+    status: string
+    price: string | null
+    providerId: string
+    createdAt: Date
+    updatedAt: Date
+    operatingHours: string | null
+    _count: ServiceCountAggregateOutputType | null
+    _min: ServiceMinAggregateOutputType | null
+    _max: ServiceMaxAggregateOutputType | null
+  }
+
+  type GetServiceGroupByPayload<T extends ServiceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ServiceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ServiceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ServiceGroupByOutputType[P]>
+            : GetScalarType<T[P], ServiceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ServiceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    price?: boolean
+    providerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    operatingHours?: boolean
+    bookings?: boolean | Service$bookingsArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["service"]>
+
+  export type ServiceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    price?: boolean
+    providerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    operatingHours?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["service"]>
+
+  export type ServiceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    price?: boolean
+    providerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    operatingHours?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["service"]>
+
+  export type ServiceSelectScalar = {
+    id?: boolean
+    title?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    price?: boolean
+    providerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    operatingHours?: boolean
+  }
+
+  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "category" | "status" | "price" | "providerId" | "createdAt" | "updatedAt" | "operatingHours", ExtArgs["result"]["service"]>
+  export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookings?: boolean | Service$bookingsArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ServiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ServiceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ServicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Service"
+    objects: {
+      bookings: Prisma.$BookingPayload<ExtArgs>[]
+      provider: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      description: string
+      category: string
+      status: string
+      price: string | null
+      providerId: string
+      createdAt: Date
+      updatedAt: Date
+      operatingHours: string | null
+    }, ExtArgs["result"]["service"]>
+    composites: {}
+  }
+
+  type ServiceGetPayload<S extends boolean | null | undefined | ServiceDefaultArgs> = $Result.GetResult<Prisma.$ServicePayload, S>
+
+  type ServiceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ServiceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ServiceCountAggregateInputType | true
+    }
+
+  export interface ServiceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Service'], meta: { name: 'Service' } }
+    /**
+     * Find zero or one Service that matches the filter.
+     * @param {ServiceFindUniqueArgs} args - Arguments to find a Service
+     * @example
+     * // Get one Service
+     * const service = await prisma.service.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ServiceFindUniqueArgs>(args: SelectSubset<T, ServiceFindUniqueArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Service that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ServiceFindUniqueOrThrowArgs} args - Arguments to find a Service
+     * @example
+     * // Get one Service
+     * const service = await prisma.service.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ServiceFindUniqueOrThrowArgs>(args: SelectSubset<T, ServiceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Service that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceFindFirstArgs} args - Arguments to find a Service
+     * @example
+     * // Get one Service
+     * const service = await prisma.service.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ServiceFindFirstArgs>(args?: SelectSubset<T, ServiceFindFirstArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Service that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceFindFirstOrThrowArgs} args - Arguments to find a Service
+     * @example
+     * // Get one Service
+     * const service = await prisma.service.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ServiceFindFirstOrThrowArgs>(args?: SelectSubset<T, ServiceFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Services that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Services
+     * const services = await prisma.service.findMany()
+     * 
+     * // Get first 10 Services
+     * const services = await prisma.service.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const serviceWithIdOnly = await prisma.service.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ServiceFindManyArgs>(args?: SelectSubset<T, ServiceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Service.
+     * @param {ServiceCreateArgs} args - Arguments to create a Service.
+     * @example
+     * // Create one Service
+     * const Service = await prisma.service.create({
+     *   data: {
+     *     // ... data to create a Service
+     *   }
+     * })
+     * 
+     */
+    create<T extends ServiceCreateArgs>(args: SelectSubset<T, ServiceCreateArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Services.
+     * @param {ServiceCreateManyArgs} args - Arguments to create many Services.
+     * @example
+     * // Create many Services
+     * const service = await prisma.service.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ServiceCreateManyArgs>(args?: SelectSubset<T, ServiceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Services and returns the data saved in the database.
+     * @param {ServiceCreateManyAndReturnArgs} args - Arguments to create many Services.
+     * @example
+     * // Create many Services
+     * const service = await prisma.service.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Services and only return the `id`
+     * const serviceWithIdOnly = await prisma.service.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ServiceCreateManyAndReturnArgs>(args?: SelectSubset<T, ServiceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Service.
+     * @param {ServiceDeleteArgs} args - Arguments to delete one Service.
+     * @example
+     * // Delete one Service
+     * const Service = await prisma.service.delete({
+     *   where: {
+     *     // ... filter to delete one Service
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ServiceDeleteArgs>(args: SelectSubset<T, ServiceDeleteArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Service.
+     * @param {ServiceUpdateArgs} args - Arguments to update one Service.
+     * @example
+     * // Update one Service
+     * const service = await prisma.service.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ServiceUpdateArgs>(args: SelectSubset<T, ServiceUpdateArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Services.
+     * @param {ServiceDeleteManyArgs} args - Arguments to filter Services to delete.
+     * @example
+     * // Delete a few Services
+     * const { count } = await prisma.service.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ServiceDeleteManyArgs>(args?: SelectSubset<T, ServiceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Services.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Services
+     * const service = await prisma.service.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ServiceUpdateManyArgs>(args: SelectSubset<T, ServiceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Services and returns the data updated in the database.
+     * @param {ServiceUpdateManyAndReturnArgs} args - Arguments to update many Services.
+     * @example
+     * // Update many Services
+     * const service = await prisma.service.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Services and only return the `id`
+     * const serviceWithIdOnly = await prisma.service.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ServiceUpdateManyAndReturnArgs>(args: SelectSubset<T, ServiceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Service.
+     * @param {ServiceUpsertArgs} args - Arguments to update or create a Service.
+     * @example
+     * // Update or create a Service
+     * const service = await prisma.service.upsert({
+     *   create: {
+     *     // ... data to create a Service
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Service we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ServiceUpsertArgs>(args: SelectSubset<T, ServiceUpsertArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Services.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceCountArgs} args - Arguments to filter Services to count.
+     * @example
+     * // Count the number of Services
+     * const count = await prisma.service.count({
+     *   where: {
+     *     // ... the filter for the Services we want to count
+     *   }
+     * })
+    **/
+    count<T extends ServiceCountArgs>(
+      args?: Subset<T, ServiceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ServiceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Service.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ServiceAggregateArgs>(args: Subset<T, ServiceAggregateArgs>): Prisma.PrismaPromise<GetServiceAggregateType<T>>
+
+    /**
+     * Group by Service.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ServiceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ServiceGroupByArgs['orderBy'] }
+        : { orderBy?: ServiceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ServiceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Service model
+   */
+  readonly fields: ServiceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Service.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    bookings<T extends Service$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, Service$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    provider<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Service model
+   */
+  interface ServiceFieldRefs {
+    readonly id: FieldRef<"Service", 'String'>
+    readonly title: FieldRef<"Service", 'String'>
+    readonly description: FieldRef<"Service", 'String'>
+    readonly category: FieldRef<"Service", 'String'>
+    readonly status: FieldRef<"Service", 'String'>
+    readonly price: FieldRef<"Service", 'String'>
+    readonly providerId: FieldRef<"Service", 'String'>
+    readonly createdAt: FieldRef<"Service", 'DateTime'>
+    readonly updatedAt: FieldRef<"Service", 'DateTime'>
+    readonly operatingHours: FieldRef<"Service", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Service findUnique
+   */
+  export type ServiceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * Filter, which Service to fetch.
+     */
+    where: ServiceWhereUniqueInput
+  }
+
+  /**
+   * Service findUniqueOrThrow
+   */
+  export type ServiceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * Filter, which Service to fetch.
+     */
+    where: ServiceWhereUniqueInput
+  }
+
+  /**
+   * Service findFirst
+   */
+  export type ServiceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * Filter, which Service to fetch.
+     */
+    where?: ServiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Services to fetch.
+     */
+    orderBy?: ServiceOrderByWithRelationInput | ServiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Services.
+     */
+    cursor?: ServiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Services from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Services.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Services.
+     */
+    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
+  }
+
+  /**
+   * Service findFirstOrThrow
+   */
+  export type ServiceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * Filter, which Service to fetch.
+     */
+    where?: ServiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Services to fetch.
+     */
+    orderBy?: ServiceOrderByWithRelationInput | ServiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Services.
+     */
+    cursor?: ServiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Services from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Services.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Services.
+     */
+    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
+  }
+
+  /**
+   * Service findMany
+   */
+  export type ServiceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * Filter, which Services to fetch.
+     */
+    where?: ServiceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Services to fetch.
+     */
+    orderBy?: ServiceOrderByWithRelationInput | ServiceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Services.
+     */
+    cursor?: ServiceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Services from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Services.
+     */
+    skip?: number
+    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
+  }
+
+  /**
+   * Service create
+   */
+  export type ServiceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Service.
+     */
+    data: XOR<ServiceCreateInput, ServiceUncheckedCreateInput>
+  }
+
+  /**
+   * Service createMany
+   */
+  export type ServiceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Services.
+     */
+    data: ServiceCreateManyInput | ServiceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Service createManyAndReturn
+   */
+  export type ServiceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * The data used to create many Services.
+     */
+    data: ServiceCreateManyInput | ServiceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Service update
+   */
+  export type ServiceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Service.
+     */
+    data: XOR<ServiceUpdateInput, ServiceUncheckedUpdateInput>
+    /**
+     * Choose, which Service to update.
+     */
+    where: ServiceWhereUniqueInput
+  }
+
+  /**
+   * Service updateMany
+   */
+  export type ServiceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Services.
+     */
+    data: XOR<ServiceUpdateManyMutationInput, ServiceUncheckedUpdateManyInput>
+    /**
+     * Filter which Services to update
+     */
+    where?: ServiceWhereInput
+    /**
+     * Limit how many Services to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Service updateManyAndReturn
+   */
+  export type ServiceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * The data used to update Services.
+     */
+    data: XOR<ServiceUpdateManyMutationInput, ServiceUncheckedUpdateManyInput>
+    /**
+     * Filter which Services to update
+     */
+    where?: ServiceWhereInput
+    /**
+     * Limit how many Services to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Service upsert
+   */
+  export type ServiceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Service to update in case it exists.
+     */
+    where: ServiceWhereUniqueInput
+    /**
+     * In case the Service found by the `where` argument doesn't exist, create a new Service with this data.
+     */
+    create: XOR<ServiceCreateInput, ServiceUncheckedCreateInput>
+    /**
+     * In case the Service was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ServiceUpdateInput, ServiceUncheckedUpdateInput>
+  }
+
+  /**
+   * Service delete
+   */
+  export type ServiceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+    /**
+     * Filter which Service to delete.
+     */
+    where: ServiceWhereUniqueInput
+  }
+
+  /**
+   * Service deleteMany
+   */
+  export type ServiceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Services to delete
+     */
+    where?: ServiceWhereInput
+    /**
+     * Limit how many Services to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Service.bookings
+   */
+  export type Service$bookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    cursor?: BookingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * Service without action
+   */
+  export type ServiceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Service
+     */
+    select?: ServiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Service
+     */
+    omit?: ServiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Booking
+   */
+
+  export type AggregateBooking = {
+    _count: BookingCountAggregateOutputType | null
+    _min: BookingMinAggregateOutputType | null
+    _max: BookingMaxAggregateOutputType | null
+  }
+
+  export type BookingMinAggregateOutputType = {
+    id: string | null
+    studentId: string | null
+    providerId: string | null
+    serviceId: string | null
+    bookedAt: Date | null
+    status: $Enums.BookingStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BookingMaxAggregateOutputType = {
+    id: string | null
+    studentId: string | null
+    providerId: string | null
+    serviceId: string | null
+    bookedAt: Date | null
+    status: $Enums.BookingStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BookingCountAggregateOutputType = {
+    id: number
+    studentId: number
+    providerId: number
+    serviceId: number
+    bookedAt: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BookingMinAggregateInputType = {
+    id?: true
+    studentId?: true
+    providerId?: true
+    serviceId?: true
+    bookedAt?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BookingMaxAggregateInputType = {
+    id?: true
+    studentId?: true
+    providerId?: true
+    serviceId?: true
+    bookedAt?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BookingCountAggregateInputType = {
+    id?: true
+    studentId?: true
+    providerId?: true
+    serviceId?: true
+    bookedAt?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BookingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Booking to aggregate.
+     */
+    where?: BookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bookings to fetch.
+     */
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bookings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Bookings
+    **/
+    _count?: true | BookingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BookingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BookingMaxAggregateInputType
+  }
+
+  export type GetBookingAggregateType<T extends BookingAggregateArgs> = {
+        [P in keyof T & keyof AggregateBooking]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBooking[P]>
+      : GetScalarType<T[P], AggregateBooking[P]>
+  }
+
+
+
+
+  export type BookingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookingWhereInput
+    orderBy?: BookingOrderByWithAggregationInput | BookingOrderByWithAggregationInput[]
+    by: BookingScalarFieldEnum[] | BookingScalarFieldEnum
+    having?: BookingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BookingCountAggregateInputType | true
+    _min?: BookingMinAggregateInputType
+    _max?: BookingMaxAggregateInputType
+  }
+
+  export type BookingGroupByOutputType = {
+    id: string
+    studentId: string
+    providerId: string
+    serviceId: string
+    bookedAt: Date
+    status: $Enums.BookingStatus
+    createdAt: Date
+    updatedAt: Date
+    _count: BookingCountAggregateOutputType | null
+    _min: BookingMinAggregateOutputType | null
+    _max: BookingMaxAggregateOutputType | null
+  }
+
+  type GetBookingGroupByPayload<T extends BookingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BookingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BookingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BookingGroupByOutputType[P]>
+            : GetScalarType<T[P], BookingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BookingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    serviceId?: boolean
+    bookedAt?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | Booking$conversationArgs<ExtArgs>
+    transaction?: boolean | Booking$transactionArgs<ExtArgs>
+    _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["booking"]>
+
+  export type BookingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    serviceId?: boolean
+    bookedAt?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["booking"]>
+
+  export type BookingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    serviceId?: boolean
+    bookedAt?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["booking"]>
+
+  export type BookingSelectScalar = {
+    id?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    serviceId?: boolean
+    bookedAt?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "providerId" | "serviceId" | "bookedAt" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+  export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+    conversation?: boolean | Booking$conversationArgs<ExtArgs>
+    transaction?: boolean | Booking$transactionArgs<ExtArgs>
+    _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BookingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BookingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Booking"
+    objects: {
+      provider: Prisma.$UserPayload<ExtArgs>
+      service: Prisma.$ServicePayload<ExtArgs>
+      student: Prisma.$UserPayload<ExtArgs>
+      conversation: Prisma.$ConversationPayload<ExtArgs> | null
+      transaction: Prisma.$transactionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      studentId: string
+      providerId: string
+      serviceId: string
+      bookedAt: Date
+      status: $Enums.BookingStatus
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["booking"]>
+    composites: {}
+  }
+
+  type BookingGetPayload<S extends boolean | null | undefined | BookingDefaultArgs> = $Result.GetResult<Prisma.$BookingPayload, S>
+
+  type BookingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BookingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BookingCountAggregateInputType | true
+    }
+
+  export interface BookingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Booking'], meta: { name: 'Booking' } }
+    /**
+     * Find zero or one Booking that matches the filter.
+     * @param {BookingFindUniqueArgs} args - Arguments to find a Booking
+     * @example
+     * // Get one Booking
+     * const booking = await prisma.booking.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BookingFindUniqueArgs>(args: SelectSubset<T, BookingFindUniqueArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Booking that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BookingFindUniqueOrThrowArgs} args - Arguments to find a Booking
+     * @example
+     * // Get one Booking
+     * const booking = await prisma.booking.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BookingFindUniqueOrThrowArgs>(args: SelectSubset<T, BookingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Booking that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingFindFirstArgs} args - Arguments to find a Booking
+     * @example
+     * // Get one Booking
+     * const booking = await prisma.booking.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BookingFindFirstArgs>(args?: SelectSubset<T, BookingFindFirstArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Booking that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingFindFirstOrThrowArgs} args - Arguments to find a Booking
+     * @example
+     * // Get one Booking
+     * const booking = await prisma.booking.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BookingFindFirstOrThrowArgs>(args?: SelectSubset<T, BookingFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Bookings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Bookings
+     * const bookings = await prisma.booking.findMany()
+     * 
+     * // Get first 10 Bookings
+     * const bookings = await prisma.booking.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bookingWithIdOnly = await prisma.booking.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BookingFindManyArgs>(args?: SelectSubset<T, BookingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Booking.
+     * @param {BookingCreateArgs} args - Arguments to create a Booking.
+     * @example
+     * // Create one Booking
+     * const Booking = await prisma.booking.create({
+     *   data: {
+     *     // ... data to create a Booking
+     *   }
+     * })
+     * 
+     */
+    create<T extends BookingCreateArgs>(args: SelectSubset<T, BookingCreateArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Bookings.
+     * @param {BookingCreateManyArgs} args - Arguments to create many Bookings.
+     * @example
+     * // Create many Bookings
+     * const booking = await prisma.booking.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BookingCreateManyArgs>(args?: SelectSubset<T, BookingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Bookings and returns the data saved in the database.
+     * @param {BookingCreateManyAndReturnArgs} args - Arguments to create many Bookings.
+     * @example
+     * // Create many Bookings
+     * const booking = await prisma.booking.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Bookings and only return the `id`
+     * const bookingWithIdOnly = await prisma.booking.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BookingCreateManyAndReturnArgs>(args?: SelectSubset<T, BookingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Booking.
+     * @param {BookingDeleteArgs} args - Arguments to delete one Booking.
+     * @example
+     * // Delete one Booking
+     * const Booking = await prisma.booking.delete({
+     *   where: {
+     *     // ... filter to delete one Booking
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BookingDeleteArgs>(args: SelectSubset<T, BookingDeleteArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Booking.
+     * @param {BookingUpdateArgs} args - Arguments to update one Booking.
+     * @example
+     * // Update one Booking
+     * const booking = await prisma.booking.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BookingUpdateArgs>(args: SelectSubset<T, BookingUpdateArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Bookings.
+     * @param {BookingDeleteManyArgs} args - Arguments to filter Bookings to delete.
+     * @example
+     * // Delete a few Bookings
+     * const { count } = await prisma.booking.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BookingDeleteManyArgs>(args?: SelectSubset<T, BookingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Bookings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Bookings
+     * const booking = await prisma.booking.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BookingUpdateManyArgs>(args: SelectSubset<T, BookingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Bookings and returns the data updated in the database.
+     * @param {BookingUpdateManyAndReturnArgs} args - Arguments to update many Bookings.
+     * @example
+     * // Update many Bookings
+     * const booking = await prisma.booking.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Bookings and only return the `id`
+     * const bookingWithIdOnly = await prisma.booking.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BookingUpdateManyAndReturnArgs>(args: SelectSubset<T, BookingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Booking.
+     * @param {BookingUpsertArgs} args - Arguments to update or create a Booking.
+     * @example
+     * // Update or create a Booking
+     * const booking = await prisma.booking.upsert({
+     *   create: {
+     *     // ... data to create a Booking
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Booking we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BookingUpsertArgs>(args: SelectSubset<T, BookingUpsertArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Bookings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingCountArgs} args - Arguments to filter Bookings to count.
+     * @example
+     * // Count the number of Bookings
+     * const count = await prisma.booking.count({
+     *   where: {
+     *     // ... the filter for the Bookings we want to count
+     *   }
+     * })
+    **/
+    count<T extends BookingCountArgs>(
+      args?: Subset<T, BookingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BookingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Booking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BookingAggregateArgs>(args: Subset<T, BookingAggregateArgs>): Prisma.PrismaPromise<GetBookingAggregateType<T>>
+
+    /**
+     * Group by Booking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BookingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BookingGroupByArgs['orderBy'] }
+        : { orderBy?: BookingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BookingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Booking model
+   */
+  readonly fields: BookingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Booking.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BookingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    provider<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    service<T extends ServiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceDefaultArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    student<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    conversation<T extends Booking$conversationArgs<ExtArgs> = {}>(args?: Subset<T, Booking$conversationArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    transaction<T extends Booking$transactionArgs<ExtArgs> = {}>(args?: Subset<T, Booking$transactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Booking model
+   */
+  interface BookingFieldRefs {
+    readonly id: FieldRef<"Booking", 'String'>
+    readonly studentId: FieldRef<"Booking", 'String'>
+    readonly providerId: FieldRef<"Booking", 'String'>
+    readonly serviceId: FieldRef<"Booking", 'String'>
+    readonly bookedAt: FieldRef<"Booking", 'DateTime'>
+    readonly status: FieldRef<"Booking", 'BookingStatus'>
+    readonly createdAt: FieldRef<"Booking", 'DateTime'>
+    readonly updatedAt: FieldRef<"Booking", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Booking findUnique
+   */
+  export type BookingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * Filter, which Booking to fetch.
+     */
+    where: BookingWhereUniqueInput
+  }
+
+  /**
+   * Booking findUniqueOrThrow
+   */
+  export type BookingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * Filter, which Booking to fetch.
+     */
+    where: BookingWhereUniqueInput
+  }
+
+  /**
+   * Booking findFirst
+   */
+  export type BookingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * Filter, which Booking to fetch.
+     */
+    where?: BookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bookings to fetch.
+     */
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Bookings.
+     */
+    cursor?: BookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bookings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Bookings.
+     */
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * Booking findFirstOrThrow
+   */
+  export type BookingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * Filter, which Booking to fetch.
+     */
+    where?: BookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bookings to fetch.
+     */
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Bookings.
+     */
+    cursor?: BookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bookings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Bookings.
+     */
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * Booking findMany
+   */
+  export type BookingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * Filter, which Bookings to fetch.
+     */
+    where?: BookingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Bookings to fetch.
+     */
+    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Bookings.
+     */
+    cursor?: BookingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Bookings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Bookings.
+     */
+    skip?: number
+    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * Booking create
+   */
+  export type BookingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Booking.
+     */
+    data: XOR<BookingCreateInput, BookingUncheckedCreateInput>
+  }
+
+  /**
+   * Booking createMany
+   */
+  export type BookingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Bookings.
+     */
+    data: BookingCreateManyInput | BookingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Booking createManyAndReturn
+   */
+  export type BookingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * The data used to create many Bookings.
+     */
+    data: BookingCreateManyInput | BookingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Booking update
+   */
+  export type BookingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Booking.
+     */
+    data: XOR<BookingUpdateInput, BookingUncheckedUpdateInput>
+    /**
+     * Choose, which Booking to update.
+     */
+    where: BookingWhereUniqueInput
+  }
+
+  /**
+   * Booking updateMany
+   */
+  export type BookingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Bookings.
+     */
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyInput>
+    /**
+     * Filter which Bookings to update
+     */
+    where?: BookingWhereInput
+    /**
+     * Limit how many Bookings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Booking updateManyAndReturn
+   */
+  export type BookingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * The data used to update Bookings.
+     */
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyInput>
+    /**
+     * Filter which Bookings to update
+     */
+    where?: BookingWhereInput
+    /**
+     * Limit how many Bookings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Booking upsert
+   */
+  export type BookingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Booking to update in case it exists.
+     */
+    where: BookingWhereUniqueInput
+    /**
+     * In case the Booking found by the `where` argument doesn't exist, create a new Booking with this data.
+     */
+    create: XOR<BookingCreateInput, BookingUncheckedCreateInput>
+    /**
+     * In case the Booking was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BookingUpdateInput, BookingUncheckedUpdateInput>
+  }
+
+  /**
+   * Booking delete
+   */
+  export type BookingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+    /**
+     * Filter which Booking to delete.
+     */
+    where: BookingWhereUniqueInput
+  }
+
+  /**
+   * Booking deleteMany
+   */
+  export type BookingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Bookings to delete
+     */
+    where?: BookingWhereInput
+    /**
+     * Limit how many Bookings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Booking.conversation
+   */
+  export type Booking$conversationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    where?: ConversationWhereInput
+  }
+
+  /**
+   * Booking.transaction
+   */
+  export type Booking$transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    where?: transactionWhereInput
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    cursor?: transactionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * Booking without action
+   */
+  export type BookingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Booking
+     */
+    select?: BookingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Booking
+     */
+    omit?: BookingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookingInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Conversation
+   */
+
+  export type AggregateConversation = {
+    _count: ConversationCountAggregateOutputType | null
+    _min: ConversationMinAggregateOutputType | null
+    _max: ConversationMaxAggregateOutputType | null
+  }
+
+  export type ConversationMinAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ConversationMaxAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ConversationCountAggregateOutputType = {
+    id: number
+    bookingId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ConversationMinAggregateInputType = {
+    id?: true
+    bookingId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ConversationMaxAggregateInputType = {
+    id?: true
+    bookingId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ConversationCountAggregateInputType = {
+    id?: true
+    bookingId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ConversationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Conversation to aggregate.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Conversations
+    **/
+    _count?: true | ConversationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ConversationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ConversationMaxAggregateInputType
+  }
+
+  export type GetConversationAggregateType<T extends ConversationAggregateArgs> = {
+        [P in keyof T & keyof AggregateConversation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateConversation[P]>
+      : GetScalarType<T[P], AggregateConversation[P]>
+  }
+
+
+
+
+  export type ConversationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ConversationWhereInput
+    orderBy?: ConversationOrderByWithAggregationInput | ConversationOrderByWithAggregationInput[]
+    by: ConversationScalarFieldEnum[] | ConversationScalarFieldEnum
+    having?: ConversationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ConversationCountAggregateInputType | true
+    _min?: ConversationMinAggregateInputType
+    _max?: ConversationMaxAggregateInputType
+  }
+
+  export type ConversationGroupByOutputType = {
+    id: string
+    bookingId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ConversationCountAggregateOutputType | null
+    _min: ConversationMinAggregateOutputType | null
+    _max: ConversationMaxAggregateOutputType | null
+  }
+
+  type GetConversationGroupByPayload<T extends ConversationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ConversationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ConversationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ConversationGroupByOutputType[P]>
+            : GetScalarType<T[P], ConversationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ConversationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    messages?: boolean | Conversation$messagesArgs<ExtArgs>
+    messageGroups?: boolean | Conversation$messageGroupsArgs<ExtArgs>
+    _count?: boolean | ConversationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["conversation"]>
+
+  export type ConversationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["conversation"]>
+
+  export type ConversationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["conversation"]>
+
+  export type ConversationSelectScalar = {
+    id?: boolean
+    bookingId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ConversationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bookingId" | "createdAt" | "updatedAt", ExtArgs["result"]["conversation"]>
+  export type ConversationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    messages?: boolean | Conversation$messagesArgs<ExtArgs>
+    messageGroups?: boolean | Conversation$messageGroupsArgs<ExtArgs>
+    _count?: boolean | ConversationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ConversationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+  }
+  export type ConversationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+  }
+
+  export type $ConversationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Conversation"
+    objects: {
+      booking: Prisma.$BookingPayload<ExtArgs>
+      messages: Prisma.$MessagePayload<ExtArgs>[]
+      messageGroups: Prisma.$MessageGroupPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bookingId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["conversation"]>
+    composites: {}
+  }
+
+  type ConversationGetPayload<S extends boolean | null | undefined | ConversationDefaultArgs> = $Result.GetResult<Prisma.$ConversationPayload, S>
+
+  type ConversationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ConversationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ConversationCountAggregateInputType | true
+    }
+
+  export interface ConversationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Conversation'], meta: { name: 'Conversation' } }
+    /**
+     * Find zero or one Conversation that matches the filter.
+     * @param {ConversationFindUniqueArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ConversationFindUniqueArgs>(args: SelectSubset<T, ConversationFindUniqueArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Conversation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ConversationFindUniqueOrThrowArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ConversationFindUniqueOrThrowArgs>(args: SelectSubset<T, ConversationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Conversation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationFindFirstArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ConversationFindFirstArgs>(args?: SelectSubset<T, ConversationFindFirstArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Conversation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationFindFirstOrThrowArgs} args - Arguments to find a Conversation
+     * @example
+     * // Get one Conversation
+     * const conversation = await prisma.conversation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ConversationFindFirstOrThrowArgs>(args?: SelectSubset<T, ConversationFindFirstOrThrowArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Conversations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Conversations
+     * const conversations = await prisma.conversation.findMany()
+     * 
+     * // Get first 10 Conversations
+     * const conversations = await prisma.conversation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const conversationWithIdOnly = await prisma.conversation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ConversationFindManyArgs>(args?: SelectSubset<T, ConversationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Conversation.
+     * @param {ConversationCreateArgs} args - Arguments to create a Conversation.
+     * @example
+     * // Create one Conversation
+     * const Conversation = await prisma.conversation.create({
+     *   data: {
+     *     // ... data to create a Conversation
+     *   }
+     * })
+     * 
+     */
+    create<T extends ConversationCreateArgs>(args: SelectSubset<T, ConversationCreateArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Conversations.
+     * @param {ConversationCreateManyArgs} args - Arguments to create many Conversations.
+     * @example
+     * // Create many Conversations
+     * const conversation = await prisma.conversation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ConversationCreateManyArgs>(args?: SelectSubset<T, ConversationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Conversations and returns the data saved in the database.
+     * @param {ConversationCreateManyAndReturnArgs} args - Arguments to create many Conversations.
+     * @example
+     * // Create many Conversations
+     * const conversation = await prisma.conversation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Conversations and only return the `id`
+     * const conversationWithIdOnly = await prisma.conversation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ConversationCreateManyAndReturnArgs>(args?: SelectSubset<T, ConversationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Conversation.
+     * @param {ConversationDeleteArgs} args - Arguments to delete one Conversation.
+     * @example
+     * // Delete one Conversation
+     * const Conversation = await prisma.conversation.delete({
+     *   where: {
+     *     // ... filter to delete one Conversation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ConversationDeleteArgs>(args: SelectSubset<T, ConversationDeleteArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Conversation.
+     * @param {ConversationUpdateArgs} args - Arguments to update one Conversation.
+     * @example
+     * // Update one Conversation
+     * const conversation = await prisma.conversation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ConversationUpdateArgs>(args: SelectSubset<T, ConversationUpdateArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Conversations.
+     * @param {ConversationDeleteManyArgs} args - Arguments to filter Conversations to delete.
+     * @example
+     * // Delete a few Conversations
+     * const { count } = await prisma.conversation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ConversationDeleteManyArgs>(args?: SelectSubset<T, ConversationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Conversations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Conversations
+     * const conversation = await prisma.conversation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ConversationUpdateManyArgs>(args: SelectSubset<T, ConversationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Conversations and returns the data updated in the database.
+     * @param {ConversationUpdateManyAndReturnArgs} args - Arguments to update many Conversations.
+     * @example
+     * // Update many Conversations
+     * const conversation = await prisma.conversation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Conversations and only return the `id`
+     * const conversationWithIdOnly = await prisma.conversation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ConversationUpdateManyAndReturnArgs>(args: SelectSubset<T, ConversationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Conversation.
+     * @param {ConversationUpsertArgs} args - Arguments to update or create a Conversation.
+     * @example
+     * // Update or create a Conversation
+     * const conversation = await prisma.conversation.upsert({
+     *   create: {
+     *     // ... data to create a Conversation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Conversation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ConversationUpsertArgs>(args: SelectSubset<T, ConversationUpsertArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Conversations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationCountArgs} args - Arguments to filter Conversations to count.
+     * @example
+     * // Count the number of Conversations
+     * const count = await prisma.conversation.count({
+     *   where: {
+     *     // ... the filter for the Conversations we want to count
+     *   }
+     * })
+    **/
+    count<T extends ConversationCountArgs>(
+      args?: Subset<T, ConversationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ConversationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Conversation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ConversationAggregateArgs>(args: Subset<T, ConversationAggregateArgs>): Prisma.PrismaPromise<GetConversationAggregateType<T>>
+
+    /**
+     * Group by Conversation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ConversationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ConversationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ConversationGroupByArgs['orderBy'] }
+        : { orderBy?: ConversationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ConversationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConversationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Conversation model
+   */
+  readonly fields: ConversationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Conversation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ConversationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    booking<T extends BookingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookingDefaultArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    messages<T extends Conversation$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Conversation$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    messageGroups<T extends Conversation$messageGroupsArgs<ExtArgs> = {}>(args?: Subset<T, Conversation$messageGroupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Conversation model
+   */
+  interface ConversationFieldRefs {
+    readonly id: FieldRef<"Conversation", 'String'>
+    readonly bookingId: FieldRef<"Conversation", 'String'>
+    readonly createdAt: FieldRef<"Conversation", 'DateTime'>
+    readonly updatedAt: FieldRef<"Conversation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Conversation findUnique
+   */
+  export type ConversationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation findUniqueOrThrow
+   */
+  export type ConversationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation findFirst
+   */
+  export type ConversationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Conversations.
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Conversations.
+     */
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation findFirstOrThrow
+   */
+  export type ConversationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversation to fetch.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Conversations.
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Conversations.
+     */
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation findMany
+   */
+  export type ConversationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter, which Conversations to fetch.
+     */
+    where?: ConversationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Conversations to fetch.
+     */
+    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Conversations.
+     */
+    cursor?: ConversationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Conversations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Conversations.
+     */
+    skip?: number
+    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation create
+   */
+  export type ConversationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Conversation.
+     */
+    data: XOR<ConversationCreateInput, ConversationUncheckedCreateInput>
+  }
+
+  /**
+   * Conversation createMany
+   */
+  export type ConversationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Conversations.
+     */
+    data: ConversationCreateManyInput | ConversationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Conversation createManyAndReturn
+   */
+  export type ConversationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Conversations.
+     */
+    data: ConversationCreateManyInput | ConversationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Conversation update
+   */
+  export type ConversationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Conversation.
+     */
+    data: XOR<ConversationUpdateInput, ConversationUncheckedUpdateInput>
+    /**
+     * Choose, which Conversation to update.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation updateMany
+   */
+  export type ConversationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Conversations.
+     */
+    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyInput>
+    /**
+     * Filter which Conversations to update
+     */
+    where?: ConversationWhereInput
+    /**
+     * Limit how many Conversations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Conversation updateManyAndReturn
+   */
+  export type ConversationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * The data used to update Conversations.
+     */
+    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyInput>
+    /**
+     * Filter which Conversations to update
+     */
+    where?: ConversationWhereInput
+    /**
+     * Limit how many Conversations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Conversation upsert
+   */
+  export type ConversationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Conversation to update in case it exists.
+     */
+    where: ConversationWhereUniqueInput
+    /**
+     * In case the Conversation found by the `where` argument doesn't exist, create a new Conversation with this data.
+     */
+    create: XOR<ConversationCreateInput, ConversationUncheckedCreateInput>
+    /**
+     * In case the Conversation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ConversationUpdateInput, ConversationUncheckedUpdateInput>
+  }
+
+  /**
+   * Conversation delete
+   */
+  export type ConversationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+    /**
+     * Filter which Conversation to delete.
+     */
+    where: ConversationWhereUniqueInput
+  }
+
+  /**
+   * Conversation deleteMany
+   */
+  export type ConversationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Conversations to delete
+     */
+    where?: ConversationWhereInput
+    /**
+     * Limit how many Conversations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Conversation.messages
+   */
+  export type Conversation$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation.messageGroups
+   */
+  export type Conversation$messageGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    where?: MessageGroupWhereInput
+    orderBy?: MessageGroupOrderByWithRelationInput | MessageGroupOrderByWithRelationInput[]
+    cursor?: MessageGroupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageGroupScalarFieldEnum | MessageGroupScalarFieldEnum[]
+  }
+
+  /**
+   * Conversation without action
+   */
+  export type ConversationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Conversation
+     */
+    select?: ConversationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Conversation
+     */
+    omit?: ConversationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConversationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MessageGroup
+   */
+
+  export type AggregateMessageGroup = {
+    _count: MessageGroupCountAggregateOutputType | null
+    _min: MessageGroupMinAggregateOutputType | null
+    _max: MessageGroupMaxAggregateOutputType | null
+  }
+
+  export type MessageGroupMinAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    date: Date | null
+  }
+
+  export type MessageGroupMaxAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    date: Date | null
+  }
+
+  export type MessageGroupCountAggregateOutputType = {
+    id: number
+    conversationId: number
+    date: number
+    data: number
+    _all: number
+  }
+
+
+  export type MessageGroupMinAggregateInputType = {
+    id?: true
+    conversationId?: true
+    date?: true
+  }
+
+  export type MessageGroupMaxAggregateInputType = {
+    id?: true
+    conversationId?: true
+    date?: true
+  }
+
+  export type MessageGroupCountAggregateInputType = {
+    id?: true
+    conversationId?: true
+    date?: true
+    data?: true
+    _all?: true
+  }
+
+  export type MessageGroupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MessageGroup to aggregate.
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroups to fetch.
+     */
+    orderBy?: MessageGroupOrderByWithRelationInput | MessageGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MessageGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MessageGroups
+    **/
+    _count?: true | MessageGroupCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MessageGroupMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MessageGroupMaxAggregateInputType
+  }
+
+  export type GetMessageGroupAggregateType<T extends MessageGroupAggregateArgs> = {
+        [P in keyof T & keyof AggregateMessageGroup]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMessageGroup[P]>
+      : GetScalarType<T[P], AggregateMessageGroup[P]>
+  }
+
+
+
+
+  export type MessageGroupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageGroupWhereInput
+    orderBy?: MessageGroupOrderByWithAggregationInput | MessageGroupOrderByWithAggregationInput[]
+    by: MessageGroupScalarFieldEnum[] | MessageGroupScalarFieldEnum
+    having?: MessageGroupScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MessageGroupCountAggregateInputType | true
+    _min?: MessageGroupMinAggregateInputType
+    _max?: MessageGroupMaxAggregateInputType
+  }
+
+  export type MessageGroupGroupByOutputType = {
+    id: string
+    conversationId: string
+    date: Date
+    data: JsonValue
+    _count: MessageGroupCountAggregateOutputType | null
+    _min: MessageGroupMinAggregateOutputType | null
+    _max: MessageGroupMaxAggregateOutputType | null
+  }
+
+  type GetMessageGroupGroupByPayload<T extends MessageGroupGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MessageGroupGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MessageGroupGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MessageGroupGroupByOutputType[P]>
+            : GetScalarType<T[P], MessageGroupGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MessageGroupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    date?: boolean
+    data?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["messageGroup"]>
+
+  export type MessageGroupSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    date?: boolean
+    data?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["messageGroup"]>
+
+  export type MessageGroupSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    date?: boolean
+    data?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["messageGroup"]>
+
+  export type MessageGroupSelectScalar = {
+    id?: boolean
+    conversationId?: boolean
+    date?: boolean
+    data?: boolean
+  }
+
+  export type MessageGroupOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "date" | "data", ExtArgs["result"]["messageGroup"]>
+  export type MessageGroupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }
+  export type MessageGroupIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }
+  export type MessageGroupIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+  }
+
+  export type $MessageGroupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MessageGroup"
+    objects: {
+      conversation: Prisma.$ConversationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      conversationId: string
+      date: Date
+      data: Prisma.JsonValue
+    }, ExtArgs["result"]["messageGroup"]>
+    composites: {}
+  }
+
+  type MessageGroupGetPayload<S extends boolean | null | undefined | MessageGroupDefaultArgs> = $Result.GetResult<Prisma.$MessageGroupPayload, S>
+
+  type MessageGroupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MessageGroupFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MessageGroupCountAggregateInputType | true
+    }
+
+  export interface MessageGroupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MessageGroup'], meta: { name: 'MessageGroup' } }
+    /**
+     * Find zero or one MessageGroup that matches the filter.
+     * @param {MessageGroupFindUniqueArgs} args - Arguments to find a MessageGroup
+     * @example
+     * // Get one MessageGroup
+     * const messageGroup = await prisma.messageGroup.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MessageGroupFindUniqueArgs>(args: SelectSubset<T, MessageGroupFindUniqueArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MessageGroup that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MessageGroupFindUniqueOrThrowArgs} args - Arguments to find a MessageGroup
+     * @example
+     * // Get one MessageGroup
+     * const messageGroup = await prisma.messageGroup.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MessageGroupFindUniqueOrThrowArgs>(args: SelectSubset<T, MessageGroupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MessageGroup that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupFindFirstArgs} args - Arguments to find a MessageGroup
+     * @example
+     * // Get one MessageGroup
+     * const messageGroup = await prisma.messageGroup.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MessageGroupFindFirstArgs>(args?: SelectSubset<T, MessageGroupFindFirstArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MessageGroup that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupFindFirstOrThrowArgs} args - Arguments to find a MessageGroup
+     * @example
+     * // Get one MessageGroup
+     * const messageGroup = await prisma.messageGroup.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MessageGroupFindFirstOrThrowArgs>(args?: SelectSubset<T, MessageGroupFindFirstOrThrowArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MessageGroups that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MessageGroups
+     * const messageGroups = await prisma.messageGroup.findMany()
+     * 
+     * // Get first 10 MessageGroups
+     * const messageGroups = await prisma.messageGroup.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const messageGroupWithIdOnly = await prisma.messageGroup.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MessageGroupFindManyArgs>(args?: SelectSubset<T, MessageGroupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MessageGroup.
+     * @param {MessageGroupCreateArgs} args - Arguments to create a MessageGroup.
+     * @example
+     * // Create one MessageGroup
+     * const MessageGroup = await prisma.messageGroup.create({
+     *   data: {
+     *     // ... data to create a MessageGroup
+     *   }
+     * })
+     * 
+     */
+    create<T extends MessageGroupCreateArgs>(args: SelectSubset<T, MessageGroupCreateArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MessageGroups.
+     * @param {MessageGroupCreateManyArgs} args - Arguments to create many MessageGroups.
+     * @example
+     * // Create many MessageGroups
+     * const messageGroup = await prisma.messageGroup.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MessageGroupCreateManyArgs>(args?: SelectSubset<T, MessageGroupCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MessageGroups and returns the data saved in the database.
+     * @param {MessageGroupCreateManyAndReturnArgs} args - Arguments to create many MessageGroups.
+     * @example
+     * // Create many MessageGroups
+     * const messageGroup = await prisma.messageGroup.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MessageGroups and only return the `id`
+     * const messageGroupWithIdOnly = await prisma.messageGroup.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MessageGroupCreateManyAndReturnArgs>(args?: SelectSubset<T, MessageGroupCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MessageGroup.
+     * @param {MessageGroupDeleteArgs} args - Arguments to delete one MessageGroup.
+     * @example
+     * // Delete one MessageGroup
+     * const MessageGroup = await prisma.messageGroup.delete({
+     *   where: {
+     *     // ... filter to delete one MessageGroup
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MessageGroupDeleteArgs>(args: SelectSubset<T, MessageGroupDeleteArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MessageGroup.
+     * @param {MessageGroupUpdateArgs} args - Arguments to update one MessageGroup.
+     * @example
+     * // Update one MessageGroup
+     * const messageGroup = await prisma.messageGroup.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MessageGroupUpdateArgs>(args: SelectSubset<T, MessageGroupUpdateArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MessageGroups.
+     * @param {MessageGroupDeleteManyArgs} args - Arguments to filter MessageGroups to delete.
+     * @example
+     * // Delete a few MessageGroups
+     * const { count } = await prisma.messageGroup.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MessageGroupDeleteManyArgs>(args?: SelectSubset<T, MessageGroupDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MessageGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MessageGroups
+     * const messageGroup = await prisma.messageGroup.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MessageGroupUpdateManyArgs>(args: SelectSubset<T, MessageGroupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MessageGroups and returns the data updated in the database.
+     * @param {MessageGroupUpdateManyAndReturnArgs} args - Arguments to update many MessageGroups.
+     * @example
+     * // Update many MessageGroups
+     * const messageGroup = await prisma.messageGroup.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MessageGroups and only return the `id`
+     * const messageGroupWithIdOnly = await prisma.messageGroup.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MessageGroupUpdateManyAndReturnArgs>(args: SelectSubset<T, MessageGroupUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MessageGroup.
+     * @param {MessageGroupUpsertArgs} args - Arguments to update or create a MessageGroup.
+     * @example
+     * // Update or create a MessageGroup
+     * const messageGroup = await prisma.messageGroup.upsert({
+     *   create: {
+     *     // ... data to create a MessageGroup
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MessageGroup we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MessageGroupUpsertArgs>(args: SelectSubset<T, MessageGroupUpsertArgs<ExtArgs>>): Prisma__MessageGroupClient<$Result.GetResult<Prisma.$MessageGroupPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MessageGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupCountArgs} args - Arguments to filter MessageGroups to count.
+     * @example
+     * // Count the number of MessageGroups
+     * const count = await prisma.messageGroup.count({
+     *   where: {
+     *     // ... the filter for the MessageGroups we want to count
+     *   }
+     * })
+    **/
+    count<T extends MessageGroupCountArgs>(
+      args?: Subset<T, MessageGroupCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MessageGroupCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MessageGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MessageGroupAggregateArgs>(args: Subset<T, MessageGroupAggregateArgs>): Prisma.PrismaPromise<GetMessageGroupAggregateType<T>>
+
+    /**
+     * Group by MessageGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MessageGroupGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MessageGroupGroupByArgs['orderBy'] }
+        : { orderBy?: MessageGroupGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MessageGroupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMessageGroupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MessageGroup model
+   */
+  readonly fields: MessageGroupFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MessageGroup.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MessageGroupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    conversation<T extends ConversationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConversationDefaultArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MessageGroup model
+   */
+  interface MessageGroupFieldRefs {
+    readonly id: FieldRef<"MessageGroup", 'String'>
+    readonly conversationId: FieldRef<"MessageGroup", 'String'>
+    readonly date: FieldRef<"MessageGroup", 'DateTime'>
+    readonly data: FieldRef<"MessageGroup", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MessageGroup findUnique
+   */
+  export type MessageGroupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroup to fetch.
+     */
+    where: MessageGroupWhereUniqueInput
+  }
+
+  /**
+   * MessageGroup findUniqueOrThrow
+   */
+  export type MessageGroupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroup to fetch.
+     */
+    where: MessageGroupWhereUniqueInput
+  }
+
+  /**
+   * MessageGroup findFirst
+   */
+  export type MessageGroupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroup to fetch.
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroups to fetch.
+     */
+    orderBy?: MessageGroupOrderByWithRelationInput | MessageGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MessageGroups.
+     */
+    cursor?: MessageGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MessageGroups.
+     */
+    distinct?: MessageGroupScalarFieldEnum | MessageGroupScalarFieldEnum[]
+  }
+
+  /**
+   * MessageGroup findFirstOrThrow
+   */
+  export type MessageGroupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroup to fetch.
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroups to fetch.
+     */
+    orderBy?: MessageGroupOrderByWithRelationInput | MessageGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MessageGroups.
+     */
+    cursor?: MessageGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MessageGroups.
+     */
+    distinct?: MessageGroupScalarFieldEnum | MessageGroupScalarFieldEnum[]
+  }
+
+  /**
+   * MessageGroup findMany
+   */
+  export type MessageGroupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which MessageGroups to fetch.
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MessageGroups to fetch.
+     */
+    orderBy?: MessageGroupOrderByWithRelationInput | MessageGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MessageGroups.
+     */
+    cursor?: MessageGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MessageGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MessageGroups.
+     */
+    skip?: number
+    distinct?: MessageGroupScalarFieldEnum | MessageGroupScalarFieldEnum[]
+  }
+
+  /**
+   * MessageGroup create
+   */
+  export type MessageGroupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MessageGroup.
+     */
+    data: XOR<MessageGroupCreateInput, MessageGroupUncheckedCreateInput>
+  }
+
+  /**
+   * MessageGroup createMany
+   */
+  export type MessageGroupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MessageGroups.
+     */
+    data: MessageGroupCreateManyInput | MessageGroupCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MessageGroup createManyAndReturn
+   */
+  export type MessageGroupCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * The data used to create many MessageGroups.
+     */
+    data: MessageGroupCreateManyInput | MessageGroupCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MessageGroup update
+   */
+  export type MessageGroupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MessageGroup.
+     */
+    data: XOR<MessageGroupUpdateInput, MessageGroupUncheckedUpdateInput>
+    /**
+     * Choose, which MessageGroup to update.
+     */
+    where: MessageGroupWhereUniqueInput
+  }
+
+  /**
+   * MessageGroup updateMany
+   */
+  export type MessageGroupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MessageGroups.
+     */
+    data: XOR<MessageGroupUpdateManyMutationInput, MessageGroupUncheckedUpdateManyInput>
+    /**
+     * Filter which MessageGroups to update
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * Limit how many MessageGroups to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MessageGroup updateManyAndReturn
+   */
+  export type MessageGroupUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * The data used to update MessageGroups.
+     */
+    data: XOR<MessageGroupUpdateManyMutationInput, MessageGroupUncheckedUpdateManyInput>
+    /**
+     * Filter which MessageGroups to update
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * Limit how many MessageGroups to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MessageGroup upsert
+   */
+  export type MessageGroupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MessageGroup to update in case it exists.
+     */
+    where: MessageGroupWhereUniqueInput
+    /**
+     * In case the MessageGroup found by the `where` argument doesn't exist, create a new MessageGroup with this data.
+     */
+    create: XOR<MessageGroupCreateInput, MessageGroupUncheckedCreateInput>
+    /**
+     * In case the MessageGroup was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MessageGroupUpdateInput, MessageGroupUncheckedUpdateInput>
+  }
+
+  /**
+   * MessageGroup delete
+   */
+  export type MessageGroupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+    /**
+     * Filter which MessageGroup to delete.
+     */
+    where: MessageGroupWhereUniqueInput
+  }
+
+  /**
+   * MessageGroup deleteMany
+   */
+  export type MessageGroupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MessageGroups to delete
+     */
+    where?: MessageGroupWhereInput
+    /**
+     * Limit how many MessageGroups to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MessageGroup without action
+   */
+  export type MessageGroupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MessageGroup
+     */
+    select?: MessageGroupSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MessageGroup
+     */
+    omit?: MessageGroupOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageGroupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Message
+   */
+
+  export type AggregateMessage = {
+    _count: MessageCountAggregateOutputType | null
+    _min: MessageMinAggregateOutputType | null
+    _max: MessageMaxAggregateOutputType | null
+  }
+
+  export type MessageMinAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    senderId: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type MessageMaxAggregateOutputType = {
+    id: string | null
+    conversationId: string | null
+    senderId: string | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type MessageCountAggregateOutputType = {
+    id: number
+    conversationId: number
+    senderId: number
+    content: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MessageMinAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type MessageMaxAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type MessageCountAggregateInputType = {
+    id?: true
+    conversationId?: true
+    senderId?: true
+    content?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Message to aggregate.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Messages
+    **/
+    _count?: true | MessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MessageMaxAggregateInputType
+  }
+
+  export type GetMessageAggregateType<T extends MessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMessage[P]>
+      : GetScalarType<T[P], AggregateMessage[P]>
+  }
+
+
+
+
+  export type MessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithAggregationInput | MessageOrderByWithAggregationInput[]
+    by: MessageScalarFieldEnum[] | MessageScalarFieldEnum
+    having?: MessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MessageCountAggregateInputType | true
+    _min?: MessageMinAggregateInputType
+    _max?: MessageMaxAggregateInputType
+  }
+
+  export type MessageGroupByOutputType = {
+    id: string
+    conversationId: string
+    senderId: string
+    content: string
+    createdAt: Date
+    _count: MessageCountAggregateOutputType | null
+    _min: MessageMinAggregateOutputType | null
+    _max: MessageMaxAggregateOutputType | null
+  }
+
+  type GetMessageGroupByPayload<T extends MessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MessageGroupByOutputType[P]>
+            : GetScalarType<T[P], MessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["message"]>
+
+  export type MessageSelectScalar = {
+    id?: boolean
+    conversationId?: boolean
+    senderId?: boolean
+    content?: boolean
+    createdAt?: boolean
+  }
+
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "content" | "createdAt", ExtArgs["result"]["message"]>
+  export type MessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
+    sender?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $MessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Message"
+    objects: {
+      conversation: Prisma.$ConversationPayload<ExtArgs>
+      sender: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      conversationId: string
+      senderId: string
+      content: string
+      createdAt: Date
+    }, ExtArgs["result"]["message"]>
+    composites: {}
+  }
+
+  type MessageGetPayload<S extends boolean | null | undefined | MessageDefaultArgs> = $Result.GetResult<Prisma.$MessagePayload, S>
+
+  type MessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MessageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MessageCountAggregateInputType | true
+    }
+
+  export interface MessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Message'], meta: { name: 'Message' } }
+    /**
+     * Find zero or one Message that matches the filter.
+     * @param {MessageFindUniqueArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MessageFindUniqueArgs>(args: SelectSubset<T, MessageFindUniqueArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Message that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MessageFindUniqueOrThrowArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MessageFindUniqueOrThrowArgs>(args: SelectSubset<T, MessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Message that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindFirstArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MessageFindFirstArgs>(args?: SelectSubset<T, MessageFindFirstArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Message that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindFirstOrThrowArgs} args - Arguments to find a Message
+     * @example
+     * // Get one Message
+     * const message = await prisma.message.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MessageFindFirstOrThrowArgs>(args?: SelectSubset<T, MessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Messages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Messages
+     * const messages = await prisma.message.findMany()
+     * 
+     * // Get first 10 Messages
+     * const messages = await prisma.message.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const messageWithIdOnly = await prisma.message.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MessageFindManyArgs>(args?: SelectSubset<T, MessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Message.
+     * @param {MessageCreateArgs} args - Arguments to create a Message.
+     * @example
+     * // Create one Message
+     * const Message = await prisma.message.create({
+     *   data: {
+     *     // ... data to create a Message
+     *   }
+     * })
+     * 
+     */
+    create<T extends MessageCreateArgs>(args: SelectSubset<T, MessageCreateArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Messages.
+     * @param {MessageCreateManyArgs} args - Arguments to create many Messages.
+     * @example
+     * // Create many Messages
+     * const message = await prisma.message.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MessageCreateManyArgs>(args?: SelectSubset<T, MessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Messages and returns the data saved in the database.
+     * @param {MessageCreateManyAndReturnArgs} args - Arguments to create many Messages.
+     * @example
+     * // Create many Messages
+     * const message = await prisma.message.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Messages and only return the `id`
+     * const messageWithIdOnly = await prisma.message.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MessageCreateManyAndReturnArgs>(args?: SelectSubset<T, MessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Message.
+     * @param {MessageDeleteArgs} args - Arguments to delete one Message.
+     * @example
+     * // Delete one Message
+     * const Message = await prisma.message.delete({
+     *   where: {
+     *     // ... filter to delete one Message
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MessageDeleteArgs>(args: SelectSubset<T, MessageDeleteArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Message.
+     * @param {MessageUpdateArgs} args - Arguments to update one Message.
+     * @example
+     * // Update one Message
+     * const message = await prisma.message.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MessageUpdateArgs>(args: SelectSubset<T, MessageUpdateArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Messages.
+     * @param {MessageDeleteManyArgs} args - Arguments to filter Messages to delete.
+     * @example
+     * // Delete a few Messages
+     * const { count } = await prisma.message.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MessageDeleteManyArgs>(args?: SelectSubset<T, MessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Messages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Messages
+     * const message = await prisma.message.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MessageUpdateManyArgs>(args: SelectSubset<T, MessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Messages and returns the data updated in the database.
+     * @param {MessageUpdateManyAndReturnArgs} args - Arguments to update many Messages.
+     * @example
+     * // Update many Messages
+     * const message = await prisma.message.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Messages and only return the `id`
+     * const messageWithIdOnly = await prisma.message.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MessageUpdateManyAndReturnArgs>(args: SelectSubset<T, MessageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Message.
+     * @param {MessageUpsertArgs} args - Arguments to update or create a Message.
+     * @example
+     * // Update or create a Message
+     * const message = await prisma.message.upsert({
+     *   create: {
+     *     // ... data to create a Message
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Message we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MessageUpsertArgs>(args: SelectSubset<T, MessageUpsertArgs<ExtArgs>>): Prisma__MessageClient<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Messages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageCountArgs} args - Arguments to filter Messages to count.
+     * @example
+     * // Count the number of Messages
+     * const count = await prisma.message.count({
+     *   where: {
+     *     // ... the filter for the Messages we want to count
+     *   }
+     * })
+    **/
+    count<T extends MessageCountArgs>(
+      args?: Subset<T, MessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Message.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MessageAggregateArgs>(args: Subset<T, MessageAggregateArgs>): Prisma.PrismaPromise<GetMessageAggregateType<T>>
+
+    /**
+     * Group by Message.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MessageGroupByArgs['orderBy'] }
+        : { orderBy?: MessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Message model
+   */
+  readonly fields: MessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Message.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    conversation<T extends ConversationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConversationDefaultArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    sender<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Message model
+   */
+  interface MessageFieldRefs {
+    readonly id: FieldRef<"Message", 'String'>
+    readonly conversationId: FieldRef<"Message", 'String'>
+    readonly senderId: FieldRef<"Message", 'String'>
+    readonly content: FieldRef<"Message", 'String'>
+    readonly createdAt: FieldRef<"Message", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Message findUnique
+   */
+  export type MessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message findUniqueOrThrow
+   */
+  export type MessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message findFirst
+   */
+  export type MessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message findFirstOrThrow
+   */
+  export type MessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Message to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message findMany
+   */
+  export type MessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter, which Messages to fetch.
+     */
+    where?: MessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Messages to fetch.
+     */
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Messages.
+     */
+    cursor?: MessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Messages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Messages.
+     */
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Message create
+   */
+  export type MessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Message.
+     */
+    data: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+  }
+
+  /**
+   * Message createMany
+   */
+  export type MessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Messages.
+     */
+    data: MessageCreateManyInput | MessageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Message createManyAndReturn
+   */
+  export type MessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Messages.
+     */
+    data: MessageCreateManyInput | MessageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Message update
+   */
+  export type MessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Message.
+     */
+    data: XOR<MessageUpdateInput, MessageUncheckedUpdateInput>
+    /**
+     * Choose, which Message to update.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message updateMany
+   */
+  export type MessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Messages.
+     */
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyInput>
+    /**
+     * Filter which Messages to update
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Message updateManyAndReturn
+   */
+  export type MessageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * The data used to update Messages.
+     */
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyInput>
+    /**
+     * Filter which Messages to update
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Message upsert
+   */
+  export type MessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Message to update in case it exists.
+     */
+    where: MessageWhereUniqueInput
+    /**
+     * In case the Message found by the `where` argument doesn't exist, create a new Message with this data.
+     */
+    create: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+    /**
+     * In case the Message was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MessageUpdateInput, MessageUncheckedUpdateInput>
+  }
+
+  /**
+   * Message delete
+   */
+  export type MessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
+     * Filter which Message to delete.
+     */
+    where: MessageWhereUniqueInput
+  }
+
+  /**
+   * Message deleteMany
+   */
+  export type MessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Messages to delete
+     */
+    where?: MessageWhereInput
+    /**
+     * Limit how many Messages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Message without action
+   */
+  export type MessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Verification
    */
 
@@ -5948,2426 +12384,1460 @@ export namespace Prisma {
 
 
   /**
-   * Model ServiceProvider
+   * Model Announcement
    */
 
-  export type AggregateServiceProvider = {
-    _count: ServiceProviderCountAggregateOutputType | null
-    _min: ServiceProviderMinAggregateOutputType | null
-    _max: ServiceProviderMaxAggregateOutputType | null
+  export type AggregateAnnouncement = {
+    _count: AnnouncementCountAggregateOutputType | null
+    _min: AnnouncementMinAggregateOutputType | null
+    _max: AnnouncementMaxAggregateOutputType | null
   }
 
-  export type ServiceProviderMinAggregateOutputType = {
+  export type AnnouncementMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    content: string | null
+    summary: string | null
+    category: string | null
+    isVerified: boolean | null
+    isActive: boolean | null
+    externalLink: string | null
+    contactInfo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    imageUrl: string | null
+  }
+
+  export type AnnouncementMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    content: string | null
+    summary: string | null
+    category: string | null
+    isVerified: boolean | null
+    isActive: boolean | null
+    externalLink: string | null
+    contactInfo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    imageUrl: string | null
+  }
+
+  export type AnnouncementCountAggregateOutputType = {
+    id: number
+    title: number
+    content: number
+    summary: number
+    category: number
+    isVerified: number
+    isActive: number
+    externalLink: number
+    contactInfo: number
+    createdAt: number
+    updatedAt: number
+    imageUrl: number
+    _all: number
+  }
+
+
+  export type AnnouncementMinAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    summary?: true
+    category?: true
+    isVerified?: true
+    isActive?: true
+    externalLink?: true
+    contactInfo?: true
+    createdAt?: true
+    updatedAt?: true
+    imageUrl?: true
+  }
+
+  export type AnnouncementMaxAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    summary?: true
+    category?: true
+    isVerified?: true
+    isActive?: true
+    externalLink?: true
+    contactInfo?: true
+    createdAt?: true
+    updatedAt?: true
+    imageUrl?: true
+  }
+
+  export type AnnouncementCountAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    summary?: true
+    category?: true
+    isVerified?: true
+    isActive?: true
+    externalLink?: true
+    contactInfo?: true
+    createdAt?: true
+    updatedAt?: true
+    imageUrl?: true
+    _all?: true
+  }
+
+  export type AnnouncementAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Announcement to aggregate.
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Announcements to fetch.
+     */
+    orderBy?: AnnouncementOrderByWithRelationInput | AnnouncementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AnnouncementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Announcements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Announcements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Announcements
+    **/
+    _count?: true | AnnouncementCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AnnouncementMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AnnouncementMaxAggregateInputType
+  }
+
+  export type GetAnnouncementAggregateType<T extends AnnouncementAggregateArgs> = {
+        [P in keyof T & keyof AggregateAnnouncement]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAnnouncement[P]>
+      : GetScalarType<T[P], AggregateAnnouncement[P]>
+  }
+
+
+
+
+  export type AnnouncementGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AnnouncementWhereInput
+    orderBy?: AnnouncementOrderByWithAggregationInput | AnnouncementOrderByWithAggregationInput[]
+    by: AnnouncementScalarFieldEnum[] | AnnouncementScalarFieldEnum
+    having?: AnnouncementScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AnnouncementCountAggregateInputType | true
+    _min?: AnnouncementMinAggregateInputType
+    _max?: AnnouncementMaxAggregateInputType
+  }
+
+  export type AnnouncementGroupByOutputType = {
+    id: string
+    title: string
+    content: string
+    summary: string | null
+    category: string
+    isVerified: boolean
+    isActive: boolean
+    externalLink: string | null
+    contactInfo: string | null
+    createdAt: Date
+    updatedAt: Date
+    imageUrl: string | null
+    _count: AnnouncementCountAggregateOutputType | null
+    _min: AnnouncementMinAggregateOutputType | null
+    _max: AnnouncementMaxAggregateOutputType | null
+  }
+
+  type GetAnnouncementGroupByPayload<T extends AnnouncementGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AnnouncementGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AnnouncementGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AnnouncementGroupByOutputType[P]>
+            : GetScalarType<T[P], AnnouncementGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AnnouncementSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    summary?: boolean
+    category?: boolean
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: boolean
+    contactInfo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    imageUrl?: boolean
+  }, ExtArgs["result"]["announcement"]>
+
+  export type AnnouncementSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    summary?: boolean
+    category?: boolean
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: boolean
+    contactInfo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    imageUrl?: boolean
+  }, ExtArgs["result"]["announcement"]>
+
+  export type AnnouncementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    summary?: boolean
+    category?: boolean
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: boolean
+    contactInfo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    imageUrl?: boolean
+  }, ExtArgs["result"]["announcement"]>
+
+  export type AnnouncementSelectScalar = {
+    id?: boolean
+    title?: boolean
+    content?: boolean
+    summary?: boolean
+    category?: boolean
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: boolean
+    contactInfo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    imageUrl?: boolean
+  }
+
+  export type AnnouncementOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "summary" | "category" | "isVerified" | "isActive" | "externalLink" | "contactInfo" | "createdAt" | "updatedAt" | "imageUrl", ExtArgs["result"]["announcement"]>
+
+  export type $AnnouncementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Announcement"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      content: string
+      summary: string | null
+      category: string
+      isVerified: boolean
+      isActive: boolean
+      externalLink: string | null
+      contactInfo: string | null
+      createdAt: Date
+      updatedAt: Date
+      imageUrl: string | null
+    }, ExtArgs["result"]["announcement"]>
+    composites: {}
+  }
+
+  type AnnouncementGetPayload<S extends boolean | null | undefined | AnnouncementDefaultArgs> = $Result.GetResult<Prisma.$AnnouncementPayload, S>
+
+  type AnnouncementCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AnnouncementFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AnnouncementCountAggregateInputType | true
+    }
+
+  export interface AnnouncementDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Announcement'], meta: { name: 'Announcement' } }
+    /**
+     * Find zero or one Announcement that matches the filter.
+     * @param {AnnouncementFindUniqueArgs} args - Arguments to find a Announcement
+     * @example
+     * // Get one Announcement
+     * const announcement = await prisma.announcement.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AnnouncementFindUniqueArgs>(args: SelectSubset<T, AnnouncementFindUniqueArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Announcement that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AnnouncementFindUniqueOrThrowArgs} args - Arguments to find a Announcement
+     * @example
+     * // Get one Announcement
+     * const announcement = await prisma.announcement.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AnnouncementFindUniqueOrThrowArgs>(args: SelectSubset<T, AnnouncementFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Announcement that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementFindFirstArgs} args - Arguments to find a Announcement
+     * @example
+     * // Get one Announcement
+     * const announcement = await prisma.announcement.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AnnouncementFindFirstArgs>(args?: SelectSubset<T, AnnouncementFindFirstArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Announcement that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementFindFirstOrThrowArgs} args - Arguments to find a Announcement
+     * @example
+     * // Get one Announcement
+     * const announcement = await prisma.announcement.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AnnouncementFindFirstOrThrowArgs>(args?: SelectSubset<T, AnnouncementFindFirstOrThrowArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Announcements that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Announcements
+     * const announcements = await prisma.announcement.findMany()
+     * 
+     * // Get first 10 Announcements
+     * const announcements = await prisma.announcement.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const announcementWithIdOnly = await prisma.announcement.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AnnouncementFindManyArgs>(args?: SelectSubset<T, AnnouncementFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Announcement.
+     * @param {AnnouncementCreateArgs} args - Arguments to create a Announcement.
+     * @example
+     * // Create one Announcement
+     * const Announcement = await prisma.announcement.create({
+     *   data: {
+     *     // ... data to create a Announcement
+     *   }
+     * })
+     * 
+     */
+    create<T extends AnnouncementCreateArgs>(args: SelectSubset<T, AnnouncementCreateArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Announcements.
+     * @param {AnnouncementCreateManyArgs} args - Arguments to create many Announcements.
+     * @example
+     * // Create many Announcements
+     * const announcement = await prisma.announcement.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AnnouncementCreateManyArgs>(args?: SelectSubset<T, AnnouncementCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Announcements and returns the data saved in the database.
+     * @param {AnnouncementCreateManyAndReturnArgs} args - Arguments to create many Announcements.
+     * @example
+     * // Create many Announcements
+     * const announcement = await prisma.announcement.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Announcements and only return the `id`
+     * const announcementWithIdOnly = await prisma.announcement.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AnnouncementCreateManyAndReturnArgs>(args?: SelectSubset<T, AnnouncementCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Announcement.
+     * @param {AnnouncementDeleteArgs} args - Arguments to delete one Announcement.
+     * @example
+     * // Delete one Announcement
+     * const Announcement = await prisma.announcement.delete({
+     *   where: {
+     *     // ... filter to delete one Announcement
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AnnouncementDeleteArgs>(args: SelectSubset<T, AnnouncementDeleteArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Announcement.
+     * @param {AnnouncementUpdateArgs} args - Arguments to update one Announcement.
+     * @example
+     * // Update one Announcement
+     * const announcement = await prisma.announcement.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AnnouncementUpdateArgs>(args: SelectSubset<T, AnnouncementUpdateArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Announcements.
+     * @param {AnnouncementDeleteManyArgs} args - Arguments to filter Announcements to delete.
+     * @example
+     * // Delete a few Announcements
+     * const { count } = await prisma.announcement.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AnnouncementDeleteManyArgs>(args?: SelectSubset<T, AnnouncementDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Announcements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Announcements
+     * const announcement = await prisma.announcement.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AnnouncementUpdateManyArgs>(args: SelectSubset<T, AnnouncementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Announcements and returns the data updated in the database.
+     * @param {AnnouncementUpdateManyAndReturnArgs} args - Arguments to update many Announcements.
+     * @example
+     * // Update many Announcements
+     * const announcement = await prisma.announcement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Announcements and only return the `id`
+     * const announcementWithIdOnly = await prisma.announcement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AnnouncementUpdateManyAndReturnArgs>(args: SelectSubset<T, AnnouncementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Announcement.
+     * @param {AnnouncementUpsertArgs} args - Arguments to update or create a Announcement.
+     * @example
+     * // Update or create a Announcement
+     * const announcement = await prisma.announcement.upsert({
+     *   create: {
+     *     // ... data to create a Announcement
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Announcement we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AnnouncementUpsertArgs>(args: SelectSubset<T, AnnouncementUpsertArgs<ExtArgs>>): Prisma__AnnouncementClient<$Result.GetResult<Prisma.$AnnouncementPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Announcements.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementCountArgs} args - Arguments to filter Announcements to count.
+     * @example
+     * // Count the number of Announcements
+     * const count = await prisma.announcement.count({
+     *   where: {
+     *     // ... the filter for the Announcements we want to count
+     *   }
+     * })
+    **/
+    count<T extends AnnouncementCountArgs>(
+      args?: Subset<T, AnnouncementCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AnnouncementCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Announcement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AnnouncementAggregateArgs>(args: Subset<T, AnnouncementAggregateArgs>): Prisma.PrismaPromise<GetAnnouncementAggregateType<T>>
+
+    /**
+     * Group by Announcement.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AnnouncementGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AnnouncementGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AnnouncementGroupByArgs['orderBy'] }
+        : { orderBy?: AnnouncementGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AnnouncementGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAnnouncementGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Announcement model
+   */
+  readonly fields: AnnouncementFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Announcement.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AnnouncementClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Announcement model
+   */
+  interface AnnouncementFieldRefs {
+    readonly id: FieldRef<"Announcement", 'String'>
+    readonly title: FieldRef<"Announcement", 'String'>
+    readonly content: FieldRef<"Announcement", 'String'>
+    readonly summary: FieldRef<"Announcement", 'String'>
+    readonly category: FieldRef<"Announcement", 'String'>
+    readonly isVerified: FieldRef<"Announcement", 'Boolean'>
+    readonly isActive: FieldRef<"Announcement", 'Boolean'>
+    readonly externalLink: FieldRef<"Announcement", 'String'>
+    readonly contactInfo: FieldRef<"Announcement", 'String'>
+    readonly createdAt: FieldRef<"Announcement", 'DateTime'>
+    readonly updatedAt: FieldRef<"Announcement", 'DateTime'>
+    readonly imageUrl: FieldRef<"Announcement", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Announcement findUnique
+   */
+  export type AnnouncementFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * Filter, which Announcement to fetch.
+     */
+    where: AnnouncementWhereUniqueInput
+  }
+
+  /**
+   * Announcement findUniqueOrThrow
+   */
+  export type AnnouncementFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * Filter, which Announcement to fetch.
+     */
+    where: AnnouncementWhereUniqueInput
+  }
+
+  /**
+   * Announcement findFirst
+   */
+  export type AnnouncementFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * Filter, which Announcement to fetch.
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Announcements to fetch.
+     */
+    orderBy?: AnnouncementOrderByWithRelationInput | AnnouncementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Announcements.
+     */
+    cursor?: AnnouncementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Announcements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Announcements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Announcements.
+     */
+    distinct?: AnnouncementScalarFieldEnum | AnnouncementScalarFieldEnum[]
+  }
+
+  /**
+   * Announcement findFirstOrThrow
+   */
+  export type AnnouncementFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * Filter, which Announcement to fetch.
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Announcements to fetch.
+     */
+    orderBy?: AnnouncementOrderByWithRelationInput | AnnouncementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Announcements.
+     */
+    cursor?: AnnouncementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Announcements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Announcements.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Announcements.
+     */
+    distinct?: AnnouncementScalarFieldEnum | AnnouncementScalarFieldEnum[]
+  }
+
+  /**
+   * Announcement findMany
+   */
+  export type AnnouncementFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * Filter, which Announcements to fetch.
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Announcements to fetch.
+     */
+    orderBy?: AnnouncementOrderByWithRelationInput | AnnouncementOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Announcements.
+     */
+    cursor?: AnnouncementWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Announcements from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Announcements.
+     */
+    skip?: number
+    distinct?: AnnouncementScalarFieldEnum | AnnouncementScalarFieldEnum[]
+  }
+
+  /**
+   * Announcement create
+   */
+  export type AnnouncementCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Announcement.
+     */
+    data: XOR<AnnouncementCreateInput, AnnouncementUncheckedCreateInput>
+  }
+
+  /**
+   * Announcement createMany
+   */
+  export type AnnouncementCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Announcements.
+     */
+    data: AnnouncementCreateManyInput | AnnouncementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Announcement createManyAndReturn
+   */
+  export type AnnouncementCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * The data used to create many Announcements.
+     */
+    data: AnnouncementCreateManyInput | AnnouncementCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Announcement update
+   */
+  export type AnnouncementUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Announcement.
+     */
+    data: XOR<AnnouncementUpdateInput, AnnouncementUncheckedUpdateInput>
+    /**
+     * Choose, which Announcement to update.
+     */
+    where: AnnouncementWhereUniqueInput
+  }
+
+  /**
+   * Announcement updateMany
+   */
+  export type AnnouncementUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Announcements.
+     */
+    data: XOR<AnnouncementUpdateManyMutationInput, AnnouncementUncheckedUpdateManyInput>
+    /**
+     * Filter which Announcements to update
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * Limit how many Announcements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Announcement updateManyAndReturn
+   */
+  export type AnnouncementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * The data used to update Announcements.
+     */
+    data: XOR<AnnouncementUpdateManyMutationInput, AnnouncementUncheckedUpdateManyInput>
+    /**
+     * Filter which Announcements to update
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * Limit how many Announcements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Announcement upsert
+   */
+  export type AnnouncementUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Announcement to update in case it exists.
+     */
+    where: AnnouncementWhereUniqueInput
+    /**
+     * In case the Announcement found by the `where` argument doesn't exist, create a new Announcement with this data.
+     */
+    create: XOR<AnnouncementCreateInput, AnnouncementUncheckedCreateInput>
+    /**
+     * In case the Announcement was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AnnouncementUpdateInput, AnnouncementUncheckedUpdateInput>
+  }
+
+  /**
+   * Announcement delete
+   */
+  export type AnnouncementDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+    /**
+     * Filter which Announcement to delete.
+     */
+    where: AnnouncementWhereUniqueInput
+  }
+
+  /**
+   * Announcement deleteMany
+   */
+  export type AnnouncementDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Announcements to delete
+     */
+    where?: AnnouncementWhereInput
+    /**
+     * Limit how many Announcements to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Announcement without action
+   */
+  export type AnnouncementDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Announcement
+     */
+    select?: AnnouncementSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Announcement
+     */
+    omit?: AnnouncementOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SupportMessage
+   */
+
+  export type AggregateSupportMessage = {
+    _count: SupportMessageCountAggregateOutputType | null
+    _min: SupportMessageMinAggregateOutputType | null
+    _max: SupportMessageMaxAggregateOutputType | null
+  }
+
+  export type SupportMessageMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    subject: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type ServiceProviderMaxAggregateOutputType = {
+  export type SupportMessageMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    subject: string | null
+    message: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type ServiceProviderCountAggregateOutputType = {
+  export type SupportMessageCountAggregateOutputType = {
     id: number
     userId: number
-    _all: number
-  }
-
-
-  export type ServiceProviderMinAggregateInputType = {
-    id?: true
-    userId?: true
-  }
-
-  export type ServiceProviderMaxAggregateInputType = {
-    id?: true
-    userId?: true
-  }
-
-  export type ServiceProviderCountAggregateInputType = {
-    id?: true
-    userId?: true
-    _all?: true
-  }
-
-  export type ServiceProviderAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ServiceProvider to aggregate.
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ServiceProviders to fetch.
-     */
-    orderBy?: ServiceProviderOrderByWithRelationInput | ServiceProviderOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ServiceProviderWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ServiceProviders from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ServiceProviders.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ServiceProviders
-    **/
-    _count?: true | ServiceProviderCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ServiceProviderMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ServiceProviderMaxAggregateInputType
-  }
-
-  export type GetServiceProviderAggregateType<T extends ServiceProviderAggregateArgs> = {
-        [P in keyof T & keyof AggregateServiceProvider]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateServiceProvider[P]>
-      : GetScalarType<T[P], AggregateServiceProvider[P]>
-  }
-
-
-
-
-  export type ServiceProviderGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ServiceProviderWhereInput
-    orderBy?: ServiceProviderOrderByWithAggregationInput | ServiceProviderOrderByWithAggregationInput[]
-    by: ServiceProviderScalarFieldEnum[] | ServiceProviderScalarFieldEnum
-    having?: ServiceProviderScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ServiceProviderCountAggregateInputType | true
-    _min?: ServiceProviderMinAggregateInputType
-    _max?: ServiceProviderMaxAggregateInputType
-  }
-
-  export type ServiceProviderGroupByOutputType = {
-    id: string
-    userId: string
-    _count: ServiceProviderCountAggregateOutputType | null
-    _min: ServiceProviderMinAggregateOutputType | null
-    _max: ServiceProviderMaxAggregateOutputType | null
-  }
-
-  type GetServiceProviderGroupByPayload<T extends ServiceProviderGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ServiceProviderGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ServiceProviderGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ServiceProviderGroupByOutputType[P]>
-            : GetScalarType<T[P], ServiceProviderGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ServiceProviderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    bookings?: boolean | ServiceProvider$bookingsArgs<ExtArgs>
-    _count?: boolean | ServiceProviderCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["serviceProvider"]>
-
-  export type ServiceProviderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["serviceProvider"]>
-
-  export type ServiceProviderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["serviceProvider"]>
-
-  export type ServiceProviderSelectScalar = {
-    id?: boolean
-    userId?: boolean
-  }
-
-  export type ServiceProviderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId", ExtArgs["result"]["serviceProvider"]>
-  export type ServiceProviderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-    bookings?: boolean | ServiceProvider$bookingsArgs<ExtArgs>
-    _count?: boolean | ServiceProviderCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type ServiceProviderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type ServiceProviderIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $ServiceProviderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ServiceProvider"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-      bookings: Prisma.$BookingPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      userId: string
-    }, ExtArgs["result"]["serviceProvider"]>
-    composites: {}
-  }
-
-  type ServiceProviderGetPayload<S extends boolean | null | undefined | ServiceProviderDefaultArgs> = $Result.GetResult<Prisma.$ServiceProviderPayload, S>
-
-  type ServiceProviderCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ServiceProviderFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ServiceProviderCountAggregateInputType | true
-    }
-
-  export interface ServiceProviderDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ServiceProvider'], meta: { name: 'ServiceProvider' } }
-    /**
-     * Find zero or one ServiceProvider that matches the filter.
-     * @param {ServiceProviderFindUniqueArgs} args - Arguments to find a ServiceProvider
-     * @example
-     * // Get one ServiceProvider
-     * const serviceProvider = await prisma.serviceProvider.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ServiceProviderFindUniqueArgs>(args: SelectSubset<T, ServiceProviderFindUniqueArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one ServiceProvider that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ServiceProviderFindUniqueOrThrowArgs} args - Arguments to find a ServiceProvider
-     * @example
-     * // Get one ServiceProvider
-     * const serviceProvider = await prisma.serviceProvider.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ServiceProviderFindUniqueOrThrowArgs>(args: SelectSubset<T, ServiceProviderFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ServiceProvider that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderFindFirstArgs} args - Arguments to find a ServiceProvider
-     * @example
-     * // Get one ServiceProvider
-     * const serviceProvider = await prisma.serviceProvider.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ServiceProviderFindFirstArgs>(args?: SelectSubset<T, ServiceProviderFindFirstArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ServiceProvider that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderFindFirstOrThrowArgs} args - Arguments to find a ServiceProvider
-     * @example
-     * // Get one ServiceProvider
-     * const serviceProvider = await prisma.serviceProvider.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ServiceProviderFindFirstOrThrowArgs>(args?: SelectSubset<T, ServiceProviderFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more ServiceProviders that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ServiceProviders
-     * const serviceProviders = await prisma.serviceProvider.findMany()
-     * 
-     * // Get first 10 ServiceProviders
-     * const serviceProviders = await prisma.serviceProvider.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const serviceProviderWithIdOnly = await prisma.serviceProvider.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ServiceProviderFindManyArgs>(args?: SelectSubset<T, ServiceProviderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a ServiceProvider.
-     * @param {ServiceProviderCreateArgs} args - Arguments to create a ServiceProvider.
-     * @example
-     * // Create one ServiceProvider
-     * const ServiceProvider = await prisma.serviceProvider.create({
-     *   data: {
-     *     // ... data to create a ServiceProvider
-     *   }
-     * })
-     * 
-     */
-    create<T extends ServiceProviderCreateArgs>(args: SelectSubset<T, ServiceProviderCreateArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many ServiceProviders.
-     * @param {ServiceProviderCreateManyArgs} args - Arguments to create many ServiceProviders.
-     * @example
-     * // Create many ServiceProviders
-     * const serviceProvider = await prisma.serviceProvider.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ServiceProviderCreateManyArgs>(args?: SelectSubset<T, ServiceProviderCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many ServiceProviders and returns the data saved in the database.
-     * @param {ServiceProviderCreateManyAndReturnArgs} args - Arguments to create many ServiceProviders.
-     * @example
-     * // Create many ServiceProviders
-     * const serviceProvider = await prisma.serviceProvider.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many ServiceProviders and only return the `id`
-     * const serviceProviderWithIdOnly = await prisma.serviceProvider.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ServiceProviderCreateManyAndReturnArgs>(args?: SelectSubset<T, ServiceProviderCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a ServiceProvider.
-     * @param {ServiceProviderDeleteArgs} args - Arguments to delete one ServiceProvider.
-     * @example
-     * // Delete one ServiceProvider
-     * const ServiceProvider = await prisma.serviceProvider.delete({
-     *   where: {
-     *     // ... filter to delete one ServiceProvider
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ServiceProviderDeleteArgs>(args: SelectSubset<T, ServiceProviderDeleteArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one ServiceProvider.
-     * @param {ServiceProviderUpdateArgs} args - Arguments to update one ServiceProvider.
-     * @example
-     * // Update one ServiceProvider
-     * const serviceProvider = await prisma.serviceProvider.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ServiceProviderUpdateArgs>(args: SelectSubset<T, ServiceProviderUpdateArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more ServiceProviders.
-     * @param {ServiceProviderDeleteManyArgs} args - Arguments to filter ServiceProviders to delete.
-     * @example
-     * // Delete a few ServiceProviders
-     * const { count } = await prisma.serviceProvider.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ServiceProviderDeleteManyArgs>(args?: SelectSubset<T, ServiceProviderDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ServiceProviders.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ServiceProviders
-     * const serviceProvider = await prisma.serviceProvider.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ServiceProviderUpdateManyArgs>(args: SelectSubset<T, ServiceProviderUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ServiceProviders and returns the data updated in the database.
-     * @param {ServiceProviderUpdateManyAndReturnArgs} args - Arguments to update many ServiceProviders.
-     * @example
-     * // Update many ServiceProviders
-     * const serviceProvider = await prisma.serviceProvider.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more ServiceProviders and only return the `id`
-     * const serviceProviderWithIdOnly = await prisma.serviceProvider.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ServiceProviderUpdateManyAndReturnArgs>(args: SelectSubset<T, ServiceProviderUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one ServiceProvider.
-     * @param {ServiceProviderUpsertArgs} args - Arguments to update or create a ServiceProvider.
-     * @example
-     * // Update or create a ServiceProvider
-     * const serviceProvider = await prisma.serviceProvider.upsert({
-     *   create: {
-     *     // ... data to create a ServiceProvider
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ServiceProvider we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ServiceProviderUpsertArgs>(args: SelectSubset<T, ServiceProviderUpsertArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of ServiceProviders.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderCountArgs} args - Arguments to filter ServiceProviders to count.
-     * @example
-     * // Count the number of ServiceProviders
-     * const count = await prisma.serviceProvider.count({
-     *   where: {
-     *     // ... the filter for the ServiceProviders we want to count
-     *   }
-     * })
-    **/
-    count<T extends ServiceProviderCountArgs>(
-      args?: Subset<T, ServiceProviderCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ServiceProviderCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ServiceProvider.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ServiceProviderAggregateArgs>(args: Subset<T, ServiceProviderAggregateArgs>): Prisma.PrismaPromise<GetServiceProviderAggregateType<T>>
-
-    /**
-     * Group by ServiceProvider.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceProviderGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ServiceProviderGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ServiceProviderGroupByArgs['orderBy'] }
-        : { orderBy?: ServiceProviderGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ServiceProviderGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceProviderGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ServiceProvider model
-   */
-  readonly fields: ServiceProviderFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ServiceProvider.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ServiceProviderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    bookings<T extends ServiceProvider$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, ServiceProvider$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the ServiceProvider model
-   */
-  interface ServiceProviderFieldRefs {
-    readonly id: FieldRef<"ServiceProvider", 'String'>
-    readonly userId: FieldRef<"ServiceProvider", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ServiceProvider findUnique
-   */
-  export type ServiceProviderFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * Filter, which ServiceProvider to fetch.
-     */
-    where: ServiceProviderWhereUniqueInput
-  }
-
-  /**
-   * ServiceProvider findUniqueOrThrow
-   */
-  export type ServiceProviderFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * Filter, which ServiceProvider to fetch.
-     */
-    where: ServiceProviderWhereUniqueInput
-  }
-
-  /**
-   * ServiceProvider findFirst
-   */
-  export type ServiceProviderFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * Filter, which ServiceProvider to fetch.
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ServiceProviders to fetch.
-     */
-    orderBy?: ServiceProviderOrderByWithRelationInput | ServiceProviderOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ServiceProviders.
-     */
-    cursor?: ServiceProviderWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ServiceProviders from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ServiceProviders.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ServiceProviders.
-     */
-    distinct?: ServiceProviderScalarFieldEnum | ServiceProviderScalarFieldEnum[]
-  }
-
-  /**
-   * ServiceProvider findFirstOrThrow
-   */
-  export type ServiceProviderFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * Filter, which ServiceProvider to fetch.
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ServiceProviders to fetch.
-     */
-    orderBy?: ServiceProviderOrderByWithRelationInput | ServiceProviderOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ServiceProviders.
-     */
-    cursor?: ServiceProviderWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ServiceProviders from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ServiceProviders.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ServiceProviders.
-     */
-    distinct?: ServiceProviderScalarFieldEnum | ServiceProviderScalarFieldEnum[]
-  }
-
-  /**
-   * ServiceProvider findMany
-   */
-  export type ServiceProviderFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * Filter, which ServiceProviders to fetch.
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ServiceProviders to fetch.
-     */
-    orderBy?: ServiceProviderOrderByWithRelationInput | ServiceProviderOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ServiceProviders.
-     */
-    cursor?: ServiceProviderWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ServiceProviders from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ServiceProviders.
-     */
-    skip?: number
-    distinct?: ServiceProviderScalarFieldEnum | ServiceProviderScalarFieldEnum[]
-  }
-
-  /**
-   * ServiceProvider create
-   */
-  export type ServiceProviderCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ServiceProvider.
-     */
-    data: XOR<ServiceProviderCreateInput, ServiceProviderUncheckedCreateInput>
-  }
-
-  /**
-   * ServiceProvider createMany
-   */
-  export type ServiceProviderCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ServiceProviders.
-     */
-    data: ServiceProviderCreateManyInput | ServiceProviderCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ServiceProvider createManyAndReturn
-   */
-  export type ServiceProviderCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * The data used to create many ServiceProviders.
-     */
-    data: ServiceProviderCreateManyInput | ServiceProviderCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ServiceProvider update
-   */
-  export type ServiceProviderUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ServiceProvider.
-     */
-    data: XOR<ServiceProviderUpdateInput, ServiceProviderUncheckedUpdateInput>
-    /**
-     * Choose, which ServiceProvider to update.
-     */
-    where: ServiceProviderWhereUniqueInput
-  }
-
-  /**
-   * ServiceProvider updateMany
-   */
-  export type ServiceProviderUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ServiceProviders.
-     */
-    data: XOR<ServiceProviderUpdateManyMutationInput, ServiceProviderUncheckedUpdateManyInput>
-    /**
-     * Filter which ServiceProviders to update
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * Limit how many ServiceProviders to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * ServiceProvider updateManyAndReturn
-   */
-  export type ServiceProviderUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * The data used to update ServiceProviders.
-     */
-    data: XOR<ServiceProviderUpdateManyMutationInput, ServiceProviderUncheckedUpdateManyInput>
-    /**
-     * Filter which ServiceProviders to update
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * Limit how many ServiceProviders to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ServiceProvider upsert
-   */
-  export type ServiceProviderUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ServiceProvider to update in case it exists.
-     */
-    where: ServiceProviderWhereUniqueInput
-    /**
-     * In case the ServiceProvider found by the `where` argument doesn't exist, create a new ServiceProvider with this data.
-     */
-    create: XOR<ServiceProviderCreateInput, ServiceProviderUncheckedCreateInput>
-    /**
-     * In case the ServiceProvider was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ServiceProviderUpdateInput, ServiceProviderUncheckedUpdateInput>
-  }
-
-  /**
-   * ServiceProvider delete
-   */
-  export type ServiceProviderDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-    /**
-     * Filter which ServiceProvider to delete.
-     */
-    where: ServiceProviderWhereUniqueInput
-  }
-
-  /**
-   * ServiceProvider deleteMany
-   */
-  export type ServiceProviderDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ServiceProviders to delete
-     */
-    where?: ServiceProviderWhereInput
-    /**
-     * Limit how many ServiceProviders to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * ServiceProvider.bookings
-   */
-  export type ServiceProvider$bookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    where?: BookingWhereInput
-    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
-    cursor?: BookingWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
-  }
-
-  /**
-   * ServiceProvider without action
-   */
-  export type ServiceProviderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceProvider
-     */
-    select?: ServiceProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceProvider
-     */
-    omit?: ServiceProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceProviderInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Booking
-   */
-
-  export type AggregateBooking = {
-    _count: BookingCountAggregateOutputType | null
-    _min: BookingMinAggregateOutputType | null
-    _max: BookingMaxAggregateOutputType | null
-  }
-
-  export type BookingMinAggregateOutputType = {
-    id: string | null
-    studentId: string | null
-    providerId: string | null
-    conversationId: string | null
-  }
-
-  export type BookingMaxAggregateOutputType = {
-    id: string | null
-    studentId: string | null
-    providerId: string | null
-    conversationId: string | null
-  }
-
-  export type BookingCountAggregateOutputType = {
-    id: number
-    studentId: number
-    providerId: number
-    conversationId: number
-    _all: number
-  }
-
-
-  export type BookingMinAggregateInputType = {
-    id?: true
-    studentId?: true
-    providerId?: true
-    conversationId?: true
-  }
-
-  export type BookingMaxAggregateInputType = {
-    id?: true
-    studentId?: true
-    providerId?: true
-    conversationId?: true
-  }
-
-  export type BookingCountAggregateInputType = {
-    id?: true
-    studentId?: true
-    providerId?: true
-    conversationId?: true
-    _all?: true
-  }
-
-  export type BookingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Booking to aggregate.
-     */
-    where?: BookingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bookings to fetch.
-     */
-    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BookingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bookings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bookings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Bookings
-    **/
-    _count?: true | BookingCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BookingMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BookingMaxAggregateInputType
-  }
-
-  export type GetBookingAggregateType<T extends BookingAggregateArgs> = {
-        [P in keyof T & keyof AggregateBooking]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBooking[P]>
-      : GetScalarType<T[P], AggregateBooking[P]>
-  }
-
-
-
-
-  export type BookingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BookingWhereInput
-    orderBy?: BookingOrderByWithAggregationInput | BookingOrderByWithAggregationInput[]
-    by: BookingScalarFieldEnum[] | BookingScalarFieldEnum
-    having?: BookingScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BookingCountAggregateInputType | true
-    _min?: BookingMinAggregateInputType
-    _max?: BookingMaxAggregateInputType
-  }
-
-  export type BookingGroupByOutputType = {
-    id: string
-    studentId: string
-    providerId: string
-    conversationId: string
-    _count: BookingCountAggregateOutputType | null
-    _min: BookingMinAggregateOutputType | null
-    _max: BookingMaxAggregateOutputType | null
-  }
-
-  type GetBookingGroupByPayload<T extends BookingGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BookingGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BookingGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BookingGroupByOutputType[P]>
-            : GetScalarType<T[P], BookingGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BookingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    studentId?: boolean
-    providerId?: boolean
-    conversationId?: boolean
-    student?: boolean | UserDefaultArgs<ExtArgs>
-    provider?: boolean | ServiceProviderDefaultArgs<ExtArgs>
-    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["booking"]>
-
-  export type BookingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    studentId?: boolean
-    providerId?: boolean
-    conversationId?: boolean
-    student?: boolean | UserDefaultArgs<ExtArgs>
-    provider?: boolean | ServiceProviderDefaultArgs<ExtArgs>
-    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["booking"]>
-
-  export type BookingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    studentId?: boolean
-    providerId?: boolean
-    conversationId?: boolean
-    student?: boolean | UserDefaultArgs<ExtArgs>
-    provider?: boolean | ServiceProviderDefaultArgs<ExtArgs>
-    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["booking"]>
-
-  export type BookingSelectScalar = {
-    id?: boolean
-    studentId?: boolean
-    providerId?: boolean
-    conversationId?: boolean
-  }
-
-  export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "providerId" | "conversationId", ExtArgs["result"]["booking"]>
-  export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    student?: boolean | UserDefaultArgs<ExtArgs>
-    provider?: boolean | ServiceProviderDefaultArgs<ExtArgs>
-    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
-  }
-  export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    student?: boolean | UserDefaultArgs<ExtArgs>
-    provider?: boolean | ServiceProviderDefaultArgs<ExtArgs>
-    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
-  }
-  export type BookingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    student?: boolean | UserDefaultArgs<ExtArgs>
-    provider?: boolean | ServiceProviderDefaultArgs<ExtArgs>
-    conversation?: boolean | ConversationDefaultArgs<ExtArgs>
-  }
-
-  export type $BookingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Booking"
-    objects: {
-      student: Prisma.$UserPayload<ExtArgs>
-      provider: Prisma.$ServiceProviderPayload<ExtArgs>
-      conversation: Prisma.$ConversationPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      studentId: string
-      providerId: string
-      conversationId: string
-    }, ExtArgs["result"]["booking"]>
-    composites: {}
-  }
-
-  type BookingGetPayload<S extends boolean | null | undefined | BookingDefaultArgs> = $Result.GetResult<Prisma.$BookingPayload, S>
-
-  type BookingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BookingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BookingCountAggregateInputType | true
-    }
-
-  export interface BookingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Booking'], meta: { name: 'Booking' } }
-    /**
-     * Find zero or one Booking that matches the filter.
-     * @param {BookingFindUniqueArgs} args - Arguments to find a Booking
-     * @example
-     * // Get one Booking
-     * const booking = await prisma.booking.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BookingFindUniqueArgs>(args: SelectSubset<T, BookingFindUniqueArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Booking that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BookingFindUniqueOrThrowArgs} args - Arguments to find a Booking
-     * @example
-     * // Get one Booking
-     * const booking = await prisma.booking.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BookingFindUniqueOrThrowArgs>(args: SelectSubset<T, BookingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Booking that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingFindFirstArgs} args - Arguments to find a Booking
-     * @example
-     * // Get one Booking
-     * const booking = await prisma.booking.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BookingFindFirstArgs>(args?: SelectSubset<T, BookingFindFirstArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Booking that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingFindFirstOrThrowArgs} args - Arguments to find a Booking
-     * @example
-     * // Get one Booking
-     * const booking = await prisma.booking.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BookingFindFirstOrThrowArgs>(args?: SelectSubset<T, BookingFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Bookings that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Bookings
-     * const bookings = await prisma.booking.findMany()
-     * 
-     * // Get first 10 Bookings
-     * const bookings = await prisma.booking.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const bookingWithIdOnly = await prisma.booking.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends BookingFindManyArgs>(args?: SelectSubset<T, BookingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Booking.
-     * @param {BookingCreateArgs} args - Arguments to create a Booking.
-     * @example
-     * // Create one Booking
-     * const Booking = await prisma.booking.create({
-     *   data: {
-     *     // ... data to create a Booking
-     *   }
-     * })
-     * 
-     */
-    create<T extends BookingCreateArgs>(args: SelectSubset<T, BookingCreateArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Bookings.
-     * @param {BookingCreateManyArgs} args - Arguments to create many Bookings.
-     * @example
-     * // Create many Bookings
-     * const booking = await prisma.booking.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BookingCreateManyArgs>(args?: SelectSubset<T, BookingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Bookings and returns the data saved in the database.
-     * @param {BookingCreateManyAndReturnArgs} args - Arguments to create many Bookings.
-     * @example
-     * // Create many Bookings
-     * const booking = await prisma.booking.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Bookings and only return the `id`
-     * const bookingWithIdOnly = await prisma.booking.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BookingCreateManyAndReturnArgs>(args?: SelectSubset<T, BookingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Booking.
-     * @param {BookingDeleteArgs} args - Arguments to delete one Booking.
-     * @example
-     * // Delete one Booking
-     * const Booking = await prisma.booking.delete({
-     *   where: {
-     *     // ... filter to delete one Booking
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BookingDeleteArgs>(args: SelectSubset<T, BookingDeleteArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Booking.
-     * @param {BookingUpdateArgs} args - Arguments to update one Booking.
-     * @example
-     * // Update one Booking
-     * const booking = await prisma.booking.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BookingUpdateArgs>(args: SelectSubset<T, BookingUpdateArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Bookings.
-     * @param {BookingDeleteManyArgs} args - Arguments to filter Bookings to delete.
-     * @example
-     * // Delete a few Bookings
-     * const { count } = await prisma.booking.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BookingDeleteManyArgs>(args?: SelectSubset<T, BookingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Bookings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Bookings
-     * const booking = await prisma.booking.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BookingUpdateManyArgs>(args: SelectSubset<T, BookingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Bookings and returns the data updated in the database.
-     * @param {BookingUpdateManyAndReturnArgs} args - Arguments to update many Bookings.
-     * @example
-     * // Update many Bookings
-     * const booking = await prisma.booking.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Bookings and only return the `id`
-     * const bookingWithIdOnly = await prisma.booking.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BookingUpdateManyAndReturnArgs>(args: SelectSubset<T, BookingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Booking.
-     * @param {BookingUpsertArgs} args - Arguments to update or create a Booking.
-     * @example
-     * // Update or create a Booking
-     * const booking = await prisma.booking.upsert({
-     *   create: {
-     *     // ... data to create a Booking
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Booking we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BookingUpsertArgs>(args: SelectSubset<T, BookingUpsertArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Bookings.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingCountArgs} args - Arguments to filter Bookings to count.
-     * @example
-     * // Count the number of Bookings
-     * const count = await prisma.booking.count({
-     *   where: {
-     *     // ... the filter for the Bookings we want to count
-     *   }
-     * })
-    **/
-    count<T extends BookingCountArgs>(
-      args?: Subset<T, BookingCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BookingCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Booking.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BookingAggregateArgs>(args: Subset<T, BookingAggregateArgs>): Prisma.PrismaPromise<GetBookingAggregateType<T>>
-
-    /**
-     * Group by Booking.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BookingGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BookingGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BookingGroupByArgs['orderBy'] }
-        : { orderBy?: BookingGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BookingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Booking model
-   */
-  readonly fields: BookingFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Booking.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BookingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    student<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    provider<T extends ServiceProviderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceProviderDefaultArgs<ExtArgs>>): Prisma__ServiceProviderClient<$Result.GetResult<Prisma.$ServiceProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    conversation<T extends ConversationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ConversationDefaultArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Booking model
-   */
-  interface BookingFieldRefs {
-    readonly id: FieldRef<"Booking", 'String'>
-    readonly studentId: FieldRef<"Booking", 'String'>
-    readonly providerId: FieldRef<"Booking", 'String'>
-    readonly conversationId: FieldRef<"Booking", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Booking findUnique
-   */
-  export type BookingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * Filter, which Booking to fetch.
-     */
-    where: BookingWhereUniqueInput
-  }
-
-  /**
-   * Booking findUniqueOrThrow
-   */
-  export type BookingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * Filter, which Booking to fetch.
-     */
-    where: BookingWhereUniqueInput
-  }
-
-  /**
-   * Booking findFirst
-   */
-  export type BookingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * Filter, which Booking to fetch.
-     */
-    where?: BookingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bookings to fetch.
-     */
-    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Bookings.
-     */
-    cursor?: BookingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bookings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bookings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Bookings.
-     */
-    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
-  }
-
-  /**
-   * Booking findFirstOrThrow
-   */
-  export type BookingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * Filter, which Booking to fetch.
-     */
-    where?: BookingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bookings to fetch.
-     */
-    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Bookings.
-     */
-    cursor?: BookingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bookings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bookings.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Bookings.
-     */
-    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
-  }
-
-  /**
-   * Booking findMany
-   */
-  export type BookingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * Filter, which Bookings to fetch.
-     */
-    where?: BookingWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bookings to fetch.
-     */
-    orderBy?: BookingOrderByWithRelationInput | BookingOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Bookings.
-     */
-    cursor?: BookingWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bookings from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bookings.
-     */
-    skip?: number
-    distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
-  }
-
-  /**
-   * Booking create
-   */
-  export type BookingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Booking.
-     */
-    data: XOR<BookingCreateInput, BookingUncheckedCreateInput>
-  }
-
-  /**
-   * Booking createMany
-   */
-  export type BookingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Bookings.
-     */
-    data: BookingCreateManyInput | BookingCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Booking createManyAndReturn
-   */
-  export type BookingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * The data used to create many Bookings.
-     */
-    data: BookingCreateManyInput | BookingCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Booking update
-   */
-  export type BookingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Booking.
-     */
-    data: XOR<BookingUpdateInput, BookingUncheckedUpdateInput>
-    /**
-     * Choose, which Booking to update.
-     */
-    where: BookingWhereUniqueInput
-  }
-
-  /**
-   * Booking updateMany
-   */
-  export type BookingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Bookings.
-     */
-    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyInput>
-    /**
-     * Filter which Bookings to update
-     */
-    where?: BookingWhereInput
-    /**
-     * Limit how many Bookings to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Booking updateManyAndReturn
-   */
-  export type BookingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * The data used to update Bookings.
-     */
-    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyInput>
-    /**
-     * Filter which Bookings to update
-     */
-    where?: BookingWhereInput
-    /**
-     * Limit how many Bookings to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Booking upsert
-   */
-  export type BookingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Booking to update in case it exists.
-     */
-    where: BookingWhereUniqueInput
-    /**
-     * In case the Booking found by the `where` argument doesn't exist, create a new Booking with this data.
-     */
-    create: XOR<BookingCreateInput, BookingUncheckedCreateInput>
-    /**
-     * In case the Booking was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BookingUpdateInput, BookingUncheckedUpdateInput>
-  }
-
-  /**
-   * Booking delete
-   */
-  export type BookingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-    /**
-     * Filter which Booking to delete.
-     */
-    where: BookingWhereUniqueInput
-  }
-
-  /**
-   * Booking deleteMany
-   */
-  export type BookingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Bookings to delete
-     */
-    where?: BookingWhereInput
-    /**
-     * Limit how many Bookings to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Booking without action
-   */
-  export type BookingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Booking
-     */
-    select?: BookingSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Booking
-     */
-    omit?: BookingOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BookingInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Conversation
-   */
-
-  export type AggregateConversation = {
-    _count: ConversationCountAggregateOutputType | null
-    _min: ConversationMinAggregateOutputType | null
-    _max: ConversationMaxAggregateOutputType | null
-  }
-
-  export type ConversationMinAggregateOutputType = {
-    id: string | null
-    updatedAt: Date | null
-  }
-
-  export type ConversationMaxAggregateOutputType = {
-    id: string | null
-    updatedAt: Date | null
-  }
-
-  export type ConversationCountAggregateOutputType = {
-    id: number
-    messages: number
+    subject: number
+    message: number
+    status: number
+    createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type ConversationMinAggregateInputType = {
+  export type SupportMessageMinAggregateInputType = {
     id?: true
+    userId?: true
+    subject?: true
+    message?: true
+    status?: true
+    createdAt?: true
     updatedAt?: true
   }
 
-  export type ConversationMaxAggregateInputType = {
+  export type SupportMessageMaxAggregateInputType = {
     id?: true
+    userId?: true
+    subject?: true
+    message?: true
+    status?: true
+    createdAt?: true
     updatedAt?: true
   }
 
-  export type ConversationCountAggregateInputType = {
+  export type SupportMessageCountAggregateInputType = {
     id?: true
-    messages?: true
+    userId?: true
+    subject?: true
+    message?: true
+    status?: true
+    createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type ConversationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Conversation to aggregate.
+     * Filter which SupportMessage to aggregate.
      */
-    where?: ConversationWhereInput
+    where?: SupportMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Conversations to fetch.
+     * Determine the order of SupportMessages to fetch.
      */
-    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    orderBy?: SupportMessageOrderByWithRelationInput | SupportMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ConversationWhereUniqueInput
+    cursor?: SupportMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Conversations from the position of the cursor.
+     * Take `±n` SupportMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Conversations.
+     * Skip the first `n` SupportMessages.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Conversations
+     * Count returned SupportMessages
     **/
-    _count?: true | ConversationCountAggregateInputType
+    _count?: true | SupportMessageCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ConversationMinAggregateInputType
+    _min?: SupportMessageMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ConversationMaxAggregateInputType
+    _max?: SupportMessageMaxAggregateInputType
   }
 
-  export type GetConversationAggregateType<T extends ConversationAggregateArgs> = {
-        [P in keyof T & keyof AggregateConversation]: P extends '_count' | 'count'
+  export type GetSupportMessageAggregateType<T extends SupportMessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateSupportMessage]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateConversation[P]>
-      : GetScalarType<T[P], AggregateConversation[P]>
+        : GetScalarType<T[P], AggregateSupportMessage[P]>
+      : GetScalarType<T[P], AggregateSupportMessage[P]>
   }
 
 
 
 
-  export type ConversationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ConversationWhereInput
-    orderBy?: ConversationOrderByWithAggregationInput | ConversationOrderByWithAggregationInput[]
-    by: ConversationScalarFieldEnum[] | ConversationScalarFieldEnum
-    having?: ConversationScalarWhereWithAggregatesInput
+  export type SupportMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SupportMessageWhereInput
+    orderBy?: SupportMessageOrderByWithAggregationInput | SupportMessageOrderByWithAggregationInput[]
+    by: SupportMessageScalarFieldEnum[] | SupportMessageScalarFieldEnum
+    having?: SupportMessageScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ConversationCountAggregateInputType | true
-    _min?: ConversationMinAggregateInputType
-    _max?: ConversationMaxAggregateInputType
+    _count?: SupportMessageCountAggregateInputType | true
+    _min?: SupportMessageMinAggregateInputType
+    _max?: SupportMessageMaxAggregateInputType
   }
 
-  export type ConversationGroupByOutputType = {
+  export type SupportMessageGroupByOutputType = {
     id: string
-    messages: JsonValue
+    userId: string
+    subject: string
+    message: string
+    status: string
+    createdAt: Date
     updatedAt: Date
-    _count: ConversationCountAggregateOutputType | null
-    _min: ConversationMinAggregateOutputType | null
-    _max: ConversationMaxAggregateOutputType | null
+    _count: SupportMessageCountAggregateOutputType | null
+    _min: SupportMessageMinAggregateOutputType | null
+    _max: SupportMessageMaxAggregateOutputType | null
   }
 
-  type GetConversationGroupByPayload<T extends ConversationGroupByArgs> = Prisma.PrismaPromise<
+  type GetSupportMessageGroupByPayload<T extends SupportMessageGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ConversationGroupByOutputType, T['by']> &
+      PickEnumerable<SupportMessageGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ConversationGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof SupportMessageGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ConversationGroupByOutputType[P]>
-            : GetScalarType<T[P], ConversationGroupByOutputType[P]>
+              : GetScalarType<T[P], SupportMessageGroupByOutputType[P]>
+            : GetScalarType<T[P], SupportMessageGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ConversationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SupportMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    messages?: boolean
+    userId?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    booking?: boolean | Conversation$bookingArgs<ExtArgs>
-  }, ExtArgs["result"]["conversation"]>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["supportMessage"]>
 
-  export type ConversationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SupportMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    messages?: boolean
+    userId?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["conversation"]>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["supportMessage"]>
 
-  export type ConversationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SupportMessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    messages?: boolean
+    userId?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["conversation"]>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["supportMessage"]>
 
-  export type ConversationSelectScalar = {
+  export type SupportMessageSelectScalar = {
     id?: boolean
-    messages?: boolean
+    userId?: boolean
+    subject?: boolean
+    message?: boolean
+    status?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ConversationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "messages" | "updatedAt", ExtArgs["result"]["conversation"]>
-  export type ConversationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    booking?: boolean | Conversation$bookingArgs<ExtArgs>
+  export type SupportMessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "subject" | "message" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["supportMessage"]>
+  export type SupportMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type ConversationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ConversationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type SupportMessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SupportMessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
-  export type $ConversationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Conversation"
+  export type $SupportMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SupportMessage"
     objects: {
-      booking: Prisma.$BookingPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      messages: Prisma.JsonValue
+      userId: string
+      subject: string
+      message: string
+      status: string
+      createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["conversation"]>
+    }, ExtArgs["result"]["supportMessage"]>
     composites: {}
   }
 
-  type ConversationGetPayload<S extends boolean | null | undefined | ConversationDefaultArgs> = $Result.GetResult<Prisma.$ConversationPayload, S>
+  type SupportMessageGetPayload<S extends boolean | null | undefined | SupportMessageDefaultArgs> = $Result.GetResult<Prisma.$SupportMessagePayload, S>
 
-  type ConversationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ConversationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ConversationCountAggregateInputType | true
+  type SupportMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SupportMessageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SupportMessageCountAggregateInputType | true
     }
 
-  export interface ConversationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Conversation'], meta: { name: 'Conversation' } }
+  export interface SupportMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SupportMessage'], meta: { name: 'SupportMessage' } }
     /**
-     * Find zero or one Conversation that matches the filter.
-     * @param {ConversationFindUniqueArgs} args - Arguments to find a Conversation
+     * Find zero or one SupportMessage that matches the filter.
+     * @param {SupportMessageFindUniqueArgs} args - Arguments to find a SupportMessage
      * @example
-     * // Get one Conversation
-     * const conversation = await prisma.conversation.findUnique({
+     * // Get one SupportMessage
+     * const supportMessage = await prisma.supportMessage.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ConversationFindUniqueArgs>(args: SelectSubset<T, ConversationFindUniqueArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends SupportMessageFindUniqueArgs>(args: SelectSubset<T, SupportMessageFindUniqueArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Conversation that matches the filter or throw an error with `error.code='P2025'`
+     * Find one SupportMessage that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ConversationFindUniqueOrThrowArgs} args - Arguments to find a Conversation
+     * @param {SupportMessageFindUniqueOrThrowArgs} args - Arguments to find a SupportMessage
      * @example
-     * // Get one Conversation
-     * const conversation = await prisma.conversation.findUniqueOrThrow({
+     * // Get one SupportMessage
+     * const supportMessage = await prisma.supportMessage.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ConversationFindUniqueOrThrowArgs>(args: SelectSubset<T, ConversationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends SupportMessageFindUniqueOrThrowArgs>(args: SelectSubset<T, SupportMessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Conversation that matches the filter.
+     * Find the first SupportMessage that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationFindFirstArgs} args - Arguments to find a Conversation
+     * @param {SupportMessageFindFirstArgs} args - Arguments to find a SupportMessage
      * @example
-     * // Get one Conversation
-     * const conversation = await prisma.conversation.findFirst({
+     * // Get one SupportMessage
+     * const supportMessage = await prisma.supportMessage.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ConversationFindFirstArgs>(args?: SelectSubset<T, ConversationFindFirstArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends SupportMessageFindFirstArgs>(args?: SelectSubset<T, SupportMessageFindFirstArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Conversation that matches the filter or
+     * Find the first SupportMessage that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationFindFirstOrThrowArgs} args - Arguments to find a Conversation
+     * @param {SupportMessageFindFirstOrThrowArgs} args - Arguments to find a SupportMessage
      * @example
-     * // Get one Conversation
-     * const conversation = await prisma.conversation.findFirstOrThrow({
+     * // Get one SupportMessage
+     * const supportMessage = await prisma.supportMessage.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ConversationFindFirstOrThrowArgs>(args?: SelectSubset<T, ConversationFindFirstOrThrowArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends SupportMessageFindFirstOrThrowArgs>(args?: SelectSubset<T, SupportMessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Conversations that matches the filter.
+     * Find zero or more SupportMessages that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {SupportMessageFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Conversations
-     * const conversations = await prisma.conversation.findMany()
+     * // Get all SupportMessages
+     * const supportMessages = await prisma.supportMessage.findMany()
      * 
-     * // Get first 10 Conversations
-     * const conversations = await prisma.conversation.findMany({ take: 10 })
+     * // Get first 10 SupportMessages
+     * const supportMessages = await prisma.supportMessage.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const conversationWithIdOnly = await prisma.conversation.findMany({ select: { id: true } })
+     * const supportMessageWithIdOnly = await prisma.supportMessage.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ConversationFindManyArgs>(args?: SelectSubset<T, ConversationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends SupportMessageFindManyArgs>(args?: SelectSubset<T, SupportMessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Conversation.
-     * @param {ConversationCreateArgs} args - Arguments to create a Conversation.
+     * Create a SupportMessage.
+     * @param {SupportMessageCreateArgs} args - Arguments to create a SupportMessage.
      * @example
-     * // Create one Conversation
-     * const Conversation = await prisma.conversation.create({
+     * // Create one SupportMessage
+     * const SupportMessage = await prisma.supportMessage.create({
      *   data: {
-     *     // ... data to create a Conversation
+     *     // ... data to create a SupportMessage
      *   }
      * })
      * 
      */
-    create<T extends ConversationCreateArgs>(args: SelectSubset<T, ConversationCreateArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends SupportMessageCreateArgs>(args: SelectSubset<T, SupportMessageCreateArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Conversations.
-     * @param {ConversationCreateManyArgs} args - Arguments to create many Conversations.
+     * Create many SupportMessages.
+     * @param {SupportMessageCreateManyArgs} args - Arguments to create many SupportMessages.
      * @example
-     * // Create many Conversations
-     * const conversation = await prisma.conversation.createMany({
+     * // Create many SupportMessages
+     * const supportMessage = await prisma.supportMessage.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ConversationCreateManyArgs>(args?: SelectSubset<T, ConversationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends SupportMessageCreateManyArgs>(args?: SelectSubset<T, SupportMessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Conversations and returns the data saved in the database.
-     * @param {ConversationCreateManyAndReturnArgs} args - Arguments to create many Conversations.
+     * Create many SupportMessages and returns the data saved in the database.
+     * @param {SupportMessageCreateManyAndReturnArgs} args - Arguments to create many SupportMessages.
      * @example
-     * // Create many Conversations
-     * const conversation = await prisma.conversation.createManyAndReturn({
+     * // Create many SupportMessages
+     * const supportMessage = await prisma.supportMessage.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Conversations and only return the `id`
-     * const conversationWithIdOnly = await prisma.conversation.createManyAndReturn({
+     * // Create many SupportMessages and only return the `id`
+     * const supportMessageWithIdOnly = await prisma.supportMessage.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8377,28 +13847,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ConversationCreateManyAndReturnArgs>(args?: SelectSubset<T, ConversationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends SupportMessageCreateManyAndReturnArgs>(args?: SelectSubset<T, SupportMessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Conversation.
-     * @param {ConversationDeleteArgs} args - Arguments to delete one Conversation.
+     * Delete a SupportMessage.
+     * @param {SupportMessageDeleteArgs} args - Arguments to delete one SupportMessage.
      * @example
-     * // Delete one Conversation
-     * const Conversation = await prisma.conversation.delete({
+     * // Delete one SupportMessage
+     * const SupportMessage = await prisma.supportMessage.delete({
      *   where: {
-     *     // ... filter to delete one Conversation
+     *     // ... filter to delete one SupportMessage
      *   }
      * })
      * 
      */
-    delete<T extends ConversationDeleteArgs>(args: SelectSubset<T, ConversationDeleteArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends SupportMessageDeleteArgs>(args: SelectSubset<T, SupportMessageDeleteArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Conversation.
-     * @param {ConversationUpdateArgs} args - Arguments to update one Conversation.
+     * Update one SupportMessage.
+     * @param {SupportMessageUpdateArgs} args - Arguments to update one SupportMessage.
      * @example
-     * // Update one Conversation
-     * const conversation = await prisma.conversation.update({
+     * // Update one SupportMessage
+     * const supportMessage = await prisma.supportMessage.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8408,30 +13878,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ConversationUpdateArgs>(args: SelectSubset<T, ConversationUpdateArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends SupportMessageUpdateArgs>(args: SelectSubset<T, SupportMessageUpdateArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Conversations.
-     * @param {ConversationDeleteManyArgs} args - Arguments to filter Conversations to delete.
+     * Delete zero or more SupportMessages.
+     * @param {SupportMessageDeleteManyArgs} args - Arguments to filter SupportMessages to delete.
      * @example
-     * // Delete a few Conversations
-     * const { count } = await prisma.conversation.deleteMany({
+     * // Delete a few SupportMessages
+     * const { count } = await prisma.supportMessage.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ConversationDeleteManyArgs>(args?: SelectSubset<T, ConversationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends SupportMessageDeleteManyArgs>(args?: SelectSubset<T, SupportMessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Conversations.
+     * Update zero or more SupportMessages.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {SupportMessageUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Conversations
-     * const conversation = await prisma.conversation.updateMany({
+     * // Update many SupportMessages
+     * const supportMessage = await prisma.supportMessage.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8441,14 +13911,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ConversationUpdateManyArgs>(args: SelectSubset<T, ConversationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends SupportMessageUpdateManyArgs>(args: SelectSubset<T, SupportMessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Conversations and returns the data updated in the database.
-     * @param {ConversationUpdateManyAndReturnArgs} args - Arguments to update many Conversations.
+     * Update zero or more SupportMessages and returns the data updated in the database.
+     * @param {SupportMessageUpdateManyAndReturnArgs} args - Arguments to update many SupportMessages.
      * @example
-     * // Update many Conversations
-     * const conversation = await prisma.conversation.updateManyAndReturn({
+     * // Update many SupportMessages
+     * const supportMessage = await prisma.supportMessage.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8457,8 +13927,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Conversations and only return the `id`
-     * const conversationWithIdOnly = await prisma.conversation.updateManyAndReturn({
+     * // Update zero or more SupportMessages and only return the `id`
+     * const supportMessageWithIdOnly = await prisma.supportMessage.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -8471,56 +13941,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ConversationUpdateManyAndReturnArgs>(args: SelectSubset<T, ConversationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends SupportMessageUpdateManyAndReturnArgs>(args: SelectSubset<T, SupportMessageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Conversation.
-     * @param {ConversationUpsertArgs} args - Arguments to update or create a Conversation.
+     * Create or update one SupportMessage.
+     * @param {SupportMessageUpsertArgs} args - Arguments to update or create a SupportMessage.
      * @example
-     * // Update or create a Conversation
-     * const conversation = await prisma.conversation.upsert({
+     * // Update or create a SupportMessage
+     * const supportMessage = await prisma.supportMessage.upsert({
      *   create: {
-     *     // ... data to create a Conversation
+     *     // ... data to create a SupportMessage
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Conversation we want to update
+     *     // ... the filter for the SupportMessage we want to update
      *   }
      * })
      */
-    upsert<T extends ConversationUpsertArgs>(args: SelectSubset<T, ConversationUpsertArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends SupportMessageUpsertArgs>(args: SelectSubset<T, SupportMessageUpsertArgs<ExtArgs>>): Prisma__SupportMessageClient<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Conversations.
+     * Count the number of SupportMessages.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationCountArgs} args - Arguments to filter Conversations to count.
+     * @param {SupportMessageCountArgs} args - Arguments to filter SupportMessages to count.
      * @example
-     * // Count the number of Conversations
-     * const count = await prisma.conversation.count({
+     * // Count the number of SupportMessages
+     * const count = await prisma.supportMessage.count({
      *   where: {
-     *     // ... the filter for the Conversations we want to count
+     *     // ... the filter for the SupportMessages we want to count
      *   }
      * })
     **/
-    count<T extends ConversationCountArgs>(
-      args?: Subset<T, ConversationCountArgs>,
+    count<T extends SupportMessageCountArgs>(
+      args?: Subset<T, SupportMessageCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ConversationCountAggregateOutputType>
+          : GetScalarType<T['select'], SupportMessageCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Conversation.
+     * Allows you to perform aggregations operations on a SupportMessage.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {SupportMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -8540,13 +14010,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ConversationAggregateArgs>(args: Subset<T, ConversationAggregateArgs>): Prisma.PrismaPromise<GetConversationAggregateType<T>>
+    aggregate<T extends SupportMessageAggregateArgs>(args: Subset<T, SupportMessageAggregateArgs>): Prisma.PrismaPromise<GetSupportMessageAggregateType<T>>
 
     /**
-     * Group by Conversation.
+     * Group by SupportMessage.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ConversationGroupByArgs} args - Group by arguments.
+     * @param {SupportMessageGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8561,14 +14031,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ConversationGroupByArgs,
+      T extends SupportMessageGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ConversationGroupByArgs['orderBy'] }
-        : { orderBy?: ConversationGroupByArgs['orderBy'] },
+        ? { orderBy: SupportMessageGroupByArgs['orderBy'] }
+        : { orderBy?: SupportMessageGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8617,22 +14087,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ConversationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetConversationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, SupportMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSupportMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Conversation model
+   * Fields of the SupportMessage model
    */
-  readonly fields: ConversationFieldRefs;
+  readonly fields: SupportMessageFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Conversation.
+   * The delegate class that acts as a "Promise-like" for SupportMessage.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ConversationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__SupportMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    booking<T extends Conversation$bookingArgs<ExtArgs> = {}>(args?: Subset<T, Conversation$bookingArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8659,434 +14129,2807 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Conversation model
+   * Fields of the SupportMessage model
    */
-  interface ConversationFieldRefs {
-    readonly id: FieldRef<"Conversation", 'String'>
-    readonly messages: FieldRef<"Conversation", 'Json'>
-    readonly updatedAt: FieldRef<"Conversation", 'DateTime'>
+  interface SupportMessageFieldRefs {
+    readonly id: FieldRef<"SupportMessage", 'String'>
+    readonly userId: FieldRef<"SupportMessage", 'String'>
+    readonly subject: FieldRef<"SupportMessage", 'String'>
+    readonly message: FieldRef<"SupportMessage", 'String'>
+    readonly status: FieldRef<"SupportMessage", 'String'>
+    readonly createdAt: FieldRef<"SupportMessage", 'DateTime'>
+    readonly updatedAt: FieldRef<"SupportMessage", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Conversation findUnique
+   * SupportMessage findUnique
    */
-  export type ConversationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: SupportMessageInclude<ExtArgs> | null
     /**
-     * Filter, which Conversation to fetch.
+     * Filter, which SupportMessage to fetch.
      */
-    where: ConversationWhereUniqueInput
+    where: SupportMessageWhereUniqueInput
   }
 
   /**
-   * Conversation findUniqueOrThrow
+   * SupportMessage findUniqueOrThrow
    */
-  export type ConversationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: SupportMessageInclude<ExtArgs> | null
     /**
-     * Filter, which Conversation to fetch.
+     * Filter, which SupportMessage to fetch.
      */
-    where: ConversationWhereUniqueInput
+    where: SupportMessageWhereUniqueInput
   }
 
   /**
-   * Conversation findFirst
+   * SupportMessage findFirst
    */
-  export type ConversationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: SupportMessageInclude<ExtArgs> | null
     /**
-     * Filter, which Conversation to fetch.
+     * Filter, which SupportMessage to fetch.
      */
-    where?: ConversationWhereInput
+    where?: SupportMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Conversations to fetch.
+     * Determine the order of SupportMessages to fetch.
      */
-    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    orderBy?: SupportMessageOrderByWithRelationInput | SupportMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Conversations.
+     * Sets the position for searching for SupportMessages.
      */
-    cursor?: ConversationWhereUniqueInput
+    cursor?: SupportMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Conversations from the position of the cursor.
+     * Take `±n` SupportMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Conversations.
+     * Skip the first `n` SupportMessages.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Conversations.
+     * Filter by unique combinations of SupportMessages.
      */
-    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+    distinct?: SupportMessageScalarFieldEnum | SupportMessageScalarFieldEnum[]
   }
 
   /**
-   * Conversation findFirstOrThrow
+   * SupportMessage findFirstOrThrow
    */
-  export type ConversationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: SupportMessageInclude<ExtArgs> | null
     /**
-     * Filter, which Conversation to fetch.
+     * Filter, which SupportMessage to fetch.
      */
-    where?: ConversationWhereInput
+    where?: SupportMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Conversations to fetch.
+     * Determine the order of SupportMessages to fetch.
      */
-    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    orderBy?: SupportMessageOrderByWithRelationInput | SupportMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Conversations.
+     * Sets the position for searching for SupportMessages.
      */
-    cursor?: ConversationWhereUniqueInput
+    cursor?: SupportMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Conversations from the position of the cursor.
+     * Take `±n` SupportMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Conversations.
+     * Skip the first `n` SupportMessages.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Conversations.
+     * Filter by unique combinations of SupportMessages.
      */
-    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+    distinct?: SupportMessageScalarFieldEnum | SupportMessageScalarFieldEnum[]
   }
 
   /**
-   * Conversation findMany
+   * SupportMessage findMany
    */
-  export type ConversationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: SupportMessageInclude<ExtArgs> | null
     /**
-     * Filter, which Conversations to fetch.
+     * Filter, which SupportMessages to fetch.
      */
-    where?: ConversationWhereInput
+    where?: SupportMessageWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Conversations to fetch.
+     * Determine the order of SupportMessages to fetch.
      */
-    orderBy?: ConversationOrderByWithRelationInput | ConversationOrderByWithRelationInput[]
+    orderBy?: SupportMessageOrderByWithRelationInput | SupportMessageOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Conversations.
+     * Sets the position for listing SupportMessages.
      */
-    cursor?: ConversationWhereUniqueInput
+    cursor?: SupportMessageWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Conversations from the position of the cursor.
+     * Take `±n` SupportMessages from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Conversations.
+     * Skip the first `n` SupportMessages.
      */
     skip?: number
-    distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
+    distinct?: SupportMessageScalarFieldEnum | SupportMessageScalarFieldEnum[]
   }
 
   /**
-   * Conversation create
+   * SupportMessage create
    */
-  export type ConversationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: SupportMessageSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: SupportMessageInclude<ExtArgs> | null
     /**
-     * The data needed to create a Conversation.
+     * The data needed to create a SupportMessage.
      */
-    data: XOR<ConversationCreateInput, ConversationUncheckedCreateInput>
+    data: XOR<SupportMessageCreateInput, SupportMessageUncheckedCreateInput>
   }
 
   /**
-   * Conversation createMany
+   * SupportMessage createMany
    */
-  export type ConversationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Conversations.
+     * The data used to create many SupportMessages.
      */
-    data: ConversationCreateManyInput | ConversationCreateManyInput[]
+    data: SupportMessageCreateManyInput | SupportMessageCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Conversation createManyAndReturn
+   * SupportMessage createManyAndReturn
    */
-  export type ConversationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SupportMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the SupportMessage
      */
-    select?: ConversationSelectCreateManyAndReturn<ExtArgs> | null
+    select?: SupportMessageSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the SupportMessage
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: SupportMessageOmit<ExtArgs> | null
     /**
-     * The data used to create many Conversations.
+     * The data used to create many SupportMessages.
      */
-    data: ConversationCreateManyInput | ConversationCreateManyInput[]
+    data: SupportMessageCreateManyInput | SupportMessageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportMessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SupportMessage update
+   */
+  export type SupportMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupportMessage
+     */
+    select?: SupportMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupportMessage
+     */
+    omit?: SupportMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SupportMessage.
+     */
+    data: XOR<SupportMessageUpdateInput, SupportMessageUncheckedUpdateInput>
+    /**
+     * Choose, which SupportMessage to update.
+     */
+    where: SupportMessageWhereUniqueInput
+  }
+
+  /**
+   * SupportMessage updateMany
+   */
+  export type SupportMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SupportMessages.
+     */
+    data: XOR<SupportMessageUpdateManyMutationInput, SupportMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which SupportMessages to update
+     */
+    where?: SupportMessageWhereInput
+    /**
+     * Limit how many SupportMessages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupportMessage updateManyAndReturn
+   */
+  export type SupportMessageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupportMessage
+     */
+    select?: SupportMessageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupportMessage
+     */
+    omit?: SupportMessageOmit<ExtArgs> | null
+    /**
+     * The data used to update SupportMessages.
+     */
+    data: XOR<SupportMessageUpdateManyMutationInput, SupportMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which SupportMessages to update
+     */
+    where?: SupportMessageWhereInput
+    /**
+     * Limit how many SupportMessages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportMessageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SupportMessage upsert
+   */
+  export type SupportMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupportMessage
+     */
+    select?: SupportMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupportMessage
+     */
+    omit?: SupportMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportMessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SupportMessage to update in case it exists.
+     */
+    where: SupportMessageWhereUniqueInput
+    /**
+     * In case the SupportMessage found by the `where` argument doesn't exist, create a new SupportMessage with this data.
+     */
+    create: XOR<SupportMessageCreateInput, SupportMessageUncheckedCreateInput>
+    /**
+     * In case the SupportMessage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SupportMessageUpdateInput, SupportMessageUncheckedUpdateInput>
+  }
+
+  /**
+   * SupportMessage delete
+   */
+  export type SupportMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupportMessage
+     */
+    select?: SupportMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupportMessage
+     */
+    omit?: SupportMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportMessageInclude<ExtArgs> | null
+    /**
+     * Filter which SupportMessage to delete.
+     */
+    where: SupportMessageWhereUniqueInput
+  }
+
+  /**
+   * SupportMessage deleteMany
+   */
+  export type SupportMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SupportMessages to delete
+     */
+    where?: SupportMessageWhereInput
+    /**
+     * Limit how many SupportMessages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupportMessage without action
+   */
+  export type SupportMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupportMessage
+     */
+    select?: SupportMessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupportMessage
+     */
+    omit?: SupportMessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SupportMessageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model provider_wallet
+   */
+
+  export type AggregateProvider_wallet = {
+    _count: Provider_walletCountAggregateOutputType | null
+    _avg: Provider_walletAvgAggregateOutputType | null
+    _sum: Provider_walletSumAggregateOutputType | null
+    _min: Provider_walletMinAggregateOutputType | null
+    _max: Provider_walletMaxAggregateOutputType | null
+  }
+
+  export type Provider_walletAvgAggregateOutputType = {
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+  }
+
+  export type Provider_walletSumAggregateOutputType = {
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+  }
+
+  export type Provider_walletMinAggregateOutputType = {
+    id: string | null
+    providerId: string | null
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Provider_walletMaxAggregateOutputType = {
+    id: string | null
+    providerId: string | null
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Provider_walletCountAggregateOutputType = {
+    id: number
+    providerId: number
+    availableBalance: number
+    pendingBalance: number
+    totalEarnings: number
+    totalWithdrawn: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Provider_walletAvgAggregateInputType = {
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+  }
+
+  export type Provider_walletSumAggregateInputType = {
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+  }
+
+  export type Provider_walletMinAggregateInputType = {
+    id?: true
+    providerId?: true
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Provider_walletMaxAggregateInputType = {
+    id?: true
+    providerId?: true
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Provider_walletCountAggregateInputType = {
+    id?: true
+    providerId?: true
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Provider_walletAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which provider_wallet to aggregate.
+     */
+    where?: provider_walletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_wallets to fetch.
+     */
+    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: provider_walletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_wallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_wallets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned provider_wallets
+    **/
+    _count?: true | Provider_walletCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Provider_walletAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Provider_walletSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Provider_walletMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Provider_walletMaxAggregateInputType
+  }
+
+  export type GetProvider_walletAggregateType<T extends Provider_walletAggregateArgs> = {
+        [P in keyof T & keyof AggregateProvider_wallet]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProvider_wallet[P]>
+      : GetScalarType<T[P], AggregateProvider_wallet[P]>
+  }
+
+
+
+
+  export type provider_walletGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_walletWhereInput
+    orderBy?: provider_walletOrderByWithAggregationInput | provider_walletOrderByWithAggregationInput[]
+    by: Provider_walletScalarFieldEnum[] | Provider_walletScalarFieldEnum
+    having?: provider_walletScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Provider_walletCountAggregateInputType | true
+    _avg?: Provider_walletAvgAggregateInputType
+    _sum?: Provider_walletSumAggregateInputType
+    _min?: Provider_walletMinAggregateInputType
+    _max?: Provider_walletMaxAggregateInputType
+  }
+
+  export type Provider_walletGroupByOutputType = {
+    id: string
+    providerId: string
+    availableBalance: number
+    pendingBalance: number
+    totalEarnings: number
+    totalWithdrawn: number
+    createdAt: Date
+    updatedAt: Date
+    _count: Provider_walletCountAggregateOutputType | null
+    _avg: Provider_walletAvgAggregateOutputType | null
+    _sum: Provider_walletSumAggregateOutputType | null
+    _min: Provider_walletMinAggregateOutputType | null
+    _max: Provider_walletMaxAggregateOutputType | null
+  }
+
+  type GetProvider_walletGroupByPayload<T extends provider_walletGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Provider_walletGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Provider_walletGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Provider_walletGroupByOutputType[P]>
+            : GetScalarType<T[P], Provider_walletGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type provider_walletSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_wallet"]>
+
+  export type provider_walletSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_wallet"]>
+
+  export type provider_walletSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_wallet"]>
+
+  export type provider_walletSelectScalar = {
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type provider_walletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerId" | "availableBalance" | "pendingBalance" | "totalEarnings" | "totalWithdrawn" | "createdAt" | "updatedAt", ExtArgs["result"]["provider_wallet"]>
+  export type provider_walletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type provider_walletIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type provider_walletIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $provider_walletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "provider_wallet"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      providerId: string
+      availableBalance: number
+      pendingBalance: number
+      totalEarnings: number
+      totalWithdrawn: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["provider_wallet"]>
+    composites: {}
+  }
+
+  type provider_walletGetPayload<S extends boolean | null | undefined | provider_walletDefaultArgs> = $Result.GetResult<Prisma.$provider_walletPayload, S>
+
+  type provider_walletCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<provider_walletFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Provider_walletCountAggregateInputType | true
+    }
+
+  export interface provider_walletDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['provider_wallet'], meta: { name: 'provider_wallet' } }
+    /**
+     * Find zero or one Provider_wallet that matches the filter.
+     * @param {provider_walletFindUniqueArgs} args - Arguments to find a Provider_wallet
+     * @example
+     * // Get one Provider_wallet
+     * const provider_wallet = await prisma.provider_wallet.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends provider_walletFindUniqueArgs>(args: SelectSubset<T, provider_walletFindUniqueArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Provider_wallet that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {provider_walletFindUniqueOrThrowArgs} args - Arguments to find a Provider_wallet
+     * @example
+     * // Get one Provider_wallet
+     * const provider_wallet = await prisma.provider_wallet.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends provider_walletFindUniqueOrThrowArgs>(args: SelectSubset<T, provider_walletFindUniqueOrThrowArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provider_wallet that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_walletFindFirstArgs} args - Arguments to find a Provider_wallet
+     * @example
+     * // Get one Provider_wallet
+     * const provider_wallet = await prisma.provider_wallet.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends provider_walletFindFirstArgs>(args?: SelectSubset<T, provider_walletFindFirstArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provider_wallet that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_walletFindFirstOrThrowArgs} args - Arguments to find a Provider_wallet
+     * @example
+     * // Get one Provider_wallet
+     * const provider_wallet = await prisma.provider_wallet.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends provider_walletFindFirstOrThrowArgs>(args?: SelectSubset<T, provider_walletFindFirstOrThrowArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Provider_wallets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_walletFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Provider_wallets
+     * const provider_wallets = await prisma.provider_wallet.findMany()
+     * 
+     * // Get first 10 Provider_wallets
+     * const provider_wallets = await prisma.provider_wallet.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const provider_walletWithIdOnly = await prisma.provider_wallet.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends provider_walletFindManyArgs>(args?: SelectSubset<T, provider_walletFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Provider_wallet.
+     * @param {provider_walletCreateArgs} args - Arguments to create a Provider_wallet.
+     * @example
+     * // Create one Provider_wallet
+     * const Provider_wallet = await prisma.provider_wallet.create({
+     *   data: {
+     *     // ... data to create a Provider_wallet
+     *   }
+     * })
+     * 
+     */
+    create<T extends provider_walletCreateArgs>(args: SelectSubset<T, provider_walletCreateArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Provider_wallets.
+     * @param {provider_walletCreateManyArgs} args - Arguments to create many Provider_wallets.
+     * @example
+     * // Create many Provider_wallets
+     * const provider_wallet = await prisma.provider_wallet.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends provider_walletCreateManyArgs>(args?: SelectSubset<T, provider_walletCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Provider_wallets and returns the data saved in the database.
+     * @param {provider_walletCreateManyAndReturnArgs} args - Arguments to create many Provider_wallets.
+     * @example
+     * // Create many Provider_wallets
+     * const provider_wallet = await prisma.provider_wallet.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Provider_wallets and only return the `id`
+     * const provider_walletWithIdOnly = await prisma.provider_wallet.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends provider_walletCreateManyAndReturnArgs>(args?: SelectSubset<T, provider_walletCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Provider_wallet.
+     * @param {provider_walletDeleteArgs} args - Arguments to delete one Provider_wallet.
+     * @example
+     * // Delete one Provider_wallet
+     * const Provider_wallet = await prisma.provider_wallet.delete({
+     *   where: {
+     *     // ... filter to delete one Provider_wallet
+     *   }
+     * })
+     * 
+     */
+    delete<T extends provider_walletDeleteArgs>(args: SelectSubset<T, provider_walletDeleteArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Provider_wallet.
+     * @param {provider_walletUpdateArgs} args - Arguments to update one Provider_wallet.
+     * @example
+     * // Update one Provider_wallet
+     * const provider_wallet = await prisma.provider_wallet.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends provider_walletUpdateArgs>(args: SelectSubset<T, provider_walletUpdateArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Provider_wallets.
+     * @param {provider_walletDeleteManyArgs} args - Arguments to filter Provider_wallets to delete.
+     * @example
+     * // Delete a few Provider_wallets
+     * const { count } = await prisma.provider_wallet.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends provider_walletDeleteManyArgs>(args?: SelectSubset<T, provider_walletDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provider_wallets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_walletUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Provider_wallets
+     * const provider_wallet = await prisma.provider_wallet.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends provider_walletUpdateManyArgs>(args: SelectSubset<T, provider_walletUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provider_wallets and returns the data updated in the database.
+     * @param {provider_walletUpdateManyAndReturnArgs} args - Arguments to update many Provider_wallets.
+     * @example
+     * // Update many Provider_wallets
+     * const provider_wallet = await prisma.provider_wallet.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Provider_wallets and only return the `id`
+     * const provider_walletWithIdOnly = await prisma.provider_wallet.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends provider_walletUpdateManyAndReturnArgs>(args: SelectSubset<T, provider_walletUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Provider_wallet.
+     * @param {provider_walletUpsertArgs} args - Arguments to update or create a Provider_wallet.
+     * @example
+     * // Update or create a Provider_wallet
+     * const provider_wallet = await prisma.provider_wallet.upsert({
+     *   create: {
+     *     // ... data to create a Provider_wallet
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Provider_wallet we want to update
+     *   }
+     * })
+     */
+    upsert<T extends provider_walletUpsertArgs>(args: SelectSubset<T, provider_walletUpsertArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Provider_wallets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_walletCountArgs} args - Arguments to filter Provider_wallets to count.
+     * @example
+     * // Count the number of Provider_wallets
+     * const count = await prisma.provider_wallet.count({
+     *   where: {
+     *     // ... the filter for the Provider_wallets we want to count
+     *   }
+     * })
+    **/
+    count<T extends provider_walletCountArgs>(
+      args?: Subset<T, provider_walletCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Provider_walletCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Provider_wallet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Provider_walletAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Provider_walletAggregateArgs>(args: Subset<T, Provider_walletAggregateArgs>): Prisma.PrismaPromise<GetProvider_walletAggregateType<T>>
+
+    /**
+     * Group by Provider_wallet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_walletGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends provider_walletGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: provider_walletGroupByArgs['orderBy'] }
+        : { orderBy?: provider_walletGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, provider_walletGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProvider_walletGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the provider_wallet model
+   */
+  readonly fields: provider_walletFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for provider_wallet.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__provider_walletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the provider_wallet model
+   */
+  interface provider_walletFieldRefs {
+    readonly id: FieldRef<"provider_wallet", 'String'>
+    readonly providerId: FieldRef<"provider_wallet", 'String'>
+    readonly availableBalance: FieldRef<"provider_wallet", 'Float'>
+    readonly pendingBalance: FieldRef<"provider_wallet", 'Float'>
+    readonly totalEarnings: FieldRef<"provider_wallet", 'Float'>
+    readonly totalWithdrawn: FieldRef<"provider_wallet", 'Float'>
+    readonly createdAt: FieldRef<"provider_wallet", 'DateTime'>
+    readonly updatedAt: FieldRef<"provider_wallet", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * provider_wallet findUnique
+   */
+  export type provider_walletFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_wallet to fetch.
+     */
+    where: provider_walletWhereUniqueInput
+  }
+
+  /**
+   * provider_wallet findUniqueOrThrow
+   */
+  export type provider_walletFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_wallet to fetch.
+     */
+    where: provider_walletWhereUniqueInput
+  }
+
+  /**
+   * provider_wallet findFirst
+   */
+  export type provider_walletFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_wallet to fetch.
+     */
+    where?: provider_walletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_wallets to fetch.
+     */
+    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for provider_wallets.
+     */
+    cursor?: provider_walletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_wallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_wallets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_wallets.
+     */
+    distinct?: Provider_walletScalarFieldEnum | Provider_walletScalarFieldEnum[]
+  }
+
+  /**
+   * provider_wallet findFirstOrThrow
+   */
+  export type provider_walletFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_wallet to fetch.
+     */
+    where?: provider_walletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_wallets to fetch.
+     */
+    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for provider_wallets.
+     */
+    cursor?: provider_walletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_wallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_wallets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_wallets.
+     */
+    distinct?: Provider_walletScalarFieldEnum | Provider_walletScalarFieldEnum[]
+  }
+
+  /**
+   * provider_wallet findMany
+   */
+  export type provider_walletFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_wallets to fetch.
+     */
+    where?: provider_walletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_wallets to fetch.
+     */
+    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing provider_wallets.
+     */
+    cursor?: provider_walletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_wallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_wallets.
+     */
+    skip?: number
+    distinct?: Provider_walletScalarFieldEnum | Provider_walletScalarFieldEnum[]
+  }
+
+  /**
+   * provider_wallet create
+   */
+  export type provider_walletCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * The data needed to create a provider_wallet.
+     */
+    data: XOR<provider_walletCreateInput, provider_walletUncheckedCreateInput>
+  }
+
+  /**
+   * provider_wallet createMany
+   */
+  export type provider_walletCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many provider_wallets.
+     */
+    data: provider_walletCreateManyInput | provider_walletCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Conversation update
+   * provider_wallet createManyAndReturn
    */
-  export type ConversationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type provider_walletCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the provider_wallet
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: provider_walletSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the provider_wallet
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * The data used to create many provider_wallets.
+     */
+    data: provider_walletCreateManyInput | provider_walletCreateManyInput[]
+    skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Conversation.
-     */
-    data: XOR<ConversationUpdateInput, ConversationUncheckedUpdateInput>
-    /**
-     * Choose, which Conversation to update.
-     */
-    where: ConversationWhereUniqueInput
+    include?: provider_walletIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Conversation updateMany
+   * provider_wallet update
    */
-  export type ConversationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type provider_walletUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Conversations.
+     * Select specific fields to fetch from the provider_wallet
      */
-    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyInput>
+    select?: provider_walletSelect<ExtArgs> | null
     /**
-     * Filter which Conversations to update
+     * Omit specific fields from the provider_wallet
      */
-    where?: ConversationWhereInput
+    omit?: provider_walletOmit<ExtArgs> | null
     /**
-     * Limit how many Conversations to update.
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * The data needed to update a provider_wallet.
+     */
+    data: XOR<provider_walletUpdateInput, provider_walletUncheckedUpdateInput>
+    /**
+     * Choose, which provider_wallet to update.
+     */
+    where: provider_walletWhereUniqueInput
+  }
+
+  /**
+   * provider_wallet updateMany
+   */
+  export type provider_walletUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update provider_wallets.
+     */
+    data: XOR<provider_walletUpdateManyMutationInput, provider_walletUncheckedUpdateManyInput>
+    /**
+     * Filter which provider_wallets to update
+     */
+    where?: provider_walletWhereInput
+    /**
+     * Limit how many provider_wallets to update.
      */
     limit?: number
   }
 
   /**
-   * Conversation updateManyAndReturn
+   * provider_wallet updateManyAndReturn
    */
-  export type ConversationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type provider_walletUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the provider_wallet
      */
-    select?: ConversationSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: provider_walletSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the provider_wallet
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: provider_walletOmit<ExtArgs> | null
     /**
-     * The data used to update Conversations.
+     * The data used to update provider_wallets.
      */
-    data: XOR<ConversationUpdateManyMutationInput, ConversationUncheckedUpdateManyInput>
+    data: XOR<provider_walletUpdateManyMutationInput, provider_walletUncheckedUpdateManyInput>
     /**
-     * Filter which Conversations to update
+     * Filter which provider_wallets to update
      */
-    where?: ConversationWhereInput
+    where?: provider_walletWhereInput
     /**
-     * Limit how many Conversations to update.
+     * Limit how many provider_wallets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * provider_wallet upsert
+   */
+  export type provider_walletUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * The filter to search for the provider_wallet to update in case it exists.
+     */
+    where: provider_walletWhereUniqueInput
+    /**
+     * In case the provider_wallet found by the `where` argument doesn't exist, create a new provider_wallet with this data.
+     */
+    create: XOR<provider_walletCreateInput, provider_walletUncheckedCreateInput>
+    /**
+     * In case the provider_wallet was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<provider_walletUpdateInput, provider_walletUncheckedUpdateInput>
+  }
+
+  /**
+   * provider_wallet delete
+   */
+  export type provider_walletDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_wallet
+     */
+    select?: provider_walletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_wallet
+     */
+    omit?: provider_walletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_walletInclude<ExtArgs> | null
+    /**
+     * Filter which provider_wallet to delete.
+     */
+    where: provider_walletWhereUniqueInput
+  }
+
+  /**
+   * provider_wallet deleteMany
+   */
+  export type provider_walletDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which provider_wallets to delete
+     */
+    where?: provider_walletWhereInput
+    /**
+     * Limit how many provider_wallets to delete.
      */
     limit?: number
   }
 
   /**
-   * Conversation upsert
+   * provider_wallet without action
    */
-  export type ConversationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type provider_walletDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the provider_wallet
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: provider_walletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the provider_wallet
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: provider_walletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: provider_walletInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model transaction
+   */
+
+  export type AggregateTransaction = {
+    _count: TransactionCountAggregateOutputType | null
+    _avg: TransactionAvgAggregateOutputType | null
+    _sum: TransactionSumAggregateOutputType | null
+    _min: TransactionMinAggregateOutputType | null
+    _max: TransactionMaxAggregateOutputType | null
+  }
+
+  export type TransactionAvgAggregateOutputType = {
+    totalAmount: number | null
+    platformCommission: number | null
+    providerEarnings: number | null
+    commissionRate: number | null
+  }
+
+  export type TransactionSumAggregateOutputType = {
+    totalAmount: number | null
+    platformCommission: number | null
+    providerEarnings: number | null
+    commissionRate: number | null
+  }
+
+  export type TransactionMinAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    studentId: string | null
+    providerId: string | null
+    paystackReference: string | null
+    totalAmount: number | null
+    platformCommission: number | null
+    providerEarnings: number | null
+    commissionRate: number | null
+    status: string | null
+    paymentMethod: string | null
+    paidAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TransactionMaxAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    studentId: string | null
+    providerId: string | null
+    paystackReference: string | null
+    totalAmount: number | null
+    platformCommission: number | null
+    providerEarnings: number | null
+    commissionRate: number | null
+    status: string | null
+    paymentMethod: string | null
+    paidAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type TransactionCountAggregateOutputType = {
+    id: number
+    bookingId: number
+    studentId: number
+    providerId: number
+    paystackReference: number
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate: number
+    status: number
+    paymentMethod: number
+    paidAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type TransactionAvgAggregateInputType = {
+    totalAmount?: true
+    platformCommission?: true
+    providerEarnings?: true
+    commissionRate?: true
+  }
+
+  export type TransactionSumAggregateInputType = {
+    totalAmount?: true
+    platformCommission?: true
+    providerEarnings?: true
+    commissionRate?: true
+  }
+
+  export type TransactionMinAggregateInputType = {
+    id?: true
+    bookingId?: true
+    studentId?: true
+    providerId?: true
+    paystackReference?: true
+    totalAmount?: true
+    platformCommission?: true
+    providerEarnings?: true
+    commissionRate?: true
+    status?: true
+    paymentMethod?: true
+    paidAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TransactionMaxAggregateInputType = {
+    id?: true
+    bookingId?: true
+    studentId?: true
+    providerId?: true
+    paystackReference?: true
+    totalAmount?: true
+    platformCommission?: true
+    providerEarnings?: true
+    commissionRate?: true
+    status?: true
+    paymentMethod?: true
+    paidAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type TransactionCountAggregateInputType = {
+    id?: true
+    bookingId?: true
+    studentId?: true
+    providerId?: true
+    paystackReference?: true
+    totalAmount?: true
+    platformCommission?: true
+    providerEarnings?: true
+    commissionRate?: true
+    status?: true
+    paymentMethod?: true
+    paidAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type TransactionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The filter to search for the Conversation to update in case it exists.
+     * Filter which transaction to aggregate.
      */
-    where: ConversationWhereUniqueInput
+    where?: transactionWhereInput
     /**
-     * In case the Conversation found by the `where` argument doesn't exist, create a new Conversation with this data.
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transactions to fetch.
      */
-    create: XOR<ConversationCreateInput, ConversationUncheckedCreateInput>
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
     /**
-     * In case the Conversation was found with the provided `where` argument, update it with this data.
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
      */
-    update: XOR<ConversationUpdateInput, ConversationUncheckedUpdateInput>
+    cursor?: transactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned transactions
+    **/
+    _count?: true | TransactionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TransactionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TransactionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransactionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransactionMaxAggregateInputType
+  }
+
+  export type GetTransactionAggregateType<T extends TransactionAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransaction]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransaction[P]>
+      : GetScalarType<T[P], AggregateTransaction[P]>
+  }
+
+
+
+
+  export type transactionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: transactionWhereInput
+    orderBy?: transactionOrderByWithAggregationInput | transactionOrderByWithAggregationInput[]
+    by: TransactionScalarFieldEnum[] | TransactionScalarFieldEnum
+    having?: transactionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransactionCountAggregateInputType | true
+    _avg?: TransactionAvgAggregateInputType
+    _sum?: TransactionSumAggregateInputType
+    _min?: TransactionMinAggregateInputType
+    _max?: TransactionMaxAggregateInputType
+  }
+
+  export type TransactionGroupByOutputType = {
+    id: string
+    bookingId: string
+    studentId: string
+    providerId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate: number
+    status: string
+    paymentMethod: string | null
+    paidAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: TransactionCountAggregateOutputType | null
+    _avg: TransactionAvgAggregateOutputType | null
+    _sum: TransactionSumAggregateOutputType | null
+    _min: TransactionMinAggregateOutputType | null
+    _max: TransactionMaxAggregateOutputType | null
+  }
+
+  type GetTransactionGroupByPayload<T extends transactionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransactionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransactionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransactionGroupByOutputType[P]>
+            : GetScalarType<T[P], TransactionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type transactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    paystackReference?: boolean
+    totalAmount?: boolean
+    platformCommission?: boolean
+    providerEarnings?: boolean
+    commissionRate?: boolean
+    status?: boolean
+    paymentMethod?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transaction"]>
+
+  export type transactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    paystackReference?: boolean
+    totalAmount?: boolean
+    platformCommission?: boolean
+    providerEarnings?: boolean
+    commissionRate?: boolean
+    status?: boolean
+    paymentMethod?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transaction"]>
+
+  export type transactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    paystackReference?: boolean
+    totalAmount?: boolean
+    platformCommission?: boolean
+    providerEarnings?: boolean
+    commissionRate?: boolean
+    status?: boolean
+    paymentMethod?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["transaction"]>
+
+  export type transactionSelectScalar = {
+    id?: boolean
+    bookingId?: boolean
+    studentId?: boolean
+    providerId?: boolean
+    paystackReference?: boolean
+    totalAmount?: boolean
+    platformCommission?: boolean
+    providerEarnings?: boolean
+    commissionRate?: boolean
+    status?: boolean
+    paymentMethod?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type transactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bookingId" | "studentId" | "providerId" | "paystackReference" | "totalAmount" | "platformCommission" | "providerEarnings" | "commissionRate" | "status" | "paymentMethod" | "paidAt" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
+  export type transactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type transactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type transactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $transactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "transaction"
+    objects: {
+      booking: Prisma.$BookingPayload<ExtArgs>
+      user_transaction_providerIdTouser: Prisma.$UserPayload<ExtArgs>
+      user_transaction_studentIdTouser: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bookingId: string
+      studentId: string
+      providerId: string
+      paystackReference: string
+      totalAmount: number
+      platformCommission: number
+      providerEarnings: number
+      commissionRate: number
+      status: string
+      paymentMethod: string | null
+      paidAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["transaction"]>
+    composites: {}
+  }
+
+  type transactionGetPayload<S extends boolean | null | undefined | transactionDefaultArgs> = $Result.GetResult<Prisma.$transactionPayload, S>
+
+  type transactionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<transactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransactionCountAggregateInputType | true
+    }
+
+  export interface transactionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['transaction'], meta: { name: 'transaction' } }
+    /**
+     * Find zero or one Transaction that matches the filter.
+     * @param {transactionFindUniqueArgs} args - Arguments to find a Transaction
+     * @example
+     * // Get one Transaction
+     * const transaction = await prisma.transaction.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends transactionFindUniqueArgs>(args: SelectSubset<T, transactionFindUniqueArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transaction that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {transactionFindUniqueOrThrowArgs} args - Arguments to find a Transaction
+     * @example
+     * // Get one Transaction
+     * const transaction = await prisma.transaction.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends transactionFindUniqueOrThrowArgs>(args: SelectSubset<T, transactionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transaction that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transactionFindFirstArgs} args - Arguments to find a Transaction
+     * @example
+     * // Get one Transaction
+     * const transaction = await prisma.transaction.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends transactionFindFirstArgs>(args?: SelectSubset<T, transactionFindFirstArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transaction that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transactionFindFirstOrThrowArgs} args - Arguments to find a Transaction
+     * @example
+     * // Get one Transaction
+     * const transaction = await prisma.transaction.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends transactionFindFirstOrThrowArgs>(args?: SelectSubset<T, transactionFindFirstOrThrowArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transactions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transactionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transactions
+     * const transactions = await prisma.transaction.findMany()
+     * 
+     * // Get first 10 Transactions
+     * const transactions = await prisma.transaction.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transactionWithIdOnly = await prisma.transaction.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends transactionFindManyArgs>(args?: SelectSubset<T, transactionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transaction.
+     * @param {transactionCreateArgs} args - Arguments to create a Transaction.
+     * @example
+     * // Create one Transaction
+     * const Transaction = await prisma.transaction.create({
+     *   data: {
+     *     // ... data to create a Transaction
+     *   }
+     * })
+     * 
+     */
+    create<T extends transactionCreateArgs>(args: SelectSubset<T, transactionCreateArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transactions.
+     * @param {transactionCreateManyArgs} args - Arguments to create many Transactions.
+     * @example
+     * // Create many Transactions
+     * const transaction = await prisma.transaction.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends transactionCreateManyArgs>(args?: SelectSubset<T, transactionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Transactions and returns the data saved in the database.
+     * @param {transactionCreateManyAndReturnArgs} args - Arguments to create many Transactions.
+     * @example
+     * // Create many Transactions
+     * const transaction = await prisma.transaction.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Transactions and only return the `id`
+     * const transactionWithIdOnly = await prisma.transaction.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends transactionCreateManyAndReturnArgs>(args?: SelectSubset<T, transactionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Transaction.
+     * @param {transactionDeleteArgs} args - Arguments to delete one Transaction.
+     * @example
+     * // Delete one Transaction
+     * const Transaction = await prisma.transaction.delete({
+     *   where: {
+     *     // ... filter to delete one Transaction
+     *   }
+     * })
+     * 
+     */
+    delete<T extends transactionDeleteArgs>(args: SelectSubset<T, transactionDeleteArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transaction.
+     * @param {transactionUpdateArgs} args - Arguments to update one Transaction.
+     * @example
+     * // Update one Transaction
+     * const transaction = await prisma.transaction.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends transactionUpdateArgs>(args: SelectSubset<T, transactionUpdateArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transactions.
+     * @param {transactionDeleteManyArgs} args - Arguments to filter Transactions to delete.
+     * @example
+     * // Delete a few Transactions
+     * const { count } = await prisma.transaction.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends transactionDeleteManyArgs>(args?: SelectSubset<T, transactionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transactionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transactions
+     * const transaction = await prisma.transaction.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends transactionUpdateManyArgs>(args: SelectSubset<T, transactionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transactions and returns the data updated in the database.
+     * @param {transactionUpdateManyAndReturnArgs} args - Arguments to update many Transactions.
+     * @example
+     * // Update many Transactions
+     * const transaction = await prisma.transaction.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Transactions and only return the `id`
+     * const transactionWithIdOnly = await prisma.transaction.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends transactionUpdateManyAndReturnArgs>(args: SelectSubset<T, transactionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Transaction.
+     * @param {transactionUpsertArgs} args - Arguments to update or create a Transaction.
+     * @example
+     * // Update or create a Transaction
+     * const transaction = await prisma.transaction.upsert({
+     *   create: {
+     *     // ... data to create a Transaction
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transaction we want to update
+     *   }
+     * })
+     */
+    upsert<T extends transactionUpsertArgs>(args: SelectSubset<T, transactionUpsertArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transactions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transactionCountArgs} args - Arguments to filter Transactions to count.
+     * @example
+     * // Count the number of Transactions
+     * const count = await prisma.transaction.count({
+     *   where: {
+     *     // ... the filter for the Transactions we want to count
+     *   }
+     * })
+    **/
+    count<T extends transactionCountArgs>(
+      args?: Subset<T, transactionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransactionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transaction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransactionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransactionAggregateArgs>(args: Subset<T, TransactionAggregateArgs>): Prisma.PrismaPromise<GetTransactionAggregateType<T>>
+
+    /**
+     * Group by Transaction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transactionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends transactionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: transactionGroupByArgs['orderBy'] }
+        : { orderBy?: transactionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, transactionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the transaction model
+   */
+  readonly fields: transactionFieldRefs;
   }
 
   /**
-   * Conversation delete
+   * The delegate class that acts as a "Promise-like" for transaction.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export type ConversationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export interface Prisma__transactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    booking<T extends BookingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookingDefaultArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_transaction_providerIdTouser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_transaction_studentIdTouser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
-     * Select specific fields to fetch from the Conversation
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
      */
-    select?: ConversationSelect<ExtArgs> | null
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
     /**
-     * Omit specific fields from the Conversation
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the transaction model
+   */
+  interface transactionFieldRefs {
+    readonly id: FieldRef<"transaction", 'String'>
+    readonly bookingId: FieldRef<"transaction", 'String'>
+    readonly studentId: FieldRef<"transaction", 'String'>
+    readonly providerId: FieldRef<"transaction", 'String'>
+    readonly paystackReference: FieldRef<"transaction", 'String'>
+    readonly totalAmount: FieldRef<"transaction", 'Float'>
+    readonly platformCommission: FieldRef<"transaction", 'Float'>
+    readonly providerEarnings: FieldRef<"transaction", 'Float'>
+    readonly commissionRate: FieldRef<"transaction", 'Float'>
+    readonly status: FieldRef<"transaction", 'String'>
+    readonly paymentMethod: FieldRef<"transaction", 'String'>
+    readonly paidAt: FieldRef<"transaction", 'DateTime'>
+    readonly createdAt: FieldRef<"transaction", 'DateTime'>
+    readonly updatedAt: FieldRef<"transaction", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * transaction findUnique
+   */
+  export type transactionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: transactionInclude<ExtArgs> | null
     /**
-     * Filter which Conversation to delete.
+     * Filter, which transaction to fetch.
      */
-    where: ConversationWhereUniqueInput
+    where: transactionWhereUniqueInput
   }
 
   /**
-   * Conversation deleteMany
+   * transaction findUniqueOrThrow
    */
-  export type ConversationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type transactionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Conversations to delete
+     * Select specific fields to fetch from the transaction
      */
-    where?: ConversationWhereInput
+    select?: transactionSelect<ExtArgs> | null
     /**
-     * Limit how many Conversations to delete.
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * Filter, which transaction to fetch.
+     */
+    where: transactionWhereUniqueInput
+  }
+
+  /**
+   * transaction findFirst
+   */
+  export type transactionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * Filter, which transaction to fetch.
+     */
+    where?: transactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transactions to fetch.
+     */
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for transactions.
+     */
+    cursor?: transactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of transactions.
+     */
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * transaction findFirstOrThrow
+   */
+  export type transactionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * Filter, which transaction to fetch.
+     */
+    where?: transactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transactions to fetch.
+     */
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for transactions.
+     */
+    cursor?: transactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transactions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of transactions.
+     */
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * transaction findMany
+   */
+  export type transactionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * Filter, which transactions to fetch.
+     */
+    where?: transactionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transactions to fetch.
+     */
+    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing transactions.
+     */
+    cursor?: transactionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transactions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transactions.
+     */
+    skip?: number
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
+  }
+
+  /**
+   * transaction create
+   */
+  export type transactionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a transaction.
+     */
+    data: XOR<transactionCreateInput, transactionUncheckedCreateInput>
+  }
+
+  /**
+   * transaction createMany
+   */
+  export type transactionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many transactions.
+     */
+    data: transactionCreateManyInput | transactionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * transaction createManyAndReturn
+   */
+  export type transactionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * The data used to create many transactions.
+     */
+    data: transactionCreateManyInput | transactionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * transaction update
+   */
+  export type transactionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a transaction.
+     */
+    data: XOR<transactionUpdateInput, transactionUncheckedUpdateInput>
+    /**
+     * Choose, which transaction to update.
+     */
+    where: transactionWhereUniqueInput
+  }
+
+  /**
+   * transaction updateMany
+   */
+  export type transactionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update transactions.
+     */
+    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyInput>
+    /**
+     * Filter which transactions to update
+     */
+    where?: transactionWhereInput
+    /**
+     * Limit how many transactions to update.
      */
     limit?: number
   }
 
   /**
-   * Conversation.booking
+   * transaction updateManyAndReturn
    */
-  export type Conversation$bookingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type transactionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Booking
+     * Select specific fields to fetch from the transaction
      */
-    select?: BookingSelect<ExtArgs> | null
+    select?: transactionSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Booking
+     * Omit specific fields from the transaction
      */
-    omit?: BookingOmit<ExtArgs> | null
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * The data used to update transactions.
+     */
+    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyInput>
+    /**
+     * Filter which transactions to update
+     */
+    where?: transactionWhereInput
+    /**
+     * Limit how many transactions to update.
+     */
+    limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BookingInclude<ExtArgs> | null
-    where?: BookingWhereInput
+    include?: transactionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Conversation without action
+   * transaction upsert
    */
-  export type ConversationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type transactionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Conversation
+     * Select specific fields to fetch from the transaction
      */
-    select?: ConversationSelect<ExtArgs> | null
+    select?: transactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Conversation
+     * Omit specific fields from the transaction
      */
-    omit?: ConversationOmit<ExtArgs> | null
+    omit?: transactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ConversationInclude<ExtArgs> | null
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the transaction to update in case it exists.
+     */
+    where: transactionWhereUniqueInput
+    /**
+     * In case the transaction found by the `where` argument doesn't exist, create a new transaction with this data.
+     */
+    create: XOR<transactionCreateInput, transactionUncheckedCreateInput>
+    /**
+     * In case the transaction was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<transactionUpdateInput, transactionUncheckedUpdateInput>
+  }
+
+  /**
+   * transaction delete
+   */
+  export type transactionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
+    /**
+     * Filter which transaction to delete.
+     */
+    where: transactionWhereUniqueInput
+  }
+
+  /**
+   * transaction deleteMany
+   */
+  export type transactionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which transactions to delete
+     */
+    where?: transactionWhereInput
+    /**
+     * Limit how many transactions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * transaction without action
+   */
+  export type transactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transaction
+     */
+    select?: transactionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transaction
+     */
+    omit?: transactionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: transactionInclude<ExtArgs> | null
   }
 
 
@@ -9111,7 +16954,11 @@ export namespace Prisma {
     emailVerified: 'emailVerified',
     image: 'image',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    phoneNumber: 'phoneNumber',
+    location: 'location',
+    bio: 'bio',
+    role: 'role'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9150,6 +16997,67 @@ export namespace Prisma {
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
 
 
+  export const ServiceScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    category: 'category',
+    status: 'status',
+    price: 'price',
+    providerId: 'providerId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    operatingHours: 'operatingHours'
+  };
+
+  export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
+  export const BookingScalarFieldEnum: {
+    id: 'id',
+    studentId: 'studentId',
+    providerId: 'providerId',
+    serviceId: 'serviceId',
+    bookedAt: 'bookedAt',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+  export const ConversationScalarFieldEnum: {
+    id: 'id',
+    bookingId: 'bookingId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+  export const MessageGroupScalarFieldEnum: {
+    id: 'id',
+    conversationId: 'conversationId',
+    date: 'date',
+    data: 'data'
+  };
+
+  export type MessageGroupScalarFieldEnum = (typeof MessageGroupScalarFieldEnum)[keyof typeof MessageGroupScalarFieldEnum]
+
+
+  export const MessageScalarFieldEnum: {
+    id: 'id',
+    conversationId: 'conversationId',
+    senderId: 'senderId',
+    content: 'content',
+    createdAt: 'createdAt'
+  };
+
+  export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
   export const VerificationScalarFieldEnum: {
     id: 'id',
     identifier: 'identifier',
@@ -9162,31 +17070,69 @@ export namespace Prisma {
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
-  export const ServiceProviderScalarFieldEnum: {
+  export const AnnouncementScalarFieldEnum: {
     id: 'id',
-    userId: 'userId'
+    title: 'title',
+    content: 'content',
+    summary: 'summary',
+    category: 'category',
+    isVerified: 'isVerified',
+    isActive: 'isActive',
+    externalLink: 'externalLink',
+    contactInfo: 'contactInfo',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    imageUrl: 'imageUrl'
   };
 
-  export type ServiceProviderScalarFieldEnum = (typeof ServiceProviderScalarFieldEnum)[keyof typeof ServiceProviderScalarFieldEnum]
+  export type AnnouncementScalarFieldEnum = (typeof AnnouncementScalarFieldEnum)[keyof typeof AnnouncementScalarFieldEnum]
 
 
-  export const BookingScalarFieldEnum: {
+  export const SupportMessageScalarFieldEnum: {
     id: 'id',
-    studentId: 'studentId',
-    providerId: 'providerId',
-    conversationId: 'conversationId'
-  };
-
-  export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
-
-
-  export const ConversationScalarFieldEnum: {
-    id: 'id',
-    messages: 'messages',
+    userId: 'userId',
+    subject: 'subject',
+    message: 'message',
+    status: 'status',
+    createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+  export type SupportMessageScalarFieldEnum = (typeof SupportMessageScalarFieldEnum)[keyof typeof SupportMessageScalarFieldEnum]
+
+
+  export const Provider_walletScalarFieldEnum: {
+    id: 'id',
+    providerId: 'providerId',
+    availableBalance: 'availableBalance',
+    pendingBalance: 'pendingBalance',
+    totalEarnings: 'totalEarnings',
+    totalWithdrawn: 'totalWithdrawn',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Provider_walletScalarFieldEnum = (typeof Provider_walletScalarFieldEnum)[keyof typeof Provider_walletScalarFieldEnum]
+
+
+  export const TransactionScalarFieldEnum: {
+    id: 'id',
+    bookingId: 'bookingId',
+    studentId: 'studentId',
+    providerId: 'providerId',
+    paystackReference: 'paystackReference',
+    totalAmount: 'totalAmount',
+    platformCommission: 'platformCommission',
+    providerEarnings: 'providerEarnings',
+    commissionRate: 'commissionRate',
+    status: 'status',
+    paymentMethod: 'paymentMethod',
+    paidAt: 'paidAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9270,6 +17216,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Role'
+   */
+  export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+  /**
+   * Reference to a field of type 'Role[]'
+   */
+  export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'BookingStatus'
+   */
+  export type EnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'BookingStatus[]'
+   */
+  export type ListEnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -9280,6 +17254,20 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -9311,10 +17299,20 @@ export namespace Prisma {
     image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    bookings?: BookingListRelationFilter
-    services?: ServiceProviderListRelationFilter
-    sessions?: SessionListRelationFilter
+    phoneNumber?: StringNullableFilter<"User"> | string | null
+    location?: StringNullableFilter<"User"> | string | null
+    bio?: StringNullableFilter<"User"> | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     accounts?: AccountListRelationFilter
+    providerBookings?: BookingListRelationFilter
+    studentBookings?: BookingListRelationFilter
+    sentMessages?: MessageListRelationFilter
+    provider_wallet?: XOR<Provider_walletNullableScalarRelationFilter, provider_walletWhereInput> | null
+    services?: ServiceListRelationFilter
+    sessions?: SessionListRelationFilter
+    supportMessages?: SupportMessageListRelationFilter
+    transaction_transaction_providerIdTouser?: TransactionListRelationFilter
+    transaction_transaction_studentIdTouser?: TransactionListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -9325,10 +17323,20 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    bookings?: BookingOrderByRelationAggregateInput
-    services?: ServiceProviderOrderByRelationAggregateInput
-    sessions?: SessionOrderByRelationAggregateInput
+    phoneNumber?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    role?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
+    providerBookings?: BookingOrderByRelationAggregateInput
+    studentBookings?: BookingOrderByRelationAggregateInput
+    sentMessages?: MessageOrderByRelationAggregateInput
+    provider_wallet?: provider_walletOrderByWithRelationInput
+    services?: ServiceOrderByRelationAggregateInput
+    sessions?: SessionOrderByRelationAggregateInput
+    supportMessages?: SupportMessageOrderByRelationAggregateInput
+    transaction_transaction_providerIdTouser?: transactionOrderByRelationAggregateInput
+    transaction_transaction_studentIdTouser?: transactionOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -9342,10 +17350,20 @@ export namespace Prisma {
     image?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    bookings?: BookingListRelationFilter
-    services?: ServiceProviderListRelationFilter
-    sessions?: SessionListRelationFilter
+    phoneNumber?: StringNullableFilter<"User"> | string | null
+    location?: StringNullableFilter<"User"> | string | null
+    bio?: StringNullableFilter<"User"> | string | null
+    role?: EnumRoleFilter<"User"> | $Enums.Role
     accounts?: AccountListRelationFilter
+    providerBookings?: BookingListRelationFilter
+    studentBookings?: BookingListRelationFilter
+    sentMessages?: MessageListRelationFilter
+    provider_wallet?: XOR<Provider_walletNullableScalarRelationFilter, provider_walletWhereInput> | null
+    services?: ServiceListRelationFilter
+    sessions?: SessionListRelationFilter
+    supportMessages?: SupportMessageListRelationFilter
+    transaction_transaction_providerIdTouser?: TransactionListRelationFilter
+    transaction_transaction_studentIdTouser?: TransactionListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -9356,6 +17374,10 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    location?: SortOrderInput | SortOrder
+    bio?: SortOrderInput | SortOrder
+    role?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -9372,6 +17394,10 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"User"> | string | null
+    location?: StringNullableWithAggregatesFilter<"User"> | string | null
+    bio?: StringNullableWithAggregatesFilter<"User"> | string | null
+    role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   }
 
   export type SessionWhereInput = {
@@ -9539,6 +17565,335 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
   }
 
+  export type ServiceWhereInput = {
+    AND?: ServiceWhereInput | ServiceWhereInput[]
+    OR?: ServiceWhereInput[]
+    NOT?: ServiceWhereInput | ServiceWhereInput[]
+    id?: StringFilter<"Service"> | string
+    title?: StringFilter<"Service"> | string
+    description?: StringFilter<"Service"> | string
+    category?: StringFilter<"Service"> | string
+    status?: StringFilter<"Service"> | string
+    price?: StringNullableFilter<"Service"> | string | null
+    providerId?: StringFilter<"Service"> | string
+    createdAt?: DateTimeFilter<"Service"> | Date | string
+    updatedAt?: DateTimeFilter<"Service"> | Date | string
+    operatingHours?: StringNullableFilter<"Service"> | string | null
+    bookings?: BookingListRelationFilter
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ServiceOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    price?: SortOrderInput | SortOrder
+    providerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    operatingHours?: SortOrderInput | SortOrder
+    bookings?: BookingOrderByRelationAggregateInput
+    provider?: UserOrderByWithRelationInput
+  }
+
+  export type ServiceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ServiceWhereInput | ServiceWhereInput[]
+    OR?: ServiceWhereInput[]
+    NOT?: ServiceWhereInput | ServiceWhereInput[]
+    title?: StringFilter<"Service"> | string
+    description?: StringFilter<"Service"> | string
+    category?: StringFilter<"Service"> | string
+    status?: StringFilter<"Service"> | string
+    price?: StringNullableFilter<"Service"> | string | null
+    providerId?: StringFilter<"Service"> | string
+    createdAt?: DateTimeFilter<"Service"> | Date | string
+    updatedAt?: DateTimeFilter<"Service"> | Date | string
+    operatingHours?: StringNullableFilter<"Service"> | string | null
+    bookings?: BookingListRelationFilter
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ServiceOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    price?: SortOrderInput | SortOrder
+    providerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    operatingHours?: SortOrderInput | SortOrder
+    _count?: ServiceCountOrderByAggregateInput
+    _max?: ServiceMaxOrderByAggregateInput
+    _min?: ServiceMinOrderByAggregateInput
+  }
+
+  export type ServiceScalarWhereWithAggregatesInput = {
+    AND?: ServiceScalarWhereWithAggregatesInput | ServiceScalarWhereWithAggregatesInput[]
+    OR?: ServiceScalarWhereWithAggregatesInput[]
+    NOT?: ServiceScalarWhereWithAggregatesInput | ServiceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Service"> | string
+    title?: StringWithAggregatesFilter<"Service"> | string
+    description?: StringWithAggregatesFilter<"Service"> | string
+    category?: StringWithAggregatesFilter<"Service"> | string
+    status?: StringWithAggregatesFilter<"Service"> | string
+    price?: StringNullableWithAggregatesFilter<"Service"> | string | null
+    providerId?: StringWithAggregatesFilter<"Service"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
+    operatingHours?: StringNullableWithAggregatesFilter<"Service"> | string | null
+  }
+
+  export type BookingWhereInput = {
+    AND?: BookingWhereInput | BookingWhereInput[]
+    OR?: BookingWhereInput[]
+    NOT?: BookingWhereInput | BookingWhereInput[]
+    id?: StringFilter<"Booking"> | string
+    studentId?: StringFilter<"Booking"> | string
+    providerId?: StringFilter<"Booking"> | string
+    serviceId?: StringFilter<"Booking"> | string
+    bookedAt?: DateTimeFilter<"Booking"> | Date | string
+    status?: EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+    updatedAt?: DateTimeFilter<"Booking"> | Date | string
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+    student?: XOR<UserScalarRelationFilter, UserWhereInput>
+    conversation?: XOR<ConversationNullableScalarRelationFilter, ConversationWhereInput> | null
+    transaction?: TransactionListRelationFilter
+  }
+
+  export type BookingOrderByWithRelationInput = {
+    id?: SortOrder
+    studentId?: SortOrder
+    providerId?: SortOrder
+    serviceId?: SortOrder
+    bookedAt?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    provider?: UserOrderByWithRelationInput
+    service?: ServiceOrderByWithRelationInput
+    student?: UserOrderByWithRelationInput
+    conversation?: ConversationOrderByWithRelationInput
+    transaction?: transactionOrderByRelationAggregateInput
+  }
+
+  export type BookingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BookingWhereInput | BookingWhereInput[]
+    OR?: BookingWhereInput[]
+    NOT?: BookingWhereInput | BookingWhereInput[]
+    studentId?: StringFilter<"Booking"> | string
+    providerId?: StringFilter<"Booking"> | string
+    serviceId?: StringFilter<"Booking"> | string
+    bookedAt?: DateTimeFilter<"Booking"> | Date | string
+    status?: EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+    updatedAt?: DateTimeFilter<"Booking"> | Date | string
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+    student?: XOR<UserScalarRelationFilter, UserWhereInput>
+    conversation?: XOR<ConversationNullableScalarRelationFilter, ConversationWhereInput> | null
+    transaction?: TransactionListRelationFilter
+  }, "id">
+
+  export type BookingOrderByWithAggregationInput = {
+    id?: SortOrder
+    studentId?: SortOrder
+    providerId?: SortOrder
+    serviceId?: SortOrder
+    bookedAt?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BookingCountOrderByAggregateInput
+    _max?: BookingMaxOrderByAggregateInput
+    _min?: BookingMinOrderByAggregateInput
+  }
+
+  export type BookingScalarWhereWithAggregatesInput = {
+    AND?: BookingScalarWhereWithAggregatesInput | BookingScalarWhereWithAggregatesInput[]
+    OR?: BookingScalarWhereWithAggregatesInput[]
+    NOT?: BookingScalarWhereWithAggregatesInput | BookingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Booking"> | string
+    studentId?: StringWithAggregatesFilter<"Booking"> | string
+    providerId?: StringWithAggregatesFilter<"Booking"> | string
+    serviceId?: StringWithAggregatesFilter<"Booking"> | string
+    bookedAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
+    status?: EnumBookingStatusWithAggregatesFilter<"Booking"> | $Enums.BookingStatus
+    createdAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
+  }
+
+  export type ConversationWhereInput = {
+    AND?: ConversationWhereInput | ConversationWhereInput[]
+    OR?: ConversationWhereInput[]
+    NOT?: ConversationWhereInput | ConversationWhereInput[]
+    id?: StringFilter<"Conversation"> | string
+    bookingId?: StringFilter<"Conversation"> | string
+    createdAt?: DateTimeFilter<"Conversation"> | Date | string
+    updatedAt?: DateTimeFilter<"Conversation"> | Date | string
+    booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>
+    messages?: MessageListRelationFilter
+    messageGroups?: MessageGroupListRelationFilter
+  }
+
+  export type ConversationOrderByWithRelationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    booking?: BookingOrderByWithRelationInput
+    messages?: MessageOrderByRelationAggregateInput
+    messageGroups?: MessageGroupOrderByRelationAggregateInput
+  }
+
+  export type ConversationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    bookingId?: string
+    AND?: ConversationWhereInput | ConversationWhereInput[]
+    OR?: ConversationWhereInput[]
+    NOT?: ConversationWhereInput | ConversationWhereInput[]
+    createdAt?: DateTimeFilter<"Conversation"> | Date | string
+    updatedAt?: DateTimeFilter<"Conversation"> | Date | string
+    booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>
+    messages?: MessageListRelationFilter
+    messageGroups?: MessageGroupListRelationFilter
+  }, "id" | "bookingId">
+
+  export type ConversationOrderByWithAggregationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ConversationCountOrderByAggregateInput
+    _max?: ConversationMaxOrderByAggregateInput
+    _min?: ConversationMinOrderByAggregateInput
+  }
+
+  export type ConversationScalarWhereWithAggregatesInput = {
+    AND?: ConversationScalarWhereWithAggregatesInput | ConversationScalarWhereWithAggregatesInput[]
+    OR?: ConversationScalarWhereWithAggregatesInput[]
+    NOT?: ConversationScalarWhereWithAggregatesInput | ConversationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Conversation"> | string
+    bookingId?: StringWithAggregatesFilter<"Conversation"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Conversation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Conversation"> | Date | string
+  }
+
+  export type MessageGroupWhereInput = {
+    AND?: MessageGroupWhereInput | MessageGroupWhereInput[]
+    OR?: MessageGroupWhereInput[]
+    NOT?: MessageGroupWhereInput | MessageGroupWhereInput[]
+    id?: StringFilter<"MessageGroup"> | string
+    conversationId?: StringFilter<"MessageGroup"> | string
+    date?: DateTimeFilter<"MessageGroup"> | Date | string
+    data?: JsonFilter<"MessageGroup">
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+  }
+
+  export type MessageGroupOrderByWithRelationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    date?: SortOrder
+    data?: SortOrder
+    conversation?: ConversationOrderByWithRelationInput
+  }
+
+  export type MessageGroupWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MessageGroupWhereInput | MessageGroupWhereInput[]
+    OR?: MessageGroupWhereInput[]
+    NOT?: MessageGroupWhereInput | MessageGroupWhereInput[]
+    conversationId?: StringFilter<"MessageGroup"> | string
+    date?: DateTimeFilter<"MessageGroup"> | Date | string
+    data?: JsonFilter<"MessageGroup">
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+  }, "id">
+
+  export type MessageGroupOrderByWithAggregationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    date?: SortOrder
+    data?: SortOrder
+    _count?: MessageGroupCountOrderByAggregateInput
+    _max?: MessageGroupMaxOrderByAggregateInput
+    _min?: MessageGroupMinOrderByAggregateInput
+  }
+
+  export type MessageGroupScalarWhereWithAggregatesInput = {
+    AND?: MessageGroupScalarWhereWithAggregatesInput | MessageGroupScalarWhereWithAggregatesInput[]
+    OR?: MessageGroupScalarWhereWithAggregatesInput[]
+    NOT?: MessageGroupScalarWhereWithAggregatesInput | MessageGroupScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MessageGroup"> | string
+    conversationId?: StringWithAggregatesFilter<"MessageGroup"> | string
+    date?: DateTimeWithAggregatesFilter<"MessageGroup"> | Date | string
+    data?: JsonWithAggregatesFilter<"MessageGroup">
+  }
+
+  export type MessageWhereInput = {
+    AND?: MessageWhereInput | MessageWhereInput[]
+    OR?: MessageWhereInput[]
+    NOT?: MessageWhereInput | MessageWhereInput[]
+    id?: StringFilter<"Message"> | string
+    conversationId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    content?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type MessageOrderByWithRelationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    conversation?: ConversationOrderByWithRelationInput
+    sender?: UserOrderByWithRelationInput
+  }
+
+  export type MessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MessageWhereInput | MessageWhereInput[]
+    OR?: MessageWhereInput[]
+    NOT?: MessageWhereInput | MessageWhereInput[]
+    conversationId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    content?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
+    sender?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type MessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    _count?: MessageCountOrderByAggregateInput
+    _max?: MessageMaxOrderByAggregateInput
+    _min?: MessageMinOrderByAggregateInput
+  }
+
+  export type MessageScalarWhereWithAggregatesInput = {
+    AND?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
+    OR?: MessageScalarWhereWithAggregatesInput[]
+    NOT?: MessageScalarWhereWithAggregatesInput | MessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Message"> | string
+    conversationId?: StringWithAggregatesFilter<"Message"> | string
+    senderId?: StringWithAggregatesFilter<"Message"> | string
+    content?: StringWithAggregatesFilter<"Message"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
+  }
+
   export type VerificationWhereInput = {
     AND?: VerificationWhereInput | VerificationWhereInput[]
     OR?: VerificationWhereInput[]
@@ -9596,176 +17951,384 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Verification"> | Date | string
   }
 
-  export type ServiceProviderWhereInput = {
-    AND?: ServiceProviderWhereInput | ServiceProviderWhereInput[]
-    OR?: ServiceProviderWhereInput[]
-    NOT?: ServiceProviderWhereInput | ServiceProviderWhereInput[]
-    id?: StringFilter<"ServiceProvider"> | string
-    userId?: StringFilter<"ServiceProvider"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    bookings?: BookingListRelationFilter
+  export type AnnouncementWhereInput = {
+    AND?: AnnouncementWhereInput | AnnouncementWhereInput[]
+    OR?: AnnouncementWhereInput[]
+    NOT?: AnnouncementWhereInput | AnnouncementWhereInput[]
+    id?: StringFilter<"Announcement"> | string
+    title?: StringFilter<"Announcement"> | string
+    content?: StringFilter<"Announcement"> | string
+    summary?: StringNullableFilter<"Announcement"> | string | null
+    category?: StringFilter<"Announcement"> | string
+    isVerified?: BoolFilter<"Announcement"> | boolean
+    isActive?: BoolFilter<"Announcement"> | boolean
+    externalLink?: StringNullableFilter<"Announcement"> | string | null
+    contactInfo?: StringNullableFilter<"Announcement"> | string | null
+    createdAt?: DateTimeFilter<"Announcement"> | Date | string
+    updatedAt?: DateTimeFilter<"Announcement"> | Date | string
+    imageUrl?: StringNullableFilter<"Announcement"> | string | null
   }
 
-  export type ServiceProviderOrderByWithRelationInput = {
+  export type AnnouncementOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
-    user?: UserOrderByWithRelationInput
-    bookings?: BookingOrderByRelationAggregateInput
+    title?: SortOrder
+    content?: SortOrder
+    summary?: SortOrderInput | SortOrder
+    category?: SortOrder
+    isVerified?: SortOrder
+    isActive?: SortOrder
+    externalLink?: SortOrderInput | SortOrder
+    contactInfo?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
   }
 
-  export type ServiceProviderWhereUniqueInput = Prisma.AtLeast<{
+  export type AnnouncementWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: ServiceProviderWhereInput | ServiceProviderWhereInput[]
-    OR?: ServiceProviderWhereInput[]
-    NOT?: ServiceProviderWhereInput | ServiceProviderWhereInput[]
-    userId?: StringFilter<"ServiceProvider"> | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    bookings?: BookingListRelationFilter
+    AND?: AnnouncementWhereInput | AnnouncementWhereInput[]
+    OR?: AnnouncementWhereInput[]
+    NOT?: AnnouncementWhereInput | AnnouncementWhereInput[]
+    title?: StringFilter<"Announcement"> | string
+    content?: StringFilter<"Announcement"> | string
+    summary?: StringNullableFilter<"Announcement"> | string | null
+    category?: StringFilter<"Announcement"> | string
+    isVerified?: BoolFilter<"Announcement"> | boolean
+    isActive?: BoolFilter<"Announcement"> | boolean
+    externalLink?: StringNullableFilter<"Announcement"> | string | null
+    contactInfo?: StringNullableFilter<"Announcement"> | string | null
+    createdAt?: DateTimeFilter<"Announcement"> | Date | string
+    updatedAt?: DateTimeFilter<"Announcement"> | Date | string
+    imageUrl?: StringNullableFilter<"Announcement"> | string | null
   }, "id">
 
-  export type ServiceProviderOrderByWithAggregationInput = {
+  export type AnnouncementOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    summary?: SortOrderInput | SortOrder
+    category?: SortOrder
+    isVerified?: SortOrder
+    isActive?: SortOrder
+    externalLink?: SortOrderInput | SortOrder
+    contactInfo?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    _count?: AnnouncementCountOrderByAggregateInput
+    _max?: AnnouncementMaxOrderByAggregateInput
+    _min?: AnnouncementMinOrderByAggregateInput
+  }
+
+  export type AnnouncementScalarWhereWithAggregatesInput = {
+    AND?: AnnouncementScalarWhereWithAggregatesInput | AnnouncementScalarWhereWithAggregatesInput[]
+    OR?: AnnouncementScalarWhereWithAggregatesInput[]
+    NOT?: AnnouncementScalarWhereWithAggregatesInput | AnnouncementScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Announcement"> | string
+    title?: StringWithAggregatesFilter<"Announcement"> | string
+    content?: StringWithAggregatesFilter<"Announcement"> | string
+    summary?: StringNullableWithAggregatesFilter<"Announcement"> | string | null
+    category?: StringWithAggregatesFilter<"Announcement"> | string
+    isVerified?: BoolWithAggregatesFilter<"Announcement"> | boolean
+    isActive?: BoolWithAggregatesFilter<"Announcement"> | boolean
+    externalLink?: StringNullableWithAggregatesFilter<"Announcement"> | string | null
+    contactInfo?: StringNullableWithAggregatesFilter<"Announcement"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Announcement"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Announcement"> | Date | string
+    imageUrl?: StringNullableWithAggregatesFilter<"Announcement"> | string | null
+  }
+
+  export type SupportMessageWhereInput = {
+    AND?: SupportMessageWhereInput | SupportMessageWhereInput[]
+    OR?: SupportMessageWhereInput[]
+    NOT?: SupportMessageWhereInput | SupportMessageWhereInput[]
+    id?: StringFilter<"SupportMessage"> | string
+    userId?: StringFilter<"SupportMessage"> | string
+    subject?: StringFilter<"SupportMessage"> | string
+    message?: StringFilter<"SupportMessage"> | string
+    status?: StringFilter<"SupportMessage"> | string
+    createdAt?: DateTimeFilter<"SupportMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"SupportMessage"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type SupportMessageOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    _count?: ServiceProviderCountOrderByAggregateInput
-    _max?: ServiceProviderMaxOrderByAggregateInput
-    _min?: ServiceProviderMinOrderByAggregateInput
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
-  export type ServiceProviderScalarWhereWithAggregatesInput = {
-    AND?: ServiceProviderScalarWhereWithAggregatesInput | ServiceProviderScalarWhereWithAggregatesInput[]
-    OR?: ServiceProviderScalarWhereWithAggregatesInput[]
-    NOT?: ServiceProviderScalarWhereWithAggregatesInput | ServiceProviderScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ServiceProvider"> | string
-    userId?: StringWithAggregatesFilter<"ServiceProvider"> | string
-  }
-
-  export type BookingWhereInput = {
-    AND?: BookingWhereInput | BookingWhereInput[]
-    OR?: BookingWhereInput[]
-    NOT?: BookingWhereInput | BookingWhereInput[]
-    id?: StringFilter<"Booking"> | string
-    studentId?: StringFilter<"Booking"> | string
-    providerId?: StringFilter<"Booking"> | string
-    conversationId?: StringFilter<"Booking"> | string
-    student?: XOR<UserScalarRelationFilter, UserWhereInput>
-    provider?: XOR<ServiceProviderScalarRelationFilter, ServiceProviderWhereInput>
-    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
-  }
-
-  export type BookingOrderByWithRelationInput = {
-    id?: SortOrder
-    studentId?: SortOrder
-    providerId?: SortOrder
-    conversationId?: SortOrder
-    student?: UserOrderByWithRelationInput
-    provider?: ServiceProviderOrderByWithRelationInput
-    conversation?: ConversationOrderByWithRelationInput
-  }
-
-  export type BookingWhereUniqueInput = Prisma.AtLeast<{
+  export type SupportMessageWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    conversationId?: string
-    AND?: BookingWhereInput | BookingWhereInput[]
-    OR?: BookingWhereInput[]
-    NOT?: BookingWhereInput | BookingWhereInput[]
-    studentId?: StringFilter<"Booking"> | string
-    providerId?: StringFilter<"Booking"> | string
-    student?: XOR<UserScalarRelationFilter, UserWhereInput>
-    provider?: XOR<ServiceProviderScalarRelationFilter, ServiceProviderWhereInput>
-    conversation?: XOR<ConversationScalarRelationFilter, ConversationWhereInput>
-  }, "id" | "conversationId">
+    AND?: SupportMessageWhereInput | SupportMessageWhereInput[]
+    OR?: SupportMessageWhereInput[]
+    NOT?: SupportMessageWhereInput | SupportMessageWhereInput[]
+    userId?: StringFilter<"SupportMessage"> | string
+    subject?: StringFilter<"SupportMessage"> | string
+    message?: StringFilter<"SupportMessage"> | string
+    status?: StringFilter<"SupportMessage"> | string
+    createdAt?: DateTimeFilter<"SupportMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"SupportMessage"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
 
-  export type BookingOrderByWithAggregationInput = {
+  export type SupportMessageOrderByWithAggregationInput = {
     id?: SortOrder
+    userId?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SupportMessageCountOrderByAggregateInput
+    _max?: SupportMessageMaxOrderByAggregateInput
+    _min?: SupportMessageMinOrderByAggregateInput
+  }
+
+  export type SupportMessageScalarWhereWithAggregatesInput = {
+    AND?: SupportMessageScalarWhereWithAggregatesInput | SupportMessageScalarWhereWithAggregatesInput[]
+    OR?: SupportMessageScalarWhereWithAggregatesInput[]
+    NOT?: SupportMessageScalarWhereWithAggregatesInput | SupportMessageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SupportMessage"> | string
+    userId?: StringWithAggregatesFilter<"SupportMessage"> | string
+    subject?: StringWithAggregatesFilter<"SupportMessage"> | string
+    message?: StringWithAggregatesFilter<"SupportMessage"> | string
+    status?: StringWithAggregatesFilter<"SupportMessage"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"SupportMessage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SupportMessage"> | Date | string
+  }
+
+  export type provider_walletWhereInput = {
+    AND?: provider_walletWhereInput | provider_walletWhereInput[]
+    OR?: provider_walletWhereInput[]
+    NOT?: provider_walletWhereInput | provider_walletWhereInput[]
+    id?: StringFilter<"provider_wallet"> | string
+    providerId?: StringFilter<"provider_wallet"> | string
+    availableBalance?: FloatFilter<"provider_wallet"> | number
+    pendingBalance?: FloatFilter<"provider_wallet"> | number
+    totalEarnings?: FloatFilter<"provider_wallet"> | number
+    totalWithdrawn?: FloatFilter<"provider_wallet"> | number
+    createdAt?: DateTimeFilter<"provider_wallet"> | Date | string
+    updatedAt?: DateTimeFilter<"provider_wallet"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type provider_walletOrderByWithRelationInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type provider_walletWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    providerId?: string
+    AND?: provider_walletWhereInput | provider_walletWhereInput[]
+    OR?: provider_walletWhereInput[]
+    NOT?: provider_walletWhereInput | provider_walletWhereInput[]
+    availableBalance?: FloatFilter<"provider_wallet"> | number
+    pendingBalance?: FloatFilter<"provider_wallet"> | number
+    totalEarnings?: FloatFilter<"provider_wallet"> | number
+    totalWithdrawn?: FloatFilter<"provider_wallet"> | number
+    createdAt?: DateTimeFilter<"provider_wallet"> | Date | string
+    updatedAt?: DateTimeFilter<"provider_wallet"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "providerId">
+
+  export type provider_walletOrderByWithAggregationInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: provider_walletCountOrderByAggregateInput
+    _avg?: provider_walletAvgOrderByAggregateInput
+    _max?: provider_walletMaxOrderByAggregateInput
+    _min?: provider_walletMinOrderByAggregateInput
+    _sum?: provider_walletSumOrderByAggregateInput
+  }
+
+  export type provider_walletScalarWhereWithAggregatesInput = {
+    AND?: provider_walletScalarWhereWithAggregatesInput | provider_walletScalarWhereWithAggregatesInput[]
+    OR?: provider_walletScalarWhereWithAggregatesInput[]
+    NOT?: provider_walletScalarWhereWithAggregatesInput | provider_walletScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"provider_wallet"> | string
+    providerId?: StringWithAggregatesFilter<"provider_wallet"> | string
+    availableBalance?: FloatWithAggregatesFilter<"provider_wallet"> | number
+    pendingBalance?: FloatWithAggregatesFilter<"provider_wallet"> | number
+    totalEarnings?: FloatWithAggregatesFilter<"provider_wallet"> | number
+    totalWithdrawn?: FloatWithAggregatesFilter<"provider_wallet"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"provider_wallet"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"provider_wallet"> | Date | string
+  }
+
+  export type transactionWhereInput = {
+    AND?: transactionWhereInput | transactionWhereInput[]
+    OR?: transactionWhereInput[]
+    NOT?: transactionWhereInput | transactionWhereInput[]
+    id?: StringFilter<"transaction"> | string
+    bookingId?: StringFilter<"transaction"> | string
+    studentId?: StringFilter<"transaction"> | string
+    providerId?: StringFilter<"transaction"> | string
+    paystackReference?: StringFilter<"transaction"> | string
+    totalAmount?: FloatFilter<"transaction"> | number
+    platformCommission?: FloatFilter<"transaction"> | number
+    providerEarnings?: FloatFilter<"transaction"> | number
+    commissionRate?: FloatFilter<"transaction"> | number
+    status?: StringFilter<"transaction"> | string
+    paymentMethod?: StringNullableFilter<"transaction"> | string | null
+    paidAt?: DateTimeNullableFilter<"transaction"> | Date | string | null
+    createdAt?: DateTimeFilter<"transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"transaction"> | Date | string
+    booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>
+    user_transaction_providerIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user_transaction_studentIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type transactionOrderByWithRelationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
     studentId?: SortOrder
     providerId?: SortOrder
-    conversationId?: SortOrder
-    _count?: BookingCountOrderByAggregateInput
-    _max?: BookingMaxOrderByAggregateInput
-    _min?: BookingMinOrderByAggregateInput
-  }
-
-  export type BookingScalarWhereWithAggregatesInput = {
-    AND?: BookingScalarWhereWithAggregatesInput | BookingScalarWhereWithAggregatesInput[]
-    OR?: BookingScalarWhereWithAggregatesInput[]
-    NOT?: BookingScalarWhereWithAggregatesInput | BookingScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Booking"> | string
-    studentId?: StringWithAggregatesFilter<"Booking"> | string
-    providerId?: StringWithAggregatesFilter<"Booking"> | string
-    conversationId?: StringWithAggregatesFilter<"Booking"> | string
-  }
-
-  export type ConversationWhereInput = {
-    AND?: ConversationWhereInput | ConversationWhereInput[]
-    OR?: ConversationWhereInput[]
-    NOT?: ConversationWhereInput | ConversationWhereInput[]
-    id?: StringFilter<"Conversation"> | string
-    messages?: JsonFilter<"Conversation">
-    updatedAt?: DateTimeFilter<"Conversation"> | Date | string
-    booking?: XOR<BookingNullableScalarRelationFilter, BookingWhereInput> | null
-  }
-
-  export type ConversationOrderByWithRelationInput = {
-    id?: SortOrder
-    messages?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrderInput | SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
     booking?: BookingOrderByWithRelationInput
+    user_transaction_providerIdTouser?: UserOrderByWithRelationInput
+    user_transaction_studentIdTouser?: UserOrderByWithRelationInput
   }
 
-  export type ConversationWhereUniqueInput = Prisma.AtLeast<{
+  export type transactionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: ConversationWhereInput | ConversationWhereInput[]
-    OR?: ConversationWhereInput[]
-    NOT?: ConversationWhereInput | ConversationWhereInput[]
-    messages?: JsonFilter<"Conversation">
-    updatedAt?: DateTimeFilter<"Conversation"> | Date | string
-    booking?: XOR<BookingNullableScalarRelationFilter, BookingWhereInput> | null
-  }, "id">
+    paystackReference?: string
+    AND?: transactionWhereInput | transactionWhereInput[]
+    OR?: transactionWhereInput[]
+    NOT?: transactionWhereInput | transactionWhereInput[]
+    bookingId?: StringFilter<"transaction"> | string
+    studentId?: StringFilter<"transaction"> | string
+    providerId?: StringFilter<"transaction"> | string
+    totalAmount?: FloatFilter<"transaction"> | number
+    platformCommission?: FloatFilter<"transaction"> | number
+    providerEarnings?: FloatFilter<"transaction"> | number
+    commissionRate?: FloatFilter<"transaction"> | number
+    status?: StringFilter<"transaction"> | string
+    paymentMethod?: StringNullableFilter<"transaction"> | string | null
+    paidAt?: DateTimeNullableFilter<"transaction"> | Date | string | null
+    createdAt?: DateTimeFilter<"transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"transaction"> | Date | string
+    booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>
+    user_transaction_providerIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user_transaction_studentIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "paystackReference">
 
-  export type ConversationOrderByWithAggregationInput = {
+  export type transactionOrderByWithAggregationInput = {
     id?: SortOrder
-    messages?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
+    providerId?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrderInput | SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: ConversationCountOrderByAggregateInput
-    _max?: ConversationMaxOrderByAggregateInput
-    _min?: ConversationMinOrderByAggregateInput
+    _count?: transactionCountOrderByAggregateInput
+    _avg?: transactionAvgOrderByAggregateInput
+    _max?: transactionMaxOrderByAggregateInput
+    _min?: transactionMinOrderByAggregateInput
+    _sum?: transactionSumOrderByAggregateInput
   }
 
-  export type ConversationScalarWhereWithAggregatesInput = {
-    AND?: ConversationScalarWhereWithAggregatesInput | ConversationScalarWhereWithAggregatesInput[]
-    OR?: ConversationScalarWhereWithAggregatesInput[]
-    NOT?: ConversationScalarWhereWithAggregatesInput | ConversationScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Conversation"> | string
-    messages?: JsonWithAggregatesFilter<"Conversation">
-    updatedAt?: DateTimeWithAggregatesFilter<"Conversation"> | Date | string
+  export type transactionScalarWhereWithAggregatesInput = {
+    AND?: transactionScalarWhereWithAggregatesInput | transactionScalarWhereWithAggregatesInput[]
+    OR?: transactionScalarWhereWithAggregatesInput[]
+    NOT?: transactionScalarWhereWithAggregatesInput | transactionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"transaction"> | string
+    bookingId?: StringWithAggregatesFilter<"transaction"> | string
+    studentId?: StringWithAggregatesFilter<"transaction"> | string
+    providerId?: StringWithAggregatesFilter<"transaction"> | string
+    paystackReference?: StringWithAggregatesFilter<"transaction"> | string
+    totalAmount?: FloatWithAggregatesFilter<"transaction"> | number
+    platformCommission?: FloatWithAggregatesFilter<"transaction"> | number
+    providerEarnings?: FloatWithAggregatesFilter<"transaction"> | number
+    commissionRate?: FloatWithAggregatesFilter<"transaction"> | number
+    status?: StringWithAggregatesFilter<"transaction"> | string
+    paymentMethod?: StringNullableWithAggregatesFilter<"transaction"> | string | null
+    paidAt?: DateTimeNullableWithAggregatesFilter<"transaction"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"transaction"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"transaction"> | Date | string
   }
 
   export type UserCreateInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingCreateNestedManyWithoutStudentInput
-    services?: ServiceProviderCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserUncheckedCreateInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
-    services?: ServiceProviderUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserUpdateInput = {
@@ -9776,10 +18339,20 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUpdateManyWithoutStudentNestedInput
-    services?: ServiceProviderUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9790,20 +18363,34 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
-    services?: ServiceProviderUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type UserCreateManyInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
   }
 
   export type UserUpdateManyMutationInput = {
@@ -9814,6 +18401,10 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -9824,6 +18415,10 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
   }
 
   export type SessionCreateInput = {
@@ -10013,6 +18608,340 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ServiceCreateInput = {
+    id?: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
+    bookings?: BookingCreateNestedManyWithoutServiceInput
+    provider: UserCreateNestedOneWithoutServicesInput
+  }
+
+  export type ServiceUncheckedCreateInput = {
+    id?: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    providerId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
+    bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    bookings?: BookingUpdateManyWithoutServiceNestedInput
+    provider?: UserUpdateOneRequiredWithoutServicesNestedInput
+  }
+
+  export type ServiceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    providerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceCreateManyInput = {
+    id?: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    providerId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
+  }
+
+  export type ServiceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ServiceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    providerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BookingCreateInput = {
+    id?: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderBookingsInput
+    service: ServiceCreateNestedOneWithoutBookingsInput
+    student: UserCreateNestedOneWithoutStudentBookingsInput
+    conversation?: ConversationCreateNestedOneWithoutBookingInput
+    transaction?: transactionCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateInput = {
+    id?: string
+    studentId: string
+    providerId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
+    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
+    service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
+    conversation?: ConversationUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingCreateManyInput = {
+    id?: string
+    studentId: string
+    providerId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConversationCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutConversationInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    messageGroups?: MessageGroupCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateInput = {
+    id?: string
+    bookingId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    messageGroups?: MessageGroupUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutConversationNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    messageGroups?: MessageGroupUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    messageGroups?: MessageGroupUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationCreateManyInput = {
+    id?: string
+    bookingId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ConversationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ConversationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageGroupCreateInput = {
+    id?: string
+    date?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+    conversation: ConversationCreateNestedOneWithoutMessageGroupsInput
+  }
+
+  export type MessageGroupUncheckedCreateInput = {
+    id?: string
+    conversationId: string
+    date?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+    conversation?: ConversationUpdateOneRequiredWithoutMessageGroupsNestedInput
+  }
+
+  export type MessageGroupUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupCreateManyInput = {
+    id?: string
+    conversationId: string
+    date?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageCreateInput = {
+    id?: string
+    content: string
+    createdAt?: Date | string
+    conversation: ConversationCreateNestedOneWithoutMessagesInput
+    sender: UserCreateNestedOneWithoutSentMessagesInput
+  }
+
+  export type MessageUncheckedCreateInput = {
+    id?: string
+    conversationId: string
+    senderId: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
+    sender?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateManyInput = {
+    id?: string
+    conversationId: string
+    senderId: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type MessageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type VerificationCreateInput = {
     id: string
     identifier: string
@@ -10076,133 +19005,369 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ServiceProviderCreateInput = {
+  export type AnnouncementCreateInput = {
     id?: string
-    user: UserCreateNestedOneWithoutServicesInput
-    bookings?: BookingCreateNestedManyWithoutProviderInput
+    title: string
+    content: string
+    summary?: string | null
+    category: string
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: string | null
+    contactInfo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    imageUrl?: string | null
   }
 
-  export type ServiceProviderUncheckedCreateInput = {
+  export type AnnouncementUncheckedCreateInput = {
+    id?: string
+    title: string
+    content: string
+    summary?: string | null
+    category: string
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: string | null
+    contactInfo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    imageUrl?: string | null
+  }
+
+  export type AnnouncementUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    externalLink?: NullableStringFieldUpdateOperationsInput | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AnnouncementUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    externalLink?: NullableStringFieldUpdateOperationsInput | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AnnouncementCreateManyInput = {
+    id?: string
+    title: string
+    content: string
+    summary?: string | null
+    category: string
+    isVerified?: boolean
+    isActive?: boolean
+    externalLink?: string | null
+    contactInfo?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    imageUrl?: string | null
+  }
+
+  export type AnnouncementUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    externalLink?: NullableStringFieldUpdateOperationsInput | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type AnnouncementUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    summary?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    isVerified?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    externalLink?: NullableStringFieldUpdateOperationsInput | string | null
+    contactInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupportMessageCreateInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSupportMessagesInput
+  }
+
+  export type SupportMessageUncheckedCreateInput = {
     id?: string
     userId: string
-    bookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    subject: string
+    message: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ServiceProviderUpdateInput = {
+  export type SupportMessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user?: UserUpdateOneRequiredWithoutServicesNestedInput
-    bookings?: BookingUpdateManyWithoutProviderNestedInput
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSupportMessagesNestedInput
   }
 
-  export type ServiceProviderUncheckedUpdateInput = {
+  export type SupportMessageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    bookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ServiceProviderCreateManyInput = {
+  export type SupportMessageCreateManyInput = {
     id?: string
     userId: string
+    subject: string
+    message: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ServiceProviderUpdateManyMutationInput = {
+  export type SupportMessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ServiceProviderUncheckedUpdateManyInput = {
+  export type SupportMessageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BookingCreateInput = {
-    id?: string
-    student: UserCreateNestedOneWithoutBookingsInput
-    provider: ServiceProviderCreateNestedOneWithoutBookingsInput
-    conversation: ConversationCreateNestedOneWithoutBookingInput
+  export type provider_walletCreateInput = {
+    id: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt: Date | string
+    user: UserCreateNestedOneWithoutProvider_walletInput
   }
 
-  export type BookingUncheckedCreateInput = {
-    id?: string
+  export type provider_walletUncheckedCreateInput = {
+    id: string
+    providerId: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type provider_walletUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProvider_walletNestedInput
+  }
+
+  export type provider_walletUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_walletCreateManyInput = {
+    id: string
+    providerId: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type provider_walletUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_walletUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionCreateInput = {
+    id: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+    booking: BookingCreateNestedOneWithoutTransactionInput
+    user_transaction_providerIdTouser: UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput
+    user_transaction_studentIdTouser: UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput
+  }
+
+  export type transactionUncheckedCreateInput = {
+    id: string
+    bookingId: string
     studentId: string
     providerId: string
-    conversationId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type BookingUpdateInput = {
+  export type transactionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student?: UserUpdateOneRequiredWithoutBookingsNestedInput
-    provider?: ServiceProviderUpdateOneRequiredWithoutBookingsNestedInput
-    conversation?: ConversationUpdateOneRequiredWithoutBookingNestedInput
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutTransactionNestedInput
+    user_transaction_providerIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput
+    user_transaction_studentIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput
   }
 
-  export type BookingUncheckedUpdateInput = {
+  export type transactionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
-    conversationId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BookingCreateManyInput = {
-    id?: string
+  export type transactionCreateManyInput = {
+    id: string
+    bookingId: string
     studentId: string
     providerId: string
-    conversationId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type BookingUpdateManyMutationInput = {
+  export type transactionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BookingUncheckedUpdateManyInput = {
+  export type transactionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
-    conversationId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ConversationCreateInput = {
-    id: string
-    messages?: JsonNullValueInput | InputJsonValue
-    updatedAt?: Date | string
-    booking?: BookingCreateNestedOneWithoutConversationInput
-  }
-
-  export type ConversationUncheckedCreateInput = {
-    id: string
-    messages?: JsonNullValueInput | InputJsonValue
-    updatedAt?: Date | string
-    booking?: BookingUncheckedCreateNestedOneWithoutConversationInput
-  }
-
-  export type ConversationUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    messages?: JsonNullValueInput | InputJsonValue
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    booking?: BookingUpdateOneWithoutConversationNestedInput
-  }
-
-  export type ConversationUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    messages?: JsonNullValueInput | InputJsonValue
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    booking?: BookingUncheckedUpdateOneWithoutConversationNestedInput
-  }
-
-  export type ConversationCreateManyInput = {
-    id: string
-    messages?: JsonNullValueInput | InputJsonValue
-    updatedAt?: Date | string
-  }
-
-  export type ConversationUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    messages?: JsonNullValueInput | InputJsonValue
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ConversationUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    messages?: JsonNullValueInput | InputJsonValue
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10252,22 +19417,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type BookingListRelationFilter = {
-    every?: BookingWhereInput
-    some?: BookingWhereInput
-    none?: BookingWhereInput
-  }
-
-  export type ServiceProviderListRelationFilter = {
-    every?: ServiceProviderWhereInput
-    some?: ServiceProviderWhereInput
-    none?: ServiceProviderWhereInput
-  }
-
-  export type SessionListRelationFilter = {
-    every?: SessionWhereInput
-    some?: SessionWhereInput
-    none?: SessionWhereInput
+  export type EnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
   export type AccountListRelationFilter = {
@@ -10276,16 +19430,65 @@ export namespace Prisma {
     none?: AccountWhereInput
   }
 
+  export type BookingListRelationFilter = {
+    every?: BookingWhereInput
+    some?: BookingWhereInput
+    none?: BookingWhereInput
+  }
+
+  export type MessageListRelationFilter = {
+    every?: MessageWhereInput
+    some?: MessageWhereInput
+    none?: MessageWhereInput
+  }
+
+  export type Provider_walletNullableScalarRelationFilter = {
+    is?: provider_walletWhereInput | null
+    isNot?: provider_walletWhereInput | null
+  }
+
+  export type ServiceListRelationFilter = {
+    every?: ServiceWhereInput
+    some?: ServiceWhereInput
+    none?: ServiceWhereInput
+  }
+
+  export type SessionListRelationFilter = {
+    every?: SessionWhereInput
+    some?: SessionWhereInput
+    none?: SessionWhereInput
+  }
+
+  export type SupportMessageListRelationFilter = {
+    every?: SupportMessageWhereInput
+    some?: SupportMessageWhereInput
+    none?: SupportMessageWhereInput
+  }
+
+  export type TransactionListRelationFilter = {
+    every?: transactionWhereInput
+    some?: transactionWhereInput
+    none?: transactionWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type AccountOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type BookingOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type ServiceProviderOrderByRelationAggregateInput = {
+  export type MessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ServiceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10293,7 +19496,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type AccountOrderByRelationAggregateInput = {
+  export type SupportMessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type transactionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10305,6 +19512,10 @@ export namespace Prisma {
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phoneNumber?: SortOrder
+    location?: SortOrder
+    bio?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -10315,6 +19526,10 @@ export namespace Prisma {
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phoneNumber?: SortOrder
+    location?: SortOrder
+    bio?: SortOrder
+    role?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -10325,6 +19540,10 @@ export namespace Prisma {
     image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    phoneNumber?: SortOrder
+    location?: SortOrder
+    bio?: SortOrder
+    role?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -10383,6 +19602,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -10496,77 +19725,139 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type VerificationCountOrderByAggregateInput = {
+  export type ServiceCountOrderByAggregateInput = {
     id?: SortOrder
-    identifier?: SortOrder
-    value?: SortOrder
-    expiresAt?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    price?: SortOrder
+    providerId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operatingHours?: SortOrder
   }
 
-  export type VerificationMaxOrderByAggregateInput = {
+  export type ServiceMaxOrderByAggregateInput = {
     id?: SortOrder
-    identifier?: SortOrder
-    value?: SortOrder
-    expiresAt?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    price?: SortOrder
+    providerId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operatingHours?: SortOrder
   }
 
-  export type VerificationMinOrderByAggregateInput = {
+  export type ServiceMinOrderByAggregateInput = {
     id?: SortOrder
-    identifier?: SortOrder
-    value?: SortOrder
-    expiresAt?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    price?: SortOrder
+    providerId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    operatingHours?: SortOrder
   }
 
-  export type ServiceProviderCountOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
+  export type EnumBookingStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumBookingStatusFilter<$PrismaModel> | $Enums.BookingStatus
   }
 
-  export type ServiceProviderMaxOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
+  export type ServiceScalarRelationFilter = {
+    is?: ServiceWhereInput
+    isNot?: ServiceWhereInput
   }
 
-  export type ServiceProviderMinOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type ServiceProviderScalarRelationFilter = {
-    is?: ServiceProviderWhereInput
-    isNot?: ServiceProviderWhereInput
-  }
-
-  export type ConversationScalarRelationFilter = {
-    is?: ConversationWhereInput
-    isNot?: ConversationWhereInput
+  export type ConversationNullableScalarRelationFilter = {
+    is?: ConversationWhereInput | null
+    isNot?: ConversationWhereInput | null
   }
 
   export type BookingCountOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
     providerId?: SortOrder
-    conversationId?: SortOrder
+    serviceId?: SortOrder
+    bookedAt?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BookingMaxOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
     providerId?: SortOrder
-    conversationId?: SortOrder
+    serviceId?: SortOrder
+    bookedAt?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type BookingMinOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
     providerId?: SortOrder
-    conversationId?: SortOrder
+    serviceId?: SortOrder
+    bookedAt?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumBookingStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumBookingStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookingStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumBookingStatusFilter<$PrismaModel>
+    _max?: NestedEnumBookingStatusFilter<$PrismaModel>
+  }
+
+  export type BookingScalarRelationFilter = {
+    is?: BookingWhereInput
+    isNot?: BookingWhereInput
+  }
+
+  export type MessageGroupListRelationFilter = {
+    every?: MessageGroupWhereInput
+    some?: MessageGroupWhereInput
+    none?: MessageGroupWhereInput
+  }
+
+  export type MessageGroupOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ConversationCountOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ConversationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ConversationMinOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -10592,25 +19883,28 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type BookingNullableScalarRelationFilter = {
-    is?: BookingWhereInput | null
-    isNot?: BookingWhereInput | null
+  export type ConversationScalarRelationFilter = {
+    is?: ConversationWhereInput
+    isNot?: ConversationWhereInput
   }
 
-  export type ConversationCountOrderByAggregateInput = {
+  export type MessageGroupCountOrderByAggregateInput = {
     id?: SortOrder
-    messages?: SortOrder
-    updatedAt?: SortOrder
+    conversationId?: SortOrder
+    date?: SortOrder
+    data?: SortOrder
   }
 
-  export type ConversationMaxOrderByAggregateInput = {
+  export type MessageGroupMaxOrderByAggregateInput = {
     id?: SortOrder
-    updatedAt?: SortOrder
+    conversationId?: SortOrder
+    date?: SortOrder
   }
 
-  export type ConversationMinOrderByAggregateInput = {
+  export type MessageGroupMinOrderByAggregateInput = {
     id?: SortOrder
-    updatedAt?: SortOrder
+    conversationId?: SortOrder
+    date?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -10639,25 +19933,269 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
-  export type BookingCreateNestedManyWithoutStudentInput = {
-    create?: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput> | BookingCreateWithoutStudentInput[] | BookingUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: BookingCreateOrConnectWithoutStudentInput | BookingCreateOrConnectWithoutStudentInput[]
-    createMany?: BookingCreateManyStudentInputEnvelope
-    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  export type MessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type ServiceProviderCreateNestedManyWithoutUserInput = {
-    create?: XOR<ServiceProviderCreateWithoutUserInput, ServiceProviderUncheckedCreateWithoutUserInput> | ServiceProviderCreateWithoutUserInput[] | ServiceProviderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ServiceProviderCreateOrConnectWithoutUserInput | ServiceProviderCreateOrConnectWithoutUserInput[]
-    createMany?: ServiceProviderCreateManyUserInputEnvelope
-    connect?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
+  export type MessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type SessionCreateNestedManyWithoutUserInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  export type MessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    conversationId?: SortOrder
+    senderId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type VerificationCountOrderByAggregateInput = {
+    id?: SortOrder
+    identifier?: SortOrder
+    value?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VerificationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    identifier?: SortOrder
+    value?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type VerificationMinOrderByAggregateInput = {
+    id?: SortOrder
+    identifier?: SortOrder
+    value?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AnnouncementCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    summary?: SortOrder
+    category?: SortOrder
+    isVerified?: SortOrder
+    isActive?: SortOrder
+    externalLink?: SortOrder
+    contactInfo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    imageUrl?: SortOrder
+  }
+
+  export type AnnouncementMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    summary?: SortOrder
+    category?: SortOrder
+    isVerified?: SortOrder
+    isActive?: SortOrder
+    externalLink?: SortOrder
+    contactInfo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    imageUrl?: SortOrder
+  }
+
+  export type AnnouncementMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    summary?: SortOrder
+    category?: SortOrder
+    isVerified?: SortOrder
+    isActive?: SortOrder
+    externalLink?: SortOrder
+    contactInfo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    imageUrl?: SortOrder
+  }
+
+  export type SupportMessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SupportMessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SupportMessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    subject?: SortOrder
+    message?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type provider_walletCountOrderByAggregateInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type provider_walletAvgOrderByAggregateInput = {
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+  }
+
+  export type provider_walletMaxOrderByAggregateInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type provider_walletMinOrderByAggregateInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type provider_walletSumOrderByAggregateInput = {
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type transactionCountOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
+    providerId?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type transactionAvgOrderByAggregateInput = {
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+  }
+
+  export type transactionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
+    providerId?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type transactionMinOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
+    providerId?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type transactionSumOrderByAggregateInput = {
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -10667,6 +20205,82 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
+  export type BookingCreateNestedManyWithoutProviderInput = {
+    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
+    createMany?: BookingCreateManyProviderInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
+  export type BookingCreateNestedManyWithoutStudentInput = {
+    create?: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput> | BookingCreateWithoutStudentInput[] | BookingUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutStudentInput | BookingCreateOrConnectWithoutStudentInput[]
+    createMany?: BookingCreateManyStudentInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
+  export type MessageCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type provider_walletCreateNestedOneWithoutUserInput = {
+    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
+    connect?: provider_walletWhereUniqueInput
+  }
+
+  export type ServiceCreateNestedManyWithoutProviderInput = {
+    create?: XOR<ServiceCreateWithoutProviderInput, ServiceUncheckedCreateWithoutProviderInput> | ServiceCreateWithoutProviderInput[] | ServiceUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutProviderInput | ServiceCreateOrConnectWithoutProviderInput[]
+    createMany?: ServiceCreateManyProviderInputEnvelope
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+  }
+
+  export type SessionCreateNestedManyWithoutUserInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+  }
+
+  export type SupportMessageCreateNestedManyWithoutUserInput = {
+    create?: XOR<SupportMessageCreateWithoutUserInput, SupportMessageUncheckedCreateWithoutUserInput> | SupportMessageCreateWithoutUserInput[] | SupportMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportMessageCreateOrConnectWithoutUserInput | SupportMessageCreateOrConnectWithoutUserInput[]
+    createMany?: SupportMessageCreateManyUserInputEnvelope
+    connect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+  }
+
+  export type transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  }
+
+  export type transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  }
+
+  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  }
+
+  export type BookingUncheckedCreateNestedManyWithoutProviderInput = {
+    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
+    createMany?: BookingCreateManyProviderInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
   export type BookingUncheckedCreateNestedManyWithoutStudentInput = {
     create?: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput> | BookingCreateWithoutStudentInput[] | BookingUncheckedCreateWithoutStudentInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutStudentInput | BookingCreateOrConnectWithoutStudentInput[]
@@ -10674,11 +20288,24 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type ServiceProviderUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ServiceProviderCreateWithoutUserInput, ServiceProviderUncheckedCreateWithoutUserInput> | ServiceProviderCreateWithoutUserInput[] | ServiceProviderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ServiceProviderCreateOrConnectWithoutUserInput | ServiceProviderCreateOrConnectWithoutUserInput[]
-    createMany?: ServiceProviderCreateManyUserInputEnvelope
-    connect?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
+  export type MessageUncheckedCreateNestedManyWithoutSenderInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type provider_walletUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
+    connect?: provider_walletWhereUniqueInput
+  }
+
+  export type ServiceUncheckedCreateNestedManyWithoutProviderInput = {
+    create?: XOR<ServiceCreateWithoutProviderInput, ServiceUncheckedCreateWithoutProviderInput> | ServiceCreateWithoutProviderInput[] | ServiceUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutProviderInput | ServiceCreateOrConnectWithoutProviderInput[]
+    createMany?: ServiceCreateManyProviderInputEnvelope
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -10688,11 +20315,25 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
-  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  export type SupportMessageUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SupportMessageCreateWithoutUserInput, SupportMessageUncheckedCreateWithoutUserInput> | SupportMessageCreateWithoutUserInput[] | SupportMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportMessageCreateOrConnectWithoutUserInput | SupportMessageCreateOrConnectWithoutUserInput[]
+    createMany?: SupportMessageCreateManyUserInputEnvelope
+    connect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+  }
+
+  export type transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  }
+
+  export type transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10711,46 +20352,8 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type BookingUpdateManyWithoutStudentNestedInput = {
-    create?: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput> | BookingCreateWithoutStudentInput[] | BookingUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: BookingCreateOrConnectWithoutStudentInput | BookingCreateOrConnectWithoutStudentInput[]
-    upsert?: BookingUpsertWithWhereUniqueWithoutStudentInput | BookingUpsertWithWhereUniqueWithoutStudentInput[]
-    createMany?: BookingCreateManyStudentInputEnvelope
-    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    update?: BookingUpdateWithWhereUniqueWithoutStudentInput | BookingUpdateWithWhereUniqueWithoutStudentInput[]
-    updateMany?: BookingUpdateManyWithWhereWithoutStudentInput | BookingUpdateManyWithWhereWithoutStudentInput[]
-    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
-  }
-
-  export type ServiceProviderUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ServiceProviderCreateWithoutUserInput, ServiceProviderUncheckedCreateWithoutUserInput> | ServiceProviderCreateWithoutUserInput[] | ServiceProviderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ServiceProviderCreateOrConnectWithoutUserInput | ServiceProviderCreateOrConnectWithoutUserInput[]
-    upsert?: ServiceProviderUpsertWithWhereUniqueWithoutUserInput | ServiceProviderUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ServiceProviderCreateManyUserInputEnvelope
-    set?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    disconnect?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    delete?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    connect?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    update?: ServiceProviderUpdateWithWhereUniqueWithoutUserInput | ServiceProviderUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ServiceProviderUpdateManyWithWhereWithoutUserInput | ServiceProviderUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ServiceProviderScalarWhereInput | ServiceProviderScalarWhereInput[]
-  }
-
-  export type SessionUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  export type EnumRoleFieldUpdateOperationsInput = {
+    set?: $Enums.Role
   }
 
   export type AccountUpdateManyWithoutUserNestedInput = {
@@ -10767,6 +20370,156 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
+  export type BookingUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutProviderInput | BookingUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: BookingCreateManyProviderInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutProviderInput | BookingUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutProviderInput | BookingUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
+  export type BookingUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput> | BookingCreateWithoutStudentInput[] | BookingUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutStudentInput | BookingCreateOrConnectWithoutStudentInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutStudentInput | BookingUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: BookingCreateManyStudentInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutStudentInput | BookingUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutStudentInput | BookingUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
+  export type MessageUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutSenderInput | MessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutSenderInput | MessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutSenderInput | MessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type provider_walletUpdateOneWithoutUserNestedInput = {
+    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
+    upsert?: provider_walletUpsertWithoutUserInput
+    disconnect?: provider_walletWhereInput | boolean
+    delete?: provider_walletWhereInput | boolean
+    connect?: provider_walletWhereUniqueInput
+    update?: XOR<XOR<provider_walletUpdateToOneWithWhereWithoutUserInput, provider_walletUpdateWithoutUserInput>, provider_walletUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ServiceUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<ServiceCreateWithoutProviderInput, ServiceUncheckedCreateWithoutProviderInput> | ServiceCreateWithoutProviderInput[] | ServiceUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutProviderInput | ServiceCreateOrConnectWithoutProviderInput[]
+    upsert?: ServiceUpsertWithWhereUniqueWithoutProviderInput | ServiceUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: ServiceCreateManyProviderInputEnvelope
+    set?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    disconnect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    delete?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    update?: ServiceUpdateWithWhereUniqueWithoutProviderInput | ServiceUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: ServiceUpdateManyWithWhereWithoutProviderInput | ServiceUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+  }
+
+  export type SessionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
+  }
+
+  export type SupportMessageUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SupportMessageCreateWithoutUserInput, SupportMessageUncheckedCreateWithoutUserInput> | SupportMessageCreateWithoutUserInput[] | SupportMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportMessageCreateOrConnectWithoutUserInput | SupportMessageCreateOrConnectWithoutUserInput[]
+    upsert?: SupportMessageUpsertWithWhereUniqueWithoutUserInput | SupportMessageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SupportMessageCreateManyUserInputEnvelope
+    set?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    disconnect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    delete?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    connect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    update?: SupportMessageUpdateWithWhereUniqueWithoutUserInput | SupportMessageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SupportMessageUpdateManyWithWhereWithoutUserInput | SupportMessageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SupportMessageScalarWhereInput | SupportMessageScalarWhereInput[]
+  }
+
+  export type transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
+    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
+    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
+    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput[]
+    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  }
+
+  export type transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
+    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
+    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
+    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput[]
+    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  }
+
+  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  }
+
+  export type BookingUncheckedUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutProviderInput | BookingUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: BookingCreateManyProviderInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutProviderInput | BookingUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutProviderInput | BookingUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
   export type BookingUncheckedUpdateManyWithoutStudentNestedInput = {
     create?: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput> | BookingCreateWithoutStudentInput[] | BookingUncheckedCreateWithoutStudentInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutStudentInput | BookingCreateOrConnectWithoutStudentInput[]
@@ -10781,18 +20534,42 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type ServiceProviderUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ServiceProviderCreateWithoutUserInput, ServiceProviderUncheckedCreateWithoutUserInput> | ServiceProviderCreateWithoutUserInput[] | ServiceProviderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ServiceProviderCreateOrConnectWithoutUserInput | ServiceProviderCreateOrConnectWithoutUserInput[]
-    upsert?: ServiceProviderUpsertWithWhereUniqueWithoutUserInput | ServiceProviderUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ServiceProviderCreateManyUserInputEnvelope
-    set?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    disconnect?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    delete?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    connect?: ServiceProviderWhereUniqueInput | ServiceProviderWhereUniqueInput[]
-    update?: ServiceProviderUpdateWithWhereUniqueWithoutUserInput | ServiceProviderUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ServiceProviderUpdateManyWithWhereWithoutUserInput | ServiceProviderUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ServiceProviderScalarWhereInput | ServiceProviderScalarWhereInput[]
+  export type MessageUncheckedUpdateManyWithoutSenderNestedInput = {
+    create?: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput> | MessageCreateWithoutSenderInput[] | MessageUncheckedCreateWithoutSenderInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutSenderInput | MessageCreateOrConnectWithoutSenderInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutSenderInput | MessageUpsertWithWhereUniqueWithoutSenderInput[]
+    createMany?: MessageCreateManySenderInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutSenderInput | MessageUpdateWithWhereUniqueWithoutSenderInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutSenderInput | MessageUpdateManyWithWhereWithoutSenderInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type provider_walletUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
+    upsert?: provider_walletUpsertWithoutUserInput
+    disconnect?: provider_walletWhereInput | boolean
+    delete?: provider_walletWhereInput | boolean
+    connect?: provider_walletWhereUniqueInput
+    update?: XOR<XOR<provider_walletUpdateToOneWithWhereWithoutUserInput, provider_walletUpdateWithoutUserInput>, provider_walletUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ServiceUncheckedUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<ServiceCreateWithoutProviderInput, ServiceUncheckedCreateWithoutProviderInput> | ServiceCreateWithoutProviderInput[] | ServiceUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ServiceCreateOrConnectWithoutProviderInput | ServiceCreateOrConnectWithoutProviderInput[]
+    upsert?: ServiceUpsertWithWhereUniqueWithoutProviderInput | ServiceUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: ServiceCreateManyProviderInputEnvelope
+    set?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    disconnect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    delete?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+    update?: ServiceUpdateWithWhereUniqueWithoutProviderInput | ServiceUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: ServiceUpdateManyWithWhereWithoutProviderInput | ServiceUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
   }
 
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -10809,18 +20586,46 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
-  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  export type SupportMessageUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SupportMessageCreateWithoutUserInput, SupportMessageUncheckedCreateWithoutUserInput> | SupportMessageCreateWithoutUserInput[] | SupportMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SupportMessageCreateOrConnectWithoutUserInput | SupportMessageCreateOrConnectWithoutUserInput[]
+    upsert?: SupportMessageUpsertWithWhereUniqueWithoutUserInput | SupportMessageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SupportMessageCreateManyUserInputEnvelope
+    set?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    disconnect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    delete?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    connect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
+    update?: SupportMessageUpdateWithWhereUniqueWithoutUserInput | SupportMessageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SupportMessageUpdateManyWithWhereWithoutUserInput | SupportMessageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SupportMessageScalarWhereInput | SupportMessageScalarWhereInput[]
+  }
+
+  export type transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
+    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
+    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
+    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput[]
+    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  }
+
+  export type transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput = {
+    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
+    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
+    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
+    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
+    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput[]
+    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -10855,24 +20660,38 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
+  export type BookingCreateNestedManyWithoutServiceInput = {
+    create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
+    createMany?: BookingCreateManyServiceInputEnvelope
+    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutServicesInput = {
     create?: XOR<UserCreateWithoutServicesInput, UserUncheckedCreateWithoutServicesInput>
     connectOrCreate?: UserCreateOrConnectWithoutServicesInput
     connect?: UserWhereUniqueInput
   }
 
-  export type BookingCreateNestedManyWithoutProviderInput = {
-    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
-    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
-    createMany?: BookingCreateManyProviderInputEnvelope
+  export type BookingUncheckedCreateNestedManyWithoutServiceInput = {
+    create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
+    createMany?: BookingCreateManyServiceInputEnvelope
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type BookingUncheckedCreateNestedManyWithoutProviderInput = {
-    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
-    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
-    createMany?: BookingCreateManyProviderInputEnvelope
+  export type BookingUpdateManyWithoutServiceNestedInput = {
+    create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutServiceInput | BookingUpsertWithWhereUniqueWithoutServiceInput[]
+    createMany?: BookingCreateManyServiceInputEnvelope
+    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutServiceInput | BookingUpdateWithWhereUniqueWithoutServiceInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutServiceInput | BookingUpdateManyWithWhereWithoutServiceInput[]
+    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
   export type UserUpdateOneRequiredWithoutServicesNestedInput = {
@@ -10883,44 +20702,36 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutServicesInput, UserUpdateWithoutServicesInput>, UserUncheckedUpdateWithoutServicesInput>
   }
 
-  export type BookingUpdateManyWithoutProviderNestedInput = {
-    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
-    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
-    upsert?: BookingUpsertWithWhereUniqueWithoutProviderInput | BookingUpsertWithWhereUniqueWithoutProviderInput[]
-    createMany?: BookingCreateManyProviderInputEnvelope
+  export type BookingUncheckedUpdateManyWithoutServiceNestedInput = {
+    create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
+    upsert?: BookingUpsertWithWhereUniqueWithoutServiceInput | BookingUpsertWithWhereUniqueWithoutServiceInput[]
+    createMany?: BookingCreateManyServiceInputEnvelope
     set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
     disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
     delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    update?: BookingUpdateWithWhereUniqueWithoutProviderInput | BookingUpdateWithWhereUniqueWithoutProviderInput[]
-    updateMany?: BookingUpdateManyWithWhereWithoutProviderInput | BookingUpdateManyWithWhereWithoutProviderInput[]
+    update?: BookingUpdateWithWhereUniqueWithoutServiceInput | BookingUpdateWithWhereUniqueWithoutServiceInput[]
+    updateMany?: BookingUpdateManyWithWhereWithoutServiceInput | BookingUpdateManyWithWhereWithoutServiceInput[]
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type BookingUncheckedUpdateManyWithoutProviderNestedInput = {
-    create?: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput> | BookingCreateWithoutProviderInput[] | BookingUncheckedCreateWithoutProviderInput[]
-    connectOrCreate?: BookingCreateOrConnectWithoutProviderInput | BookingCreateOrConnectWithoutProviderInput[]
-    upsert?: BookingUpsertWithWhereUniqueWithoutProviderInput | BookingUpsertWithWhereUniqueWithoutProviderInput[]
-    createMany?: BookingCreateManyProviderInputEnvelope
-    set?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    disconnect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    delete?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-    update?: BookingUpdateWithWhereUniqueWithoutProviderInput | BookingUpdateWithWhereUniqueWithoutProviderInput[]
-    updateMany?: BookingUpdateManyWithWhereWithoutProviderInput | BookingUpdateManyWithWhereWithoutProviderInput[]
-    deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
-  }
-
-  export type UserCreateNestedOneWithoutBookingsInput = {
-    create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
+  export type UserCreateNestedOneWithoutProviderBookingsInput = {
+    create?: XOR<UserCreateWithoutProviderBookingsInput, UserUncheckedCreateWithoutProviderBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProviderBookingsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ServiceProviderCreateNestedOneWithoutBookingsInput = {
-    create?: XOR<ServiceProviderCreateWithoutBookingsInput, ServiceProviderUncheckedCreateWithoutBookingsInput>
-    connectOrCreate?: ServiceProviderCreateOrConnectWithoutBookingsInput
-    connect?: ServiceProviderWhereUniqueInput
+  export type ServiceCreateNestedOneWithoutBookingsInput = {
+    create?: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutBookingsInput
+    connect?: ServiceWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutStudentBookingsInput = {
+    create?: XOR<UserCreateWithoutStudentBookingsInput, UserUncheckedCreateWithoutStudentBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStudentBookingsInput
+    connect?: UserWhereUniqueInput
   }
 
   export type ConversationCreateNestedOneWithoutBookingInput = {
@@ -10929,28 +20740,100 @@ export namespace Prisma {
     connect?: ConversationWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutBookingsNestedInput = {
-    create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
-    upsert?: UserUpsertWithoutBookingsInput
+  export type transactionCreateNestedManyWithoutBookingInput = {
+    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
+    createMany?: transactionCreateManyBookingInputEnvelope
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  }
+
+  export type ConversationUncheckedCreateNestedOneWithoutBookingInput = {
+    create?: XOR<ConversationCreateWithoutBookingInput, ConversationUncheckedCreateWithoutBookingInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutBookingInput
+    connect?: ConversationWhereUniqueInput
+  }
+
+  export type transactionUncheckedCreateNestedManyWithoutBookingInput = {
+    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
+    createMany?: transactionCreateManyBookingInputEnvelope
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  }
+
+  export type EnumBookingStatusFieldUpdateOperationsInput = {
+    set?: $Enums.BookingStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutProviderBookingsNestedInput = {
+    create?: XOR<UserCreateWithoutProviderBookingsInput, UserUncheckedCreateWithoutProviderBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProviderBookingsInput
+    upsert?: UserUpsertWithoutProviderBookingsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookingsInput, UserUpdateWithoutBookingsInput>, UserUncheckedUpdateWithoutBookingsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProviderBookingsInput, UserUpdateWithoutProviderBookingsInput>, UserUncheckedUpdateWithoutProviderBookingsInput>
   }
 
-  export type ServiceProviderUpdateOneRequiredWithoutBookingsNestedInput = {
-    create?: XOR<ServiceProviderCreateWithoutBookingsInput, ServiceProviderUncheckedCreateWithoutBookingsInput>
-    connectOrCreate?: ServiceProviderCreateOrConnectWithoutBookingsInput
-    upsert?: ServiceProviderUpsertWithoutBookingsInput
-    connect?: ServiceProviderWhereUniqueInput
-    update?: XOR<XOR<ServiceProviderUpdateToOneWithWhereWithoutBookingsInput, ServiceProviderUpdateWithoutBookingsInput>, ServiceProviderUncheckedUpdateWithoutBookingsInput>
+  export type ServiceUpdateOneRequiredWithoutBookingsNestedInput = {
+    create?: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutBookingsInput
+    upsert?: ServiceUpsertWithoutBookingsInput
+    connect?: ServiceWhereUniqueInput
+    update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutBookingsInput, ServiceUpdateWithoutBookingsInput>, ServiceUncheckedUpdateWithoutBookingsInput>
   }
 
-  export type ConversationUpdateOneRequiredWithoutBookingNestedInput = {
+  export type UserUpdateOneRequiredWithoutStudentBookingsNestedInput = {
+    create?: XOR<UserCreateWithoutStudentBookingsInput, UserUncheckedCreateWithoutStudentBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStudentBookingsInput
+    upsert?: UserUpsertWithoutStudentBookingsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutStudentBookingsInput, UserUpdateWithoutStudentBookingsInput>, UserUncheckedUpdateWithoutStudentBookingsInput>
+  }
+
+  export type ConversationUpdateOneWithoutBookingNestedInput = {
     create?: XOR<ConversationCreateWithoutBookingInput, ConversationUncheckedCreateWithoutBookingInput>
     connectOrCreate?: ConversationCreateOrConnectWithoutBookingInput
     upsert?: ConversationUpsertWithoutBookingInput
+    disconnect?: ConversationWhereInput | boolean
+    delete?: ConversationWhereInput | boolean
     connect?: ConversationWhereUniqueInput
     update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutBookingInput, ConversationUpdateWithoutBookingInput>, ConversationUncheckedUpdateWithoutBookingInput>
+  }
+
+  export type transactionUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
+    upsert?: transactionUpsertWithWhereUniqueWithoutBookingInput | transactionUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: transactionCreateManyBookingInputEnvelope
+    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    update?: transactionUpdateWithWhereUniqueWithoutBookingInput | transactionUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: transactionUpdateManyWithWhereWithoutBookingInput | transactionUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  }
+
+  export type ConversationUncheckedUpdateOneWithoutBookingNestedInput = {
+    create?: XOR<ConversationCreateWithoutBookingInput, ConversationUncheckedCreateWithoutBookingInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutBookingInput
+    upsert?: ConversationUpsertWithoutBookingInput
+    disconnect?: ConversationWhereInput | boolean
+    delete?: ConversationWhereInput | boolean
+    connect?: ConversationWhereUniqueInput
+    update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutBookingInput, ConversationUpdateWithoutBookingInput>, ConversationUncheckedUpdateWithoutBookingInput>
+  }
+
+  export type transactionUncheckedUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
+    upsert?: transactionUpsertWithWhereUniqueWithoutBookingInput | transactionUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: transactionCreateManyBookingInputEnvelope
+    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+    update?: transactionUpdateWithWhereUniqueWithoutBookingInput | transactionUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: transactionUpdateManyWithWhereWithoutBookingInput | transactionUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
   }
 
   export type BookingCreateNestedOneWithoutConversationInput = {
@@ -10959,30 +20842,216 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput
   }
 
-  export type BookingUncheckedCreateNestedOneWithoutConversationInput = {
-    create?: XOR<BookingCreateWithoutConversationInput, BookingUncheckedCreateWithoutConversationInput>
-    connectOrCreate?: BookingCreateOrConnectWithoutConversationInput
-    connect?: BookingWhereUniqueInput
+  export type MessageCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
   }
 
-  export type BookingUpdateOneWithoutConversationNestedInput = {
+  export type MessageGroupCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MessageGroupCreateWithoutConversationInput, MessageGroupUncheckedCreateWithoutConversationInput> | MessageGroupCreateWithoutConversationInput[] | MessageGroupUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageGroupCreateOrConnectWithoutConversationInput | MessageGroupCreateOrConnectWithoutConversationInput[]
+    createMany?: MessageGroupCreateManyConversationInputEnvelope
+    connect?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type MessageGroupUncheckedCreateNestedManyWithoutConversationInput = {
+    create?: XOR<MessageGroupCreateWithoutConversationInput, MessageGroupUncheckedCreateWithoutConversationInput> | MessageGroupCreateWithoutConversationInput[] | MessageGroupUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageGroupCreateOrConnectWithoutConversationInput | MessageGroupCreateOrConnectWithoutConversationInput[]
+    createMany?: MessageGroupCreateManyConversationInputEnvelope
+    connect?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+  }
+
+  export type BookingUpdateOneRequiredWithoutConversationNestedInput = {
     create?: XOR<BookingCreateWithoutConversationInput, BookingUncheckedCreateWithoutConversationInput>
     connectOrCreate?: BookingCreateOrConnectWithoutConversationInput
     upsert?: BookingUpsertWithoutConversationInput
-    disconnect?: BookingWhereInput | boolean
-    delete?: BookingWhereInput | boolean
     connect?: BookingWhereUniqueInput
     update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutConversationInput, BookingUpdateWithoutConversationInput>, BookingUncheckedUpdateWithoutConversationInput>
   }
 
-  export type BookingUncheckedUpdateOneWithoutConversationNestedInput = {
-    create?: XOR<BookingCreateWithoutConversationInput, BookingUncheckedCreateWithoutConversationInput>
-    connectOrCreate?: BookingCreateOrConnectWithoutConversationInput
-    upsert?: BookingUpsertWithoutConversationInput
-    disconnect?: BookingWhereInput | boolean
-    delete?: BookingWhereInput | boolean
+  export type MessageUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutConversationInput | MessageUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutConversationInput | MessageUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutConversationInput | MessageUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type MessageGroupUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MessageGroupCreateWithoutConversationInput, MessageGroupUncheckedCreateWithoutConversationInput> | MessageGroupCreateWithoutConversationInput[] | MessageGroupUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageGroupCreateOrConnectWithoutConversationInput | MessageGroupCreateOrConnectWithoutConversationInput[]
+    upsert?: MessageGroupUpsertWithWhereUniqueWithoutConversationInput | MessageGroupUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MessageGroupCreateManyConversationInputEnvelope
+    set?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    disconnect?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    delete?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    connect?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    update?: MessageGroupUpdateWithWhereUniqueWithoutConversationInput | MessageGroupUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MessageGroupUpdateManyWithWhereWithoutConversationInput | MessageGroupUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MessageGroupScalarWhereInput | MessageGroupScalarWhereInput[]
+  }
+
+  export type MessageUncheckedUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput> | MessageCreateWithoutConversationInput[] | MessageUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutConversationInput | MessageCreateOrConnectWithoutConversationInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutConversationInput | MessageUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MessageCreateManyConversationInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutConversationInput | MessageUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutConversationInput | MessageUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type MessageGroupUncheckedUpdateManyWithoutConversationNestedInput = {
+    create?: XOR<MessageGroupCreateWithoutConversationInput, MessageGroupUncheckedCreateWithoutConversationInput> | MessageGroupCreateWithoutConversationInput[] | MessageGroupUncheckedCreateWithoutConversationInput[]
+    connectOrCreate?: MessageGroupCreateOrConnectWithoutConversationInput | MessageGroupCreateOrConnectWithoutConversationInput[]
+    upsert?: MessageGroupUpsertWithWhereUniqueWithoutConversationInput | MessageGroupUpsertWithWhereUniqueWithoutConversationInput[]
+    createMany?: MessageGroupCreateManyConversationInputEnvelope
+    set?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    disconnect?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    delete?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    connect?: MessageGroupWhereUniqueInput | MessageGroupWhereUniqueInput[]
+    update?: MessageGroupUpdateWithWhereUniqueWithoutConversationInput | MessageGroupUpdateWithWhereUniqueWithoutConversationInput[]
+    updateMany?: MessageGroupUpdateManyWithWhereWithoutConversationInput | MessageGroupUpdateManyWithWhereWithoutConversationInput[]
+    deleteMany?: MessageGroupScalarWhereInput | MessageGroupScalarWhereInput[]
+  }
+
+  export type ConversationCreateNestedOneWithoutMessageGroupsInput = {
+    create?: XOR<ConversationCreateWithoutMessageGroupsInput, ConversationUncheckedCreateWithoutMessageGroupsInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutMessageGroupsInput
+    connect?: ConversationWhereUniqueInput
+  }
+
+  export type ConversationUpdateOneRequiredWithoutMessageGroupsNestedInput = {
+    create?: XOR<ConversationCreateWithoutMessageGroupsInput, ConversationUncheckedCreateWithoutMessageGroupsInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutMessageGroupsInput
+    upsert?: ConversationUpsertWithoutMessageGroupsInput
+    connect?: ConversationWhereUniqueInput
+    update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutMessageGroupsInput, ConversationUpdateWithoutMessageGroupsInput>, ConversationUncheckedUpdateWithoutMessageGroupsInput>
+  }
+
+  export type ConversationCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutMessagesInput
+    connect?: ConversationWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutSentMessagesInput = {
+    create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ConversationUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: ConversationCreateOrConnectWithoutMessagesInput
+    upsert?: ConversationUpsertWithoutMessagesInput
+    connect?: ConversationWhereUniqueInput
+    update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutMessagesInput, ConversationUpdateWithoutMessagesInput>, ConversationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutSentMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSentMessagesInput
+    upsert?: UserUpsertWithoutSentMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentMessagesInput, UserUpdateWithoutSentMessagesInput>, UserUncheckedUpdateWithoutSentMessagesInput>
+  }
+
+  export type UserCreateNestedOneWithoutSupportMessagesInput = {
+    create?: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSupportMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSupportMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSupportMessagesInput
+    upsert?: UserUpsertWithoutSupportMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSupportMessagesInput, UserUpdateWithoutSupportMessagesInput>, UserUncheckedUpdateWithoutSupportMessagesInput>
+  }
+
+  export type UserCreateNestedOneWithoutProvider_walletInput = {
+    create?: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProvider_walletInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutProvider_walletNestedInput = {
+    create?: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProvider_walletInput
+    upsert?: UserUpsertWithoutProvider_walletInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProvider_walletInput, UserUpdateWithoutProvider_walletInput>, UserUncheckedUpdateWithoutProvider_walletInput>
+  }
+
+  export type BookingCreateNestedOneWithoutTransactionInput = {
+    create?: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutTransactionInput
     connect?: BookingWhereUniqueInput
-    update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutConversationInput, BookingUpdateWithoutConversationInput>, BookingUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput = {
+    create?: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_providerIdTouserInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput = {
+    create?: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_studentIdTouserInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BookingUpdateOneRequiredWithoutTransactionNestedInput = {
+    create?: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutTransactionInput
+    upsert?: BookingUpsertWithoutTransactionInput
+    connect?: BookingWhereUniqueInput
+    update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutTransactionInput, BookingUpdateWithoutTransactionInput>, BookingUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput = {
+    create?: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_providerIdTouserInput
+    upsert?: UserUpsertWithoutTransaction_transaction_providerIdTouserInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTransaction_transaction_providerIdTouserInput, UserUpdateWithoutTransaction_transaction_providerIdTouserInput>, UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput = {
+    create?: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_studentIdTouserInput
+    upsert?: UserUpsertWithoutTransaction_transaction_studentIdTouserInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTransaction_transaction_studentIdTouserInput, UserUpdateWithoutTransaction_transaction_studentIdTouserInput>, UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11027,6 +21096,13 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -11107,6 +21183,16 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRoleFilter<$PrismaModel>
+    _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -11130,6 +21216,23 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumBookingStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumBookingStatusFilter<$PrismaModel> | $Enums.BookingStatus
+  }
+
+  export type NestedEnumBookingStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.BookingStatus | EnumBookingStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.BookingStatus[] | ListEnumBookingStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumBookingStatusWithAggregatesFilter<$PrismaModel> | $Enums.BookingStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumBookingStatusFilter<$PrismaModel>
+    _max?: NestedEnumBookingStatusFilter<$PrismaModel>
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -11155,76 +21258,31 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type BookingCreateWithoutStudentInput = {
-    id?: string
-    provider: ServiceProviderCreateNestedOneWithoutBookingsInput
-    conversation: ConversationCreateNestedOneWithoutBookingInput
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type BookingUncheckedCreateWithoutStudentInput = {
-    id?: string
-    providerId: string
-    conversationId: string
-  }
-
-  export type BookingCreateOrConnectWithoutStudentInput = {
-    where: BookingWhereUniqueInput
-    create: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput>
-  }
-
-  export type BookingCreateManyStudentInputEnvelope = {
-    data: BookingCreateManyStudentInput | BookingCreateManyStudentInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ServiceProviderCreateWithoutUserInput = {
-    id?: string
-    bookings?: BookingCreateNestedManyWithoutProviderInput
-  }
-
-  export type ServiceProviderUncheckedCreateWithoutUserInput = {
-    id?: string
-    bookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
-  }
-
-  export type ServiceProviderCreateOrConnectWithoutUserInput = {
-    where: ServiceProviderWhereUniqueInput
-    create: XOR<ServiceProviderCreateWithoutUserInput, ServiceProviderUncheckedCreateWithoutUserInput>
-  }
-
-  export type ServiceProviderCreateManyUserInputEnvelope = {
-    data: ServiceProviderCreateManyUserInput | ServiceProviderCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SessionCreateWithoutUserInput = {
-    id: string
-    expiresAt: Date | string
-    token: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    ipAddress?: string | null
-    userAgent?: string | null
-  }
-
-  export type SessionUncheckedCreateWithoutUserInput = {
-    id: string
-    expiresAt: Date | string
-    token: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    ipAddress?: string | null
-    userAgent?: string | null
-  }
-
-  export type SessionCreateOrConnectWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type SessionCreateManyUserInputEnvelope = {
-    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
-    skipDuplicates?: boolean
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type AccountCreateWithoutUserInput = {
@@ -11267,84 +21325,299 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type BookingUpsertWithWhereUniqueWithoutStudentInput = {
+  export type BookingCreateWithoutProviderInput = {
+    id?: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    service: ServiceCreateNestedOneWithoutBookingsInput
+    student: UserCreateNestedOneWithoutStudentBookingsInput
+    conversation?: ConversationCreateNestedOneWithoutBookingInput
+    transaction?: transactionCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateWithoutProviderInput = {
+    id?: string
+    studentId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
+    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingCreateOrConnectWithoutProviderInput = {
     where: BookingWhereUniqueInput
-    update: XOR<BookingUpdateWithoutStudentInput, BookingUncheckedUpdateWithoutStudentInput>
+    create: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput>
+  }
+
+  export type BookingCreateManyProviderInputEnvelope = {
+    data: BookingCreateManyProviderInput | BookingCreateManyProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookingCreateWithoutStudentInput = {
+    id?: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderBookingsInput
+    service: ServiceCreateNestedOneWithoutBookingsInput
+    conversation?: ConversationCreateNestedOneWithoutBookingInput
+    transaction?: transactionCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateWithoutStudentInput = {
+    id?: string
+    providerId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
+    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingCreateOrConnectWithoutStudentInput = {
+    where: BookingWhereUniqueInput
     create: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput>
   }
 
-  export type BookingUpdateWithWhereUniqueWithoutStudentInput = {
-    where: BookingWhereUniqueInput
-    data: XOR<BookingUpdateWithoutStudentInput, BookingUncheckedUpdateWithoutStudentInput>
+  export type BookingCreateManyStudentInputEnvelope = {
+    data: BookingCreateManyStudentInput | BookingCreateManyStudentInput[]
+    skipDuplicates?: boolean
   }
 
-  export type BookingUpdateManyWithWhereWithoutStudentInput = {
-    where: BookingScalarWhereInput
-    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutStudentInput>
+  export type MessageCreateWithoutSenderInput = {
+    id?: string
+    content: string
+    createdAt?: Date | string
+    conversation: ConversationCreateNestedOneWithoutMessagesInput
   }
 
-  export type BookingScalarWhereInput = {
-    AND?: BookingScalarWhereInput | BookingScalarWhereInput[]
-    OR?: BookingScalarWhereInput[]
-    NOT?: BookingScalarWhereInput | BookingScalarWhereInput[]
-    id?: StringFilter<"Booking"> | string
-    studentId?: StringFilter<"Booking"> | string
-    providerId?: StringFilter<"Booking"> | string
-    conversationId?: StringFilter<"Booking"> | string
+  export type MessageUncheckedCreateWithoutSenderInput = {
+    id?: string
+    conversationId: string
+    content: string
+    createdAt?: Date | string
   }
 
-  export type ServiceProviderUpsertWithWhereUniqueWithoutUserInput = {
-    where: ServiceProviderWhereUniqueInput
-    update: XOR<ServiceProviderUpdateWithoutUserInput, ServiceProviderUncheckedUpdateWithoutUserInput>
-    create: XOR<ServiceProviderCreateWithoutUserInput, ServiceProviderUncheckedCreateWithoutUserInput>
+  export type MessageCreateOrConnectWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput>
   }
 
-  export type ServiceProviderUpdateWithWhereUniqueWithoutUserInput = {
-    where: ServiceProviderWhereUniqueInput
-    data: XOR<ServiceProviderUpdateWithoutUserInput, ServiceProviderUncheckedUpdateWithoutUserInput>
+  export type MessageCreateManySenderInputEnvelope = {
+    data: MessageCreateManySenderInput | MessageCreateManySenderInput[]
+    skipDuplicates?: boolean
   }
 
-  export type ServiceProviderUpdateManyWithWhereWithoutUserInput = {
-    where: ServiceProviderScalarWhereInput
-    data: XOR<ServiceProviderUpdateManyMutationInput, ServiceProviderUncheckedUpdateManyWithoutUserInput>
+  export type provider_walletCreateWithoutUserInput = {
+    id: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type ServiceProviderScalarWhereInput = {
-    AND?: ServiceProviderScalarWhereInput | ServiceProviderScalarWhereInput[]
-    OR?: ServiceProviderScalarWhereInput[]
-    NOT?: ServiceProviderScalarWhereInput | ServiceProviderScalarWhereInput[]
-    id?: StringFilter<"ServiceProvider"> | string
-    userId?: StringFilter<"ServiceProvider"> | string
+  export type provider_walletUncheckedCreateWithoutUserInput = {
+    id: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
+  export type provider_walletCreateOrConnectWithoutUserInput = {
+    where: provider_walletWhereUniqueInput
+    create: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+  }
+
+  export type ServiceCreateWithoutProviderInput = {
+    id?: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
+    bookings?: BookingCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceUncheckedCreateWithoutProviderInput = {
+    id?: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
+    bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceCreateOrConnectWithoutProviderInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutProviderInput, ServiceUncheckedCreateWithoutProviderInput>
+  }
+
+  export type ServiceCreateManyProviderInputEnvelope = {
+    data: ServiceCreateManyProviderInput | ServiceCreateManyProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SessionCreateWithoutUserInput = {
+    id: string
+    expiresAt: Date | string
+    token: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ipAddress?: string | null
+    userAgent?: string | null
+  }
+
+  export type SessionUncheckedCreateWithoutUserInput = {
+    id: string
+    expiresAt: Date | string
+    token: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ipAddress?: string | null
+    userAgent?: string | null
+  }
+
+  export type SessionCreateOrConnectWithoutUserInput = {
     where: SessionWhereUniqueInput
-    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
     create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
   }
 
-  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+  export type SessionCreateManyUserInputEnvelope = {
+    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
-  export type SessionUpdateManyWithWhereWithoutUserInput = {
-    where: SessionScalarWhereInput
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
+  export type SupportMessageCreateWithoutUserInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type SessionScalarWhereInput = {
-    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    OR?: SessionScalarWhereInput[]
-    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    id?: StringFilter<"Session"> | string
-    expiresAt?: DateTimeFilter<"Session"> | Date | string
-    token?: StringFilter<"Session"> | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
-    updatedAt?: DateTimeFilter<"Session"> | Date | string
-    ipAddress?: StringNullableFilter<"Session"> | string | null
-    userAgent?: StringNullableFilter<"Session"> | string | null
-    userId?: StringFilter<"Session"> | string
+  export type SupportMessageUncheckedCreateWithoutUserInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SupportMessageCreateOrConnectWithoutUserInput = {
+    where: SupportMessageWhereUniqueInput
+    create: XOR<SupportMessageCreateWithoutUserInput, SupportMessageUncheckedCreateWithoutUserInput>
+  }
+
+  export type SupportMessageCreateManyUserInputEnvelope = {
+    data: SupportMessageCreateManyUserInput | SupportMessageCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type transactionCreateWithoutUser_transaction_providerIdTouserInput = {
+    id: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+    booking: BookingCreateNestedOneWithoutTransactionInput
+    user_transaction_studentIdTouser: UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput
+  }
+
+  export type transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput = {
+    id: string
+    bookingId: string
+    studentId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput = {
+    where: transactionWhereUniqueInput
+    create: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput>
+  }
+
+  export type transactionCreateManyUser_transaction_providerIdTouserInputEnvelope = {
+    data: transactionCreateManyUser_transaction_providerIdTouserInput | transactionCreateManyUser_transaction_providerIdTouserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type transactionCreateWithoutUser_transaction_studentIdTouserInput = {
+    id: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+    booking: BookingCreateNestedOneWithoutTransactionInput
+    user_transaction_providerIdTouser: UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput
+  }
+
+  export type transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput = {
+    id: string
+    bookingId: string
+    providerId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput = {
+    where: transactionWhereUniqueInput
+    create: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput>
+  }
+
+  export type transactionCreateManyUser_transaction_studentIdTouserInputEnvelope = {
+    data: transactionCreateManyUser_transaction_studentIdTouserInput | transactionCreateManyUser_transaction_studentIdTouserInput[]
+    skipDuplicates?: boolean
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -11382,30 +21655,297 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
+  export type BookingUpsertWithWhereUniqueWithoutProviderInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutProviderInput, BookingUncheckedUpdateWithoutProviderInput>
+    create: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput>
+  }
+
+  export type BookingUpdateWithWhereUniqueWithoutProviderInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutProviderInput, BookingUncheckedUpdateWithoutProviderInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutProviderInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutProviderInput>
+  }
+
+  export type BookingScalarWhereInput = {
+    AND?: BookingScalarWhereInput | BookingScalarWhereInput[]
+    OR?: BookingScalarWhereInput[]
+    NOT?: BookingScalarWhereInput | BookingScalarWhereInput[]
+    id?: StringFilter<"Booking"> | string
+    studentId?: StringFilter<"Booking"> | string
+    providerId?: StringFilter<"Booking"> | string
+    serviceId?: StringFilter<"Booking"> | string
+    bookedAt?: DateTimeFilter<"Booking"> | Date | string
+    status?: EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+    updatedAt?: DateTimeFilter<"Booking"> | Date | string
+  }
+
+  export type BookingUpsertWithWhereUniqueWithoutStudentInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutStudentInput, BookingUncheckedUpdateWithoutStudentInput>
+    create: XOR<BookingCreateWithoutStudentInput, BookingUncheckedCreateWithoutStudentInput>
+  }
+
+  export type BookingUpdateWithWhereUniqueWithoutStudentInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutStudentInput, BookingUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutStudentInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutStudentInput>
+  }
+
+  export type MessageUpsertWithWhereUniqueWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutSenderInput, MessageUncheckedUpdateWithoutSenderInput>
+    create: XOR<MessageCreateWithoutSenderInput, MessageUncheckedCreateWithoutSenderInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutSenderInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutSenderInput, MessageUncheckedUpdateWithoutSenderInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutSenderInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutSenderInput>
+  }
+
+  export type MessageScalarWhereInput = {
+    AND?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    OR?: MessageScalarWhereInput[]
+    NOT?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    id?: StringFilter<"Message"> | string
+    conversationId?: StringFilter<"Message"> | string
+    senderId?: StringFilter<"Message"> | string
+    content?: StringFilter<"Message"> | string
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+  }
+
+  export type provider_walletUpsertWithoutUserInput = {
+    update: XOR<provider_walletUpdateWithoutUserInput, provider_walletUncheckedUpdateWithoutUserInput>
+    create: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+    where?: provider_walletWhereInput
+  }
+
+  export type provider_walletUpdateToOneWithWhereWithoutUserInput = {
+    where?: provider_walletWhereInput
+    data: XOR<provider_walletUpdateWithoutUserInput, provider_walletUncheckedUpdateWithoutUserInput>
+  }
+
+  export type provider_walletUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_walletUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceUpsertWithWhereUniqueWithoutProviderInput = {
+    where: ServiceWhereUniqueInput
+    update: XOR<ServiceUpdateWithoutProviderInput, ServiceUncheckedUpdateWithoutProviderInput>
+    create: XOR<ServiceCreateWithoutProviderInput, ServiceUncheckedCreateWithoutProviderInput>
+  }
+
+  export type ServiceUpdateWithWhereUniqueWithoutProviderInput = {
+    where: ServiceWhereUniqueInput
+    data: XOR<ServiceUpdateWithoutProviderInput, ServiceUncheckedUpdateWithoutProviderInput>
+  }
+
+  export type ServiceUpdateManyWithWhereWithoutProviderInput = {
+    where: ServiceScalarWhereInput
+    data: XOR<ServiceUpdateManyMutationInput, ServiceUncheckedUpdateManyWithoutProviderInput>
+  }
+
+  export type ServiceScalarWhereInput = {
+    AND?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+    OR?: ServiceScalarWhereInput[]
+    NOT?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+    id?: StringFilter<"Service"> | string
+    title?: StringFilter<"Service"> | string
+    description?: StringFilter<"Service"> | string
+    category?: StringFilter<"Service"> | string
+    status?: StringFilter<"Service"> | string
+    price?: StringNullableFilter<"Service"> | string | null
+    providerId?: StringFilter<"Service"> | string
+    createdAt?: DateTimeFilter<"Service"> | Date | string
+    updatedAt?: DateTimeFilter<"Service"> | Date | string
+    operatingHours?: StringNullableFilter<"Service"> | string | null
+  }
+
+  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SessionUpdateManyWithWhereWithoutUserInput = {
+    where: SessionScalarWhereInput
+    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SessionScalarWhereInput = {
+    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    OR?: SessionScalarWhereInput[]
+    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    id?: StringFilter<"Session"> | string
+    expiresAt?: DateTimeFilter<"Session"> | Date | string
+    token?: StringFilter<"Session"> | string
+    createdAt?: DateTimeFilter<"Session"> | Date | string
+    updatedAt?: DateTimeFilter<"Session"> | Date | string
+    ipAddress?: StringNullableFilter<"Session"> | string | null
+    userAgent?: StringNullableFilter<"Session"> | string | null
+    userId?: StringFilter<"Session"> | string
+  }
+
+  export type SupportMessageUpsertWithWhereUniqueWithoutUserInput = {
+    where: SupportMessageWhereUniqueInput
+    update: XOR<SupportMessageUpdateWithoutUserInput, SupportMessageUncheckedUpdateWithoutUserInput>
+    create: XOR<SupportMessageCreateWithoutUserInput, SupportMessageUncheckedCreateWithoutUserInput>
+  }
+
+  export type SupportMessageUpdateWithWhereUniqueWithoutUserInput = {
+    where: SupportMessageWhereUniqueInput
+    data: XOR<SupportMessageUpdateWithoutUserInput, SupportMessageUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SupportMessageUpdateManyWithWhereWithoutUserInput = {
+    where: SupportMessageScalarWhereInput
+    data: XOR<SupportMessageUpdateManyMutationInput, SupportMessageUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SupportMessageScalarWhereInput = {
+    AND?: SupportMessageScalarWhereInput | SupportMessageScalarWhereInput[]
+    OR?: SupportMessageScalarWhereInput[]
+    NOT?: SupportMessageScalarWhereInput | SupportMessageScalarWhereInput[]
+    id?: StringFilter<"SupportMessage"> | string
+    userId?: StringFilter<"SupportMessage"> | string
+    subject?: StringFilter<"SupportMessage"> | string
+    message?: StringFilter<"SupportMessage"> | string
+    status?: StringFilter<"SupportMessage"> | string
+    createdAt?: DateTimeFilter<"SupportMessage"> | Date | string
+    updatedAt?: DateTimeFilter<"SupportMessage"> | Date | string
+  }
+
+  export type transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput = {
+    where: transactionWhereUniqueInput
+    update: XOR<transactionUpdateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_providerIdTouserInput>
+    create: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput>
+  }
+
+  export type transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput = {
+    where: transactionWhereUniqueInput
+    data: XOR<transactionUpdateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_providerIdTouserInput>
+  }
+
+  export type transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput = {
+    where: transactionScalarWhereInput
+    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserInput>
+  }
+
+  export type transactionScalarWhereInput = {
+    AND?: transactionScalarWhereInput | transactionScalarWhereInput[]
+    OR?: transactionScalarWhereInput[]
+    NOT?: transactionScalarWhereInput | transactionScalarWhereInput[]
+    id?: StringFilter<"transaction"> | string
+    bookingId?: StringFilter<"transaction"> | string
+    studentId?: StringFilter<"transaction"> | string
+    providerId?: StringFilter<"transaction"> | string
+    paystackReference?: StringFilter<"transaction"> | string
+    totalAmount?: FloatFilter<"transaction"> | number
+    platformCommission?: FloatFilter<"transaction"> | number
+    providerEarnings?: FloatFilter<"transaction"> | number
+    commissionRate?: FloatFilter<"transaction"> | number
+    status?: StringFilter<"transaction"> | string
+    paymentMethod?: StringNullableFilter<"transaction"> | string | null
+    paidAt?: DateTimeNullableFilter<"transaction"> | Date | string | null
+    createdAt?: DateTimeFilter<"transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"transaction"> | Date | string
+  }
+
+  export type transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput = {
+    where: transactionWhereUniqueInput
+    update: XOR<transactionUpdateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_studentIdTouserInput>
+    create: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput>
+  }
+
+  export type transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput = {
+    where: transactionWhereUniqueInput
+    data: XOR<transactionUpdateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_studentIdTouserInput>
+  }
+
+  export type transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput = {
+    where: transactionScalarWhereInput
+    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserInput>
+  }
+
   export type UserCreateWithoutSessionsInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingCreateNestedManyWithoutStudentInput
-    services?: ServiceProviderCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
-    services?: ServiceProviderUncheckedCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -11432,9 +21972,19 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUpdateManyWithoutStudentNestedInput
-    services?: ServiceProviderUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -11445,35 +21995,65 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
-    services?: ServiceProviderUncheckedUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingCreateNestedManyWithoutStudentInput
-    services?: ServiceProviderCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
-    services?: ServiceProviderUncheckedCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -11500,9 +22080,19 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUpdateManyWithoutStudentNestedInput
-    services?: ServiceProviderUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -11513,35 +22103,99 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
-    services?: ServiceProviderUncheckedUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type BookingCreateWithoutServiceInput = {
+    id?: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderBookingsInput
+    student: UserCreateNestedOneWithoutStudentBookingsInput
+    conversation?: ConversationCreateNestedOneWithoutBookingInput
+    transaction?: transactionCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateWithoutServiceInput = {
+    id?: string
+    studentId: string
+    providerId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
+    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingCreateOrConnectWithoutServiceInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput>
+  }
+
+  export type BookingCreateManyServiceInputEnvelope = {
+    data: BookingCreateManyServiceInput | BookingCreateManyServiceInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutServicesInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingCreateNestedManyWithoutStudentInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserUncheckedCreateWithoutServicesInput = {
-    id?: string
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    bookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
   export type UserCreateOrConnectWithoutServicesInput = {
@@ -11549,26 +22203,20 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutServicesInput, UserUncheckedCreateWithoutServicesInput>
   }
 
-  export type BookingCreateWithoutProviderInput = {
-    id?: string
-    student: UserCreateNestedOneWithoutBookingsInput
-    conversation: ConversationCreateNestedOneWithoutBookingInput
-  }
-
-  export type BookingUncheckedCreateWithoutProviderInput = {
-    id?: string
-    studentId: string
-    conversationId: string
-  }
-
-  export type BookingCreateOrConnectWithoutProviderInput = {
+  export type BookingUpsertWithWhereUniqueWithoutServiceInput = {
     where: BookingWhereUniqueInput
-    create: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput>
+    update: XOR<BookingUpdateWithoutServiceInput, BookingUncheckedUpdateWithoutServiceInput>
+    create: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput>
   }
 
-  export type BookingCreateManyProviderInputEnvelope = {
-    data: BookingCreateManyProviderInput | BookingCreateManyProviderInput[]
-    skipDuplicates?: boolean
+  export type BookingUpdateWithWhereUniqueWithoutServiceInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutServiceInput, BookingUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutServiceInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutServiceInput>
   }
 
   export type UserUpsertWithoutServicesInput = {
@@ -11590,9 +22238,19 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUpdateManyWithoutStudentNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutServicesInput = {
@@ -11603,83 +22261,168 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    bookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
-  export type BookingUpsertWithWhereUniqueWithoutProviderInput = {
-    where: BookingWhereUniqueInput
-    update: XOR<BookingUpdateWithoutProviderInput, BookingUncheckedUpdateWithoutProviderInput>
-    create: XOR<BookingCreateWithoutProviderInput, BookingUncheckedCreateWithoutProviderInput>
-  }
-
-  export type BookingUpdateWithWhereUniqueWithoutProviderInput = {
-    where: BookingWhereUniqueInput
-    data: XOR<BookingUpdateWithoutProviderInput, BookingUncheckedUpdateWithoutProviderInput>
-  }
-
-  export type BookingUpdateManyWithWhereWithoutProviderInput = {
-    where: BookingScalarWhereInput
-    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutProviderInput>
-  }
-
-  export type UserCreateWithoutBookingsInput = {
-    id?: string
+  export type UserCreateWithoutProviderBookingsInput = {
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    services?: ServiceProviderCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountCreateNestedManyWithoutUserInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
-  export type UserUncheckedCreateWithoutBookingsInput = {
-    id?: string
+  export type UserUncheckedCreateWithoutProviderBookingsInput = {
+    id: string
     name: string
     email: string
     emailVerified?: boolean
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    services?: ServiceProviderUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
   }
 
-  export type UserCreateOrConnectWithoutBookingsInput = {
+  export type UserCreateOrConnectWithoutProviderBookingsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+    create: XOR<UserCreateWithoutProviderBookingsInput, UserUncheckedCreateWithoutProviderBookingsInput>
   }
 
-  export type ServiceProviderCreateWithoutBookingsInput = {
+  export type ServiceCreateWithoutBookingsInput = {
     id?: string
-    user: UserCreateNestedOneWithoutServicesInput
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
+    provider: UserCreateNestedOneWithoutServicesInput
   }
 
-  export type ServiceProviderUncheckedCreateWithoutBookingsInput = {
+  export type ServiceUncheckedCreateWithoutBookingsInput = {
     id?: string
-    userId: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    providerId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
   }
 
-  export type ServiceProviderCreateOrConnectWithoutBookingsInput = {
-    where: ServiceProviderWhereUniqueInput
-    create: XOR<ServiceProviderCreateWithoutBookingsInput, ServiceProviderUncheckedCreateWithoutBookingsInput>
+  export type ServiceCreateOrConnectWithoutBookingsInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
+  }
+
+  export type UserCreateWithoutStudentBookingsInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserUncheckedCreateWithoutStudentBookingsInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserCreateOrConnectWithoutStudentBookingsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutStudentBookingsInput, UserUncheckedCreateWithoutStudentBookingsInput>
   }
 
   export type ConversationCreateWithoutBookingInput = {
-    id: string
-    messages?: JsonNullValueInput | InputJsonValue
+    id?: string
+    createdAt?: Date | string
     updatedAt?: Date | string
+    messages?: MessageCreateNestedManyWithoutConversationInput
+    messageGroups?: MessageGroupCreateNestedManyWithoutConversationInput
   }
 
   export type ConversationUncheckedCreateWithoutBookingInput = {
-    id: string
-    messages?: JsonNullValueInput | InputJsonValue
+    id?: string
+    createdAt?: Date | string
     updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+    messageGroups?: MessageGroupUncheckedCreateNestedManyWithoutConversationInput
   }
 
   export type ConversationCreateOrConnectWithoutBookingInput = {
@@ -11687,18 +22430,60 @@ export namespace Prisma {
     create: XOR<ConversationCreateWithoutBookingInput, ConversationUncheckedCreateWithoutBookingInput>
   }
 
-  export type UserUpsertWithoutBookingsInput = {
-    update: XOR<UserUpdateWithoutBookingsInput, UserUncheckedUpdateWithoutBookingsInput>
-    create: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+  export type transactionCreateWithoutBookingInput = {
+    id: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+    user_transaction_providerIdTouser: UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput
+    user_transaction_studentIdTouser: UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput
+  }
+
+  export type transactionUncheckedCreateWithoutBookingInput = {
+    id: string
+    studentId: string
+    providerId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type transactionCreateOrConnectWithoutBookingInput = {
+    where: transactionWhereUniqueInput
+    create: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput>
+  }
+
+  export type transactionCreateManyBookingInputEnvelope = {
+    data: transactionCreateManyBookingInput | transactionCreateManyBookingInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutProviderBookingsInput = {
+    update: XOR<UserUpdateWithoutProviderBookingsInput, UserUncheckedUpdateWithoutProviderBookingsInput>
+    create: XOR<UserCreateWithoutProviderBookingsInput, UserUncheckedCreateWithoutProviderBookingsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutBookingsInput = {
+  export type UserUpdateToOneWithWhereWithoutProviderBookingsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutBookingsInput, UserUncheckedUpdateWithoutBookingsInput>
+    data: XOR<UserUpdateWithoutProviderBookingsInput, UserUncheckedUpdateWithoutProviderBookingsInput>
   }
 
-  export type UserUpdateWithoutBookingsInput = {
+  export type UserUpdateWithoutProviderBookingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -11706,12 +22491,22 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    services?: ServiceProviderUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutBookingsInput = {
+  export type UserUncheckedUpdateWithoutProviderBookingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -11719,30 +22514,113 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    services?: ServiceProviderUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
-  export type ServiceProviderUpsertWithoutBookingsInput = {
-    update: XOR<ServiceProviderUpdateWithoutBookingsInput, ServiceProviderUncheckedUpdateWithoutBookingsInput>
-    create: XOR<ServiceProviderCreateWithoutBookingsInput, ServiceProviderUncheckedCreateWithoutBookingsInput>
-    where?: ServiceProviderWhereInput
+  export type ServiceUpsertWithoutBookingsInput = {
+    update: XOR<ServiceUpdateWithoutBookingsInput, ServiceUncheckedUpdateWithoutBookingsInput>
+    create: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
+    where?: ServiceWhereInput
   }
 
-  export type ServiceProviderUpdateToOneWithWhereWithoutBookingsInput = {
-    where?: ServiceProviderWhereInput
-    data: XOR<ServiceProviderUpdateWithoutBookingsInput, ServiceProviderUncheckedUpdateWithoutBookingsInput>
+  export type ServiceUpdateToOneWithWhereWithoutBookingsInput = {
+    where?: ServiceWhereInput
+    data: XOR<ServiceUpdateWithoutBookingsInput, ServiceUncheckedUpdateWithoutBookingsInput>
   }
 
-  export type ServiceProviderUpdateWithoutBookingsInput = {
+  export type ServiceUpdateWithoutBookingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user?: UserUpdateOneRequiredWithoutServicesNestedInput
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: UserUpdateOneRequiredWithoutServicesNestedInput
   }
 
-  export type ServiceProviderUncheckedUpdateWithoutBookingsInput = {
+  export type ServiceUncheckedUpdateWithoutBookingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    providerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type UserUpsertWithoutStudentBookingsInput = {
+    update: XOR<UserUpdateWithoutStudentBookingsInput, UserUncheckedUpdateWithoutStudentBookingsInput>
+    create: XOR<UserCreateWithoutStudentBookingsInput, UserUncheckedCreateWithoutStudentBookingsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutStudentBookingsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutStudentBookingsInput, UserUncheckedUpdateWithoutStudentBookingsInput>
+  }
+
+  export type UserUpdateWithoutStudentBookingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutStudentBookingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
   }
 
   export type ConversationUpsertWithoutBookingInput = {
@@ -11758,31 +22636,109 @@ export namespace Prisma {
 
   export type ConversationUpdateWithoutBookingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    messages?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+    messageGroups?: MessageGroupUpdateManyWithoutConversationNestedInput
   }
 
   export type ConversationUncheckedUpdateWithoutBookingInput = {
     id?: StringFieldUpdateOperationsInput | string
-    messages?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+    messageGroups?: MessageGroupUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type transactionUpsertWithWhereUniqueWithoutBookingInput = {
+    where: transactionWhereUniqueInput
+    update: XOR<transactionUpdateWithoutBookingInput, transactionUncheckedUpdateWithoutBookingInput>
+    create: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput>
+  }
+
+  export type transactionUpdateWithWhereUniqueWithoutBookingInput = {
+    where: transactionWhereUniqueInput
+    data: XOR<transactionUpdateWithoutBookingInput, transactionUncheckedUpdateWithoutBookingInput>
+  }
+
+  export type transactionUpdateManyWithWhereWithoutBookingInput = {
+    where: transactionScalarWhereInput
+    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyWithoutBookingInput>
   }
 
   export type BookingCreateWithoutConversationInput = {
     id?: string
-    student: UserCreateNestedOneWithoutBookingsInput
-    provider: ServiceProviderCreateNestedOneWithoutBookingsInput
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderBookingsInput
+    service: ServiceCreateNestedOneWithoutBookingsInput
+    student: UserCreateNestedOneWithoutStudentBookingsInput
+    transaction?: transactionCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutConversationInput = {
     id?: string
     studentId: string
     providerId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutConversationInput = {
     where: BookingWhereUniqueInput
     create: XOR<BookingCreateWithoutConversationInput, BookingUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageCreateWithoutConversationInput = {
+    id?: string
+    content: string
+    createdAt?: Date | string
+    sender: UserCreateNestedOneWithoutSentMessagesInput
+  }
+
+  export type MessageUncheckedCreateWithoutConversationInput = {
+    id?: string
+    senderId: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutConversationInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageCreateManyConversationInputEnvelope = {
+    data: MessageCreateManyConversationInput | MessageCreateManyConversationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MessageGroupCreateWithoutConversationInput = {
+    id?: string
+    date?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupUncheckedCreateWithoutConversationInput = {
+    id?: string
+    date?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupCreateOrConnectWithoutConversationInput = {
+    where: MessageGroupWhereUniqueInput
+    create: XOR<MessageGroupCreateWithoutConversationInput, MessageGroupUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageGroupCreateManyConversationInputEnvelope = {
+    data: MessageGroupCreateManyConversationInput | MessageGroupCreateManyConversationInput[]
+    skipDuplicates?: boolean
   }
 
   export type BookingUpsertWithoutConversationInput = {
@@ -11798,34 +22754,768 @@ export namespace Prisma {
 
   export type BookingUpdateWithoutConversationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student?: UserUpdateOneRequiredWithoutBookingsNestedInput
-    provider?: ServiceProviderUpdateOneRequiredWithoutBookingsNestedInput
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
+    service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
+    transaction?: transactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutConversationInput = {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
-  export type BookingCreateManyStudentInput = {
+  export type MessageUpsertWithWhereUniqueWithoutConversationInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutConversationInput, MessageUncheckedUpdateWithoutConversationInput>
+    create: XOR<MessageCreateWithoutConversationInput, MessageUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutConversationInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutConversationInput, MessageUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutConversationInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutConversationInput>
+  }
+
+  export type MessageGroupUpsertWithWhereUniqueWithoutConversationInput = {
+    where: MessageGroupWhereUniqueInput
+    update: XOR<MessageGroupUpdateWithoutConversationInput, MessageGroupUncheckedUpdateWithoutConversationInput>
+    create: XOR<MessageGroupCreateWithoutConversationInput, MessageGroupUncheckedCreateWithoutConversationInput>
+  }
+
+  export type MessageGroupUpdateWithWhereUniqueWithoutConversationInput = {
+    where: MessageGroupWhereUniqueInput
+    data: XOR<MessageGroupUpdateWithoutConversationInput, MessageGroupUncheckedUpdateWithoutConversationInput>
+  }
+
+  export type MessageGroupUpdateManyWithWhereWithoutConversationInput = {
+    where: MessageGroupScalarWhereInput
+    data: XOR<MessageGroupUpdateManyMutationInput, MessageGroupUncheckedUpdateManyWithoutConversationInput>
+  }
+
+  export type MessageGroupScalarWhereInput = {
+    AND?: MessageGroupScalarWhereInput | MessageGroupScalarWhereInput[]
+    OR?: MessageGroupScalarWhereInput[]
+    NOT?: MessageGroupScalarWhereInput | MessageGroupScalarWhereInput[]
+    id?: StringFilter<"MessageGroup"> | string
+    conversationId?: StringFilter<"MessageGroup"> | string
+    date?: DateTimeFilter<"MessageGroup"> | Date | string
+    data?: JsonFilter<"MessageGroup">
+  }
+
+  export type ConversationCreateWithoutMessageGroupsInput = {
     id?: string
-    providerId: string
-    conversationId: string
-  }
-
-  export type ServiceProviderCreateManyUserInput = {
-    id?: string
-  }
-
-  export type SessionCreateManyUserInput = {
-    id: string
-    expiresAt: Date | string
-    token: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    ipAddress?: string | null
-    userAgent?: string | null
+    booking: BookingCreateNestedOneWithoutConversationInput
+    messages?: MessageCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutMessageGroupsInput = {
+    id?: string
+    bookingId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutMessageGroupsInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutMessageGroupsInput, ConversationUncheckedCreateWithoutMessageGroupsInput>
+  }
+
+  export type ConversationUpsertWithoutMessageGroupsInput = {
+    update: XOR<ConversationUpdateWithoutMessageGroupsInput, ConversationUncheckedUpdateWithoutMessageGroupsInput>
+    create: XOR<ConversationCreateWithoutMessageGroupsInput, ConversationUncheckedCreateWithoutMessageGroupsInput>
+    where?: ConversationWhereInput
+  }
+
+  export type ConversationUpdateToOneWithWhereWithoutMessageGroupsInput = {
+    where?: ConversationWhereInput
+    data: XOR<ConversationUpdateWithoutMessageGroupsInput, ConversationUncheckedUpdateWithoutMessageGroupsInput>
+  }
+
+  export type ConversationUpdateWithoutMessageGroupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutConversationNestedInput
+    messages?: MessageUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutMessageGroupsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationCreateWithoutMessagesInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutConversationInput
+    messageGroups?: MessageGroupCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    bookingId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messageGroups?: MessageGroupUncheckedCreateNestedManyWithoutConversationInput
+  }
+
+  export type ConversationCreateOrConnectWithoutMessagesInput = {
+    where: ConversationWhereUniqueInput
+    create: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserCreateWithoutSentMessagesInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserUncheckedCreateWithoutSentMessagesInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserCreateOrConnectWithoutSentMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+  }
+
+  export type ConversationUpsertWithoutMessagesInput = {
+    update: XOR<ConversationUpdateWithoutMessagesInput, ConversationUncheckedUpdateWithoutMessagesInput>
+    create: XOR<ConversationCreateWithoutMessagesInput, ConversationUncheckedCreateWithoutMessagesInput>
+    where?: ConversationWhereInput
+  }
+
+  export type ConversationUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: ConversationWhereInput
+    data: XOR<ConversationUpdateWithoutMessagesInput, ConversationUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type ConversationUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutConversationNestedInput
+    messageGroups?: MessageGroupUpdateManyWithoutConversationNestedInput
+  }
+
+  export type ConversationUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messageGroups?: MessageGroupUncheckedUpdateManyWithoutConversationNestedInput
+  }
+
+  export type UserUpsertWithoutSentMessagesInput = {
+    update: XOR<UserUpdateWithoutSentMessagesInput, UserUncheckedUpdateWithoutSentMessagesInput>
+    create: XOR<UserCreateWithoutSentMessagesInput, UserUncheckedCreateWithoutSentMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSentMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSentMessagesInput, UserUncheckedUpdateWithoutSentMessagesInput>
+  }
+
+  export type UserUpdateWithoutSentMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSentMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserCreateWithoutSupportMessagesInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserUncheckedCreateWithoutSupportMessagesInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserCreateOrConnectWithoutSupportMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
+  }
+
+  export type UserUpsertWithoutSupportMessagesInput = {
+    update: XOR<UserUpdateWithoutSupportMessagesInput, UserUncheckedUpdateWithoutSupportMessagesInput>
+    create: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSupportMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSupportMessagesInput, UserUncheckedUpdateWithoutSupportMessagesInput>
+  }
+
+  export type UserUpdateWithoutSupportMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSupportMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserCreateWithoutProvider_walletInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserUncheckedCreateWithoutProvider_walletInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserCreateOrConnectWithoutProvider_walletInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
+  }
+
+  export type UserUpsertWithoutProvider_walletInput = {
+    update: XOR<UserUpdateWithoutProvider_walletInput, UserUncheckedUpdateWithoutProvider_walletInput>
+    create: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProvider_walletInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProvider_walletInput, UserUncheckedUpdateWithoutProvider_walletInput>
+  }
+
+  export type UserUpdateWithoutProvider_walletInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProvider_walletInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type BookingCreateWithoutTransactionInput = {
+    id?: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderBookingsInput
+    service: ServiceCreateNestedOneWithoutBookingsInput
+    student: UserCreateNestedOneWithoutStudentBookingsInput
+    conversation?: ConversationCreateNestedOneWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateWithoutTransactionInput = {
+    id?: string
+    studentId: string
+    providerId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
+  }
+
+  export type BookingCreateOrConnectWithoutTransactionInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
+  }
+
+  export type UserCreateWithoutTransaction_transaction_providerIdTouserInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+  }
+
+  export type UserCreateOrConnectWithoutTransaction_transaction_providerIdTouserInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
+  }
+
+  export type UserCreateWithoutTransaction_transaction_studentIdTouserInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    services?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+  }
+
+  export type UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput = {
+    id: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+  }
+
+  export type UserCreateOrConnectWithoutTransaction_transaction_studentIdTouserInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
+  }
+
+  export type BookingUpsertWithoutTransactionInput = {
+    update: XOR<BookingUpdateWithoutTransactionInput, BookingUncheckedUpdateWithoutTransactionInput>
+    create: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
+    where?: BookingWhereInput
+  }
+
+  export type BookingUpdateToOneWithWhereWithoutTransactionInput = {
+    where?: BookingWhereInput
+    data: XOR<BookingUpdateWithoutTransactionInput, BookingUncheckedUpdateWithoutTransactionInput>
+  }
+
+  export type BookingUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
+    service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
+    conversation?: ConversationUpdateOneWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutTransactionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
+  }
+
+  export type UserUpsertWithoutTransaction_transaction_providerIdTouserInput = {
+    update: XOR<UserUpdateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput>
+    create: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTransaction_transaction_providerIdTouserInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput>
+  }
+
+  export type UserUpdateWithoutTransaction_transaction_providerIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+  }
+
+  export type UserUpsertWithoutTransaction_transaction_studentIdTouserInput = {
+    update: XOR<UserUpdateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput>
+    create: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTransaction_transaction_studentIdTouserInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput>
+  }
+
+  export type UserUpdateWithoutTransaction_transaction_studentIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    services?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -11843,66 +23533,94 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type BookingUpdateWithoutStudentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    provider?: ServiceProviderUpdateOneRequiredWithoutBookingsNestedInput
-    conversation?: ConversationUpdateOneRequiredWithoutBookingNestedInput
+  export type BookingCreateManyProviderInput = {
+    id?: string
+    studentId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type BookingUncheckedUpdateWithoutStudentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    conversationId?: StringFieldUpdateOperationsInput | string
+  export type BookingCreateManyStudentInput = {
+    id?: string
+    providerId: string
+    serviceId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type BookingUncheckedUpdateManyWithoutStudentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    conversationId?: StringFieldUpdateOperationsInput | string
+  export type MessageCreateManySenderInput = {
+    id?: string
+    conversationId: string
+    content: string
+    createdAt?: Date | string
   }
 
-  export type ServiceProviderUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bookings?: BookingUpdateManyWithoutProviderNestedInput
+  export type ServiceCreateManyProviderInput = {
+    id?: string
+    title: string
+    description: string
+    category: string
+    status?: string
+    price?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    operatingHours?: string | null
   }
 
-  export type ServiceProviderUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+  export type SessionCreateManyUserInput = {
+    id: string
+    expiresAt: Date | string
+    token: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ipAddress?: string | null
+    userAgent?: string | null
   }
 
-  export type ServiceProviderUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
+  export type SupportMessageCreateManyUserInput = {
+    id?: string
+    subject: string
+    message: string
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type SessionUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  export type transactionCreateManyUser_transaction_providerIdTouserInput = {
+    id: string
+    bookingId: string
+    studentId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
-  export type SessionUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type SessionUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  export type transactionCreateManyUser_transaction_studentIdTouserInput = {
+    id: string
+    bookingId: string
+    providerId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -11950,28 +23668,444 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BookingCreateManyProviderInput = {
-    id?: string
-    studentId: string
-    conversationId: string
-  }
-
   export type BookingUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student?: UserUpdateOneRequiredWithoutBookingsNestedInput
-    conversation?: ConversationUpdateOneRequiredWithoutBookingNestedInput
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
+    conversation?: ConversationUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
-    conversationId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateManyWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
+    service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
+    conversation?: ConversationUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateManyWithoutStudentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
     conversationId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutSenderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    conversationId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceUpdateWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    bookings?: BookingUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateManyWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    price?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SessionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SessionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SessionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SupportMessageUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupportMessageUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupportMessageUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subject?: StringFieldUpdateOperationsInput | string
+    message?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionUpdateWithoutUser_transaction_providerIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutTransactionNestedInput
+    user_transaction_studentIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput
+  }
+
+  export type transactionUncheckedUpdateWithoutUser_transaction_providerIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionUpdateWithoutUser_transaction_studentIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutTransactionNestedInput
+    user_transaction_providerIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput
+  }
+
+  export type transactionUncheckedUpdateWithoutUser_transaction_studentIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookingCreateManyServiceInput = {
+    id?: string
+    studentId: string
+    providerId: string
+    bookedAt?: Date | string
+    status?: $Enums.BookingStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BookingUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
+    conversation?: ConversationUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
+    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateManyWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionCreateManyBookingInput = {
+    id: string
+    studentId: string
+    providerId: string
+    paystackReference: string
+    totalAmount: number
+    platformCommission: number
+    providerEarnings: number
+    commissionRate?: number
+    status?: string
+    paymentMethod?: string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type transactionUpdateWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_transaction_providerIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput
+    user_transaction_studentIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput
+  }
+
+  export type transactionUncheckedUpdateWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type transactionUncheckedUpdateManyWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageCreateManyConversationInput = {
+    id?: string
+    senderId: string
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type MessageGroupCreateManyConversationInput = {
+    id?: string
+    date?: Date | string
+    data: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sender?: UserUpdateOneRequiredWithoutSentMessagesNestedInput
+  }
+
+  export type MessageUncheckedUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageGroupUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupUncheckedUpdateWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
+  }
+
+  export type MessageGroupUncheckedUpdateManyWithoutConversationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    data?: JsonNullValueInput | InputJsonValue
   }
 
 

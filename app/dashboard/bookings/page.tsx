@@ -1,17 +1,32 @@
+import { redirect } from "next/navigation"
+import { headers } from "next/headers"
 import { prisma } from "@/lib/prisma"
+import { auth } from "@/lib/auth"
 import { ProviderBookings } from "@/components/provider-bookings"
 
 export const dynamic = "force-dynamic"
 
 export default async function BookingsPage() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+
+  if (!session?.user) {
+    redirect("/auth/sign-in")
+  }
+
   const bookings = await prisma.booking.findMany({
     where: {
-      providerId: "user_1", // Hardcoded for evaluation
+      providerId: session.user.id,
     },
-    include: { student: true, service: true },
+    include: {
+      student: true,
+      service: true,
+      conversation: { select: { id: true } },
+    },
     orderBy: [
-      { status: "desc" }, // PENDING will come before ATTENDED
-      { bookedAt: "desc" }
+      { status: "desc" },
+      { bookedAt: "desc" },
     ],
   })
 

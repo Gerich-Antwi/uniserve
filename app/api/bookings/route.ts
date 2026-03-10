@@ -21,6 +21,30 @@ export async function POST(req: Request) {
       );
     }
 
+    // Check if an active booking already exists to reuse the conversation
+    const existingBooking = await prisma.booking.findFirst({
+      where: {
+        studentId,
+        providerId,
+        serviceId,
+        status: "PENDING",
+      },
+      include: {
+        conversation: true,
+      },
+    });
+
+    if (existingBooking) {
+      return NextResponse.json(
+        {
+          booking: existingBooking,
+          conversationId: existingBooking.conversation?.id,
+          reused: true,
+        },
+        { status: 200 },
+      );
+    }
+
     // Create Booking and its associated Conversation in a single nested operation
     const booking = await prisma.booking.create({
       data: {
@@ -28,7 +52,7 @@ export async function POST(req: Request) {
         providerId,
         serviceId,
         conversation: {
-          create: {}, // Prisma will automatically create the Conversation and set its `bookingId`
+          create: {}, 
         },
       },
       include: {

@@ -6,7 +6,6 @@ import { useSession } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import {
-    Home,
     Briefcase,
     Bell,
     LogOut,
@@ -68,12 +67,6 @@ export function Sidebar() {
     }, [pathname, session?.user?.id])
 
     const navItems = [
-        {
-            title: "Home",
-            href: "/",
-            icon: Home,
-            active: pathname === "/",
-        },
         {
             title: "Services",
             href: "/services",

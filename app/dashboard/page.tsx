@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import type { Prisma, Service } from "@/lib/generated/prisma/client"
-import { BookingStatus, Role as RoleEnum } from "@/lib/generated/prisma/enums"
+import { BookingStatus, Role as RoleEnum } from "@/lib/generated/prisma/client"
 
 
 export const dynamic = "force-dynamic"

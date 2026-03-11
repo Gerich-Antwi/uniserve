@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
@@ -7,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
-import { Upload, Plus, CheckCircle } from "lucide-react";
+import { ArrowLeft, Upload, Plus, CheckCircle } from "lucide-react";
 
 const CATEGORIES = ["Events", "Scholarships", "Tuition", "Internships", "Deadlines", "Academic"];
 
@@ -78,7 +79,7 @@ export default function AdminAnnouncementsPage() {
       if (response.ok) {
         setIsSuccess(true);
         setTimeout(() => {
-          router.push("/announcements");
+          router.push("/admin/announcements");
         }, 2000);
       }
     } catch (error) {
@@ -96,7 +97,7 @@ export default function AdminAnnouncementsPage() {
           <CheckCircle className="w-24 h-24 mx-auto mb-6" />
           <h1 className="text-4xl font-black mb-4">SUCCESS!</h1>
           <p className="text-xl font-bold">Announcement posted! 🎉</p>
-          <p className="text-sm mt-4">Redirecting to announcements...</p>
+          <p className="text-sm mt-4">Redirecting to admin panel...</p>
         </div>
       </div>
     );
@@ -105,6 +106,14 @@ export default function AdminAnnouncementsPage() {
   return (
     <div className="min-h-screen bg-purple-100 p-8">
       <div className="max-w-4xl mx-auto">
+        {/* Back Button */}
+        <Link href="/admin/announcements">
+          <button className="mb-6 bg-white border-4 border-black px-6 py-3 font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all flex items-center gap-2">
+            <ArrowLeft className="w-5 h-5" />
+            BACK TO ADMIN
+          </button>
+        </Link>
+
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="inline-block bg-black text-white px-8 py-3 font-black text-sm border-4 border-black rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-6">

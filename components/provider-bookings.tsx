@@ -5,7 +5,7 @@ import { useState } from "react"
 import { format } from "date-fns"
 import { MessageCircle, CheckCircle2, Clock3 } from "lucide-react"
 
-import { BookingStatus } from "@/lib/generated/prisma/enums"
+import { BookingStatus } from "@/lib/generated/prisma/client"
 import type { Prisma } from "@/lib/generated/prisma/client"
 import { Button } from "@/components/ui/button"
 import {

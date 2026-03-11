@@ -24,6 +24,11 @@ export function SiteHeader() {
             label: "Announcements",
             active: pathname === "/announcements",
         },
+        {
+            href: "/chat",
+            label: "Messages",
+            active: pathname.startsWith("/chat"),
+        },
     ]
 
     return (

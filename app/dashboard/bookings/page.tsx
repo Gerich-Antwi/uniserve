@@ -1,4 +1,7 @@
+import { redirect } from "next/navigation"
+import { headers } from "next/headers"
 import { prisma } from "@/lib/prisma"
+import { auth } from "@/lib/auth"
 import { ProviderBookings } from "@/components/provider-bookings"
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
@@ -7,29 +10,26 @@ import { redirect } from "next/navigation"
 export const dynamic = "force-dynamic"
 
 export default async function BookingsPage() {
-  // Get current user session
   const session = await auth.api.getSession({
     headers: await headers(),
   })
 
-  if (!session) {
-    redirect("/sign-in")
+  if (!session?.user) {
+    redirect("/auth/sign-in")
   }
 
-  const userId = session.user.id
-
-  // Fetch bookings where user is either student OR provider
   const bookings = await prisma.booking.findMany({
     where: {
-      OR: [
-        { studentId: userId },   // Bookings I made as a student
-        { providerId: userId },  // Bookings I received as a provider
-      ],
+      providerId: session.user.id,
     },
-    include: { student: true, service: true, provider: true },
+    include: {
+      student: true,
+      service: true,
+      conversation: { select: { id: true } },
+    },
     orderBy: [
       { status: "desc" },
-      { bookedAt: "desc" }
+      { bookedAt: "desc" },
     ],
   })
 

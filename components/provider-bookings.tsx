@@ -23,7 +23,7 @@ import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 type BookingWithRelations = Prisma.BookingGetPayload<{
-  include: { student: true; service: true }
+  include: { student: true; service: true; conversation: { select: { id: true } } }
 }>
 
 interface ProviderBookingsProps {
@@ -112,18 +112,27 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
               </div>
 
               <div className="mt-3 flex items-center justify-between gap-3">
-                <Link
-                  href={`/dashboard/conversations/${booking.id}`}
-                  className="flex flex-1 items-center justify-between rounded-xl border-2 border-black bg-white px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] shadow-[4px_4px_0_0_#000] transition-transform group-hover:-translate-y-0.5"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] text-lime-300">
-                      {booking.student.name.charAt(0).toUpperCase()}
+                {booking.conversation ? (
+                  <Link
+                    href={`/chat/${booking.conversation.id}`}
+                    className="flex flex-1 items-center justify-between rounded-xl border-2 border-black bg-white px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] shadow-[4px_4px_0_0_#000] transition-transform group-hover:-translate-y-0.5"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] text-lime-300">
+                        {booking.student.name.charAt(0).toUpperCase()}
+                      </span>
+                      Chat
                     </span>
-                    Open conversation
+                    <MessageCircle className="h-4 w-4" />
+                  </Link>
+                ) : (
+                  <span className="flex flex-1 items-center justify-between rounded-xl border-2 border-black bg-gray-100 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground cursor-not-allowed">
+                    <span className="flex items-center gap-2">
+                      <MessageCircle className="h-4 w-4" />
+                      Chat (unavailable)
+                    </span>
                   </span>
-                  <MessageCircle className="h-4 w-4" />
-                </Link>
+                )}
 
                 {booking.status === BookingStatus.PENDING ? (
                   <AlertDialog>

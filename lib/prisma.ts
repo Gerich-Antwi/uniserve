@@ -1,12 +1,13 @@
-import { PrismaClient } from "@/lib/generated/prisma/client";
-import { Pool } from "pg";
+import { PrismaClient } from "./generated/prisma/index";
+import pg from "pg";
+const { Pool } = pg;
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const connectionString = process.env.DATABASE_URL!;
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
-  pool: Pool | undefined;
+  pool: InstanceType<typeof Pool> | undefined;
 };
 
 const pool =

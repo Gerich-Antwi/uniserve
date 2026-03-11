@@ -2,6 +2,12 @@ import { redirect } from "next/navigation"
 import { headers } from "next/headers"
 
 import { prisma } from "@/lib/prisma"
+import { auth } from "@/lib/auth"
+import Link from "next/link"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import type { Prisma, Service } from "@/lib/generated/prisma/client"
 import { BookingStatus, Role as RoleEnum } from "@/lib/generated/prisma/client"
 
@@ -9,27 +15,33 @@ import { BookingStatus, Role as RoleEnum } from "@/lib/generated/prisma/client"
 export const dynamic = "force-dynamic"
 
 export default async function ProviderDashboardPage() {
-  // --- Authentication Bypassed for Evaluation ---
-  // const session = await auth.api.getSession({
-  //   headers: await headers(),
-  // })
-  //
-  // if (!session) {
-  //   redirect("/auth/sign-in")
-  // }
-  //
-  // const role = (session.user as { role?: string }).role
-  // if (role !== RoleEnum.PROVIDER) {
-  //   redirect("/")
-  // }
-  // --- End of Bypass ---
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+
+  if (!session) {
+    redirect("/auth/sign-in")
+  }
+
+  const role = (session.user as { role?: string }).role
+  if (role !== RoleEnum.PROVIDER) {
+    redirect("/")
+  }
+
+  const userId = session.user.id
 
   const bookings = await prisma.booking.findMany({
     where: {
-      providerId: "user_1", // Hardcoded for evaluation
+      providerId: userId,
       status: BookingStatus.PENDING,
     },
-    include: { student: true, service: true },
+    include: { 
+      student: true, 
+      service: true,
+      conversation: {
+        select: { id: true }
+      }
+    },
     orderBy: { bookedAt: "desc" },
   })
 
@@ -55,13 +67,59 @@ export default async function ProviderDashboardPage() {
                 services as completed
               </p>
             </div>
-            <div className="mt-3 flex gap-2 md:mt-0">
-              <div className="flex flex-col items-end gap-1 text-xs font-semibold uppercase tracking-[0.16em]">
-              </div>
-            </div>
           </div>
         </header>
 
+        <div className="grid gap-6">
+          {bookings.length === 0 ? (
+            <div className="rounded-2xl border-4 border-dashed border-black bg-white p-12 text-center shadow-[8px_8px_0_0_#000]">
+              <p className="text-lg font-bold">No active bookings yet.</p>
+              <p className="text-muted-foreground">When students book your services, they will appear here.</p>
+            </div>
+          ) : (
+            bookings.map((booking) => (
+              <Card key={booking.id} className="overflow-hidden border-4 border-black bg-white shadow-[8px_8px_0_0_#000] rounded-2xl">
+                <CardHeader className="border-b-4 border-black bg-pink-50">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="text-xl font-black">{booking.service.title}</CardTitle>
+                      <p className="text-sm font-bold text-muted-foreground">Booked by {booking.student.name}</p>
+                    </div>
+                    <Badge variant="outline" className="bg-yellow-300 border-2 border-black font-black">
+                      {booking.status}
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <Avatar className="h-12 w-12 border-2 border-black">
+                        <AvatarImage src={booking.student.image || ""} />
+                        <AvatarFallback className="font-bold">{booking.student.name?.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-black">{booking.student.name}</p>
+                        <p className="text-sm font-bold text-muted-foreground">{booking.student.email}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-3">
+                      {booking.conversation && (
+                        <Link href={`/chat/${booking.conversation.id}`}>
+                          <Button className="bg-cyan-300 transform transition-transform hover:-translate-y-1 active:translate-y-0 text-black border-2 border-black shadow-[4px_4px_0_0_#000] font-black hover:bg-cyan-400">
+                            Chat with Student
+                          </Button>
+                        </Link>
+                      )}
+                      <Button variant="outline" className="border-2 border-black font-black hover:bg-lime-100 shadow-[4px_4px_0_0_#000] transform transition-transform hover:-translate-y-1 active:translate-y-0">
+                        Mark Attended
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          )}
+        </div>
       </section>
     </main>
   )

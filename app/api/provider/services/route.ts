@@ -1,8 +1,17 @@
-import { NextResponse } from "next/navigation"
-import { prisma } from "@/lib/prisma"
+import { auth } from "@/lib/auth"
+import { headers } from "next/headers"
 
 export async function POST(req: Request) {
   try {
+    const session = await auth.api.getSession({
+      headers: await headers()
+    })
+
+    if (!session?.user?.id) {
+      return new NextResponse("Unauthorized", { status: 401 })
+    }
+
+    const userId = session.user.id
     const body = await req.json()
     const { title, description, category, price, operatingHours } = body
 
@@ -18,7 +27,7 @@ export async function POST(req: Request) {
         price,
         operatingHours,
         status: "Available",
-        providerId: "user_1", // Hardcoded for evaluation
+        providerId: userId,
       },
     })
 

@@ -1,15 +1,15 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import ChatRoom from "./ChatRoom";
+import ChatRoom from "@/app/chat/[conversationId]/ChatRoom";
 import { notFound, redirect } from "next/navigation";
 import { headers } from "next/headers";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-export default async function ChatPage({
+export default async function DashboardChatRoomPage({
   params,
 }: {
   params: Promise<{ conversationId: string }>;
@@ -84,8 +84,8 @@ export default async function ChatPage({
     : conversation.booking.student.name ?? "Student";
 
   return (
-    <div className="container mx-auto max-w-4xl py-8">
-      <Link href="/chat" className="inline-block mb-4">
+    <div className="container mx-auto max-w-4xl py-8 px-4 md:px-10">
+      <Link href="/dashboard/chat" className="inline-block mb-4">
         <Button variant="outline" className="border-4 border-black font-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-100 transition-all hover:-translate-y-1 active:translate-y-0 text-xs py-1 h-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Messages

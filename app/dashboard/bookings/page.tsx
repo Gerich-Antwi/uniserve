@@ -1,7 +1,4 @@
-import { redirect } from "next/navigation"
-import { headers } from "next/headers"
 import { prisma } from "@/lib/prisma"
-import { auth } from "@/lib/auth"
 import { ProviderBookings } from "@/components/provider-bookings"
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"

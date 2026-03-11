@@ -69,15 +69,15 @@ export type Announcement = $Result.DefaultSelection<Prisma.$AnnouncementPayload>
  */
 export type SupportMessage = $Result.DefaultSelection<Prisma.$SupportMessagePayload>
 /**
- * Model provider_wallet
+ * Model Transaction
  * 
  */
-export type provider_wallet = $Result.DefaultSelection<Prisma.$provider_walletPayload>
+export type Transaction = $Result.DefaultSelection<Prisma.$TransactionPayload>
 /**
- * Model transaction
+ * Model ProviderWallet
  * 
  */
-export type transaction = $Result.DefaultSelection<Prisma.$transactionPayload>
+export type ProviderWallet = $Result.DefaultSelection<Prisma.$ProviderWalletPayload>
 
 /**
  * Enums
@@ -341,24 +341,24 @@ export class PrismaClient<
   get supportMessage(): Prisma.SupportMessageDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.provider_wallet`: Exposes CRUD operations for the **provider_wallet** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Provider_wallets
-    * const provider_wallets = await prisma.provider_wallet.findMany()
-    * ```
-    */
-  get provider_wallet(): Prisma.provider_walletDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.transaction`: Exposes CRUD operations for the **transaction** model.
+   * `prisma.transaction`: Exposes CRUD operations for the **Transaction** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Transactions
     * const transactions = await prisma.transaction.findMany()
     * ```
     */
-  get transaction(): Prisma.transactionDelegate<ExtArgs, ClientOptions>;
+  get transaction(): Prisma.TransactionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.providerWallet`: Exposes CRUD operations for the **ProviderWallet** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProviderWallets
+    * const providerWallets = await prisma.providerWallet.findMany()
+    * ```
+    */
+  get providerWallet(): Prisma.ProviderWalletDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -804,8 +804,8 @@ export namespace Prisma {
     Verification: 'Verification',
     Announcement: 'Announcement',
     SupportMessage: 'SupportMessage',
-    provider_wallet: 'provider_wallet',
-    transaction: 'transaction'
+    Transaction: 'Transaction',
+    ProviderWallet: 'ProviderWallet'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -821,7 +821,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "service" | "booking" | "conversation" | "messageGroup" | "message" | "verification" | "announcement" | "supportMessage" | "provider_wallet" | "transaction"
+      modelProps: "user" | "session" | "account" | "service" | "booking" | "conversation" | "messageGroup" | "message" | "verification" | "announcement" | "supportMessage" | "transaction" | "providerWallet"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1639,151 +1639,151 @@ export namespace Prisma {
           }
         }
       }
-      provider_wallet: {
-        payload: Prisma.$provider_walletPayload<ExtArgs>
-        fields: Prisma.provider_walletFieldRefs
+      Transaction: {
+        payload: Prisma.$TransactionPayload<ExtArgs>
+        fields: Prisma.TransactionFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.provider_walletFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload> | null
+            args: Prisma.TransactionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.provider_walletFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+            args: Prisma.TransactionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>
           }
           findFirst: {
-            args: Prisma.provider_walletFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload> | null
+            args: Prisma.TransactionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.provider_walletFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+            args: Prisma.TransactionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>
           }
           findMany: {
-            args: Prisma.provider_walletFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>[]
+            args: Prisma.TransactionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>[]
           }
           create: {
-            args: Prisma.provider_walletCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+            args: Prisma.TransactionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>
           }
           createMany: {
-            args: Prisma.provider_walletCreateManyArgs<ExtArgs>
+            args: Prisma.TransactionCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.provider_walletCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>[]
+            args: Prisma.TransactionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>[]
           }
           delete: {
-            args: Prisma.provider_walletDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+            args: Prisma.TransactionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>
           }
           update: {
-            args: Prisma.provider_walletUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
+            args: Prisma.TransactionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>
           }
           deleteMany: {
-            args: Prisma.provider_walletDeleteManyArgs<ExtArgs>
+            args: Prisma.TransactionDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.provider_walletUpdateManyArgs<ExtArgs>
+            args: Prisma.TransactionUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.provider_walletUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>[]
+            args: Prisma.TransactionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>[]
           }
           upsert: {
-            args: Prisma.provider_walletUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$provider_walletPayload>
-          }
-          aggregate: {
-            args: Prisma.Provider_walletAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateProvider_wallet>
-          }
-          groupBy: {
-            args: Prisma.provider_walletGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Provider_walletGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.provider_walletCountArgs<ExtArgs>
-            result: $Utils.Optional<Provider_walletCountAggregateOutputType> | number
-          }
-        }
-      }
-      transaction: {
-        payload: Prisma.$transactionPayload<ExtArgs>
-        fields: Prisma.transactionFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.transactionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.transactionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
-          }
-          findFirst: {
-            args: Prisma.transactionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.transactionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
-          }
-          findMany: {
-            args: Prisma.transactionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>[]
-          }
-          create: {
-            args: Prisma.transactionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
-          }
-          createMany: {
-            args: Prisma.transactionCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.transactionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>[]
-          }
-          delete: {
-            args: Prisma.transactionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
-          }
-          update: {
-            args: Prisma.transactionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
-          }
-          deleteMany: {
-            args: Prisma.transactionDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.transactionUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.transactionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>[]
-          }
-          upsert: {
-            args: Prisma.transactionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$transactionPayload>
+            args: Prisma.TransactionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransactionPayload>
           }
           aggregate: {
             args: Prisma.TransactionAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateTransaction>
           }
           groupBy: {
-            args: Prisma.transactionGroupByArgs<ExtArgs>
+            args: Prisma.TransactionGroupByArgs<ExtArgs>
             result: $Utils.Optional<TransactionGroupByOutputType>[]
           }
           count: {
-            args: Prisma.transactionCountArgs<ExtArgs>
+            args: Prisma.TransactionCountArgs<ExtArgs>
             result: $Utils.Optional<TransactionCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProviderWallet: {
+        payload: Prisma.$ProviderWalletPayload<ExtArgs>
+        fields: Prisma.ProviderWalletFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProviderWalletFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProviderWalletFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>
+          }
+          findFirst: {
+            args: Prisma.ProviderWalletFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProviderWalletFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>
+          }
+          findMany: {
+            args: Prisma.ProviderWalletFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>[]
+          }
+          create: {
+            args: Prisma.ProviderWalletCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>
+          }
+          createMany: {
+            args: Prisma.ProviderWalletCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProviderWalletCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>[]
+          }
+          delete: {
+            args: Prisma.ProviderWalletDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>
+          }
+          update: {
+            args: Prisma.ProviderWalletUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProviderWalletDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProviderWalletUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProviderWalletUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProviderWalletUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProviderWalletPayload>
+          }
+          aggregate: {
+            args: Prisma.ProviderWalletAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProviderWallet>
+          }
+          groupBy: {
+            args: Prisma.ProviderWalletGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProviderWalletGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProviderWalletCountArgs<ExtArgs>
+            result: $Utils.Optional<ProviderWalletCountAggregateOutputType> | number
           }
         }
       }
@@ -1906,8 +1906,8 @@ export namespace Prisma {
     verification?: VerificationOmit
     announcement?: AnnouncementOmit
     supportMessage?: SupportMessageOmit
-    provider_wallet?: provider_walletOmit
-    transaction?: transactionOmit
+    transaction?: TransactionOmit
+    providerWallet?: ProviderWalletOmit
   }
 
   /* Types for Logging */
@@ -1992,11 +1992,11 @@ export namespace Prisma {
     providerBookings: number
     studentBookings: number
     sentMessages: number
-    services: number
+    servicesProvided: number
     sessions: number
-    supportMessages: number
-    transaction_transaction_providerIdTouser: number
-    transaction_transaction_studentIdTouser: number
+    supportMessagesAsUser: number
+    providerTransactions: number
+    studentTransactions: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2004,11 +2004,11 @@ export namespace Prisma {
     providerBookings?: boolean | UserCountOutputTypeCountProviderBookingsArgs
     studentBookings?: boolean | UserCountOutputTypeCountStudentBookingsArgs
     sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
-    services?: boolean | UserCountOutputTypeCountServicesArgs
+    servicesProvided?: boolean | UserCountOutputTypeCountServicesProvidedArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-    supportMessages?: boolean | UserCountOutputTypeCountSupportMessagesArgs
-    transaction_transaction_providerIdTouser?: boolean | UserCountOutputTypeCountTransaction_transaction_providerIdTouserArgs
-    transaction_transaction_studentIdTouser?: boolean | UserCountOutputTypeCountTransaction_transaction_studentIdTouserArgs
+    supportMessagesAsUser?: boolean | UserCountOutputTypeCountSupportMessagesAsUserArgs
+    providerTransactions?: boolean | UserCountOutputTypeCountProviderTransactionsArgs
+    studentTransactions?: boolean | UserCountOutputTypeCountStudentTransactionsArgs
   }
 
   // Custom InputTypes
@@ -2053,7 +2053,7 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountServicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountServicesProvidedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ServiceWhereInput
   }
 
@@ -2067,22 +2067,22 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSupportMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSupportMessagesAsUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SupportMessageWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTransaction_transaction_providerIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: transactionWhereInput
+  export type UserCountOutputTypeCountProviderTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTransaction_transaction_studentIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: transactionWhereInput
+  export type UserCountOutputTypeCountStudentTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
   }
 
 
@@ -2122,11 +2122,11 @@ export namespace Prisma {
    */
 
   export type BookingCountOutputType = {
-    transaction: number
+    transactions: number
   }
 
   export type BookingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction?: boolean | BookingCountOutputTypeCountTransactionArgs
+    transactions?: boolean | BookingCountOutputTypeCountTransactionsArgs
   }
 
   // Custom InputTypes
@@ -2143,8 +2143,8 @@ export namespace Prisma {
   /**
    * BookingCountOutputType without action
    */
-  export type BookingCountOutputTypeCountTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: transactionWhereInput
+  export type BookingCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
   }
 
 
@@ -2408,12 +2408,12 @@ export namespace Prisma {
     providerBookings?: boolean | User$providerBookingsArgs<ExtArgs>
     studentBookings?: boolean | User$studentBookingsArgs<ExtArgs>
     sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
-    provider_wallet?: boolean | User$provider_walletArgs<ExtArgs>
-    services?: boolean | User$servicesArgs<ExtArgs>
+    providerWallet?: boolean | User$providerWalletArgs<ExtArgs>
+    servicesProvided?: boolean | User$servicesProvidedArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
-    supportMessages?: boolean | User$supportMessagesArgs<ExtArgs>
-    transaction_transaction_providerIdTouser?: boolean | User$transaction_transaction_providerIdTouserArgs<ExtArgs>
-    transaction_transaction_studentIdTouser?: boolean | User$transaction_transaction_studentIdTouserArgs<ExtArgs>
+    supportMessagesAsUser?: boolean | User$supportMessagesAsUserArgs<ExtArgs>
+    providerTransactions?: boolean | User$providerTransactionsArgs<ExtArgs>
+    studentTransactions?: boolean | User$studentTransactionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2465,12 +2465,12 @@ export namespace Prisma {
     providerBookings?: boolean | User$providerBookingsArgs<ExtArgs>
     studentBookings?: boolean | User$studentBookingsArgs<ExtArgs>
     sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
-    provider_wallet?: boolean | User$provider_walletArgs<ExtArgs>
-    services?: boolean | User$servicesArgs<ExtArgs>
+    providerWallet?: boolean | User$providerWalletArgs<ExtArgs>
+    servicesProvided?: boolean | User$servicesProvidedArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
-    supportMessages?: boolean | User$supportMessagesArgs<ExtArgs>
-    transaction_transaction_providerIdTouser?: boolean | User$transaction_transaction_providerIdTouserArgs<ExtArgs>
-    transaction_transaction_studentIdTouser?: boolean | User$transaction_transaction_studentIdTouserArgs<ExtArgs>
+    supportMessagesAsUser?: boolean | User$supportMessagesAsUserArgs<ExtArgs>
+    providerTransactions?: boolean | User$providerTransactionsArgs<ExtArgs>
+    studentTransactions?: boolean | User$studentTransactionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2483,12 +2483,12 @@ export namespace Prisma {
       providerBookings: Prisma.$BookingPayload<ExtArgs>[]
       studentBookings: Prisma.$BookingPayload<ExtArgs>[]
       sentMessages: Prisma.$MessagePayload<ExtArgs>[]
-      provider_wallet: Prisma.$provider_walletPayload<ExtArgs> | null
-      services: Prisma.$ServicePayload<ExtArgs>[]
+      providerWallet: Prisma.$ProviderWalletPayload<ExtArgs> | null
+      servicesProvided: Prisma.$ServicePayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
-      supportMessages: Prisma.$SupportMessagePayload<ExtArgs>[]
-      transaction_transaction_providerIdTouser: Prisma.$transactionPayload<ExtArgs>[]
-      transaction_transaction_studentIdTouser: Prisma.$transactionPayload<ExtArgs>[]
+      supportMessagesAsUser: Prisma.$SupportMessagePayload<ExtArgs>[]
+      providerTransactions: Prisma.$TransactionPayload<ExtArgs>[]
+      studentTransactions: Prisma.$TransactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2900,12 +2900,12 @@ export namespace Prisma {
     providerBookings<T extends User$providerBookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$providerBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     studentBookings<T extends User$studentBookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$studentBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sentMessages<T extends User$sentMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    provider_wallet<T extends User$provider_walletArgs<ExtArgs> = {}>(args?: Subset<T, User$provider_walletArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    services<T extends User$servicesArgs<ExtArgs> = {}>(args?: Subset<T, User$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerWallet<T extends User$providerWalletArgs<ExtArgs> = {}>(args?: Subset<T, User$providerWalletArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    servicesProvided<T extends User$servicesProvidedArgs<ExtArgs> = {}>(args?: Subset<T, User$servicesProvidedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    supportMessages<T extends User$supportMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$supportMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    transaction_transaction_providerIdTouser<T extends User$transaction_transaction_providerIdTouserArgs<ExtArgs> = {}>(args?: Subset<T, User$transaction_transaction_providerIdTouserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    transaction_transaction_studentIdTouser<T extends User$transaction_transaction_studentIdTouserArgs<ExtArgs> = {}>(args?: Subset<T, User$transaction_transaction_studentIdTouserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    supportMessagesAsUser<T extends User$supportMessagesAsUserArgs<ExtArgs> = {}>(args?: Subset<T, User$supportMessagesAsUserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerTransactions<T extends User$providerTransactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$providerTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    studentTransactions<T extends User$studentTransactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$studentTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3430,28 +3430,28 @@ export namespace Prisma {
   }
 
   /**
-   * User.provider_wallet
+   * User.providerWallet
    */
-  export type User$provider_walletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$providerWalletArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the provider_wallet
+     * Select specific fields to fetch from the ProviderWallet
      */
-    select?: provider_walletSelect<ExtArgs> | null
+    select?: ProviderWalletSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the provider_wallet
+     * Omit specific fields from the ProviderWallet
      */
-    omit?: provider_walletOmit<ExtArgs> | null
+    omit?: ProviderWalletOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: provider_walletInclude<ExtArgs> | null
-    where?: provider_walletWhereInput
+    include?: ProviderWalletInclude<ExtArgs> | null
+    where?: ProviderWalletWhereInput
   }
 
   /**
-   * User.services
+   * User.servicesProvided
    */
-  export type User$servicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$servicesProvidedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Service
      */
@@ -3497,9 +3497,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.supportMessages
+   * User.supportMessagesAsUser
    */
-  export type User$supportMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$supportMessagesAsUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the SupportMessage
      */
@@ -3521,48 +3521,48 @@ export namespace Prisma {
   }
 
   /**
-   * User.transaction_transaction_providerIdTouser
+   * User.providerTransactions
    */
-  export type User$transaction_transaction_providerIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$providerTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
-    where?: transactionWhereInput
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
-    cursor?: transactionWhereUniqueInput
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
     take?: number
     skip?: number
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
-   * User.transaction_transaction_studentIdTouser
+   * User.studentTransactions
    */
-  export type User$transaction_transaction_studentIdTouserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$studentTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
-    where?: transactionWhereInput
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
-    cursor?: transactionWhereUniqueInput
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
     take?: number
     skip?: number
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
@@ -7191,7 +7191,7 @@ export namespace Prisma {
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     student?: boolean | UserDefaultArgs<ExtArgs>
     conversation?: boolean | Booking$conversationArgs<ExtArgs>
-    transaction?: boolean | Booking$transactionArgs<ExtArgs>
+    transactions?: boolean | Booking$transactionsArgs<ExtArgs>
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["booking"]>
 
@@ -7240,7 +7240,7 @@ export namespace Prisma {
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     student?: boolean | UserDefaultArgs<ExtArgs>
     conversation?: boolean | Booking$conversationArgs<ExtArgs>
-    transaction?: boolean | Booking$transactionArgs<ExtArgs>
+    transactions?: boolean | Booking$transactionsArgs<ExtArgs>
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7261,7 +7261,7 @@ export namespace Prisma {
       service: Prisma.$ServicePayload<ExtArgs>
       student: Prisma.$UserPayload<ExtArgs>
       conversation: Prisma.$ConversationPayload<ExtArgs> | null
-      transaction: Prisma.$transactionPayload<ExtArgs>[]
+      transactions: Prisma.$TransactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7670,7 +7670,7 @@ export namespace Prisma {
     service<T extends ServiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceDefaultArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     student<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     conversation<T extends Booking$conversationArgs<ExtArgs> = {}>(args?: Subset<T, Booking$conversationArgs<ExtArgs>>): Prisma__ConversationClient<$Result.GetResult<Prisma.$ConversationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    transaction<T extends Booking$transactionArgs<ExtArgs> = {}>(args?: Subset<T, Booking$transactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactions<T extends Booking$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Booking$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8123,24 +8123,24 @@ export namespace Prisma {
   }
 
   /**
-   * Booking.transaction
+   * Booking.transactions
    */
-  export type Booking$transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Booking$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
-    where?: transactionWhereInput
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
-    cursor?: transactionWhereUniqueInput
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
     take?: number
     skip?: number
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
@@ -14567,1150 +14567,7 @@ export namespace Prisma {
 
 
   /**
-   * Model provider_wallet
-   */
-
-  export type AggregateProvider_wallet = {
-    _count: Provider_walletCountAggregateOutputType | null
-    _avg: Provider_walletAvgAggregateOutputType | null
-    _sum: Provider_walletSumAggregateOutputType | null
-    _min: Provider_walletMinAggregateOutputType | null
-    _max: Provider_walletMaxAggregateOutputType | null
-  }
-
-  export type Provider_walletAvgAggregateOutputType = {
-    availableBalance: number | null
-    pendingBalance: number | null
-    totalEarnings: number | null
-    totalWithdrawn: number | null
-  }
-
-  export type Provider_walletSumAggregateOutputType = {
-    availableBalance: number | null
-    pendingBalance: number | null
-    totalEarnings: number | null
-    totalWithdrawn: number | null
-  }
-
-  export type Provider_walletMinAggregateOutputType = {
-    id: string | null
-    providerId: string | null
-    availableBalance: number | null
-    pendingBalance: number | null
-    totalEarnings: number | null
-    totalWithdrawn: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type Provider_walletMaxAggregateOutputType = {
-    id: string | null
-    providerId: string | null
-    availableBalance: number | null
-    pendingBalance: number | null
-    totalEarnings: number | null
-    totalWithdrawn: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type Provider_walletCountAggregateOutputType = {
-    id: number
-    providerId: number
-    availableBalance: number
-    pendingBalance: number
-    totalEarnings: number
-    totalWithdrawn: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type Provider_walletAvgAggregateInputType = {
-    availableBalance?: true
-    pendingBalance?: true
-    totalEarnings?: true
-    totalWithdrawn?: true
-  }
-
-  export type Provider_walletSumAggregateInputType = {
-    availableBalance?: true
-    pendingBalance?: true
-    totalEarnings?: true
-    totalWithdrawn?: true
-  }
-
-  export type Provider_walletMinAggregateInputType = {
-    id?: true
-    providerId?: true
-    availableBalance?: true
-    pendingBalance?: true
-    totalEarnings?: true
-    totalWithdrawn?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type Provider_walletMaxAggregateInputType = {
-    id?: true
-    providerId?: true
-    availableBalance?: true
-    pendingBalance?: true
-    totalEarnings?: true
-    totalWithdrawn?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type Provider_walletCountAggregateInputType = {
-    id?: true
-    providerId?: true
-    availableBalance?: true
-    pendingBalance?: true
-    totalEarnings?: true
-    totalWithdrawn?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type Provider_walletAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which provider_wallet to aggregate.
-     */
-    where?: provider_walletWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of provider_wallets to fetch.
-     */
-    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: provider_walletWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` provider_wallets from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` provider_wallets.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned provider_wallets
-    **/
-    _count?: true | Provider_walletCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Provider_walletAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Provider_walletSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Provider_walletMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Provider_walletMaxAggregateInputType
-  }
-
-  export type GetProvider_walletAggregateType<T extends Provider_walletAggregateArgs> = {
-        [P in keyof T & keyof AggregateProvider_wallet]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProvider_wallet[P]>
-      : GetScalarType<T[P], AggregateProvider_wallet[P]>
-  }
-
-
-
-
-  export type provider_walletGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: provider_walletWhereInput
-    orderBy?: provider_walletOrderByWithAggregationInput | provider_walletOrderByWithAggregationInput[]
-    by: Provider_walletScalarFieldEnum[] | Provider_walletScalarFieldEnum
-    having?: provider_walletScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Provider_walletCountAggregateInputType | true
-    _avg?: Provider_walletAvgAggregateInputType
-    _sum?: Provider_walletSumAggregateInputType
-    _min?: Provider_walletMinAggregateInputType
-    _max?: Provider_walletMaxAggregateInputType
-  }
-
-  export type Provider_walletGroupByOutputType = {
-    id: string
-    providerId: string
-    availableBalance: number
-    pendingBalance: number
-    totalEarnings: number
-    totalWithdrawn: number
-    createdAt: Date
-    updatedAt: Date
-    _count: Provider_walletCountAggregateOutputType | null
-    _avg: Provider_walletAvgAggregateOutputType | null
-    _sum: Provider_walletSumAggregateOutputType | null
-    _min: Provider_walletMinAggregateOutputType | null
-    _max: Provider_walletMaxAggregateOutputType | null
-  }
-
-  type GetProvider_walletGroupByPayload<T extends provider_walletGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Provider_walletGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Provider_walletGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Provider_walletGroupByOutputType[P]>
-            : GetScalarType<T[P], Provider_walletGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type provider_walletSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    providerId?: boolean
-    availableBalance?: boolean
-    pendingBalance?: boolean
-    totalEarnings?: boolean
-    totalWithdrawn?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["provider_wallet"]>
-
-  export type provider_walletSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    providerId?: boolean
-    availableBalance?: boolean
-    pendingBalance?: boolean
-    totalEarnings?: boolean
-    totalWithdrawn?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["provider_wallet"]>
-
-  export type provider_walletSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    providerId?: boolean
-    availableBalance?: boolean
-    pendingBalance?: boolean
-    totalEarnings?: boolean
-    totalWithdrawn?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["provider_wallet"]>
-
-  export type provider_walletSelectScalar = {
-    id?: boolean
-    providerId?: boolean
-    availableBalance?: boolean
-    pendingBalance?: boolean
-    totalEarnings?: boolean
-    totalWithdrawn?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type provider_walletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerId" | "availableBalance" | "pendingBalance" | "totalEarnings" | "totalWithdrawn" | "createdAt" | "updatedAt", ExtArgs["result"]["provider_wallet"]>
-  export type provider_walletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type provider_walletIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type provider_walletIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $provider_walletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "provider_wallet"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      providerId: string
-      availableBalance: number
-      pendingBalance: number
-      totalEarnings: number
-      totalWithdrawn: number
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["provider_wallet"]>
-    composites: {}
-  }
-
-  type provider_walletGetPayload<S extends boolean | null | undefined | provider_walletDefaultArgs> = $Result.GetResult<Prisma.$provider_walletPayload, S>
-
-  type provider_walletCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<provider_walletFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Provider_walletCountAggregateInputType | true
-    }
-
-  export interface provider_walletDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['provider_wallet'], meta: { name: 'provider_wallet' } }
-    /**
-     * Find zero or one Provider_wallet that matches the filter.
-     * @param {provider_walletFindUniqueArgs} args - Arguments to find a Provider_wallet
-     * @example
-     * // Get one Provider_wallet
-     * const provider_wallet = await prisma.provider_wallet.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends provider_walletFindUniqueArgs>(args: SelectSubset<T, provider_walletFindUniqueArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Provider_wallet that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {provider_walletFindUniqueOrThrowArgs} args - Arguments to find a Provider_wallet
-     * @example
-     * // Get one Provider_wallet
-     * const provider_wallet = await prisma.provider_wallet.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends provider_walletFindUniqueOrThrowArgs>(args: SelectSubset<T, provider_walletFindUniqueOrThrowArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Provider_wallet that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {provider_walletFindFirstArgs} args - Arguments to find a Provider_wallet
-     * @example
-     * // Get one Provider_wallet
-     * const provider_wallet = await prisma.provider_wallet.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends provider_walletFindFirstArgs>(args?: SelectSubset<T, provider_walletFindFirstArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Provider_wallet that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {provider_walletFindFirstOrThrowArgs} args - Arguments to find a Provider_wallet
-     * @example
-     * // Get one Provider_wallet
-     * const provider_wallet = await prisma.provider_wallet.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends provider_walletFindFirstOrThrowArgs>(args?: SelectSubset<T, provider_walletFindFirstOrThrowArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Provider_wallets that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {provider_walletFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Provider_wallets
-     * const provider_wallets = await prisma.provider_wallet.findMany()
-     * 
-     * // Get first 10 Provider_wallets
-     * const provider_wallets = await prisma.provider_wallet.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const provider_walletWithIdOnly = await prisma.provider_wallet.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends provider_walletFindManyArgs>(args?: SelectSubset<T, provider_walletFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Provider_wallet.
-     * @param {provider_walletCreateArgs} args - Arguments to create a Provider_wallet.
-     * @example
-     * // Create one Provider_wallet
-     * const Provider_wallet = await prisma.provider_wallet.create({
-     *   data: {
-     *     // ... data to create a Provider_wallet
-     *   }
-     * })
-     * 
-     */
-    create<T extends provider_walletCreateArgs>(args: SelectSubset<T, provider_walletCreateArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Provider_wallets.
-     * @param {provider_walletCreateManyArgs} args - Arguments to create many Provider_wallets.
-     * @example
-     * // Create many Provider_wallets
-     * const provider_wallet = await prisma.provider_wallet.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends provider_walletCreateManyArgs>(args?: SelectSubset<T, provider_walletCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Provider_wallets and returns the data saved in the database.
-     * @param {provider_walletCreateManyAndReturnArgs} args - Arguments to create many Provider_wallets.
-     * @example
-     * // Create many Provider_wallets
-     * const provider_wallet = await prisma.provider_wallet.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Provider_wallets and only return the `id`
-     * const provider_walletWithIdOnly = await prisma.provider_wallet.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends provider_walletCreateManyAndReturnArgs>(args?: SelectSubset<T, provider_walletCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Provider_wallet.
-     * @param {provider_walletDeleteArgs} args - Arguments to delete one Provider_wallet.
-     * @example
-     * // Delete one Provider_wallet
-     * const Provider_wallet = await prisma.provider_wallet.delete({
-     *   where: {
-     *     // ... filter to delete one Provider_wallet
-     *   }
-     * })
-     * 
-     */
-    delete<T extends provider_walletDeleteArgs>(args: SelectSubset<T, provider_walletDeleteArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Provider_wallet.
-     * @param {provider_walletUpdateArgs} args - Arguments to update one Provider_wallet.
-     * @example
-     * // Update one Provider_wallet
-     * const provider_wallet = await prisma.provider_wallet.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends provider_walletUpdateArgs>(args: SelectSubset<T, provider_walletUpdateArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Provider_wallets.
-     * @param {provider_walletDeleteManyArgs} args - Arguments to filter Provider_wallets to delete.
-     * @example
-     * // Delete a few Provider_wallets
-     * const { count } = await prisma.provider_wallet.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends provider_walletDeleteManyArgs>(args?: SelectSubset<T, provider_walletDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Provider_wallets.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {provider_walletUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Provider_wallets
-     * const provider_wallet = await prisma.provider_wallet.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends provider_walletUpdateManyArgs>(args: SelectSubset<T, provider_walletUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Provider_wallets and returns the data updated in the database.
-     * @param {provider_walletUpdateManyAndReturnArgs} args - Arguments to update many Provider_wallets.
-     * @example
-     * // Update many Provider_wallets
-     * const provider_wallet = await prisma.provider_wallet.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Provider_wallets and only return the `id`
-     * const provider_walletWithIdOnly = await prisma.provider_wallet.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends provider_walletUpdateManyAndReturnArgs>(args: SelectSubset<T, provider_walletUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Provider_wallet.
-     * @param {provider_walletUpsertArgs} args - Arguments to update or create a Provider_wallet.
-     * @example
-     * // Update or create a Provider_wallet
-     * const provider_wallet = await prisma.provider_wallet.upsert({
-     *   create: {
-     *     // ... data to create a Provider_wallet
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Provider_wallet we want to update
-     *   }
-     * })
-     */
-    upsert<T extends provider_walletUpsertArgs>(args: SelectSubset<T, provider_walletUpsertArgs<ExtArgs>>): Prisma__provider_walletClient<$Result.GetResult<Prisma.$provider_walletPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Provider_wallets.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {provider_walletCountArgs} args - Arguments to filter Provider_wallets to count.
-     * @example
-     * // Count the number of Provider_wallets
-     * const count = await prisma.provider_wallet.count({
-     *   where: {
-     *     // ... the filter for the Provider_wallets we want to count
-     *   }
-     * })
-    **/
-    count<T extends provider_walletCountArgs>(
-      args?: Subset<T, provider_walletCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Provider_walletCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Provider_wallet.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Provider_walletAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Provider_walletAggregateArgs>(args: Subset<T, Provider_walletAggregateArgs>): Prisma.PrismaPromise<GetProvider_walletAggregateType<T>>
-
-    /**
-     * Group by Provider_wallet.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {provider_walletGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends provider_walletGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: provider_walletGroupByArgs['orderBy'] }
-        : { orderBy?: provider_walletGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, provider_walletGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProvider_walletGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the provider_wallet model
-   */
-  readonly fields: provider_walletFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for provider_wallet.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__provider_walletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the provider_wallet model
-   */
-  interface provider_walletFieldRefs {
-    readonly id: FieldRef<"provider_wallet", 'String'>
-    readonly providerId: FieldRef<"provider_wallet", 'String'>
-    readonly availableBalance: FieldRef<"provider_wallet", 'Float'>
-    readonly pendingBalance: FieldRef<"provider_wallet", 'Float'>
-    readonly totalEarnings: FieldRef<"provider_wallet", 'Float'>
-    readonly totalWithdrawn: FieldRef<"provider_wallet", 'Float'>
-    readonly createdAt: FieldRef<"provider_wallet", 'DateTime'>
-    readonly updatedAt: FieldRef<"provider_wallet", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * provider_wallet findUnique
-   */
-  export type provider_walletFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * Filter, which provider_wallet to fetch.
-     */
-    where: provider_walletWhereUniqueInput
-  }
-
-  /**
-   * provider_wallet findUniqueOrThrow
-   */
-  export type provider_walletFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * Filter, which provider_wallet to fetch.
-     */
-    where: provider_walletWhereUniqueInput
-  }
-
-  /**
-   * provider_wallet findFirst
-   */
-  export type provider_walletFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * Filter, which provider_wallet to fetch.
-     */
-    where?: provider_walletWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of provider_wallets to fetch.
-     */
-    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for provider_wallets.
-     */
-    cursor?: provider_walletWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` provider_wallets from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` provider_wallets.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of provider_wallets.
-     */
-    distinct?: Provider_walletScalarFieldEnum | Provider_walletScalarFieldEnum[]
-  }
-
-  /**
-   * provider_wallet findFirstOrThrow
-   */
-  export type provider_walletFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * Filter, which provider_wallet to fetch.
-     */
-    where?: provider_walletWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of provider_wallets to fetch.
-     */
-    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for provider_wallets.
-     */
-    cursor?: provider_walletWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` provider_wallets from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` provider_wallets.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of provider_wallets.
-     */
-    distinct?: Provider_walletScalarFieldEnum | Provider_walletScalarFieldEnum[]
-  }
-
-  /**
-   * provider_wallet findMany
-   */
-  export type provider_walletFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * Filter, which provider_wallets to fetch.
-     */
-    where?: provider_walletWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of provider_wallets to fetch.
-     */
-    orderBy?: provider_walletOrderByWithRelationInput | provider_walletOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing provider_wallets.
-     */
-    cursor?: provider_walletWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` provider_wallets from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` provider_wallets.
-     */
-    skip?: number
-    distinct?: Provider_walletScalarFieldEnum | Provider_walletScalarFieldEnum[]
-  }
-
-  /**
-   * provider_wallet create
-   */
-  export type provider_walletCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * The data needed to create a provider_wallet.
-     */
-    data: XOR<provider_walletCreateInput, provider_walletUncheckedCreateInput>
-  }
-
-  /**
-   * provider_wallet createMany
-   */
-  export type provider_walletCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many provider_wallets.
-     */
-    data: provider_walletCreateManyInput | provider_walletCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * provider_wallet createManyAndReturn
-   */
-  export type provider_walletCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * The data used to create many provider_wallets.
-     */
-    data: provider_walletCreateManyInput | provider_walletCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * provider_wallet update
-   */
-  export type provider_walletUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * The data needed to update a provider_wallet.
-     */
-    data: XOR<provider_walletUpdateInput, provider_walletUncheckedUpdateInput>
-    /**
-     * Choose, which provider_wallet to update.
-     */
-    where: provider_walletWhereUniqueInput
-  }
-
-  /**
-   * provider_wallet updateMany
-   */
-  export type provider_walletUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update provider_wallets.
-     */
-    data: XOR<provider_walletUpdateManyMutationInput, provider_walletUncheckedUpdateManyInput>
-    /**
-     * Filter which provider_wallets to update
-     */
-    where?: provider_walletWhereInput
-    /**
-     * Limit how many provider_wallets to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * provider_wallet updateManyAndReturn
-   */
-  export type provider_walletUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * The data used to update provider_wallets.
-     */
-    data: XOR<provider_walletUpdateManyMutationInput, provider_walletUncheckedUpdateManyInput>
-    /**
-     * Filter which provider_wallets to update
-     */
-    where?: provider_walletWhereInput
-    /**
-     * Limit how many provider_wallets to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * provider_wallet upsert
-   */
-  export type provider_walletUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * The filter to search for the provider_wallet to update in case it exists.
-     */
-    where: provider_walletWhereUniqueInput
-    /**
-     * In case the provider_wallet found by the `where` argument doesn't exist, create a new provider_wallet with this data.
-     */
-    create: XOR<provider_walletCreateInput, provider_walletUncheckedCreateInput>
-    /**
-     * In case the provider_wallet was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<provider_walletUpdateInput, provider_walletUncheckedUpdateInput>
-  }
-
-  /**
-   * provider_wallet delete
-   */
-  export type provider_walletDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-    /**
-     * Filter which provider_wallet to delete.
-     */
-    where: provider_walletWhereUniqueInput
-  }
-
-  /**
-   * provider_wallet deleteMany
-   */
-  export type provider_walletDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which provider_wallets to delete
-     */
-    where?: provider_walletWhereInput
-    /**
-     * Limit how many provider_wallets to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * provider_wallet without action
-   */
-  export type provider_walletDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the provider_wallet
-     */
-    select?: provider_walletSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the provider_wallet
-     */
-    omit?: provider_walletOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: provider_walletInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model transaction
+   * Model Transaction
    */
 
   export type AggregateTransaction = {
@@ -15856,37 +14713,37 @@ export namespace Prisma {
 
   export type TransactionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which transaction to aggregate.
+     * Filter which Transaction to aggregate.
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of transactions to fetch.
+     * Determine the order of Transactions to fetch.
      */
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: transactionWhereUniqueInput
+    cursor?: TransactionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` transactions from the position of the cursor.
+     * Take `±n` Transactions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` transactions.
+     * Skip the first `n` Transactions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned transactions
+     * Count returned Transactions
     **/
     _count?: true | TransactionCountAggregateInputType
     /**
@@ -15926,11 +14783,11 @@ export namespace Prisma {
 
 
 
-  export type transactionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: transactionWhereInput
-    orderBy?: transactionOrderByWithAggregationInput | transactionOrderByWithAggregationInput[]
+  export type TransactionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithAggregationInput | TransactionOrderByWithAggregationInput[]
     by: TransactionScalarFieldEnum[] | TransactionScalarFieldEnum
-    having?: transactionScalarWhereWithAggregatesInput
+    having?: TransactionScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: TransactionCountAggregateInputType | true
@@ -15962,7 +14819,7 @@ export namespace Prisma {
     _max: TransactionMaxAggregateOutputType | null
   }
 
-  type GetTransactionGroupByPayload<T extends transactionGroupByArgs> = Prisma.PrismaPromise<
+  type GetTransactionGroupByPayload<T extends TransactionGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<TransactionGroupByOutputType, T['by']> &
         {
@@ -15976,7 +14833,7 @@ export namespace Prisma {
     >
 
 
-  export type transactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TransactionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     bookingId?: boolean
     studentId?: boolean
@@ -15992,11 +14849,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     booking?: boolean | BookingDefaultArgs<ExtArgs>
-    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
-    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
-  export type transactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     bookingId?: boolean
     studentId?: boolean
@@ -16012,11 +14869,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     booking?: boolean | BookingDefaultArgs<ExtArgs>
-    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
-    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
-  export type transactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TransactionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     bookingId?: boolean
     studentId?: boolean
@@ -16032,11 +14889,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     booking?: boolean | BookingDefaultArgs<ExtArgs>
-    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
-    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
-  export type transactionSelectScalar = {
+  export type TransactionSelectScalar = {
     id?: boolean
     bookingId?: boolean
     studentId?: boolean
@@ -16053,29 +14910,29 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type transactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bookingId" | "studentId" | "providerId" | "paystackReference" | "totalAmount" | "platformCommission" | "providerEarnings" | "commissionRate" | "status" | "paymentMethod" | "paidAt" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
-  export type transactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bookingId" | "studentId" | "providerId" | "paystackReference" | "totalAmount" | "platformCommission" | "providerEarnings" | "commissionRate" | "status" | "paymentMethod" | "paidAt" | "createdAt" | "updatedAt", ExtArgs["result"]["transaction"]>
+  export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     booking?: boolean | BookingDefaultArgs<ExtArgs>
-    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
-    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type transactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     booking?: boolean | BookingDefaultArgs<ExtArgs>
-    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
-    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type transactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     booking?: boolean | BookingDefaultArgs<ExtArgs>
-    user_transaction_providerIdTouser?: boolean | UserDefaultArgs<ExtArgs>
-    user_transaction_studentIdTouser?: boolean | UserDefaultArgs<ExtArgs>
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $transactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "transaction"
+  export type $TransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Transaction"
     objects: {
       booking: Prisma.$BookingPayload<ExtArgs>
-      user_transaction_providerIdTouser: Prisma.$UserPayload<ExtArgs>
-      user_transaction_studentIdTouser: Prisma.$UserPayload<ExtArgs>
+      provider: Prisma.$UserPayload<ExtArgs>
+      student: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -16096,18 +14953,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type transactionGetPayload<S extends boolean | null | undefined | transactionDefaultArgs> = $Result.GetResult<Prisma.$transactionPayload, S>
+  type TransactionGetPayload<S extends boolean | null | undefined | TransactionDefaultArgs> = $Result.GetResult<Prisma.$TransactionPayload, S>
 
-  type transactionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<transactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type TransactionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransactionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: TransactionCountAggregateInputType | true
     }
 
-  export interface transactionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['transaction'], meta: { name: 'transaction' } }
+  export interface TransactionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Transaction'], meta: { name: 'Transaction' } }
     /**
      * Find zero or one Transaction that matches the filter.
-     * @param {transactionFindUniqueArgs} args - Arguments to find a Transaction
+     * @param {TransactionFindUniqueArgs} args - Arguments to find a Transaction
      * @example
      * // Get one Transaction
      * const transaction = await prisma.transaction.findUnique({
@@ -16116,12 +14973,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends transactionFindUniqueArgs>(args: SelectSubset<T, transactionFindUniqueArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TransactionFindUniqueArgs>(args: SelectSubset<T, TransactionFindUniqueArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Transaction that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {transactionFindUniqueOrThrowArgs} args - Arguments to find a Transaction
+     * @param {TransactionFindUniqueOrThrowArgs} args - Arguments to find a Transaction
      * @example
      * // Get one Transaction
      * const transaction = await prisma.transaction.findUniqueOrThrow({
@@ -16130,13 +14987,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends transactionFindUniqueOrThrowArgs>(args: SelectSubset<T, transactionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TransactionFindUniqueOrThrowArgs>(args: SelectSubset<T, TransactionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Transaction that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {transactionFindFirstArgs} args - Arguments to find a Transaction
+     * @param {TransactionFindFirstArgs} args - Arguments to find a Transaction
      * @example
      * // Get one Transaction
      * const transaction = await prisma.transaction.findFirst({
@@ -16145,14 +15002,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends transactionFindFirstArgs>(args?: SelectSubset<T, transactionFindFirstArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TransactionFindFirstArgs>(args?: SelectSubset<T, TransactionFindFirstArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Transaction that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {transactionFindFirstOrThrowArgs} args - Arguments to find a Transaction
+     * @param {TransactionFindFirstOrThrowArgs} args - Arguments to find a Transaction
      * @example
      * // Get one Transaction
      * const transaction = await prisma.transaction.findFirstOrThrow({
@@ -16161,13 +15018,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends transactionFindFirstOrThrowArgs>(args?: SelectSubset<T, transactionFindFirstOrThrowArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TransactionFindFirstOrThrowArgs>(args?: SelectSubset<T, TransactionFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Transactions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {transactionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TransactionFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Transactions
      * const transactions = await prisma.transaction.findMany()
@@ -16179,11 +15036,11 @@ export namespace Prisma {
      * const transactionWithIdOnly = await prisma.transaction.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends transactionFindManyArgs>(args?: SelectSubset<T, transactionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TransactionFindManyArgs>(args?: SelectSubset<T, TransactionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Transaction.
-     * @param {transactionCreateArgs} args - Arguments to create a Transaction.
+     * @param {TransactionCreateArgs} args - Arguments to create a Transaction.
      * @example
      * // Create one Transaction
      * const Transaction = await prisma.transaction.create({
@@ -16193,11 +15050,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends transactionCreateArgs>(args: SelectSubset<T, transactionCreateArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TransactionCreateArgs>(args: SelectSubset<T, TransactionCreateArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Transactions.
-     * @param {transactionCreateManyArgs} args - Arguments to create many Transactions.
+     * @param {TransactionCreateManyArgs} args - Arguments to create many Transactions.
      * @example
      * // Create many Transactions
      * const transaction = await prisma.transaction.createMany({
@@ -16207,11 +15064,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends transactionCreateManyArgs>(args?: SelectSubset<T, transactionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TransactionCreateManyArgs>(args?: SelectSubset<T, TransactionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Transactions and returns the data saved in the database.
-     * @param {transactionCreateManyAndReturnArgs} args - Arguments to create many Transactions.
+     * @param {TransactionCreateManyAndReturnArgs} args - Arguments to create many Transactions.
      * @example
      * // Create many Transactions
      * const transaction = await prisma.transaction.createManyAndReturn({
@@ -16231,11 +15088,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends transactionCreateManyAndReturnArgs>(args?: SelectSubset<T, transactionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends TransactionCreateManyAndReturnArgs>(args?: SelectSubset<T, TransactionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Transaction.
-     * @param {transactionDeleteArgs} args - Arguments to delete one Transaction.
+     * @param {TransactionDeleteArgs} args - Arguments to delete one Transaction.
      * @example
      * // Delete one Transaction
      * const Transaction = await prisma.transaction.delete({
@@ -16245,11 +15102,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends transactionDeleteArgs>(args: SelectSubset<T, transactionDeleteArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TransactionDeleteArgs>(args: SelectSubset<T, TransactionDeleteArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Transaction.
-     * @param {transactionUpdateArgs} args - Arguments to update one Transaction.
+     * @param {TransactionUpdateArgs} args - Arguments to update one Transaction.
      * @example
      * // Update one Transaction
      * const transaction = await prisma.transaction.update({
@@ -16262,11 +15119,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends transactionUpdateArgs>(args: SelectSubset<T, transactionUpdateArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TransactionUpdateArgs>(args: SelectSubset<T, TransactionUpdateArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Transactions.
-     * @param {transactionDeleteManyArgs} args - Arguments to filter Transactions to delete.
+     * @param {TransactionDeleteManyArgs} args - Arguments to filter Transactions to delete.
      * @example
      * // Delete a few Transactions
      * const { count } = await prisma.transaction.deleteMany({
@@ -16276,13 +15133,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends transactionDeleteManyArgs>(args?: SelectSubset<T, transactionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TransactionDeleteManyArgs>(args?: SelectSubset<T, TransactionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Transactions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {transactionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TransactionUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Transactions
      * const transaction = await prisma.transaction.updateMany({
@@ -16295,11 +15152,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends transactionUpdateManyArgs>(args: SelectSubset<T, transactionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TransactionUpdateManyArgs>(args: SelectSubset<T, TransactionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Transactions and returns the data updated in the database.
-     * @param {transactionUpdateManyAndReturnArgs} args - Arguments to update many Transactions.
+     * @param {TransactionUpdateManyAndReturnArgs} args - Arguments to update many Transactions.
      * @example
      * // Update many Transactions
      * const transaction = await prisma.transaction.updateManyAndReturn({
@@ -16325,11 +15182,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends transactionUpdateManyAndReturnArgs>(args: SelectSubset<T, transactionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends TransactionUpdateManyAndReturnArgs>(args: SelectSubset<T, TransactionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Transaction.
-     * @param {transactionUpsertArgs} args - Arguments to update or create a Transaction.
+     * @param {TransactionUpsertArgs} args - Arguments to update or create a Transaction.
      * @example
      * // Update or create a Transaction
      * const transaction = await prisma.transaction.upsert({
@@ -16344,14 +15201,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends transactionUpsertArgs>(args: SelectSubset<T, transactionUpsertArgs<ExtArgs>>): Prisma__transactionClient<$Result.GetResult<Prisma.$transactionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TransactionUpsertArgs>(args: SelectSubset<T, TransactionUpsertArgs<ExtArgs>>): Prisma__TransactionClient<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Transactions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {transactionCountArgs} args - Arguments to filter Transactions to count.
+     * @param {TransactionCountArgs} args - Arguments to filter Transactions to count.
      * @example
      * // Count the number of Transactions
      * const count = await prisma.transaction.count({
@@ -16360,8 +15217,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends transactionCountArgs>(
-      args?: Subset<T, transactionCountArgs>,
+    count<T extends TransactionCountArgs>(
+      args?: Subset<T, TransactionCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -16400,7 +15257,7 @@ export namespace Prisma {
      * Group by Transaction.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {transactionGroupByArgs} args - Group by arguments.
+     * @param {TransactionGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -16415,14 +15272,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends transactionGroupByArgs,
+      T extends TransactionGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: transactionGroupByArgs['orderBy'] }
-        : { orderBy?: transactionGroupByArgs['orderBy'] },
+        ? { orderBy: TransactionGroupByArgs['orderBy'] }
+        : { orderBy?: TransactionGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -16471,24 +15328,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, transactionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TransactionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransactionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the transaction model
+   * Fields of the Transaction model
    */
-  readonly fields: transactionFieldRefs;
+  readonly fields: TransactionFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for transaction.
+   * The delegate class that acts as a "Promise-like" for Transaction.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__transactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     booking<T extends BookingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookingDefaultArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user_transaction_providerIdTouser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    user_transaction_studentIdTouser<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    provider<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    student<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16515,434 +15372,1577 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the transaction model
+   * Fields of the Transaction model
    */
-  interface transactionFieldRefs {
-    readonly id: FieldRef<"transaction", 'String'>
-    readonly bookingId: FieldRef<"transaction", 'String'>
-    readonly studentId: FieldRef<"transaction", 'String'>
-    readonly providerId: FieldRef<"transaction", 'String'>
-    readonly paystackReference: FieldRef<"transaction", 'String'>
-    readonly totalAmount: FieldRef<"transaction", 'Float'>
-    readonly platformCommission: FieldRef<"transaction", 'Float'>
-    readonly providerEarnings: FieldRef<"transaction", 'Float'>
-    readonly commissionRate: FieldRef<"transaction", 'Float'>
-    readonly status: FieldRef<"transaction", 'String'>
-    readonly paymentMethod: FieldRef<"transaction", 'String'>
-    readonly paidAt: FieldRef<"transaction", 'DateTime'>
-    readonly createdAt: FieldRef<"transaction", 'DateTime'>
-    readonly updatedAt: FieldRef<"transaction", 'DateTime'>
+  interface TransactionFieldRefs {
+    readonly id: FieldRef<"Transaction", 'String'>
+    readonly bookingId: FieldRef<"Transaction", 'String'>
+    readonly studentId: FieldRef<"Transaction", 'String'>
+    readonly providerId: FieldRef<"Transaction", 'String'>
+    readonly paystackReference: FieldRef<"Transaction", 'String'>
+    readonly totalAmount: FieldRef<"Transaction", 'Float'>
+    readonly platformCommission: FieldRef<"Transaction", 'Float'>
+    readonly providerEarnings: FieldRef<"Transaction", 'Float'>
+    readonly commissionRate: FieldRef<"Transaction", 'Float'>
+    readonly status: FieldRef<"Transaction", 'String'>
+    readonly paymentMethod: FieldRef<"Transaction", 'String'>
+    readonly paidAt: FieldRef<"Transaction", 'DateTime'>
+    readonly createdAt: FieldRef<"Transaction", 'DateTime'>
+    readonly updatedAt: FieldRef<"Transaction", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * transaction findUnique
+   * Transaction findUnique
    */
-  export type transactionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * Filter, which transaction to fetch.
+     * Filter, which Transaction to fetch.
      */
-    where: transactionWhereUniqueInput
+    where: TransactionWhereUniqueInput
   }
 
   /**
-   * transaction findUniqueOrThrow
+   * Transaction findUniqueOrThrow
    */
-  export type transactionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * Filter, which transaction to fetch.
+     * Filter, which Transaction to fetch.
      */
-    where: transactionWhereUniqueInput
+    where: TransactionWhereUniqueInput
   }
 
   /**
-   * transaction findFirst
+   * Transaction findFirst
    */
-  export type transactionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * Filter, which transaction to fetch.
+     * Filter, which Transaction to fetch.
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of transactions to fetch.
+     * Determine the order of Transactions to fetch.
      */
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for transactions.
+     * Sets the position for searching for Transactions.
      */
-    cursor?: transactionWhereUniqueInput
+    cursor?: TransactionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` transactions from the position of the cursor.
+     * Take `±n` Transactions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` transactions.
+     * Skip the first `n` Transactions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of transactions.
+     * Filter by unique combinations of Transactions.
      */
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
-   * transaction findFirstOrThrow
+   * Transaction findFirstOrThrow
    */
-  export type transactionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * Filter, which transaction to fetch.
+     * Filter, which Transaction to fetch.
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of transactions to fetch.
+     * Determine the order of Transactions to fetch.
      */
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for transactions.
+     * Sets the position for searching for Transactions.
      */
-    cursor?: transactionWhereUniqueInput
+    cursor?: TransactionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` transactions from the position of the cursor.
+     * Take `±n` Transactions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` transactions.
+     * Skip the first `n` Transactions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of transactions.
+     * Filter by unique combinations of Transactions.
      */
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
-   * transaction findMany
+   * Transaction findMany
    */
-  export type transactionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * Filter, which transactions to fetch.
+     * Filter, which Transactions to fetch.
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of transactions to fetch.
+     * Determine the order of Transactions to fetch.
      */
-    orderBy?: transactionOrderByWithRelationInput | transactionOrderByWithRelationInput[]
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing transactions.
+     * Sets the position for listing Transactions.
      */
-    cursor?: transactionWhereUniqueInput
+    cursor?: TransactionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` transactions from the position of the cursor.
+     * Take `±n` Transactions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` transactions.
+     * Skip the first `n` Transactions.
      */
     skip?: number
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
-   * transaction create
+   * Transaction create
    */
-  export type transactionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * The data needed to create a transaction.
+     * The data needed to create a Transaction.
      */
-    data: XOR<transactionCreateInput, transactionUncheckedCreateInput>
+    data: XOR<TransactionCreateInput, TransactionUncheckedCreateInput>
   }
 
   /**
-   * transaction createMany
+   * Transaction createMany
    */
-  export type transactionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many transactions.
+     * The data used to create many Transactions.
      */
-    data: transactionCreateManyInput | transactionCreateManyInput[]
+    data: TransactionCreateManyInput | TransactionCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * transaction createManyAndReturn
+   * Transaction createManyAndReturn
    */
-  export type transactionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelectCreateManyAndReturn<ExtArgs> | null
+    select?: TransactionSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
-     * The data used to create many transactions.
+     * The data used to create many Transactions.
      */
-    data: transactionCreateManyInput | transactionCreateManyInput[]
+    data: TransactionCreateManyInput | TransactionCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: TransactionIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * transaction update
+   * Transaction update
    */
-  export type transactionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * The data needed to update a transaction.
+     * The data needed to update a Transaction.
      */
-    data: XOR<transactionUpdateInput, transactionUncheckedUpdateInput>
+    data: XOR<TransactionUpdateInput, TransactionUncheckedUpdateInput>
     /**
-     * Choose, which transaction to update.
+     * Choose, which Transaction to update.
      */
-    where: transactionWhereUniqueInput
+    where: TransactionWhereUniqueInput
   }
 
   /**
-   * transaction updateMany
+   * Transaction updateMany
    */
-  export type transactionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update transactions.
+     * The data used to update Transactions.
      */
-    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyInput>
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyInput>
     /**
-     * Filter which transactions to update
+     * Filter which Transactions to update
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
-     * Limit how many transactions to update.
+     * Limit how many Transactions to update.
      */
     limit?: number
   }
 
   /**
-   * transaction updateManyAndReturn
+   * Transaction updateManyAndReturn
    */
-  export type transactionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: TransactionSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
-     * The data used to update transactions.
+     * The data used to update Transactions.
      */
-    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyInput>
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyInput>
     /**
-     * Filter which transactions to update
+     * Filter which Transactions to update
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
-     * Limit how many transactions to update.
+     * Limit how many Transactions to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: TransactionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * transaction upsert
+   * Transaction upsert
    */
-  export type transactionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * The filter to search for the transaction to update in case it exists.
+     * The filter to search for the Transaction to update in case it exists.
      */
-    where: transactionWhereUniqueInput
+    where: TransactionWhereUniqueInput
     /**
-     * In case the transaction found by the `where` argument doesn't exist, create a new transaction with this data.
+     * In case the Transaction found by the `where` argument doesn't exist, create a new Transaction with this data.
      */
-    create: XOR<transactionCreateInput, transactionUncheckedCreateInput>
+    create: XOR<TransactionCreateInput, TransactionUncheckedCreateInput>
     /**
-     * In case the transaction was found with the provided `where` argument, update it with this data.
+     * In case the Transaction was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<transactionUpdateInput, transactionUncheckedUpdateInput>
+    update: XOR<TransactionUpdateInput, TransactionUncheckedUpdateInput>
   }
 
   /**
-   * transaction delete
+   * Transaction delete
    */
-  export type transactionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
     /**
-     * Filter which transaction to delete.
+     * Filter which Transaction to delete.
      */
-    where: transactionWhereUniqueInput
+    where: TransactionWhereUniqueInput
   }
 
   /**
-   * transaction deleteMany
+   * Transaction deleteMany
    */
-  export type transactionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which transactions to delete
+     * Filter which Transactions to delete
      */
-    where?: transactionWhereInput
+    where?: TransactionWhereInput
     /**
-     * Limit how many transactions to delete.
+     * Limit how many Transactions to delete.
      */
     limit?: number
   }
 
   /**
-   * transaction without action
+   * Transaction without action
    */
-  export type transactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the transaction
+     * Select specific fields to fetch from the Transaction
      */
-    select?: transactionSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the transaction
+     * Omit specific fields from the Transaction
      */
-    omit?: transactionOmit<ExtArgs> | null
+    omit?: TransactionOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: transactionInclude<ExtArgs> | null
+    include?: TransactionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProviderWallet
+   */
+
+  export type AggregateProviderWallet = {
+    _count: ProviderWalletCountAggregateOutputType | null
+    _avg: ProviderWalletAvgAggregateOutputType | null
+    _sum: ProviderWalletSumAggregateOutputType | null
+    _min: ProviderWalletMinAggregateOutputType | null
+    _max: ProviderWalletMaxAggregateOutputType | null
+  }
+
+  export type ProviderWalletAvgAggregateOutputType = {
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+  }
+
+  export type ProviderWalletSumAggregateOutputType = {
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+  }
+
+  export type ProviderWalletMinAggregateOutputType = {
+    id: string | null
+    providerId: string | null
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProviderWalletMaxAggregateOutputType = {
+    id: string | null
+    providerId: string | null
+    availableBalance: number | null
+    pendingBalance: number | null
+    totalEarnings: number | null
+    totalWithdrawn: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProviderWalletCountAggregateOutputType = {
+    id: number
+    providerId: number
+    availableBalance: number
+    pendingBalance: number
+    totalEarnings: number
+    totalWithdrawn: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProviderWalletAvgAggregateInputType = {
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+  }
+
+  export type ProviderWalletSumAggregateInputType = {
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+  }
+
+  export type ProviderWalletMinAggregateInputType = {
+    id?: true
+    providerId?: true
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProviderWalletMaxAggregateInputType = {
+    id?: true
+    providerId?: true
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProviderWalletCountAggregateInputType = {
+    id?: true
+    providerId?: true
+    availableBalance?: true
+    pendingBalance?: true
+    totalEarnings?: true
+    totalWithdrawn?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProviderWalletAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProviderWallet to aggregate.
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderWallets to fetch.
+     */
+    orderBy?: ProviderWalletOrderByWithRelationInput | ProviderWalletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProviderWalletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderWallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderWallets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProviderWallets
+    **/
+    _count?: true | ProviderWalletCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProviderWalletAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProviderWalletSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProviderWalletMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProviderWalletMaxAggregateInputType
+  }
+
+  export type GetProviderWalletAggregateType<T extends ProviderWalletAggregateArgs> = {
+        [P in keyof T & keyof AggregateProviderWallet]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProviderWallet[P]>
+      : GetScalarType<T[P], AggregateProviderWallet[P]>
+  }
+
+
+
+
+  export type ProviderWalletGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProviderWalletWhereInput
+    orderBy?: ProviderWalletOrderByWithAggregationInput | ProviderWalletOrderByWithAggregationInput[]
+    by: ProviderWalletScalarFieldEnum[] | ProviderWalletScalarFieldEnum
+    having?: ProviderWalletScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProviderWalletCountAggregateInputType | true
+    _avg?: ProviderWalletAvgAggregateInputType
+    _sum?: ProviderWalletSumAggregateInputType
+    _min?: ProviderWalletMinAggregateInputType
+    _max?: ProviderWalletMaxAggregateInputType
+  }
+
+  export type ProviderWalletGroupByOutputType = {
+    id: string
+    providerId: string
+    availableBalance: number
+    pendingBalance: number
+    totalEarnings: number
+    totalWithdrawn: number
+    createdAt: Date
+    updatedAt: Date
+    _count: ProviderWalletCountAggregateOutputType | null
+    _avg: ProviderWalletAvgAggregateOutputType | null
+    _sum: ProviderWalletSumAggregateOutputType | null
+    _min: ProviderWalletMinAggregateOutputType | null
+    _max: ProviderWalletMaxAggregateOutputType | null
+  }
+
+  type GetProviderWalletGroupByPayload<T extends ProviderWalletGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProviderWalletGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProviderWalletGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProviderWalletGroupByOutputType[P]>
+            : GetScalarType<T[P], ProviderWalletGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProviderWalletSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerWallet"]>
+
+  export type ProviderWalletSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerWallet"]>
+
+  export type ProviderWalletSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerWallet"]>
+
+  export type ProviderWalletSelectScalar = {
+    id?: boolean
+    providerId?: boolean
+    availableBalance?: boolean
+    pendingBalance?: boolean
+    totalEarnings?: boolean
+    totalWithdrawn?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProviderWalletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerId" | "availableBalance" | "pendingBalance" | "totalEarnings" | "totalWithdrawn" | "createdAt" | "updatedAt", ExtArgs["result"]["providerWallet"]>
+  export type ProviderWalletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProviderWalletIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProviderWalletIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    provider?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ProviderWalletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProviderWallet"
+    objects: {
+      provider: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      providerId: string
+      availableBalance: number
+      pendingBalance: number
+      totalEarnings: number
+      totalWithdrawn: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["providerWallet"]>
+    composites: {}
+  }
+
+  type ProviderWalletGetPayload<S extends boolean | null | undefined | ProviderWalletDefaultArgs> = $Result.GetResult<Prisma.$ProviderWalletPayload, S>
+
+  type ProviderWalletCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProviderWalletFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProviderWalletCountAggregateInputType | true
+    }
+
+  export interface ProviderWalletDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProviderWallet'], meta: { name: 'ProviderWallet' } }
+    /**
+     * Find zero or one ProviderWallet that matches the filter.
+     * @param {ProviderWalletFindUniqueArgs} args - Arguments to find a ProviderWallet
+     * @example
+     * // Get one ProviderWallet
+     * const providerWallet = await prisma.providerWallet.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProviderWalletFindUniqueArgs>(args: SelectSubset<T, ProviderWalletFindUniqueArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProviderWallet that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProviderWalletFindUniqueOrThrowArgs} args - Arguments to find a ProviderWallet
+     * @example
+     * // Get one ProviderWallet
+     * const providerWallet = await prisma.providerWallet.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProviderWalletFindUniqueOrThrowArgs>(args: SelectSubset<T, ProviderWalletFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProviderWallet that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletFindFirstArgs} args - Arguments to find a ProviderWallet
+     * @example
+     * // Get one ProviderWallet
+     * const providerWallet = await prisma.providerWallet.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProviderWalletFindFirstArgs>(args?: SelectSubset<T, ProviderWalletFindFirstArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProviderWallet that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletFindFirstOrThrowArgs} args - Arguments to find a ProviderWallet
+     * @example
+     * // Get one ProviderWallet
+     * const providerWallet = await prisma.providerWallet.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProviderWalletFindFirstOrThrowArgs>(args?: SelectSubset<T, ProviderWalletFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProviderWallets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProviderWallets
+     * const providerWallets = await prisma.providerWallet.findMany()
+     * 
+     * // Get first 10 ProviderWallets
+     * const providerWallets = await prisma.providerWallet.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const providerWalletWithIdOnly = await prisma.providerWallet.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProviderWalletFindManyArgs>(args?: SelectSubset<T, ProviderWalletFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProviderWallet.
+     * @param {ProviderWalletCreateArgs} args - Arguments to create a ProviderWallet.
+     * @example
+     * // Create one ProviderWallet
+     * const ProviderWallet = await prisma.providerWallet.create({
+     *   data: {
+     *     // ... data to create a ProviderWallet
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProviderWalletCreateArgs>(args: SelectSubset<T, ProviderWalletCreateArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProviderWallets.
+     * @param {ProviderWalletCreateManyArgs} args - Arguments to create many ProviderWallets.
+     * @example
+     * // Create many ProviderWallets
+     * const providerWallet = await prisma.providerWallet.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProviderWalletCreateManyArgs>(args?: SelectSubset<T, ProviderWalletCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProviderWallets and returns the data saved in the database.
+     * @param {ProviderWalletCreateManyAndReturnArgs} args - Arguments to create many ProviderWallets.
+     * @example
+     * // Create many ProviderWallets
+     * const providerWallet = await prisma.providerWallet.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProviderWallets and only return the `id`
+     * const providerWalletWithIdOnly = await prisma.providerWallet.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProviderWalletCreateManyAndReturnArgs>(args?: SelectSubset<T, ProviderWalletCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProviderWallet.
+     * @param {ProviderWalletDeleteArgs} args - Arguments to delete one ProviderWallet.
+     * @example
+     * // Delete one ProviderWallet
+     * const ProviderWallet = await prisma.providerWallet.delete({
+     *   where: {
+     *     // ... filter to delete one ProviderWallet
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProviderWalletDeleteArgs>(args: SelectSubset<T, ProviderWalletDeleteArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProviderWallet.
+     * @param {ProviderWalletUpdateArgs} args - Arguments to update one ProviderWallet.
+     * @example
+     * // Update one ProviderWallet
+     * const providerWallet = await prisma.providerWallet.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProviderWalletUpdateArgs>(args: SelectSubset<T, ProviderWalletUpdateArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProviderWallets.
+     * @param {ProviderWalletDeleteManyArgs} args - Arguments to filter ProviderWallets to delete.
+     * @example
+     * // Delete a few ProviderWallets
+     * const { count } = await prisma.providerWallet.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProviderWalletDeleteManyArgs>(args?: SelectSubset<T, ProviderWalletDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProviderWallets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProviderWallets
+     * const providerWallet = await prisma.providerWallet.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProviderWalletUpdateManyArgs>(args: SelectSubset<T, ProviderWalletUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProviderWallets and returns the data updated in the database.
+     * @param {ProviderWalletUpdateManyAndReturnArgs} args - Arguments to update many ProviderWallets.
+     * @example
+     * // Update many ProviderWallets
+     * const providerWallet = await prisma.providerWallet.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProviderWallets and only return the `id`
+     * const providerWalletWithIdOnly = await prisma.providerWallet.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProviderWalletUpdateManyAndReturnArgs>(args: SelectSubset<T, ProviderWalletUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProviderWallet.
+     * @param {ProviderWalletUpsertArgs} args - Arguments to update or create a ProviderWallet.
+     * @example
+     * // Update or create a ProviderWallet
+     * const providerWallet = await prisma.providerWallet.upsert({
+     *   create: {
+     *     // ... data to create a ProviderWallet
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProviderWallet we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProviderWalletUpsertArgs>(args: SelectSubset<T, ProviderWalletUpsertArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProviderWallets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletCountArgs} args - Arguments to filter ProviderWallets to count.
+     * @example
+     * // Count the number of ProviderWallets
+     * const count = await prisma.providerWallet.count({
+     *   where: {
+     *     // ... the filter for the ProviderWallets we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProviderWalletCountArgs>(
+      args?: Subset<T, ProviderWalletCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProviderWalletCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProviderWallet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProviderWalletAggregateArgs>(args: Subset<T, ProviderWalletAggregateArgs>): Prisma.PrismaPromise<GetProviderWalletAggregateType<T>>
+
+    /**
+     * Group by ProviderWallet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderWalletGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProviderWalletGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProviderWalletGroupByArgs['orderBy'] }
+        : { orderBy?: ProviderWalletGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProviderWalletGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProviderWalletGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProviderWallet model
+   */
+  readonly fields: ProviderWalletFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProviderWallet.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProviderWalletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    provider<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProviderWallet model
+   */
+  interface ProviderWalletFieldRefs {
+    readonly id: FieldRef<"ProviderWallet", 'String'>
+    readonly providerId: FieldRef<"ProviderWallet", 'String'>
+    readonly availableBalance: FieldRef<"ProviderWallet", 'Float'>
+    readonly pendingBalance: FieldRef<"ProviderWallet", 'Float'>
+    readonly totalEarnings: FieldRef<"ProviderWallet", 'Float'>
+    readonly totalWithdrawn: FieldRef<"ProviderWallet", 'Float'>
+    readonly createdAt: FieldRef<"ProviderWallet", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProviderWallet", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProviderWallet findUnique
+   */
+  export type ProviderWalletFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderWallet to fetch.
+     */
+    where: ProviderWalletWhereUniqueInput
+  }
+
+  /**
+   * ProviderWallet findUniqueOrThrow
+   */
+  export type ProviderWalletFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderWallet to fetch.
+     */
+    where: ProviderWalletWhereUniqueInput
+  }
+
+  /**
+   * ProviderWallet findFirst
+   */
+  export type ProviderWalletFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderWallet to fetch.
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderWallets to fetch.
+     */
+    orderBy?: ProviderWalletOrderByWithRelationInput | ProviderWalletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProviderWallets.
+     */
+    cursor?: ProviderWalletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderWallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderWallets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProviderWallets.
+     */
+    distinct?: ProviderWalletScalarFieldEnum | ProviderWalletScalarFieldEnum[]
+  }
+
+  /**
+   * ProviderWallet findFirstOrThrow
+   */
+  export type ProviderWalletFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderWallet to fetch.
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderWallets to fetch.
+     */
+    orderBy?: ProviderWalletOrderByWithRelationInput | ProviderWalletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProviderWallets.
+     */
+    cursor?: ProviderWalletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderWallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderWallets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProviderWallets.
+     */
+    distinct?: ProviderWalletScalarFieldEnum | ProviderWalletScalarFieldEnum[]
+  }
+
+  /**
+   * ProviderWallet findMany
+   */
+  export type ProviderWalletFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderWallets to fetch.
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderWallets to fetch.
+     */
+    orderBy?: ProviderWalletOrderByWithRelationInput | ProviderWalletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProviderWallets.
+     */
+    cursor?: ProviderWalletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderWallets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderWallets.
+     */
+    skip?: number
+    distinct?: ProviderWalletScalarFieldEnum | ProviderWalletScalarFieldEnum[]
+  }
+
+  /**
+   * ProviderWallet create
+   */
+  export type ProviderWalletCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProviderWallet.
+     */
+    data: XOR<ProviderWalletCreateInput, ProviderWalletUncheckedCreateInput>
+  }
+
+  /**
+   * ProviderWallet createMany
+   */
+  export type ProviderWalletCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProviderWallets.
+     */
+    data: ProviderWalletCreateManyInput | ProviderWalletCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProviderWallet createManyAndReturn
+   */
+  export type ProviderWalletCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProviderWallets.
+     */
+    data: ProviderWalletCreateManyInput | ProviderWalletCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProviderWallet update
+   */
+  export type ProviderWalletUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProviderWallet.
+     */
+    data: XOR<ProviderWalletUpdateInput, ProviderWalletUncheckedUpdateInput>
+    /**
+     * Choose, which ProviderWallet to update.
+     */
+    where: ProviderWalletWhereUniqueInput
+  }
+
+  /**
+   * ProviderWallet updateMany
+   */
+  export type ProviderWalletUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProviderWallets.
+     */
+    data: XOR<ProviderWalletUpdateManyMutationInput, ProviderWalletUncheckedUpdateManyInput>
+    /**
+     * Filter which ProviderWallets to update
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * Limit how many ProviderWallets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProviderWallet updateManyAndReturn
+   */
+  export type ProviderWalletUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * The data used to update ProviderWallets.
+     */
+    data: XOR<ProviderWalletUpdateManyMutationInput, ProviderWalletUncheckedUpdateManyInput>
+    /**
+     * Filter which ProviderWallets to update
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * Limit how many ProviderWallets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProviderWallet upsert
+   */
+  export type ProviderWalletUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProviderWallet to update in case it exists.
+     */
+    where: ProviderWalletWhereUniqueInput
+    /**
+     * In case the ProviderWallet found by the `where` argument doesn't exist, create a new ProviderWallet with this data.
+     */
+    create: XOR<ProviderWalletCreateInput, ProviderWalletUncheckedCreateInput>
+    /**
+     * In case the ProviderWallet was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProviderWalletUpdateInput, ProviderWalletUncheckedUpdateInput>
+  }
+
+  /**
+   * ProviderWallet delete
+   */
+  export type ProviderWalletDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
+    /**
+     * Filter which ProviderWallet to delete.
+     */
+    where: ProviderWalletWhereUniqueInput
+  }
+
+  /**
+   * ProviderWallet deleteMany
+   */
+  export type ProviderWalletDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProviderWallets to delete
+     */
+    where?: ProviderWalletWhereInput
+    /**
+     * Limit how many ProviderWallets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProviderWallet without action
+   */
+  export type ProviderWalletDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderWallet
+     */
+    select?: ProviderWalletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProviderWallet
+     */
+    omit?: ProviderWalletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderWalletInclude<ExtArgs> | null
   }
 
 
@@ -17115,20 +17115,6 @@ export namespace Prisma {
   export type SupportMessageScalarFieldEnum = (typeof SupportMessageScalarFieldEnum)[keyof typeof SupportMessageScalarFieldEnum]
 
 
-  export const Provider_walletScalarFieldEnum: {
-    id: 'id',
-    providerId: 'providerId',
-    availableBalance: 'availableBalance',
-    pendingBalance: 'pendingBalance',
-    totalEarnings: 'totalEarnings',
-    totalWithdrawn: 'totalWithdrawn',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type Provider_walletScalarFieldEnum = (typeof Provider_walletScalarFieldEnum)[keyof typeof Provider_walletScalarFieldEnum]
-
-
   export const TransactionScalarFieldEnum: {
     id: 'id',
     bookingId: 'bookingId',
@@ -17147,6 +17133,20 @@ export namespace Prisma {
   };
 
   export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
+
+
+  export const ProviderWalletScalarFieldEnum: {
+    id: 'id',
+    providerId: 'providerId',
+    availableBalance: 'availableBalance',
+    pendingBalance: 'pendingBalance',
+    totalEarnings: 'totalEarnings',
+    totalWithdrawn: 'totalWithdrawn',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProviderWalletScalarFieldEnum = (typeof ProviderWalletScalarFieldEnum)[keyof typeof ProviderWalletScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -17321,12 +17321,12 @@ export namespace Prisma {
     providerBookings?: BookingListRelationFilter
     studentBookings?: BookingListRelationFilter
     sentMessages?: MessageListRelationFilter
-    provider_wallet?: XOR<Provider_walletNullableScalarRelationFilter, provider_walletWhereInput> | null
-    services?: ServiceListRelationFilter
+    providerWallet?: XOR<ProviderWalletNullableScalarRelationFilter, ProviderWalletWhereInput> | null
+    servicesProvided?: ServiceListRelationFilter
     sessions?: SessionListRelationFilter
-    supportMessages?: SupportMessageListRelationFilter
-    transaction_transaction_providerIdTouser?: TransactionListRelationFilter
-    transaction_transaction_studentIdTouser?: TransactionListRelationFilter
+    supportMessagesAsUser?: SupportMessageListRelationFilter
+    providerTransactions?: TransactionListRelationFilter
+    studentTransactions?: TransactionListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -17345,12 +17345,12 @@ export namespace Prisma {
     providerBookings?: BookingOrderByRelationAggregateInput
     studentBookings?: BookingOrderByRelationAggregateInput
     sentMessages?: MessageOrderByRelationAggregateInput
-    provider_wallet?: provider_walletOrderByWithRelationInput
-    services?: ServiceOrderByRelationAggregateInput
+    providerWallet?: ProviderWalletOrderByWithRelationInput
+    servicesProvided?: ServiceOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
-    supportMessages?: SupportMessageOrderByRelationAggregateInput
-    transaction_transaction_providerIdTouser?: transactionOrderByRelationAggregateInput
-    transaction_transaction_studentIdTouser?: transactionOrderByRelationAggregateInput
+    supportMessagesAsUser?: SupportMessageOrderByRelationAggregateInput
+    providerTransactions?: TransactionOrderByRelationAggregateInput
+    studentTransactions?: TransactionOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -17372,12 +17372,12 @@ export namespace Prisma {
     providerBookings?: BookingListRelationFilter
     studentBookings?: BookingListRelationFilter
     sentMessages?: MessageListRelationFilter
-    provider_wallet?: XOR<Provider_walletNullableScalarRelationFilter, provider_walletWhereInput> | null
-    services?: ServiceListRelationFilter
+    providerWallet?: XOR<ProviderWalletNullableScalarRelationFilter, ProviderWalletWhereInput> | null
+    servicesProvided?: ServiceListRelationFilter
     sessions?: SessionListRelationFilter
-    supportMessages?: SupportMessageListRelationFilter
-    transaction_transaction_providerIdTouser?: TransactionListRelationFilter
-    transaction_transaction_studentIdTouser?: TransactionListRelationFilter
+    supportMessagesAsUser?: SupportMessageListRelationFilter
+    providerTransactions?: TransactionListRelationFilter
+    studentTransactions?: TransactionListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -17678,7 +17678,7 @@ export namespace Prisma {
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     conversation?: XOR<ConversationNullableScalarRelationFilter, ConversationWhereInput> | null
-    transaction?: TransactionListRelationFilter
+    transactions?: TransactionListRelationFilter
   }
 
   export type BookingOrderByWithRelationInput = {
@@ -17694,7 +17694,7 @@ export namespace Prisma {
     service?: ServiceOrderByWithRelationInput
     student?: UserOrderByWithRelationInput
     conversation?: ConversationOrderByWithRelationInput
-    transaction?: transactionOrderByRelationAggregateInput
+    transactions?: TransactionOrderByRelationAggregateInput
   }
 
   export type BookingWhereUniqueInput = Prisma.AtLeast<{
@@ -17713,7 +17713,7 @@ export namespace Prisma {
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
     student?: XOR<UserScalarRelationFilter, UserWhereInput>
     conversation?: XOR<ConversationNullableScalarRelationFilter, ConversationWhereInput> | null
-    transaction?: TransactionListRelationFilter
+    transactions?: TransactionListRelationFilter
   }, "id">
 
   export type BookingOrderByWithAggregationInput = {
@@ -18122,102 +18122,30 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"SupportMessage"> | Date | string
   }
 
-  export type provider_walletWhereInput = {
-    AND?: provider_walletWhereInput | provider_walletWhereInput[]
-    OR?: provider_walletWhereInput[]
-    NOT?: provider_walletWhereInput | provider_walletWhereInput[]
-    id?: StringFilter<"provider_wallet"> | string
-    providerId?: StringFilter<"provider_wallet"> | string
-    availableBalance?: FloatFilter<"provider_wallet"> | number
-    pendingBalance?: FloatFilter<"provider_wallet"> | number
-    totalEarnings?: FloatFilter<"provider_wallet"> | number
-    totalWithdrawn?: FloatFilter<"provider_wallet"> | number
-    createdAt?: DateTimeFilter<"provider_wallet"> | Date | string
-    updatedAt?: DateTimeFilter<"provider_wallet"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type provider_walletOrderByWithRelationInput = {
-    id?: SortOrder
-    providerId?: SortOrder
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type provider_walletWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    providerId?: string
-    AND?: provider_walletWhereInput | provider_walletWhereInput[]
-    OR?: provider_walletWhereInput[]
-    NOT?: provider_walletWhereInput | provider_walletWhereInput[]
-    availableBalance?: FloatFilter<"provider_wallet"> | number
-    pendingBalance?: FloatFilter<"provider_wallet"> | number
-    totalEarnings?: FloatFilter<"provider_wallet"> | number
-    totalWithdrawn?: FloatFilter<"provider_wallet"> | number
-    createdAt?: DateTimeFilter<"provider_wallet"> | Date | string
-    updatedAt?: DateTimeFilter<"provider_wallet"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "providerId">
-
-  export type provider_walletOrderByWithAggregationInput = {
-    id?: SortOrder
-    providerId?: SortOrder
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: provider_walletCountOrderByAggregateInput
-    _avg?: provider_walletAvgOrderByAggregateInput
-    _max?: provider_walletMaxOrderByAggregateInput
-    _min?: provider_walletMinOrderByAggregateInput
-    _sum?: provider_walletSumOrderByAggregateInput
-  }
-
-  export type provider_walletScalarWhereWithAggregatesInput = {
-    AND?: provider_walletScalarWhereWithAggregatesInput | provider_walletScalarWhereWithAggregatesInput[]
-    OR?: provider_walletScalarWhereWithAggregatesInput[]
-    NOT?: provider_walletScalarWhereWithAggregatesInput | provider_walletScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"provider_wallet"> | string
-    providerId?: StringWithAggregatesFilter<"provider_wallet"> | string
-    availableBalance?: FloatWithAggregatesFilter<"provider_wallet"> | number
-    pendingBalance?: FloatWithAggregatesFilter<"provider_wallet"> | number
-    totalEarnings?: FloatWithAggregatesFilter<"provider_wallet"> | number
-    totalWithdrawn?: FloatWithAggregatesFilter<"provider_wallet"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"provider_wallet"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"provider_wallet"> | Date | string
-  }
-
-  export type transactionWhereInput = {
-    AND?: transactionWhereInput | transactionWhereInput[]
-    OR?: transactionWhereInput[]
-    NOT?: transactionWhereInput | transactionWhereInput[]
-    id?: StringFilter<"transaction"> | string
-    bookingId?: StringFilter<"transaction"> | string
-    studentId?: StringFilter<"transaction"> | string
-    providerId?: StringFilter<"transaction"> | string
-    paystackReference?: StringFilter<"transaction"> | string
-    totalAmount?: FloatFilter<"transaction"> | number
-    platformCommission?: FloatFilter<"transaction"> | number
-    providerEarnings?: FloatFilter<"transaction"> | number
-    commissionRate?: FloatFilter<"transaction"> | number
-    status?: StringFilter<"transaction"> | string
-    paymentMethod?: StringNullableFilter<"transaction"> | string | null
-    paidAt?: DateTimeNullableFilter<"transaction"> | Date | string | null
-    createdAt?: DateTimeFilter<"transaction"> | Date | string
-    updatedAt?: DateTimeFilter<"transaction"> | Date | string
+  export type TransactionWhereInput = {
+    AND?: TransactionWhereInput | TransactionWhereInput[]
+    OR?: TransactionWhereInput[]
+    NOT?: TransactionWhereInput | TransactionWhereInput[]
+    id?: StringFilter<"Transaction"> | string
+    bookingId?: StringFilter<"Transaction"> | string
+    studentId?: StringFilter<"Transaction"> | string
+    providerId?: StringFilter<"Transaction"> | string
+    paystackReference?: StringFilter<"Transaction"> | string
+    totalAmount?: FloatFilter<"Transaction"> | number
+    platformCommission?: FloatFilter<"Transaction"> | number
+    providerEarnings?: FloatFilter<"Transaction"> | number
+    commissionRate?: FloatFilter<"Transaction"> | number
+    status?: StringFilter<"Transaction"> | string
+    paymentMethod?: StringNullableFilter<"Transaction"> | string | null
+    paidAt?: DateTimeNullableFilter<"Transaction"> | Date | string | null
+    createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"Transaction"> | Date | string
     booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>
-    user_transaction_providerIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
-    user_transaction_studentIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+    student?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type transactionOrderByWithRelationInput = {
+  export type TransactionOrderByWithRelationInput = {
     id?: SortOrder
     bookingId?: SortOrder
     studentId?: SortOrder
@@ -18233,34 +18161,34 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     booking?: BookingOrderByWithRelationInput
-    user_transaction_providerIdTouser?: UserOrderByWithRelationInput
-    user_transaction_studentIdTouser?: UserOrderByWithRelationInput
+    provider?: UserOrderByWithRelationInput
+    student?: UserOrderByWithRelationInput
   }
 
-  export type transactionWhereUniqueInput = Prisma.AtLeast<{
+  export type TransactionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     paystackReference?: string
-    AND?: transactionWhereInput | transactionWhereInput[]
-    OR?: transactionWhereInput[]
-    NOT?: transactionWhereInput | transactionWhereInput[]
-    bookingId?: StringFilter<"transaction"> | string
-    studentId?: StringFilter<"transaction"> | string
-    providerId?: StringFilter<"transaction"> | string
-    totalAmount?: FloatFilter<"transaction"> | number
-    platformCommission?: FloatFilter<"transaction"> | number
-    providerEarnings?: FloatFilter<"transaction"> | number
-    commissionRate?: FloatFilter<"transaction"> | number
-    status?: StringFilter<"transaction"> | string
-    paymentMethod?: StringNullableFilter<"transaction"> | string | null
-    paidAt?: DateTimeNullableFilter<"transaction"> | Date | string | null
-    createdAt?: DateTimeFilter<"transaction"> | Date | string
-    updatedAt?: DateTimeFilter<"transaction"> | Date | string
+    AND?: TransactionWhereInput | TransactionWhereInput[]
+    OR?: TransactionWhereInput[]
+    NOT?: TransactionWhereInput | TransactionWhereInput[]
+    bookingId?: StringFilter<"Transaction"> | string
+    studentId?: StringFilter<"Transaction"> | string
+    providerId?: StringFilter<"Transaction"> | string
+    totalAmount?: FloatFilter<"Transaction"> | number
+    platformCommission?: FloatFilter<"Transaction"> | number
+    providerEarnings?: FloatFilter<"Transaction"> | number
+    commissionRate?: FloatFilter<"Transaction"> | number
+    status?: StringFilter<"Transaction"> | string
+    paymentMethod?: StringNullableFilter<"Transaction"> | string | null
+    paidAt?: DateTimeNullableFilter<"Transaction"> | Date | string | null
+    createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"Transaction"> | Date | string
     booking?: XOR<BookingScalarRelationFilter, BookingWhereInput>
-    user_transaction_providerIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
-    user_transaction_studentIdTouser?: XOR<UserScalarRelationFilter, UserWhereInput>
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+    student?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "paystackReference">
 
-  export type transactionOrderByWithAggregationInput = {
+  export type TransactionOrderByWithAggregationInput = {
     id?: SortOrder
     bookingId?: SortOrder
     studentId?: SortOrder
@@ -18275,35 +18203,107 @@ export namespace Prisma {
     paidAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: transactionCountOrderByAggregateInput
-    _avg?: transactionAvgOrderByAggregateInput
-    _max?: transactionMaxOrderByAggregateInput
-    _min?: transactionMinOrderByAggregateInput
-    _sum?: transactionSumOrderByAggregateInput
+    _count?: TransactionCountOrderByAggregateInput
+    _avg?: TransactionAvgOrderByAggregateInput
+    _max?: TransactionMaxOrderByAggregateInput
+    _min?: TransactionMinOrderByAggregateInput
+    _sum?: TransactionSumOrderByAggregateInput
   }
 
-  export type transactionScalarWhereWithAggregatesInput = {
-    AND?: transactionScalarWhereWithAggregatesInput | transactionScalarWhereWithAggregatesInput[]
-    OR?: transactionScalarWhereWithAggregatesInput[]
-    NOT?: transactionScalarWhereWithAggregatesInput | transactionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"transaction"> | string
-    bookingId?: StringWithAggregatesFilter<"transaction"> | string
-    studentId?: StringWithAggregatesFilter<"transaction"> | string
-    providerId?: StringWithAggregatesFilter<"transaction"> | string
-    paystackReference?: StringWithAggregatesFilter<"transaction"> | string
-    totalAmount?: FloatWithAggregatesFilter<"transaction"> | number
-    platformCommission?: FloatWithAggregatesFilter<"transaction"> | number
-    providerEarnings?: FloatWithAggregatesFilter<"transaction"> | number
-    commissionRate?: FloatWithAggregatesFilter<"transaction"> | number
-    status?: StringWithAggregatesFilter<"transaction"> | string
-    paymentMethod?: StringNullableWithAggregatesFilter<"transaction"> | string | null
-    paidAt?: DateTimeNullableWithAggregatesFilter<"transaction"> | Date | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"transaction"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"transaction"> | Date | string
+  export type TransactionScalarWhereWithAggregatesInput = {
+    AND?: TransactionScalarWhereWithAggregatesInput | TransactionScalarWhereWithAggregatesInput[]
+    OR?: TransactionScalarWhereWithAggregatesInput[]
+    NOT?: TransactionScalarWhereWithAggregatesInput | TransactionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Transaction"> | string
+    bookingId?: StringWithAggregatesFilter<"Transaction"> | string
+    studentId?: StringWithAggregatesFilter<"Transaction"> | string
+    providerId?: StringWithAggregatesFilter<"Transaction"> | string
+    paystackReference?: StringWithAggregatesFilter<"Transaction"> | string
+    totalAmount?: FloatWithAggregatesFilter<"Transaction"> | number
+    platformCommission?: FloatWithAggregatesFilter<"Transaction"> | number
+    providerEarnings?: FloatWithAggregatesFilter<"Transaction"> | number
+    commissionRate?: FloatWithAggregatesFilter<"Transaction"> | number
+    status?: StringWithAggregatesFilter<"Transaction"> | string
+    paymentMethod?: StringNullableWithAggregatesFilter<"Transaction"> | string | null
+    paidAt?: DateTimeNullableWithAggregatesFilter<"Transaction"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
+  }
+
+  export type ProviderWalletWhereInput = {
+    AND?: ProviderWalletWhereInput | ProviderWalletWhereInput[]
+    OR?: ProviderWalletWhereInput[]
+    NOT?: ProviderWalletWhereInput | ProviderWalletWhereInput[]
+    id?: StringFilter<"ProviderWallet"> | string
+    providerId?: StringFilter<"ProviderWallet"> | string
+    availableBalance?: FloatFilter<"ProviderWallet"> | number
+    pendingBalance?: FloatFilter<"ProviderWallet"> | number
+    totalEarnings?: FloatFilter<"ProviderWallet"> | number
+    totalWithdrawn?: FloatFilter<"ProviderWallet"> | number
+    createdAt?: DateTimeFilter<"ProviderWallet"> | Date | string
+    updatedAt?: DateTimeFilter<"ProviderWallet"> | Date | string
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ProviderWalletOrderByWithRelationInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    provider?: UserOrderByWithRelationInput
+  }
+
+  export type ProviderWalletWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    providerId?: string
+    AND?: ProviderWalletWhereInput | ProviderWalletWhereInput[]
+    OR?: ProviderWalletWhereInput[]
+    NOT?: ProviderWalletWhereInput | ProviderWalletWhereInput[]
+    availableBalance?: FloatFilter<"ProviderWallet"> | number
+    pendingBalance?: FloatFilter<"ProviderWallet"> | number
+    totalEarnings?: FloatFilter<"ProviderWallet"> | number
+    totalWithdrawn?: FloatFilter<"ProviderWallet"> | number
+    createdAt?: DateTimeFilter<"ProviderWallet"> | Date | string
+    updatedAt?: DateTimeFilter<"ProviderWallet"> | Date | string
+    provider?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "providerId">
+
+  export type ProviderWalletOrderByWithAggregationInput = {
+    id?: SortOrder
+    providerId?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProviderWalletCountOrderByAggregateInput
+    _avg?: ProviderWalletAvgOrderByAggregateInput
+    _max?: ProviderWalletMaxOrderByAggregateInput
+    _min?: ProviderWalletMinOrderByAggregateInput
+    _sum?: ProviderWalletSumOrderByAggregateInput
+  }
+
+  export type ProviderWalletScalarWhereWithAggregatesInput = {
+    AND?: ProviderWalletScalarWhereWithAggregatesInput | ProviderWalletScalarWhereWithAggregatesInput[]
+    OR?: ProviderWalletScalarWhereWithAggregatesInput[]
+    NOT?: ProviderWalletScalarWhereWithAggregatesInput | ProviderWalletScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProviderWallet"> | string
+    providerId?: StringWithAggregatesFilter<"ProviderWallet"> | string
+    availableBalance?: FloatWithAggregatesFilter<"ProviderWallet"> | number
+    pendingBalance?: FloatWithAggregatesFilter<"ProviderWallet"> | number
+    totalEarnings?: FloatWithAggregatesFilter<"ProviderWallet"> | number
+    totalWithdrawn?: FloatWithAggregatesFilter<"ProviderWallet"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"ProviderWallet"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProviderWallet"> | Date | string
   }
 
   export type UserCreateInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -18318,16 +18318,16 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -18342,12 +18342,12 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserUpdateInput = {
@@ -18366,12 +18366,12 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -18390,16 +18390,16 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type UserCreateManyInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -18638,7 +18638,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     operatingHours?: string | null
     bookings?: BookingCreateNestedManyWithoutServiceInput
-    provider: UserCreateNestedOneWithoutServicesInput
+    provider: UserCreateNestedOneWithoutServicesProvidedInput
   }
 
   export type ServiceUncheckedCreateInput = {
@@ -18666,7 +18666,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
     bookings?: BookingUpdateManyWithoutServiceNestedInput
-    provider?: UserUpdateOneRequiredWithoutServicesNestedInput
+    provider?: UserUpdateOneRequiredWithoutServicesProvidedNestedInput
   }
 
   export type ServiceUncheckedUpdateInput = {
@@ -18731,7 +18731,7 @@ export namespace Prisma {
     service: ServiceCreateNestedOneWithoutBookingsInput
     student: UserCreateNestedOneWithoutStudentBookingsInput
     conversation?: ConversationCreateNestedOneWithoutBookingInput
-    transaction?: transactionCreateNestedManyWithoutBookingInput
+    transactions?: TransactionCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateInput = {
@@ -18744,7 +18744,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
-    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUpdateInput = {
@@ -18757,7 +18757,7 @@ export namespace Prisma {
     service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
     student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
     conversation?: ConversationUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateInput = {
@@ -18770,7 +18770,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingCreateManyInput = {
@@ -18969,7 +18969,7 @@ export namespace Prisma {
   }
 
   export type VerificationCreateInput = {
-    id: string
+    id?: string
     identifier: string
     value: string
     expiresAt: Date | string
@@ -18978,7 +18978,7 @@ export namespace Prisma {
   }
 
   export type VerificationUncheckedCreateInput = {
-    id: string
+    id?: string
     identifier: string
     value: string
     expiresAt: Date | string
@@ -19005,7 +19005,7 @@ export namespace Prisma {
   }
 
   export type VerificationCreateManyInput = {
-    id: string
+    id?: string
     identifier: string
     value: string
     expiresAt: Date | string
@@ -19143,7 +19143,7 @@ export namespace Prisma {
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSupportMessagesInput
+    user: UserCreateNestedOneWithoutSupportMessagesAsUserInput
   }
 
   export type SupportMessageUncheckedCreateInput = {
@@ -19163,7 +19163,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSupportMessagesNestedInput
+    user?: UserUpdateOneRequiredWithoutSupportMessagesAsUserNestedInput
   }
 
   export type SupportMessageUncheckedUpdateInput = {
@@ -19205,84 +19205,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type provider_walletCreateInput = {
-    id: string
-    availableBalance?: number
-    pendingBalance?: number
-    totalEarnings?: number
-    totalWithdrawn?: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-    user: UserCreateNestedOneWithoutProvider_walletInput
-  }
-
-  export type provider_walletUncheckedCreateInput = {
-    id: string
-    providerId: string
-    availableBalance?: number
-    pendingBalance?: number
-    totalEarnings?: number
-    totalWithdrawn?: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type provider_walletUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    availableBalance?: FloatFieldUpdateOperationsInput | number
-    pendingBalance?: FloatFieldUpdateOperationsInput | number
-    totalEarnings?: FloatFieldUpdateOperationsInput | number
-    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutProvider_walletNestedInput
-  }
-
-  export type provider_walletUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    availableBalance?: FloatFieldUpdateOperationsInput | number
-    pendingBalance?: FloatFieldUpdateOperationsInput | number
-    totalEarnings?: FloatFieldUpdateOperationsInput | number
-    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type provider_walletCreateManyInput = {
-    id: string
-    providerId: string
-    availableBalance?: number
-    pendingBalance?: number
-    totalEarnings?: number
-    totalWithdrawn?: number
-    createdAt?: Date | string
-    updatedAt: Date | string
-  }
-
-  export type provider_walletUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    availableBalance?: FloatFieldUpdateOperationsInput | number
-    pendingBalance?: FloatFieldUpdateOperationsInput | number
-    totalEarnings?: FloatFieldUpdateOperationsInput | number
-    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type provider_walletUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    availableBalance?: FloatFieldUpdateOperationsInput | number
-    pendingBalance?: FloatFieldUpdateOperationsInput | number
-    totalEarnings?: FloatFieldUpdateOperationsInput | number
-    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type transactionCreateInput = {
-    id: string
+  export type TransactionCreateInput = {
+    id?: string
     paystackReference: string
     totalAmount: number
     platformCommission: number
@@ -19292,14 +19216,14 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
-    booking: BookingCreateNestedOneWithoutTransactionInput
-    user_transaction_providerIdTouser: UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput
-    user_transaction_studentIdTouser: UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutTransactionsInput
+    provider: UserCreateNestedOneWithoutProviderTransactionsInput
+    student: UserCreateNestedOneWithoutStudentTransactionsInput
   }
 
-  export type transactionUncheckedCreateInput = {
-    id: string
+  export type TransactionUncheckedCreateInput = {
+    id?: string
     bookingId: string
     studentId: string
     providerId: string
@@ -19312,10 +19236,10 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionUpdateInput = {
+  export type TransactionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     paystackReference?: StringFieldUpdateOperationsInput | string
     totalAmount?: FloatFieldUpdateOperationsInput | number
@@ -19327,12 +19251,12 @@ export namespace Prisma {
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    booking?: BookingUpdateOneRequiredWithoutTransactionNestedInput
-    user_transaction_providerIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput
-    user_transaction_studentIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput
+    booking?: BookingUpdateOneRequiredWithoutTransactionsNestedInput
+    provider?: UserUpdateOneRequiredWithoutProviderTransactionsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentTransactionsNestedInput
   }
 
-  export type transactionUncheckedUpdateInput = {
+  export type TransactionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     bookingId?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
@@ -19349,8 +19273,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionCreateManyInput = {
-    id: string
+  export type TransactionCreateManyInput = {
+    id?: string
     bookingId: string
     studentId: string
     providerId: string
@@ -19363,10 +19287,10 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionUpdateManyMutationInput = {
+  export type TransactionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     paystackReference?: StringFieldUpdateOperationsInput | string
     totalAmount?: FloatFieldUpdateOperationsInput | number
@@ -19380,7 +19304,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionUncheckedUpdateManyInput = {
+  export type TransactionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     bookingId?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
@@ -19393,6 +19317,82 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProviderWalletCreateInput = {
+    id?: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderWalletInput
+  }
+
+  export type ProviderWalletUncheckedCreateInput = {
+    id?: string
+    providerId: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProviderWalletUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: UserUpdateOneRequiredWithoutProviderWalletNestedInput
+  }
+
+  export type ProviderWalletUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProviderWalletCreateManyInput = {
+    id?: string
+    providerId: string
+    availableBalance?: number
+    pendingBalance?: number
+    totalEarnings?: number
+    totalWithdrawn?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProviderWalletUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProviderWalletUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    availableBalance?: FloatFieldUpdateOperationsInput | number
+    pendingBalance?: FloatFieldUpdateOperationsInput | number
+    totalEarnings?: FloatFieldUpdateOperationsInput | number
+    totalWithdrawn?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19468,9 +19468,9 @@ export namespace Prisma {
     none?: MessageWhereInput
   }
 
-  export type Provider_walletNullableScalarRelationFilter = {
-    is?: provider_walletWhereInput | null
-    isNot?: provider_walletWhereInput | null
+  export type ProviderWalletNullableScalarRelationFilter = {
+    is?: ProviderWalletWhereInput | null
+    isNot?: ProviderWalletWhereInput | null
   }
 
   export type ServiceListRelationFilter = {
@@ -19492,9 +19492,9 @@ export namespace Prisma {
   }
 
   export type TransactionListRelationFilter = {
-    every?: transactionWhereInput
-    some?: transactionWhereInput
-    none?: transactionWhereInput
+    every?: TransactionWhereInput
+    some?: TransactionWhereInput
+    none?: TransactionWhereInput
   }
 
   export type SortOrderInput = {
@@ -19526,7 +19526,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type transactionOrderByRelationAggregateInput = {
+  export type TransactionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20099,51 +20099,69 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type provider_walletCountOrderByAggregateInput = {
+  export type TransactionCountOrderByAggregateInput = {
     id?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
     providerId?: SortOrder
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrder
+    paidAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type provider_walletAvgOrderByAggregateInput = {
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
+  export type TransactionAvgOrderByAggregateInput = {
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
   }
 
-  export type provider_walletMaxOrderByAggregateInput = {
+  export type TransactionMaxOrderByAggregateInput = {
     id?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
     providerId?: SortOrder
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrder
+    paidAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type provider_walletMinOrderByAggregateInput = {
+  export type TransactionMinOrderByAggregateInput = {
     id?: SortOrder
+    bookingId?: SortOrder
+    studentId?: SortOrder
     providerId?: SortOrder
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
+    paystackReference?: SortOrder
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
+    status?: SortOrder
+    paymentMethod?: SortOrder
+    paidAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type provider_walletSumOrderByAggregateInput = {
-    availableBalance?: SortOrder
-    pendingBalance?: SortOrder
-    totalEarnings?: SortOrder
-    totalWithdrawn?: SortOrder
+  export type TransactionSumOrderByAggregateInput = {
+    totalAmount?: SortOrder
+    platformCommission?: SortOrder
+    providerEarnings?: SortOrder
+    commissionRate?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -20162,69 +20180,51 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type transactionCountOrderByAggregateInput = {
+  export type ProviderWalletCountOrderByAggregateInput = {
     id?: SortOrder
-    bookingId?: SortOrder
-    studentId?: SortOrder
     providerId?: SortOrder
-    paystackReference?: SortOrder
-    totalAmount?: SortOrder
-    platformCommission?: SortOrder
-    providerEarnings?: SortOrder
-    commissionRate?: SortOrder
-    status?: SortOrder
-    paymentMethod?: SortOrder
-    paidAt?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type transactionAvgOrderByAggregateInput = {
-    totalAmount?: SortOrder
-    platformCommission?: SortOrder
-    providerEarnings?: SortOrder
-    commissionRate?: SortOrder
+  export type ProviderWalletAvgOrderByAggregateInput = {
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
   }
 
-  export type transactionMaxOrderByAggregateInput = {
+  export type ProviderWalletMaxOrderByAggregateInput = {
     id?: SortOrder
-    bookingId?: SortOrder
-    studentId?: SortOrder
     providerId?: SortOrder
-    paystackReference?: SortOrder
-    totalAmount?: SortOrder
-    platformCommission?: SortOrder
-    providerEarnings?: SortOrder
-    commissionRate?: SortOrder
-    status?: SortOrder
-    paymentMethod?: SortOrder
-    paidAt?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type transactionMinOrderByAggregateInput = {
+  export type ProviderWalletMinOrderByAggregateInput = {
     id?: SortOrder
-    bookingId?: SortOrder
-    studentId?: SortOrder
     providerId?: SortOrder
-    paystackReference?: SortOrder
-    totalAmount?: SortOrder
-    platformCommission?: SortOrder
-    providerEarnings?: SortOrder
-    commissionRate?: SortOrder
-    status?: SortOrder
-    paymentMethod?: SortOrder
-    paidAt?: SortOrder
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type transactionSumOrderByAggregateInput = {
-    totalAmount?: SortOrder
-    platformCommission?: SortOrder
-    providerEarnings?: SortOrder
-    commissionRate?: SortOrder
+  export type ProviderWalletSumOrderByAggregateInput = {
+    availableBalance?: SortOrder
+    pendingBalance?: SortOrder
+    totalEarnings?: SortOrder
+    totalWithdrawn?: SortOrder
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -20255,10 +20255,10 @@ export namespace Prisma {
     connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
   }
 
-  export type provider_walletCreateNestedOneWithoutUserInput = {
-    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
-    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
-    connect?: provider_walletWhereUniqueInput
+  export type ProviderWalletCreateNestedOneWithoutProviderInput = {
+    create?: XOR<ProviderWalletCreateWithoutProviderInput, ProviderWalletUncheckedCreateWithoutProviderInput>
+    connectOrCreate?: ProviderWalletCreateOrConnectWithoutProviderInput
+    connect?: ProviderWalletWhereUniqueInput
   }
 
   export type ServiceCreateNestedManyWithoutProviderInput = {
@@ -20282,18 +20282,18 @@ export namespace Prisma {
     connect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
   }
 
-  export type transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  export type TransactionCreateNestedManyWithoutProviderInput = {
+    create?: XOR<TransactionCreateWithoutProviderInput, TransactionUncheckedCreateWithoutProviderInput> | TransactionCreateWithoutProviderInput[] | TransactionUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutProviderInput | TransactionCreateOrConnectWithoutProviderInput[]
+    createMany?: TransactionCreateManyProviderInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
-  export type transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  export type TransactionCreateNestedManyWithoutStudentInput = {
+    create?: XOR<TransactionCreateWithoutStudentInput, TransactionUncheckedCreateWithoutStudentInput> | TransactionCreateWithoutStudentInput[] | TransactionUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutStudentInput | TransactionCreateOrConnectWithoutStudentInput[]
+    createMany?: TransactionCreateManyStudentInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type AccountUncheckedCreateNestedManyWithoutUserInput = {
@@ -20324,10 +20324,10 @@ export namespace Prisma {
     connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
   }
 
-  export type provider_walletUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
-    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
-    connect?: provider_walletWhereUniqueInput
+  export type ProviderWalletUncheckedCreateNestedOneWithoutProviderInput = {
+    create?: XOR<ProviderWalletCreateWithoutProviderInput, ProviderWalletUncheckedCreateWithoutProviderInput>
+    connectOrCreate?: ProviderWalletCreateOrConnectWithoutProviderInput
+    connect?: ProviderWalletWhereUniqueInput
   }
 
   export type ServiceUncheckedCreateNestedManyWithoutProviderInput = {
@@ -20351,18 +20351,18 @@ export namespace Prisma {
     connect?: SupportMessageWhereUniqueInput | SupportMessageWhereUniqueInput[]
   }
 
-  export type transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  export type TransactionUncheckedCreateNestedManyWithoutProviderInput = {
+    create?: XOR<TransactionCreateWithoutProviderInput, TransactionUncheckedCreateWithoutProviderInput> | TransactionCreateWithoutProviderInput[] | TransactionUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutProviderInput | TransactionCreateOrConnectWithoutProviderInput[]
+    createMany?: TransactionCreateManyProviderInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
-  export type transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  export type TransactionUncheckedCreateNestedManyWithoutStudentInput = {
+    create?: XOR<TransactionCreateWithoutStudentInput, TransactionUncheckedCreateWithoutStudentInput> | TransactionCreateWithoutStudentInput[] | TransactionUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutStudentInput | TransactionCreateOrConnectWithoutStudentInput[]
+    createMany?: TransactionCreateManyStudentInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -20441,14 +20441,14 @@ export namespace Prisma {
     deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
   }
 
-  export type provider_walletUpdateOneWithoutUserNestedInput = {
-    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
-    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
-    upsert?: provider_walletUpsertWithoutUserInput
-    disconnect?: provider_walletWhereInput | boolean
-    delete?: provider_walletWhereInput | boolean
-    connect?: provider_walletWhereUniqueInput
-    update?: XOR<XOR<provider_walletUpdateToOneWithWhereWithoutUserInput, provider_walletUpdateWithoutUserInput>, provider_walletUncheckedUpdateWithoutUserInput>
+  export type ProviderWalletUpdateOneWithoutProviderNestedInput = {
+    create?: XOR<ProviderWalletCreateWithoutProviderInput, ProviderWalletUncheckedCreateWithoutProviderInput>
+    connectOrCreate?: ProviderWalletCreateOrConnectWithoutProviderInput
+    upsert?: ProviderWalletUpsertWithoutProviderInput
+    disconnect?: ProviderWalletWhereInput | boolean
+    delete?: ProviderWalletWhereInput | boolean
+    connect?: ProviderWalletWhereUniqueInput
+    update?: XOR<XOR<ProviderWalletUpdateToOneWithWhereWithoutProviderInput, ProviderWalletUpdateWithoutProviderInput>, ProviderWalletUncheckedUpdateWithoutProviderInput>
   }
 
   export type ServiceUpdateManyWithoutProviderNestedInput = {
@@ -20493,32 +20493,32 @@ export namespace Prisma {
     deleteMany?: SupportMessageScalarWhereInput | SupportMessageScalarWhereInput[]
   }
 
-  export type transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
-    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
-    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
-    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput[]
-    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  export type TransactionUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<TransactionCreateWithoutProviderInput, TransactionUncheckedCreateWithoutProviderInput> | TransactionCreateWithoutProviderInput[] | TransactionUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutProviderInput | TransactionCreateOrConnectWithoutProviderInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutProviderInput | TransactionUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: TransactionCreateManyProviderInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutProviderInput | TransactionUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutProviderInput | TransactionUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
-  export type transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
-    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
-    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
-    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput[]
-    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  export type TransactionUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<TransactionCreateWithoutStudentInput, TransactionUncheckedCreateWithoutStudentInput> | TransactionCreateWithoutStudentInput[] | TransactionUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutStudentInput | TransactionCreateOrConnectWithoutStudentInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutStudentInput | TransactionUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: TransactionCreateManyStudentInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutStudentInput | TransactionUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutStudentInput | TransactionUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
@@ -20577,14 +20577,14 @@ export namespace Prisma {
     deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
   }
 
-  export type provider_walletUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
-    connectOrCreate?: provider_walletCreateOrConnectWithoutUserInput
-    upsert?: provider_walletUpsertWithoutUserInput
-    disconnect?: provider_walletWhereInput | boolean
-    delete?: provider_walletWhereInput | boolean
-    connect?: provider_walletWhereUniqueInput
-    update?: XOR<XOR<provider_walletUpdateToOneWithWhereWithoutUserInput, provider_walletUpdateWithoutUserInput>, provider_walletUncheckedUpdateWithoutUserInput>
+  export type ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput = {
+    create?: XOR<ProviderWalletCreateWithoutProviderInput, ProviderWalletUncheckedCreateWithoutProviderInput>
+    connectOrCreate?: ProviderWalletCreateOrConnectWithoutProviderInput
+    upsert?: ProviderWalletUpsertWithoutProviderInput
+    disconnect?: ProviderWalletWhereInput | boolean
+    delete?: ProviderWalletWhereInput | boolean
+    connect?: ProviderWalletWhereUniqueInput
+    update?: XOR<XOR<ProviderWalletUpdateToOneWithWhereWithoutProviderInput, ProviderWalletUpdateWithoutProviderInput>, ProviderWalletUncheckedUpdateWithoutProviderInput>
   }
 
   export type ServiceUncheckedUpdateManyWithoutProviderNestedInput = {
@@ -20629,32 +20629,32 @@ export namespace Prisma {
     deleteMany?: SupportMessageScalarWhereInput | SupportMessageScalarWhereInput[]
   }
 
-  export type transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput> | transactionCreateWithoutUser_transaction_providerIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput[]
-    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_providerIdTouserInputEnvelope
-    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput[]
-    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput[]
-    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  export type TransactionUncheckedUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<TransactionCreateWithoutProviderInput, TransactionUncheckedCreateWithoutProviderInput> | TransactionCreateWithoutProviderInput[] | TransactionUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutProviderInput | TransactionCreateOrConnectWithoutProviderInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutProviderInput | TransactionUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: TransactionCreateManyProviderInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutProviderInput | TransactionUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutProviderInput | TransactionUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
-  export type transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput = {
-    create?: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput> | transactionCreateWithoutUser_transaction_studentIdTouserInput[] | transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput | transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput[]
-    upsert?: transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
-    createMany?: transactionCreateManyUser_transaction_studentIdTouserInputEnvelope
-    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    update?: transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput | transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput[]
-    updateMany?: transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput | transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput[]
-    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  export type TransactionUncheckedUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<TransactionCreateWithoutStudentInput, TransactionUncheckedCreateWithoutStudentInput> | TransactionCreateWithoutStudentInput[] | TransactionUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutStudentInput | TransactionCreateOrConnectWithoutStudentInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutStudentInput | TransactionUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: TransactionCreateManyStudentInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutStudentInput | TransactionUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutStudentInput | TransactionUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -20696,9 +20696,9 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type UserCreateNestedOneWithoutServicesInput = {
-    create?: XOR<UserCreateWithoutServicesInput, UserUncheckedCreateWithoutServicesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutServicesInput
+  export type UserCreateNestedOneWithoutServicesProvidedInput = {
+    create?: XOR<UserCreateWithoutServicesProvidedInput, UserUncheckedCreateWithoutServicesProvidedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutServicesProvidedInput
     connect?: UserWhereUniqueInput
   }
 
@@ -20723,12 +20723,12 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutServicesNestedInput = {
-    create?: XOR<UserCreateWithoutServicesInput, UserUncheckedCreateWithoutServicesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutServicesInput
-    upsert?: UserUpsertWithoutServicesInput
+  export type UserUpdateOneRequiredWithoutServicesProvidedNestedInput = {
+    create?: XOR<UserCreateWithoutServicesProvidedInput, UserUncheckedCreateWithoutServicesProvidedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutServicesProvidedInput
+    upsert?: UserUpsertWithoutServicesProvidedInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutServicesInput, UserUpdateWithoutServicesInput>, UserUncheckedUpdateWithoutServicesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutServicesProvidedInput, UserUpdateWithoutServicesProvidedInput>, UserUncheckedUpdateWithoutServicesProvidedInput>
   }
 
   export type BookingUncheckedUpdateManyWithoutServiceNestedInput = {
@@ -20769,11 +20769,11 @@ export namespace Prisma {
     connect?: ConversationWhereUniqueInput
   }
 
-  export type transactionCreateNestedManyWithoutBookingInput = {
-    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
-    createMany?: transactionCreateManyBookingInputEnvelope
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  export type TransactionCreateNestedManyWithoutBookingInput = {
+    create?: XOR<TransactionCreateWithoutBookingInput, TransactionUncheckedCreateWithoutBookingInput> | TransactionCreateWithoutBookingInput[] | TransactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutBookingInput | TransactionCreateOrConnectWithoutBookingInput[]
+    createMany?: TransactionCreateManyBookingInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type ConversationUncheckedCreateNestedOneWithoutBookingInput = {
@@ -20782,11 +20782,11 @@ export namespace Prisma {
     connect?: ConversationWhereUniqueInput
   }
 
-  export type transactionUncheckedCreateNestedManyWithoutBookingInput = {
-    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
-    createMany?: transactionCreateManyBookingInputEnvelope
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
+  export type TransactionUncheckedCreateNestedManyWithoutBookingInput = {
+    create?: XOR<TransactionCreateWithoutBookingInput, TransactionUncheckedCreateWithoutBookingInput> | TransactionCreateWithoutBookingInput[] | TransactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutBookingInput | TransactionCreateOrConnectWithoutBookingInput[]
+    createMany?: TransactionCreateManyBookingInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type EnumBookingStatusFieldUpdateOperationsInput = {
@@ -20827,18 +20827,18 @@ export namespace Prisma {
     update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutBookingInput, ConversationUpdateWithoutBookingInput>, ConversationUncheckedUpdateWithoutBookingInput>
   }
 
-  export type transactionUpdateManyWithoutBookingNestedInput = {
-    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
-    upsert?: transactionUpsertWithWhereUniqueWithoutBookingInput | transactionUpsertWithWhereUniqueWithoutBookingInput[]
-    createMany?: transactionCreateManyBookingInputEnvelope
-    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    update?: transactionUpdateWithWhereUniqueWithoutBookingInput | transactionUpdateWithWhereUniqueWithoutBookingInput[]
-    updateMany?: transactionUpdateManyWithWhereWithoutBookingInput | transactionUpdateManyWithWhereWithoutBookingInput[]
-    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  export type TransactionUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<TransactionCreateWithoutBookingInput, TransactionUncheckedCreateWithoutBookingInput> | TransactionCreateWithoutBookingInput[] | TransactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutBookingInput | TransactionCreateOrConnectWithoutBookingInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutBookingInput | TransactionUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: TransactionCreateManyBookingInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutBookingInput | TransactionUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutBookingInput | TransactionUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type ConversationUncheckedUpdateOneWithoutBookingNestedInput = {
@@ -20851,18 +20851,18 @@ export namespace Prisma {
     update?: XOR<XOR<ConversationUpdateToOneWithWhereWithoutBookingInput, ConversationUpdateWithoutBookingInput>, ConversationUncheckedUpdateWithoutBookingInput>
   }
 
-  export type transactionUncheckedUpdateManyWithoutBookingNestedInput = {
-    create?: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput> | transactionCreateWithoutBookingInput[] | transactionUncheckedCreateWithoutBookingInput[]
-    connectOrCreate?: transactionCreateOrConnectWithoutBookingInput | transactionCreateOrConnectWithoutBookingInput[]
-    upsert?: transactionUpsertWithWhereUniqueWithoutBookingInput | transactionUpsertWithWhereUniqueWithoutBookingInput[]
-    createMany?: transactionCreateManyBookingInputEnvelope
-    set?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    disconnect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    delete?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    connect?: transactionWhereUniqueInput | transactionWhereUniqueInput[]
-    update?: transactionUpdateWithWhereUniqueWithoutBookingInput | transactionUpdateWithWhereUniqueWithoutBookingInput[]
-    updateMany?: transactionUpdateManyWithWhereWithoutBookingInput | transactionUpdateManyWithWhereWithoutBookingInput[]
-    deleteMany?: transactionScalarWhereInput | transactionScalarWhereInput[]
+  export type TransactionUncheckedUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<TransactionCreateWithoutBookingInput, TransactionUncheckedCreateWithoutBookingInput> | TransactionCreateWithoutBookingInput[] | TransactionUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutBookingInput | TransactionCreateOrConnectWithoutBookingInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutBookingInput | TransactionUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: TransactionCreateManyBookingInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutBookingInput | TransactionUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutBookingInput | TransactionUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type BookingCreateNestedOneWithoutConversationInput = {
@@ -21005,23 +21005,35 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSentMessagesInput, UserUpdateWithoutSentMessagesInput>, UserUncheckedUpdateWithoutSentMessagesInput>
   }
 
-  export type UserCreateNestedOneWithoutSupportMessagesInput = {
-    create?: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSupportMessagesInput
+  export type UserCreateNestedOneWithoutSupportMessagesAsUserInput = {
+    create?: XOR<UserCreateWithoutSupportMessagesAsUserInput, UserUncheckedCreateWithoutSupportMessagesAsUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSupportMessagesAsUserInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutSupportMessagesNestedInput = {
-    create?: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSupportMessagesInput
-    upsert?: UserUpsertWithoutSupportMessagesInput
+  export type UserUpdateOneRequiredWithoutSupportMessagesAsUserNestedInput = {
+    create?: XOR<UserCreateWithoutSupportMessagesAsUserInput, UserUncheckedCreateWithoutSupportMessagesAsUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSupportMessagesAsUserInput
+    upsert?: UserUpsertWithoutSupportMessagesAsUserInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSupportMessagesInput, UserUpdateWithoutSupportMessagesInput>, UserUncheckedUpdateWithoutSupportMessagesInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSupportMessagesAsUserInput, UserUpdateWithoutSupportMessagesAsUserInput>, UserUncheckedUpdateWithoutSupportMessagesAsUserInput>
   }
 
-  export type UserCreateNestedOneWithoutProvider_walletInput = {
-    create?: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProvider_walletInput
+  export type BookingCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<BookingCreateWithoutTransactionsInput, BookingUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutTransactionsInput
+    connect?: BookingWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutProviderTransactionsInput = {
+    create?: XOR<UserCreateWithoutProviderTransactionsInput, UserUncheckedCreateWithoutProviderTransactionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProviderTransactionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutStudentTransactionsInput = {
+    create?: XOR<UserCreateWithoutStudentTransactionsInput, UserUncheckedCreateWithoutStudentTransactionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStudentTransactionsInput
     connect?: UserWhereUniqueInput
   }
 
@@ -21033,54 +21045,42 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserUpdateOneRequiredWithoutProvider_walletNestedInput = {
-    create?: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProvider_walletInput
-    upsert?: UserUpsertWithoutProvider_walletInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProvider_walletInput, UserUpdateWithoutProvider_walletInput>, UserUncheckedUpdateWithoutProvider_walletInput>
-  }
-
-  export type BookingCreateNestedOneWithoutTransactionInput = {
-    create?: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: BookingCreateOrConnectWithoutTransactionInput
+  export type BookingUpdateOneRequiredWithoutTransactionsNestedInput = {
+    create?: XOR<BookingCreateWithoutTransactionsInput, BookingUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutTransactionsInput
+    upsert?: BookingUpsertWithoutTransactionsInput
     connect?: BookingWhereUniqueInput
+    update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutTransactionsInput, BookingUpdateWithoutTransactionsInput>, BookingUncheckedUpdateWithoutTransactionsInput>
   }
 
-  export type UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput = {
-    create?: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_providerIdTouserInput
+  export type UserUpdateOneRequiredWithoutProviderTransactionsNestedInput = {
+    create?: XOR<UserCreateWithoutProviderTransactionsInput, UserUncheckedCreateWithoutProviderTransactionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProviderTransactionsInput
+    upsert?: UserUpsertWithoutProviderTransactionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProviderTransactionsInput, UserUpdateWithoutProviderTransactionsInput>, UserUncheckedUpdateWithoutProviderTransactionsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutStudentTransactionsNestedInput = {
+    create?: XOR<UserCreateWithoutStudentTransactionsInput, UserUncheckedCreateWithoutStudentTransactionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStudentTransactionsInput
+    upsert?: UserUpsertWithoutStudentTransactionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutStudentTransactionsInput, UserUpdateWithoutStudentTransactionsInput>, UserUncheckedUpdateWithoutStudentTransactionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutProviderWalletInput = {
+    create?: XOR<UserCreateWithoutProviderWalletInput, UserUncheckedCreateWithoutProviderWalletInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProviderWalletInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput = {
-    create?: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_studentIdTouserInput
+  export type UserUpdateOneRequiredWithoutProviderWalletNestedInput = {
+    create?: XOR<UserCreateWithoutProviderWalletInput, UserUncheckedCreateWithoutProviderWalletInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProviderWalletInput
+    upsert?: UserUpsertWithoutProviderWalletInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type BookingUpdateOneRequiredWithoutTransactionNestedInput = {
-    create?: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: BookingCreateOrConnectWithoutTransactionInput
-    upsert?: BookingUpsertWithoutTransactionInput
-    connect?: BookingWhereUniqueInput
-    update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutTransactionInput, BookingUpdateWithoutTransactionInput>, BookingUncheckedUpdateWithoutTransactionInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput = {
-    create?: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_providerIdTouserInput
-    upsert?: UserUpsertWithoutTransaction_transaction_providerIdTouserInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTransaction_transaction_providerIdTouserInput, UserUpdateWithoutTransaction_transaction_providerIdTouserInput>, UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput = {
-    create?: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTransaction_transaction_studentIdTouserInput
-    upsert?: UserUpsertWithoutTransaction_transaction_studentIdTouserInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTransaction_transaction_studentIdTouserInput, UserUpdateWithoutTransaction_transaction_studentIdTouserInput>, UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProviderWalletInput, UserUpdateWithoutProviderWalletInput>, UserUncheckedUpdateWithoutProviderWalletInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -21363,7 +21363,7 @@ export namespace Prisma {
     service: ServiceCreateNestedOneWithoutBookingsInput
     student: UserCreateNestedOneWithoutStudentBookingsInput
     conversation?: ConversationCreateNestedOneWithoutBookingInput
-    transaction?: transactionCreateNestedManyWithoutBookingInput
+    transactions?: TransactionCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutProviderInput = {
@@ -21375,7 +21375,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
-    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutProviderInput = {
@@ -21397,7 +21397,7 @@ export namespace Prisma {
     provider: UserCreateNestedOneWithoutProviderBookingsInput
     service: ServiceCreateNestedOneWithoutBookingsInput
     conversation?: ConversationCreateNestedOneWithoutBookingInput
-    transaction?: transactionCreateNestedManyWithoutBookingInput
+    transactions?: TransactionCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutStudentInput = {
@@ -21409,7 +21409,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
-    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutStudentInput = {
@@ -21448,29 +21448,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type provider_walletCreateWithoutUserInput = {
-    id: string
+  export type ProviderWalletCreateWithoutProviderInput = {
+    id?: string
     availableBalance?: number
     pendingBalance?: number
     totalEarnings?: number
     totalWithdrawn?: number
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type provider_walletUncheckedCreateWithoutUserInput = {
-    id: string
+  export type ProviderWalletUncheckedCreateWithoutProviderInput = {
+    id?: string
     availableBalance?: number
     pendingBalance?: number
     totalEarnings?: number
     totalWithdrawn?: number
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type provider_walletCreateOrConnectWithoutUserInput = {
-    where: provider_walletWhereUniqueInput
-    create: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
+  export type ProviderWalletCreateOrConnectWithoutProviderInput = {
+    where: ProviderWalletWhereUniqueInput
+    create: XOR<ProviderWalletCreateWithoutProviderInput, ProviderWalletUncheckedCreateWithoutProviderInput>
   }
 
   export type ServiceCreateWithoutProviderInput = {
@@ -21567,8 +21567,8 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type transactionCreateWithoutUser_transaction_providerIdTouserInput = {
-    id: string
+  export type TransactionCreateWithoutProviderInput = {
+    id?: string
     paystackReference: string
     totalAmount: number
     platformCommission: number
@@ -21578,13 +21578,13 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
-    booking: BookingCreateNestedOneWithoutTransactionInput
-    user_transaction_studentIdTouser: UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutTransactionsInput
+    student: UserCreateNestedOneWithoutStudentTransactionsInput
   }
 
-  export type transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput = {
-    id: string
+  export type TransactionUncheckedCreateWithoutProviderInput = {
+    id?: string
     bookingId: string
     studentId: string
     paystackReference: string
@@ -21596,21 +21596,21 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionCreateOrConnectWithoutUser_transaction_providerIdTouserInput = {
-    where: transactionWhereUniqueInput
-    create: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput>
+  export type TransactionCreateOrConnectWithoutProviderInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutProviderInput, TransactionUncheckedCreateWithoutProviderInput>
   }
 
-  export type transactionCreateManyUser_transaction_providerIdTouserInputEnvelope = {
-    data: transactionCreateManyUser_transaction_providerIdTouserInput | transactionCreateManyUser_transaction_providerIdTouserInput[]
+  export type TransactionCreateManyProviderInputEnvelope = {
+    data: TransactionCreateManyProviderInput | TransactionCreateManyProviderInput[]
     skipDuplicates?: boolean
   }
 
-  export type transactionCreateWithoutUser_transaction_studentIdTouserInput = {
-    id: string
+  export type TransactionCreateWithoutStudentInput = {
+    id?: string
     paystackReference: string
     totalAmount: number
     platformCommission: number
@@ -21620,13 +21620,13 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
-    booking: BookingCreateNestedOneWithoutTransactionInput
-    user_transaction_providerIdTouser: UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutTransactionsInput
+    provider: UserCreateNestedOneWithoutProviderTransactionsInput
   }
 
-  export type transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput = {
-    id: string
+  export type TransactionUncheckedCreateWithoutStudentInput = {
+    id?: string
     bookingId: string
     providerId: string
     paystackReference: string
@@ -21638,16 +21638,16 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionCreateOrConnectWithoutUser_transaction_studentIdTouserInput = {
-    where: transactionWhereUniqueInput
-    create: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput>
+  export type TransactionCreateOrConnectWithoutStudentInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutStudentInput, TransactionUncheckedCreateWithoutStudentInput>
   }
 
-  export type transactionCreateManyUser_transaction_studentIdTouserInputEnvelope = {
-    data: transactionCreateManyUser_transaction_studentIdTouserInput | transactionCreateManyUser_transaction_studentIdTouserInput[]
+  export type TransactionCreateManyStudentInputEnvelope = {
+    data: TransactionCreateManyStudentInput | TransactionCreateManyStudentInput[]
     skipDuplicates?: boolean
   }
 
@@ -21760,18 +21760,18 @@ export namespace Prisma {
     readAt?: DateTimeNullableFilter<"Message"> | Date | string | null
   }
 
-  export type provider_walletUpsertWithoutUserInput = {
-    update: XOR<provider_walletUpdateWithoutUserInput, provider_walletUncheckedUpdateWithoutUserInput>
-    create: XOR<provider_walletCreateWithoutUserInput, provider_walletUncheckedCreateWithoutUserInput>
-    where?: provider_walletWhereInput
+  export type ProviderWalletUpsertWithoutProviderInput = {
+    update: XOR<ProviderWalletUpdateWithoutProviderInput, ProviderWalletUncheckedUpdateWithoutProviderInput>
+    create: XOR<ProviderWalletCreateWithoutProviderInput, ProviderWalletUncheckedCreateWithoutProviderInput>
+    where?: ProviderWalletWhereInput
   }
 
-  export type provider_walletUpdateToOneWithWhereWithoutUserInput = {
-    where?: provider_walletWhereInput
-    data: XOR<provider_walletUpdateWithoutUserInput, provider_walletUncheckedUpdateWithoutUserInput>
+  export type ProviderWalletUpdateToOneWithWhereWithoutProviderInput = {
+    where?: ProviderWalletWhereInput
+    data: XOR<ProviderWalletUpdateWithoutProviderInput, ProviderWalletUncheckedUpdateWithoutProviderInput>
   }
 
-  export type provider_walletUpdateWithoutUserInput = {
+  export type ProviderWalletUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     availableBalance?: FloatFieldUpdateOperationsInput | number
     pendingBalance?: FloatFieldUpdateOperationsInput | number
@@ -21781,7 +21781,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type provider_walletUncheckedUpdateWithoutUserInput = {
+  export type ProviderWalletUncheckedUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     availableBalance?: FloatFieldUpdateOperationsInput | number
     pendingBalance?: FloatFieldUpdateOperationsInput | number
@@ -21882,60 +21882,60 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"SupportMessage"> | Date | string
   }
 
-  export type transactionUpsertWithWhereUniqueWithoutUser_transaction_providerIdTouserInput = {
-    where: transactionWhereUniqueInput
-    update: XOR<transactionUpdateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_providerIdTouserInput>
-    create: XOR<transactionCreateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_providerIdTouserInput>
+  export type TransactionUpsertWithWhereUniqueWithoutProviderInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutProviderInput, TransactionUncheckedUpdateWithoutProviderInput>
+    create: XOR<TransactionCreateWithoutProviderInput, TransactionUncheckedCreateWithoutProviderInput>
   }
 
-  export type transactionUpdateWithWhereUniqueWithoutUser_transaction_providerIdTouserInput = {
-    where: transactionWhereUniqueInput
-    data: XOR<transactionUpdateWithoutUser_transaction_providerIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_providerIdTouserInput>
+  export type TransactionUpdateWithWhereUniqueWithoutProviderInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutProviderInput, TransactionUncheckedUpdateWithoutProviderInput>
   }
 
-  export type transactionUpdateManyWithWhereWithoutUser_transaction_providerIdTouserInput = {
-    where: transactionScalarWhereInput
-    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserInput>
+  export type TransactionUpdateManyWithWhereWithoutProviderInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutProviderInput>
   }
 
-  export type transactionScalarWhereInput = {
-    AND?: transactionScalarWhereInput | transactionScalarWhereInput[]
-    OR?: transactionScalarWhereInput[]
-    NOT?: transactionScalarWhereInput | transactionScalarWhereInput[]
-    id?: StringFilter<"transaction"> | string
-    bookingId?: StringFilter<"transaction"> | string
-    studentId?: StringFilter<"transaction"> | string
-    providerId?: StringFilter<"transaction"> | string
-    paystackReference?: StringFilter<"transaction"> | string
-    totalAmount?: FloatFilter<"transaction"> | number
-    platformCommission?: FloatFilter<"transaction"> | number
-    providerEarnings?: FloatFilter<"transaction"> | number
-    commissionRate?: FloatFilter<"transaction"> | number
-    status?: StringFilter<"transaction"> | string
-    paymentMethod?: StringNullableFilter<"transaction"> | string | null
-    paidAt?: DateTimeNullableFilter<"transaction"> | Date | string | null
-    createdAt?: DateTimeFilter<"transaction"> | Date | string
-    updatedAt?: DateTimeFilter<"transaction"> | Date | string
+  export type TransactionScalarWhereInput = {
+    AND?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+    OR?: TransactionScalarWhereInput[]
+    NOT?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+    id?: StringFilter<"Transaction"> | string
+    bookingId?: StringFilter<"Transaction"> | string
+    studentId?: StringFilter<"Transaction"> | string
+    providerId?: StringFilter<"Transaction"> | string
+    paystackReference?: StringFilter<"Transaction"> | string
+    totalAmount?: FloatFilter<"Transaction"> | number
+    platformCommission?: FloatFilter<"Transaction"> | number
+    providerEarnings?: FloatFilter<"Transaction"> | number
+    commissionRate?: FloatFilter<"Transaction"> | number
+    status?: StringFilter<"Transaction"> | string
+    paymentMethod?: StringNullableFilter<"Transaction"> | string | null
+    paidAt?: DateTimeNullableFilter<"Transaction"> | Date | string | null
+    createdAt?: DateTimeFilter<"Transaction"> | Date | string
+    updatedAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
-  export type transactionUpsertWithWhereUniqueWithoutUser_transaction_studentIdTouserInput = {
-    where: transactionWhereUniqueInput
-    update: XOR<transactionUpdateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_studentIdTouserInput>
-    create: XOR<transactionCreateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedCreateWithoutUser_transaction_studentIdTouserInput>
+  export type TransactionUpsertWithWhereUniqueWithoutStudentInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutStudentInput, TransactionUncheckedUpdateWithoutStudentInput>
+    create: XOR<TransactionCreateWithoutStudentInput, TransactionUncheckedCreateWithoutStudentInput>
   }
 
-  export type transactionUpdateWithWhereUniqueWithoutUser_transaction_studentIdTouserInput = {
-    where: transactionWhereUniqueInput
-    data: XOR<transactionUpdateWithoutUser_transaction_studentIdTouserInput, transactionUncheckedUpdateWithoutUser_transaction_studentIdTouserInput>
+  export type TransactionUpdateWithWhereUniqueWithoutStudentInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutStudentInput, TransactionUncheckedUpdateWithoutStudentInput>
   }
 
-  export type transactionUpdateManyWithWhereWithoutUser_transaction_studentIdTouserInput = {
-    where: transactionScalarWhereInput
-    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserInput>
+  export type TransactionUpdateManyWithWhereWithoutStudentInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutStudentInput>
   }
 
   export type UserCreateWithoutSessionsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -21950,15 +21950,15 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -21973,11 +21973,11 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -22012,11 +22012,11 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -22035,15 +22035,15 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22057,16 +22057,16 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22080,12 +22080,12 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -22119,12 +22119,12 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -22142,12 +22142,12 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type BookingCreateWithoutServiceInput = {
@@ -22159,7 +22159,7 @@ export namespace Prisma {
     provider: UserCreateNestedOneWithoutProviderBookingsInput
     student: UserCreateNestedOneWithoutStudentBookingsInput
     conversation?: ConversationCreateNestedOneWithoutBookingInput
-    transaction?: transactionCreateNestedManyWithoutBookingInput
+    transactions?: TransactionCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutServiceInput = {
@@ -22171,7 +22171,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
-    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutServiceInput = {
@@ -22184,8 +22184,8 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserCreateWithoutServicesInput = {
-    id: string
+  export type UserCreateWithoutServicesProvidedInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22200,15 +22200,15 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
-  export type UserUncheckedCreateWithoutServicesInput = {
-    id: string
+  export type UserUncheckedCreateWithoutServicesProvidedInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22223,16 +22223,16 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
-  export type UserCreateOrConnectWithoutServicesInput = {
+  export type UserCreateOrConnectWithoutServicesProvidedInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutServicesInput, UserUncheckedCreateWithoutServicesInput>
+    create: XOR<UserCreateWithoutServicesProvidedInput, UserUncheckedCreateWithoutServicesProvidedInput>
   }
 
   export type BookingUpsertWithWhereUniqueWithoutServiceInput = {
@@ -22251,18 +22251,18 @@ export namespace Prisma {
     data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutServiceInput>
   }
 
-  export type UserUpsertWithoutServicesInput = {
-    update: XOR<UserUpdateWithoutServicesInput, UserUncheckedUpdateWithoutServicesInput>
-    create: XOR<UserCreateWithoutServicesInput, UserUncheckedCreateWithoutServicesInput>
+  export type UserUpsertWithoutServicesProvidedInput = {
+    update: XOR<UserUpdateWithoutServicesProvidedInput, UserUncheckedUpdateWithoutServicesProvidedInput>
+    create: XOR<UserCreateWithoutServicesProvidedInput, UserUncheckedCreateWithoutServicesProvidedInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutServicesInput = {
+  export type UserUpdateToOneWithWhereWithoutServicesProvidedInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutServicesInput, UserUncheckedUpdateWithoutServicesInput>
+    data: XOR<UserUpdateWithoutServicesProvidedInput, UserUncheckedUpdateWithoutServicesProvidedInput>
   }
 
-  export type UserUpdateWithoutServicesInput = {
+  export type UserUpdateWithoutServicesProvidedInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -22278,14 +22278,14 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutServicesInput = {
+  export type UserUncheckedUpdateWithoutServicesProvidedInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -22301,15 +22301,15 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type UserCreateWithoutProviderBookingsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22323,16 +22323,16 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutProviderBookingsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22346,12 +22346,12 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutProviderBookingsInput = {
@@ -22369,7 +22369,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
-    provider: UserCreateNestedOneWithoutServicesInput
+    provider: UserCreateNestedOneWithoutServicesProvidedInput
   }
 
   export type ServiceUncheckedCreateWithoutBookingsInput = {
@@ -22391,7 +22391,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutStudentBookingsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22405,16 +22405,16 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutStudentBookingsInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22428,12 +22428,12 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutStudentBookingsInput = {
@@ -22462,8 +22462,8 @@ export namespace Prisma {
     create: XOR<ConversationCreateWithoutBookingInput, ConversationUncheckedCreateWithoutBookingInput>
   }
 
-  export type transactionCreateWithoutBookingInput = {
-    id: string
+  export type TransactionCreateWithoutBookingInput = {
+    id?: string
     paystackReference: string
     totalAmount: number
     platformCommission: number
@@ -22473,13 +22473,13 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
-    user_transaction_providerIdTouser: UserCreateNestedOneWithoutTransaction_transaction_providerIdTouserInput
-    user_transaction_studentIdTouser: UserCreateNestedOneWithoutTransaction_transaction_studentIdTouserInput
+    updatedAt?: Date | string
+    provider: UserCreateNestedOneWithoutProviderTransactionsInput
+    student: UserCreateNestedOneWithoutStudentTransactionsInput
   }
 
-  export type transactionUncheckedCreateWithoutBookingInput = {
-    id: string
+  export type TransactionUncheckedCreateWithoutBookingInput = {
+    id?: string
     studentId: string
     providerId: string
     paystackReference: string
@@ -22491,16 +22491,16 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionCreateOrConnectWithoutBookingInput = {
-    where: transactionWhereUniqueInput
-    create: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput>
+  export type TransactionCreateOrConnectWithoutBookingInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutBookingInput, TransactionUncheckedCreateWithoutBookingInput>
   }
 
-  export type transactionCreateManyBookingInputEnvelope = {
-    data: transactionCreateManyBookingInput | transactionCreateManyBookingInput[]
+  export type TransactionCreateManyBookingInputEnvelope = {
+    data: TransactionCreateManyBookingInput | TransactionCreateManyBookingInput[]
     skipDuplicates?: boolean
   }
 
@@ -22530,12 +22530,12 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProviderBookingsInput = {
@@ -22553,12 +22553,12 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ServiceUpsertWithoutBookingsInput = {
@@ -22582,7 +22582,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
-    provider?: UserUpdateOneRequiredWithoutServicesNestedInput
+    provider?: UserUpdateOneRequiredWithoutServicesProvidedNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutBookingsInput = {
@@ -22624,12 +22624,12 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutStudentBookingsInput = {
@@ -22647,12 +22647,12 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ConversationUpsertWithoutBookingInput = {
@@ -22682,20 +22682,20 @@ export namespace Prisma {
     messageGroups?: MessageGroupUncheckedUpdateManyWithoutConversationNestedInput
   }
 
-  export type transactionUpsertWithWhereUniqueWithoutBookingInput = {
-    where: transactionWhereUniqueInput
-    update: XOR<transactionUpdateWithoutBookingInput, transactionUncheckedUpdateWithoutBookingInput>
-    create: XOR<transactionCreateWithoutBookingInput, transactionUncheckedCreateWithoutBookingInput>
+  export type TransactionUpsertWithWhereUniqueWithoutBookingInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutBookingInput, TransactionUncheckedUpdateWithoutBookingInput>
+    create: XOR<TransactionCreateWithoutBookingInput, TransactionUncheckedCreateWithoutBookingInput>
   }
 
-  export type transactionUpdateWithWhereUniqueWithoutBookingInput = {
-    where: transactionWhereUniqueInput
-    data: XOR<transactionUpdateWithoutBookingInput, transactionUncheckedUpdateWithoutBookingInput>
+  export type TransactionUpdateWithWhereUniqueWithoutBookingInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutBookingInput, TransactionUncheckedUpdateWithoutBookingInput>
   }
 
-  export type transactionUpdateManyWithWhereWithoutBookingInput = {
-    where: transactionScalarWhereInput
-    data: XOR<transactionUpdateManyMutationInput, transactionUncheckedUpdateManyWithoutBookingInput>
+  export type TransactionUpdateManyWithWhereWithoutBookingInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutBookingInput>
   }
 
   export type BookingCreateWithoutConversationInput = {
@@ -22707,7 +22707,7 @@ export namespace Prisma {
     provider: UserCreateNestedOneWithoutProviderBookingsInput
     service: ServiceCreateNestedOneWithoutBookingsInput
     student: UserCreateNestedOneWithoutStudentBookingsInput
-    transaction?: transactionCreateNestedManyWithoutBookingInput
+    transactions?: TransactionCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutConversationInput = {
@@ -22719,7 +22719,7 @@ export namespace Prisma {
     status?: $Enums.BookingStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    transaction?: transactionUncheckedCreateNestedManyWithoutBookingInput
+    transactions?: TransactionUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutConversationInput = {
@@ -22795,7 +22795,7 @@ export namespace Prisma {
     provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
     service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
     student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
-    transaction?: transactionUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutConversationInput = {
@@ -22807,7 +22807,7 @@ export namespace Prisma {
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type MessageUpsertWithWhereUniqueWithoutConversationInput = {
@@ -22922,7 +22922,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutSentMessagesInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22936,16 +22936,16 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutSentMessagesInput = {
-    id: string
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -22959,12 +22959,12 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -23025,12 +23025,12 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSentMessagesInput = {
@@ -23048,16 +23048,16 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
-  export type UserCreateWithoutSupportMessagesInput = {
-    id: string
+  export type UserCreateWithoutSupportMessagesAsUserInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -23072,15 +23072,15 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
-  export type UserUncheckedCreateWithoutSupportMessagesInput = {
-    id: string
+  export type UserUncheckedCreateWithoutSupportMessagesAsUserInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -23095,30 +23095,30 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
-  export type UserCreateOrConnectWithoutSupportMessagesInput = {
+  export type UserCreateOrConnectWithoutSupportMessagesAsUserInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
+    create: XOR<UserCreateWithoutSupportMessagesAsUserInput, UserUncheckedCreateWithoutSupportMessagesAsUserInput>
   }
 
-  export type UserUpsertWithoutSupportMessagesInput = {
-    update: XOR<UserUpdateWithoutSupportMessagesInput, UserUncheckedUpdateWithoutSupportMessagesInput>
-    create: XOR<UserCreateWithoutSupportMessagesInput, UserUncheckedCreateWithoutSupportMessagesInput>
+  export type UserUpsertWithoutSupportMessagesAsUserInput = {
+    update: XOR<UserUpdateWithoutSupportMessagesAsUserInput, UserUncheckedUpdateWithoutSupportMessagesAsUserInput>
+    create: XOR<UserCreateWithoutSupportMessagesAsUserInput, UserUncheckedCreateWithoutSupportMessagesAsUserInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSupportMessagesInput = {
+  export type UserUpdateToOneWithWhereWithoutSupportMessagesAsUserInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSupportMessagesInput, UserUncheckedUpdateWithoutSupportMessagesInput>
+    data: XOR<UserUpdateWithoutSupportMessagesAsUserInput, UserUncheckedUpdateWithoutSupportMessagesAsUserInput>
   }
 
-  export type UserUpdateWithoutSupportMessagesInput = {
+  export type UserUpdateWithoutSupportMessagesAsUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -23134,14 +23134,14 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSupportMessagesInput = {
+  export type UserUncheckedUpdateWithoutSupportMessagesAsUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -23157,122 +23157,14 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
-  export type UserCreateWithoutProvider_walletInput = {
-    id: string
-    name: string
-    email: string
-    emailVerified?: boolean
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    phoneNumber?: string | null
-    location?: string | null
-    bio?: string | null
-    role?: $Enums.Role
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    providerBookings?: BookingCreateNestedManyWithoutProviderInput
-    studentBookings?: BookingCreateNestedManyWithoutStudentInput
-    sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
-  }
-
-  export type UserUncheckedCreateWithoutProvider_walletInput = {
-    id: string
-    name: string
-    email: string
-    emailVerified?: boolean
-    image?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    phoneNumber?: string | null
-    location?: string | null
-    bio?: string | null
-    role?: $Enums.Role
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
-    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
-    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
-  }
-
-  export type UserCreateOrConnectWithoutProvider_walletInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
-  }
-
-  export type UserUpsertWithoutProvider_walletInput = {
-    update: XOR<UserUpdateWithoutProvider_walletInput, UserUncheckedUpdateWithoutProvider_walletInput>
-    create: XOR<UserCreateWithoutProvider_walletInput, UserUncheckedCreateWithoutProvider_walletInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutProvider_walletInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutProvider_walletInput, UserUncheckedUpdateWithoutProvider_walletInput>
-  }
-
-  export type UserUpdateWithoutProvider_walletInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailVerified?: BoolFieldUpdateOperationsInput | boolean
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
-    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
-    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutProvider_walletInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailVerified?: BoolFieldUpdateOperationsInput | boolean
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
-    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
-    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
-  }
-
-  export type BookingCreateWithoutTransactionInput = {
+  export type BookingCreateWithoutTransactionsInput = {
     id?: string
     bookedAt?: Date | string
     status?: $Enums.BookingStatus
@@ -23284,7 +23176,7 @@ export namespace Prisma {
     conversation?: ConversationCreateNestedOneWithoutBookingInput
   }
 
-  export type BookingUncheckedCreateWithoutTransactionInput = {
+  export type BookingUncheckedCreateWithoutTransactionsInput = {
     id?: string
     studentId: string
     providerId: string
@@ -23296,13 +23188,13 @@ export namespace Prisma {
     conversation?: ConversationUncheckedCreateNestedOneWithoutBookingInput
   }
 
-  export type BookingCreateOrConnectWithoutTransactionInput = {
+  export type BookingCreateOrConnectWithoutTransactionsInput = {
     where: BookingWhereUniqueInput
-    create: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
+    create: XOR<BookingCreateWithoutTransactionsInput, BookingUncheckedCreateWithoutTransactionsInput>
   }
 
-  export type UserCreateWithoutTransaction_transaction_providerIdTouserInput = {
-    id: string
+  export type UserCreateWithoutProviderTransactionsInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -23317,15 +23209,15 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_studentIdTouser?: transactionCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
   }
 
-  export type UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput = {
-    id: string
+  export type UserUncheckedCreateWithoutProviderTransactionsInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -23340,20 +23232,20 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_studentIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
   }
 
-  export type UserCreateOrConnectWithoutTransaction_transaction_providerIdTouserInput = {
+  export type UserCreateOrConnectWithoutProviderTransactionsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
+    create: XOR<UserCreateWithoutProviderTransactionsInput, UserUncheckedCreateWithoutProviderTransactionsInput>
   }
 
-  export type UserCreateWithoutTransaction_transaction_studentIdTouserInput = {
-    id: string
+  export type UserCreateWithoutStudentTransactionsInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -23368,15 +23260,15 @@ export namespace Prisma {
     providerBookings?: BookingCreateNestedManyWithoutProviderInput
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletCreateNestedOneWithoutUserInput
-    services?: ServiceCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
     sessions?: SessionCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
   }
 
-  export type UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput = {
-    id: string
+  export type UserUncheckedCreateWithoutStudentTransactionsInput = {
+    id?: string
     name: string
     email: string
     emailVerified?: boolean
@@ -23391,30 +23283,30 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
-    provider_wallet?: provider_walletUncheckedCreateNestedOneWithoutUserInput
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    supportMessages?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedCreateNestedManyWithoutUser_transaction_providerIdTouserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
   }
 
-  export type UserCreateOrConnectWithoutTransaction_transaction_studentIdTouserInput = {
+  export type UserCreateOrConnectWithoutStudentTransactionsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
+    create: XOR<UserCreateWithoutStudentTransactionsInput, UserUncheckedCreateWithoutStudentTransactionsInput>
   }
 
-  export type BookingUpsertWithoutTransactionInput = {
-    update: XOR<BookingUpdateWithoutTransactionInput, BookingUncheckedUpdateWithoutTransactionInput>
-    create: XOR<BookingCreateWithoutTransactionInput, BookingUncheckedCreateWithoutTransactionInput>
+  export type BookingUpsertWithoutTransactionsInput = {
+    update: XOR<BookingUpdateWithoutTransactionsInput, BookingUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<BookingCreateWithoutTransactionsInput, BookingUncheckedCreateWithoutTransactionsInput>
     where?: BookingWhereInput
   }
 
-  export type BookingUpdateToOneWithWhereWithoutTransactionInput = {
+  export type BookingUpdateToOneWithWhereWithoutTransactionsInput = {
     where?: BookingWhereInput
-    data: XOR<BookingUpdateWithoutTransactionInput, BookingUncheckedUpdateWithoutTransactionInput>
+    data: XOR<BookingUpdateWithoutTransactionsInput, BookingUncheckedUpdateWithoutTransactionsInput>
   }
 
-  export type BookingUpdateWithoutTransactionInput = {
+  export type BookingUpdateWithoutTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     bookedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
@@ -23426,7 +23318,7 @@ export namespace Prisma {
     conversation?: ConversationUpdateOneWithoutBookingNestedInput
   }
 
-  export type BookingUncheckedUpdateWithoutTransactionInput = {
+  export type BookingUncheckedUpdateWithoutTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
@@ -23438,18 +23330,18 @@ export namespace Prisma {
     conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
   }
 
-  export type UserUpsertWithoutTransaction_transaction_providerIdTouserInput = {
-    update: XOR<UserUpdateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput>
-    create: XOR<UserCreateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_providerIdTouserInput>
+  export type UserUpsertWithoutProviderTransactionsInput = {
+    update: XOR<UserUpdateWithoutProviderTransactionsInput, UserUncheckedUpdateWithoutProviderTransactionsInput>
+    create: XOR<UserCreateWithoutProviderTransactionsInput, UserUncheckedCreateWithoutProviderTransactionsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutTransaction_transaction_providerIdTouserInput = {
+  export type UserUpdateToOneWithWhereWithoutProviderTransactionsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTransaction_transaction_providerIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput>
+    data: XOR<UserUpdateWithoutProviderTransactionsInput, UserUncheckedUpdateWithoutProviderTransactionsInput>
   }
 
-  export type UserUpdateWithoutTransaction_transaction_providerIdTouserInput = {
+  export type UserUpdateWithoutProviderTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -23465,14 +23357,14 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutTransaction_transaction_providerIdTouserInput = {
+  export type UserUncheckedUpdateWithoutProviderTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -23488,25 +23380,25 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_studentIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
-  export type UserUpsertWithoutTransaction_transaction_studentIdTouserInput = {
-    update: XOR<UserUpdateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput>
-    create: XOR<UserCreateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedCreateWithoutTransaction_transaction_studentIdTouserInput>
+  export type UserUpsertWithoutStudentTransactionsInput = {
+    update: XOR<UserUpdateWithoutStudentTransactionsInput, UserUncheckedUpdateWithoutStudentTransactionsInput>
+    create: XOR<UserCreateWithoutStudentTransactionsInput, UserUncheckedCreateWithoutStudentTransactionsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutTransaction_transaction_studentIdTouserInput = {
+  export type UserUpdateToOneWithWhereWithoutStudentTransactionsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTransaction_transaction_studentIdTouserInput, UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput>
+    data: XOR<UserUpdateWithoutStudentTransactionsInput, UserUncheckedUpdateWithoutStudentTransactionsInput>
   }
 
-  export type UserUpdateWithoutTransaction_transaction_studentIdTouserInput = {
+  export type UserUpdateWithoutStudentTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -23522,14 +23414,14 @@ export namespace Prisma {
     providerBookings?: BookingUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUpdateOneWithoutUserNestedInput
-    services?: ServiceUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutTransaction_transaction_studentIdTouserInput = {
+  export type UserUncheckedUpdateWithoutStudentTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -23545,11 +23437,119 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
-    provider_wallet?: provider_walletUncheckedUpdateOneWithoutUserNestedInput
-    services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    supportMessages?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
-    transaction_transaction_providerIdTouser?: transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+  }
+
+  export type UserCreateWithoutProviderWalletInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutProviderWalletInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutProviderWalletInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProviderWalletInput, UserUncheckedCreateWithoutProviderWalletInput>
+  }
+
+  export type UserUpsertWithoutProviderWalletInput = {
+    update: XOR<UserUpdateWithoutProviderWalletInput, UserUncheckedUpdateWithoutProviderWalletInput>
+    create: XOR<UserCreateWithoutProviderWalletInput, UserUncheckedCreateWithoutProviderWalletInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProviderWalletInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProviderWalletInput, UserUncheckedUpdateWithoutProviderWalletInput>
+  }
+
+  export type UserUpdateWithoutProviderWalletInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProviderWalletInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -23626,8 +23626,8 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type transactionCreateManyUser_transaction_providerIdTouserInput = {
-    id: string
+  export type TransactionCreateManyProviderInput = {
+    id?: string
     bookingId: string
     studentId: string
     paystackReference: string
@@ -23639,11 +23639,11 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionCreateManyUser_transaction_studentIdTouserInput = {
-    id: string
+  export type TransactionCreateManyStudentInput = {
+    id?: string
     bookingId: string
     providerId: string
     paystackReference: string
@@ -23655,7 +23655,7 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -23712,7 +23712,7 @@ export namespace Prisma {
     service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
     student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
     conversation?: ConversationUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutProviderInput = {
@@ -23724,7 +23724,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateManyWithoutProviderInput = {
@@ -23746,7 +23746,7 @@ export namespace Prisma {
     provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
     service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
     conversation?: ConversationUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutStudentInput = {
@@ -23758,7 +23758,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateManyWithoutStudentInput = {
@@ -23890,7 +23890,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionUpdateWithoutUser_transaction_providerIdTouserInput = {
+  export type TransactionUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     paystackReference?: StringFieldUpdateOperationsInput | string
     totalAmount?: FloatFieldUpdateOperationsInput | number
@@ -23902,27 +23902,11 @@ export namespace Prisma {
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    booking?: BookingUpdateOneRequiredWithoutTransactionNestedInput
-    user_transaction_studentIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput
+    booking?: BookingUpdateOneRequiredWithoutTransactionsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentTransactionsNestedInput
   }
 
-  export type transactionUncheckedUpdateWithoutUser_transaction_providerIdTouserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bookingId?: StringFieldUpdateOperationsInput | string
-    studentId?: StringFieldUpdateOperationsInput | string
-    paystackReference?: StringFieldUpdateOperationsInput | string
-    totalAmount?: FloatFieldUpdateOperationsInput | number
-    platformCommission?: FloatFieldUpdateOperationsInput | number
-    providerEarnings?: FloatFieldUpdateOperationsInput | number
-    commissionRate?: FloatFieldUpdateOperationsInput | number
-    status?: StringFieldUpdateOperationsInput | string
-    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type transactionUncheckedUpdateManyWithoutUser_transaction_providerIdTouserInput = {
+  export type TransactionUncheckedUpdateWithoutProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     bookingId?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
@@ -23938,7 +23922,23 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionUpdateWithoutUser_transaction_studentIdTouserInput = {
+  export type TransactionUncheckedUpdateManyWithoutProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    studentId?: StringFieldUpdateOperationsInput | string
+    paystackReference?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    platformCommission?: FloatFieldUpdateOperationsInput | number
+    providerEarnings?: FloatFieldUpdateOperationsInput | number
+    commissionRate?: FloatFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paymentMethod?: NullableStringFieldUpdateOperationsInput | string | null
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TransactionUpdateWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     paystackReference?: StringFieldUpdateOperationsInput | string
     totalAmount?: FloatFieldUpdateOperationsInput | number
@@ -23950,11 +23950,11 @@ export namespace Prisma {
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    booking?: BookingUpdateOneRequiredWithoutTransactionNestedInput
-    user_transaction_providerIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput
+    booking?: BookingUpdateOneRequiredWithoutTransactionsNestedInput
+    provider?: UserUpdateOneRequiredWithoutProviderTransactionsNestedInput
   }
 
-  export type transactionUncheckedUpdateWithoutUser_transaction_studentIdTouserInput = {
+  export type TransactionUncheckedUpdateWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     bookingId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
@@ -23970,7 +23970,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionUncheckedUpdateManyWithoutUser_transaction_studentIdTouserInput = {
+  export type TransactionUncheckedUpdateManyWithoutStudentInput = {
     id?: StringFieldUpdateOperationsInput | string
     bookingId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
@@ -24005,7 +24005,7 @@ export namespace Prisma {
     provider?: UserUpdateOneRequiredWithoutProviderBookingsNestedInput
     student?: UserUpdateOneRequiredWithoutStudentBookingsNestedInput
     conversation?: ConversationUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutServiceInput = {
@@ -24017,7 +24017,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     conversation?: ConversationUncheckedUpdateOneWithoutBookingNestedInput
-    transaction?: transactionUncheckedUpdateManyWithoutBookingNestedInput
+    transactions?: TransactionUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateManyWithoutServiceInput = {
@@ -24030,8 +24030,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionCreateManyBookingInput = {
-    id: string
+  export type TransactionCreateManyBookingInput = {
+    id?: string
     studentId: string
     providerId: string
     paystackReference: string
@@ -24043,10 +24043,10 @@ export namespace Prisma {
     paymentMethod?: string | null
     paidAt?: Date | string | null
     createdAt?: Date | string
-    updatedAt: Date | string
+    updatedAt?: Date | string
   }
 
-  export type transactionUpdateWithoutBookingInput = {
+  export type TransactionUpdateWithoutBookingInput = {
     id?: StringFieldUpdateOperationsInput | string
     paystackReference?: StringFieldUpdateOperationsInput | string
     totalAmount?: FloatFieldUpdateOperationsInput | number
@@ -24058,11 +24058,11 @@ export namespace Prisma {
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_transaction_providerIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_providerIdTouserNestedInput
-    user_transaction_studentIdTouser?: UserUpdateOneRequiredWithoutTransaction_transaction_studentIdTouserNestedInput
+    provider?: UserUpdateOneRequiredWithoutProviderTransactionsNestedInput
+    student?: UserUpdateOneRequiredWithoutStudentTransactionsNestedInput
   }
 
-  export type transactionUncheckedUpdateWithoutBookingInput = {
+  export type TransactionUncheckedUpdateWithoutBookingInput = {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
@@ -24078,7 +24078,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type transactionUncheckedUpdateManyWithoutBookingInput = {
+  export type TransactionUncheckedUpdateManyWithoutBookingInput = {
     id?: StringFieldUpdateOperationsInput | string
     studentId?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string

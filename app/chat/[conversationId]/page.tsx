@@ -58,12 +58,13 @@ export default async function ChatPage({
     );
   }
 
-  // Extract the stored messages from the DB
+  // Extract the stored messages from the DB (include readAt for read/unread indicators)
   type ChatMessage = {
     id: string;
     senderId: string;
     message: string;
     timestamp: string;
+    readAt: string | null;
   };
 
   const initialMessages: ChatMessage[] = conversation.messages.map((msg) => ({
@@ -71,6 +72,7 @@ export default async function ChatPage({
     senderId: msg.senderId,
     message: msg.content,
     timestamp: msg.createdAt.toISOString(),
+    readAt: msg.readAt?.toISOString() ?? null,
   }));
 
   const isCurrentUserStudent = conversation.booking.studentId === session.user.id;
@@ -84,6 +86,7 @@ export default async function ChatPage({
       <ChatRoom
         conversationId={conversationId}
         currentUserId={session.user.id}
+        studentId={conversation.booking.studentId}
         initialMessages={initialMessages}
         partnerName={partnerName}
       />

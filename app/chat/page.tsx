@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { MarkAllReadOnView } from "./mark-all-read-on-view";
 
 export const dynamic = "force-dynamic";
 
@@ -71,6 +72,7 @@ export default async function ChatListPage() {
    if (dedupedConversations.length === 0) {
      return (
        <div className="container mx-auto max-w-4xl py-8">
+         <MarkAllReadOnView />
          <h1 className="text-3xl font-black mb-8">Messages</h1>
            <p className="mt-2 text-center font-bold text-muted-foreground w-full py-20 border-4 border-black border-dashed bg-white">
              Book a service or receive a booking to start chatting.
@@ -81,6 +83,7 @@ export default async function ChatListPage() {
  
    return (
      <div className="container mx-auto max-w-4xl py-8">
+       <MarkAllReadOnView />
        <div className="flex justify-between items-center mb-8">
          <h1 className="text-3xl font-black">Messages</h1>
        </div>

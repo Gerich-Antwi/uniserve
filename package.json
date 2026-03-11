@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "backfill-read-at": "tsx scripts/backfill-message-read-at.ts"
   },
   "dependencies": {
     "@better-auth/prisma-adapter": "^1.5.3",

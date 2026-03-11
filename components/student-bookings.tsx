@@ -2,24 +2,12 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { format } from "date-fns"
 import { MessageCircle, CheckCircle2, Clock3, DollarSign } from "lucide-react"
 
 import { BookingStatus } from "@/lib/generated/prisma/client"
 import type { Prisma } from "@/lib/generated/prisma/client"
 import { Button } from "@/components/ui/button"
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
@@ -33,32 +21,14 @@ type BookingWithRelations = Prisma.BookingGetPayload<{
   }
 }>
 
-interface ProviderBookingsProps {
+interface StudentBookingsProps {
   bookings: BookingWithRelations[]
   currentUserId?: string
 }
 
-export function ProviderBookings({ bookings: initial, currentUserId }: ProviderBookingsProps) {
-  const router = useRouter()
-  const [bookings, setBookings] = useState(initial)
-  const [loadingId, setLoadingId] = useState<string | null>(null)
+export function StudentBookings({ bookings: initial, currentUserId }: StudentBookingsProps) {
+  const [bookings] = useState(initial)
   const [payingId, setPayingId] = useState<string | null>(null)
-
-  const handleMarkAttended = async (id: string) => {
-    try {
-      setLoadingId(id)
-      const res = await fetch(`/api/provider/bookings/${id}/attend`, {
-        method: "POST",
-      })
-      if (!res.ok) {
-        console.error("Failed to mark booking as attended")
-        return
-      }
-      setBookings((prev) => prev.map((b) => b.id === id ? { ...b, status: BookingStatus.ATTENDED } : b))
-    } finally {
-      setLoadingId(null)
-    }
-  }
 
   const handlePayNow = async (booking: BookingWithRelations) => {
     try {
@@ -94,10 +64,10 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
     return (
       <section className="rounded-2xl border-4 border-dashed border-black bg-white/70 p-6 text-center shadow-[6px_6px_0_0_#000]">
         <h2 className="text-xl font-extrabold uppercase tracking-[0.18em]">
-          No active bookings
+          No bookings yet
         </h2>
         <p className="mt-2 text-sm text-foreground/70">
-          When students book your services, they&apos;ll show up here ready to be served.
+          When you book services, they&apos;ll show up here.
         </p>
       </section>
     )
@@ -113,8 +83,6 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
     <section className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2">
         {sortedBookings.map((booking, index) => {
-          const isProvider = currentUserId === booking.providerId
-          const isStudent = currentUserId === booking.studentId
           const hasPaid = booking.transactions?.some(t => t.status === "success")
           
           return (
@@ -133,9 +101,9 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
                       {booking.service.title}
                     </h3>
                     <p className="mt-1 text-xs font-medium text-foreground/70">
-                      {isProvider ? "Student:" : "Provider:"}{" "}
+                      Provider:{" "}
                       <span className="font-semibold">
-                        {isProvider ? booking.student.name : booking.provider.name}
+                        {booking.provider.name}
                       </span>
                     </p>
                   </div>
@@ -162,6 +130,12 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
                       {format(new Date(booking.bookedAt), "dd MMM yyyy, HH:mm")}
                     </span>
                   </div>
+                  <div className="flex flex-col text-right">
+                    <span className="uppercase tracking-[0.16em]">Amount</span>
+                    <span className="font-semibold">
+                      {booking.service.price}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="mt-3 flex items-center justify-between gap-3">
@@ -172,7 +146,7 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
                     >
                       <span className="flex items-center gap-2">
                         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] text-lime-300">
-                          {(isProvider ? booking.student.name : booking.provider.name).charAt(0).toUpperCase()}
+                          {booking.provider.name.charAt(0).toUpperCase()}
                         </span>
                         Chat
                       </span>
@@ -187,54 +161,8 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
                     </span>
                   )}
 
-                  {/* Provider sees Mark Attended button */}
-                  {isProvider && booking.status === BookingStatus.PENDING && (
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          className="border-2 border-black bg-red-500 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] shadow-[4px_4px_0_0_#000]"
-                          disabled={loadingId === booking.id}
-                        >
-                          <CheckCircle2 className="mr-1 h-3 w-3" />
-                          {loadingId === booking.id ? "Updating..." : "Mark completed"}
-                        </Button>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent className="border-4 border-black bg-amber-50 shadow-[8px_8px_0_0_#000]">
-                        <AlertDialogHeader>
-                          <AlertDialogTitle className="text-xl font-extrabold uppercase tracking-[0.2em]">
-                            Confirm completion
-                          </AlertDialogTitle>
-                          <AlertDialogDescription className="text-sm font-medium text-foreground">
-                            Mark{" "}
-                            <span className="font-semibold">
-                              {booking.service.title}
-                            </span>{" "}
-                            for{" "}
-                            <span className="font-semibold">
-                              {booking.student.name}
-                            </span>{" "}
-                            as completed? The student will be prompted to pay.
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel className="border-2 border-black bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] shadow-[3px_3px_0_0_#000]">
-                            Cancel
-                          </AlertDialogCancel>
-                          <AlertDialogAction
-                            className="border-2 border-black bg-green-500 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-black shadow-[3px_3px_0_0_#000] hover:bg-green-400"
-                            onClick={() => handleMarkAttended(booking.id)}
-                          >
-                            Yes, mark completed
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                  )}
-
-                  {/* Student sees Pay Now button if completed and not paid */}
-                  {isStudent && booking.status === BookingStatus.ATTENDED && !hasPaid && (
+                  {/* Show Pay Now button if completed and not paid */}
+                  {booking.status === BookingStatus.ATTENDED && !hasPaid && (
                     <Button
                       size="sm"
                       className="border-2 border-black bg-green-500 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] shadow-[4px_4px_0_0_#000] hover:bg-green-400"
@@ -246,21 +174,8 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
                     </Button>
                   )}
 
-                  {/* Show completed status for provider */}
-                  {isProvider && booking.status === BookingStatus.ATTENDED && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-2 border-black bg-gray-200 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-gray-500 cursor-not-allowed opacity-70 shadow-none hover:bg-gray-200"
-                      disabled
-                    >
-                      <CheckCircle2 className="mr-1 h-3 w-3" />
-                      Completed
-                    </Button>
-                  )}
-
-                  {/* Show paid status for student */}
-                  {isStudent && hasPaid && (
+                  {/* Show paid status */}
+                  {hasPaid && (
                     <Button
                       variant="outline"
                       size="sm"
@@ -269,6 +184,19 @@ export function ProviderBookings({ bookings: initial, currentUserId }: ProviderB
                     >
                       <CheckCircle2 className="mr-1 h-3 w-3" />
                       Paid
+                    </Button>
+                  )}
+
+                  {/* Show waiting for completion status */}
+                  {booking.status === BookingStatus.PENDING && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-2 border-black bg-yellow-200 px-3 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-yellow-800 cursor-not-allowed opacity-70 shadow-none hover:bg-yellow-200"
+                      disabled
+                    >
+                      <Clock3 className="mr-1 h-3 w-3" />
+                      Awaiting Service
                     </Button>
                   )}
                 </div>

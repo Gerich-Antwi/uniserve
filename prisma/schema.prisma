@@ -24,12 +24,12 @@ model User {
   providerBookings      Booking[]        @relation("ProviderBookings")
   studentBookings       Booking[]        @relation("StudentBookings")
   sentMessages          Message[]        @relation("MessageSender")
+  providerWallet        ProviderWallet?
   servicesProvided      Service[]        @relation("ServiceProvider")
   sessions              Session[]
   supportMessagesAsUser SupportMessage[] @relation("SupportUser")
-  studentTransactions   Transaction[]    @relation("StudentTransactions")
   providerTransactions  Transaction[]    @relation("ProviderTransactions")
-  providerWallet        ProviderWallet?
+  studentTransactions   Transaction[]    @relation("StudentTransactions")
 
   @@map("user")
 }
@@ -138,6 +138,7 @@ model Message {
   senderId       String
   content        String
   createdAt      DateTime     @default(now())
+  readAt         DateTime?
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   sender         User         @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
 
@@ -193,34 +194,25 @@ model SupportMessage {
   @@map("support_message")
 }
 
-// Payment Transaction Model
 model Transaction {
-  id                String   @id @default(cuid())
-  bookingId         String
-  studentId         String
-  providerId        String
-  
-  // Payment details (amounts in Ghana Cedis)
-  paystackReference String   @unique
-  totalAmount       Float
+  id                 String    @id @default(cuid())
+  bookingId          String
+  studentId          String
+  providerId         String
+  paystackReference  String    @unique
+  totalAmount        Float
   platformCommission Float
-  providerEarnings  Float
-  commissionRate    Float    @default(0.15)
-  
-  // Payment status
-  status            String   @default("pending")
-  paymentMethod     String?
-  
-  // Timestamps
-  paidAt            DateTime?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  
-  // Relations
-  booking           Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  student           User     @relation("StudentTransactions", fields: [studentId], references: [id])
-  provider          User     @relation("ProviderTransactions", fields: [providerId], references: [id])
-  
+  providerEarnings   Float
+  commissionRate     Float     @default(0.15)
+  status             String    @default("pending")
+  paymentMethod      String?
+  paidAt             DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  booking            Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  provider           User      @relation("ProviderTransactions", fields: [providerId], references: [id])
+  student            User      @relation("StudentTransactions", fields: [studentId], references: [id])
+
   @@index([bookingId])
   @@index([studentId])
   @@index([providerId])
@@ -229,23 +221,17 @@ model Transaction {
   @@map("transaction")
 }
 
-// Provider Wallet Model
 model ProviderWallet {
   id               String   @id @default(cuid())
   providerId       String   @unique
-  
-  // Balances (in Ghana Cedis)
   availableBalance Float    @default(0)
   pendingBalance   Float    @default(0)
   totalEarnings    Float    @default(0)
   totalWithdrawn   Float    @default(0)
-  
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
-  
-  // Relation
   provider         User     @relation(fields: [providerId], references: [id], onDelete: Cascade)
-  
+
   @@map("provider_wallet")
 }
 

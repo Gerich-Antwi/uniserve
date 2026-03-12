@@ -78,6 +78,11 @@ export type Transaction = $Result.DefaultSelection<Prisma.$TransactionPayload>
  * 
  */
 export type ProviderWallet = $Result.DefaultSelection<Prisma.$ProviderWalletPayload>
+/**
+ * Model service_provider_application
+ * 
+ */
+export type service_provider_application = $Result.DefaultSelection<Prisma.$service_provider_applicationPayload>
 
 /**
  * Enums
@@ -99,6 +104,15 @@ export const Role: {
 
 export type Role = (typeof Role)[keyof typeof Role]
 
+
+export const ApplicationStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
+
 }
 
 export type BookingStatus = $Enums.BookingStatus
@@ -108,6 +122,10 @@ export const BookingStatus: typeof $Enums.BookingStatus
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type ApplicationStatus = $Enums.ApplicationStatus
+
+export const ApplicationStatus: typeof $Enums.ApplicationStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -359,6 +377,16 @@ export class PrismaClient<
     * ```
     */
   get providerWallet(): Prisma.ProviderWalletDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.service_provider_application`: Exposes CRUD operations for the **service_provider_application** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Service_provider_applications
+    * const service_provider_applications = await prisma.service_provider_application.findMany()
+    * ```
+    */
+  get service_provider_application(): Prisma.service_provider_applicationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -805,7 +833,8 @@ export namespace Prisma {
     Announcement: 'Announcement',
     SupportMessage: 'SupportMessage',
     Transaction: 'Transaction',
-    ProviderWallet: 'ProviderWallet'
+    ProviderWallet: 'ProviderWallet',
+    service_provider_application: 'service_provider_application'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -821,7 +850,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "service" | "booking" | "conversation" | "messageGroup" | "message" | "verification" | "announcement" | "supportMessage" | "transaction" | "providerWallet"
+      modelProps: "user" | "session" | "account" | "service" | "booking" | "conversation" | "messageGroup" | "message" | "verification" | "announcement" | "supportMessage" | "transaction" | "providerWallet" | "service_provider_application"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1787,6 +1816,80 @@ export namespace Prisma {
           }
         }
       }
+      service_provider_application: {
+        payload: Prisma.$service_provider_applicationPayload<ExtArgs>
+        fields: Prisma.service_provider_applicationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.service_provider_applicationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.service_provider_applicationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>
+          }
+          findFirst: {
+            args: Prisma.service_provider_applicationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.service_provider_applicationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>
+          }
+          findMany: {
+            args: Prisma.service_provider_applicationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>[]
+          }
+          create: {
+            args: Prisma.service_provider_applicationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>
+          }
+          createMany: {
+            args: Prisma.service_provider_applicationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.service_provider_applicationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>[]
+          }
+          delete: {
+            args: Prisma.service_provider_applicationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>
+          }
+          update: {
+            args: Prisma.service_provider_applicationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>
+          }
+          deleteMany: {
+            args: Prisma.service_provider_applicationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.service_provider_applicationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.service_provider_applicationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>[]
+          }
+          upsert: {
+            args: Prisma.service_provider_applicationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$service_provider_applicationPayload>
+          }
+          aggregate: {
+            args: Prisma.Service_provider_applicationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateService_provider_application>
+          }
+          groupBy: {
+            args: Prisma.service_provider_applicationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Service_provider_applicationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.service_provider_applicationCountArgs<ExtArgs>
+            result: $Utils.Optional<Service_provider_applicationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1908,6 +2011,7 @@ export namespace Prisma {
     supportMessage?: SupportMessageOmit
     transaction?: TransactionOmit
     providerWallet?: ProviderWalletOmit
+    service_provider_application?: service_provider_applicationOmit
   }
 
   /* Types for Logging */
@@ -1993,6 +2097,7 @@ export namespace Prisma {
     studentBookings: number
     sentMessages: number
     servicesProvided: number
+    service_provider_application: number
     sessions: number
     supportMessagesAsUser: number
     providerTransactions: number
@@ -2005,6 +2110,7 @@ export namespace Prisma {
     studentBookings?: boolean | UserCountOutputTypeCountStudentBookingsArgs
     sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
     servicesProvided?: boolean | UserCountOutputTypeCountServicesProvidedArgs
+    service_provider_application?: boolean | UserCountOutputTypeCountService_provider_applicationArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     supportMessagesAsUser?: boolean | UserCountOutputTypeCountSupportMessagesAsUserArgs
     providerTransactions?: boolean | UserCountOutputTypeCountProviderTransactionsArgs
@@ -2055,6 +2161,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountServicesProvidedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ServiceWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountService_provider_applicationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: service_provider_applicationWhereInput
   }
 
   /**
@@ -2410,6 +2523,7 @@ export namespace Prisma {
     sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
     providerWallet?: boolean | User$providerWalletArgs<ExtArgs>
     servicesProvided?: boolean | User$servicesProvidedArgs<ExtArgs>
+    service_provider_application?: boolean | User$service_provider_applicationArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     supportMessagesAsUser?: boolean | User$supportMessagesAsUserArgs<ExtArgs>
     providerTransactions?: boolean | User$providerTransactionsArgs<ExtArgs>
@@ -2467,6 +2581,7 @@ export namespace Prisma {
     sentMessages?: boolean | User$sentMessagesArgs<ExtArgs>
     providerWallet?: boolean | User$providerWalletArgs<ExtArgs>
     servicesProvided?: boolean | User$servicesProvidedArgs<ExtArgs>
+    service_provider_application?: boolean | User$service_provider_applicationArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     supportMessagesAsUser?: boolean | User$supportMessagesAsUserArgs<ExtArgs>
     providerTransactions?: boolean | User$providerTransactionsArgs<ExtArgs>
@@ -2485,6 +2600,7 @@ export namespace Prisma {
       sentMessages: Prisma.$MessagePayload<ExtArgs>[]
       providerWallet: Prisma.$ProviderWalletPayload<ExtArgs> | null
       servicesProvided: Prisma.$ServicePayload<ExtArgs>[]
+      service_provider_application: Prisma.$service_provider_applicationPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       supportMessagesAsUser: Prisma.$SupportMessagePayload<ExtArgs>[]
       providerTransactions: Prisma.$TransactionPayload<ExtArgs>[]
@@ -2902,6 +3018,7 @@ export namespace Prisma {
     sentMessages<T extends User$sentMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     providerWallet<T extends User$providerWalletArgs<ExtArgs> = {}>(args?: Subset<T, User$providerWalletArgs<ExtArgs>>): Prisma__ProviderWalletClient<$Result.GetResult<Prisma.$ProviderWalletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     servicesProvided<T extends User$servicesProvidedArgs<ExtArgs> = {}>(args?: Subset<T, User$servicesProvidedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    service_provider_application<T extends User$service_provider_applicationArgs<ExtArgs> = {}>(args?: Subset<T, User$service_provider_applicationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     supportMessagesAsUser<T extends User$supportMessagesAsUserArgs<ExtArgs> = {}>(args?: Subset<T, User$supportMessagesAsUserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupportMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     providerTransactions<T extends User$providerTransactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$providerTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3470,6 +3587,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
+  }
+
+  /**
+   * User.service_provider_application
+   */
+  export type User$service_provider_applicationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    where?: service_provider_applicationWhereInput
+    orderBy?: service_provider_applicationOrderByWithRelationInput | service_provider_applicationOrderByWithRelationInput[]
+    cursor?: service_provider_applicationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Service_provider_applicationScalarFieldEnum | Service_provider_applicationScalarFieldEnum[]
   }
 
   /**
@@ -16947,6 +17088,1103 @@ export namespace Prisma {
 
 
   /**
+   * Model service_provider_application
+   */
+
+  export type AggregateService_provider_application = {
+    _count: Service_provider_applicationCountAggregateOutputType | null
+    _min: Service_provider_applicationMinAggregateOutputType | null
+    _max: Service_provider_applicationMaxAggregateOutputType | null
+  }
+
+  export type Service_provider_applicationMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    businessName: string | null
+    description: string | null
+    category: string | null
+    status: $Enums.ApplicationStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Service_provider_applicationMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    businessName: string | null
+    description: string | null
+    category: string | null
+    status: $Enums.ApplicationStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Service_provider_applicationCountAggregateOutputType = {
+    id: number
+    userId: number
+    businessName: number
+    description: number
+    category: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Service_provider_applicationMinAggregateInputType = {
+    id?: true
+    userId?: true
+    businessName?: true
+    description?: true
+    category?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Service_provider_applicationMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    businessName?: true
+    description?: true
+    category?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Service_provider_applicationCountAggregateInputType = {
+    id?: true
+    userId?: true
+    businessName?: true
+    description?: true
+    category?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Service_provider_applicationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which service_provider_application to aggregate.
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of service_provider_applications to fetch.
+     */
+    orderBy?: service_provider_applicationOrderByWithRelationInput | service_provider_applicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: service_provider_applicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` service_provider_applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` service_provider_applications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned service_provider_applications
+    **/
+    _count?: true | Service_provider_applicationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Service_provider_applicationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Service_provider_applicationMaxAggregateInputType
+  }
+
+  export type GetService_provider_applicationAggregateType<T extends Service_provider_applicationAggregateArgs> = {
+        [P in keyof T & keyof AggregateService_provider_application]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateService_provider_application[P]>
+      : GetScalarType<T[P], AggregateService_provider_application[P]>
+  }
+
+
+
+
+  export type service_provider_applicationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: service_provider_applicationWhereInput
+    orderBy?: service_provider_applicationOrderByWithAggregationInput | service_provider_applicationOrderByWithAggregationInput[]
+    by: Service_provider_applicationScalarFieldEnum[] | Service_provider_applicationScalarFieldEnum
+    having?: service_provider_applicationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Service_provider_applicationCountAggregateInputType | true
+    _min?: Service_provider_applicationMinAggregateInputType
+    _max?: Service_provider_applicationMaxAggregateInputType
+  }
+
+  export type Service_provider_applicationGroupByOutputType = {
+    id: string
+    userId: string
+    businessName: string
+    description: string
+    category: string
+    status: $Enums.ApplicationStatus
+    createdAt: Date
+    updatedAt: Date
+    _count: Service_provider_applicationCountAggregateOutputType | null
+    _min: Service_provider_applicationMinAggregateOutputType | null
+    _max: Service_provider_applicationMaxAggregateOutputType | null
+  }
+
+  type GetService_provider_applicationGroupByPayload<T extends service_provider_applicationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Service_provider_applicationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Service_provider_applicationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Service_provider_applicationGroupByOutputType[P]>
+            : GetScalarType<T[P], Service_provider_applicationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type service_provider_applicationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    businessName?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["service_provider_application"]>
+
+  export type service_provider_applicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    businessName?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["service_provider_application"]>
+
+  export type service_provider_applicationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    businessName?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["service_provider_application"]>
+
+  export type service_provider_applicationSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    businessName?: boolean
+    description?: boolean
+    category?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type service_provider_applicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "businessName" | "description" | "category" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["service_provider_application"]>
+  export type service_provider_applicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type service_provider_applicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type service_provider_applicationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $service_provider_applicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "service_provider_application"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      businessName: string
+      description: string
+      category: string
+      status: $Enums.ApplicationStatus
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["service_provider_application"]>
+    composites: {}
+  }
+
+  type service_provider_applicationGetPayload<S extends boolean | null | undefined | service_provider_applicationDefaultArgs> = $Result.GetResult<Prisma.$service_provider_applicationPayload, S>
+
+  type service_provider_applicationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<service_provider_applicationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Service_provider_applicationCountAggregateInputType | true
+    }
+
+  export interface service_provider_applicationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['service_provider_application'], meta: { name: 'service_provider_application' } }
+    /**
+     * Find zero or one Service_provider_application that matches the filter.
+     * @param {service_provider_applicationFindUniqueArgs} args - Arguments to find a Service_provider_application
+     * @example
+     * // Get one Service_provider_application
+     * const service_provider_application = await prisma.service_provider_application.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends service_provider_applicationFindUniqueArgs>(args: SelectSubset<T, service_provider_applicationFindUniqueArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Service_provider_application that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {service_provider_applicationFindUniqueOrThrowArgs} args - Arguments to find a Service_provider_application
+     * @example
+     * // Get one Service_provider_application
+     * const service_provider_application = await prisma.service_provider_application.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends service_provider_applicationFindUniqueOrThrowArgs>(args: SelectSubset<T, service_provider_applicationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Service_provider_application that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {service_provider_applicationFindFirstArgs} args - Arguments to find a Service_provider_application
+     * @example
+     * // Get one Service_provider_application
+     * const service_provider_application = await prisma.service_provider_application.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends service_provider_applicationFindFirstArgs>(args?: SelectSubset<T, service_provider_applicationFindFirstArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Service_provider_application that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {service_provider_applicationFindFirstOrThrowArgs} args - Arguments to find a Service_provider_application
+     * @example
+     * // Get one Service_provider_application
+     * const service_provider_application = await prisma.service_provider_application.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends service_provider_applicationFindFirstOrThrowArgs>(args?: SelectSubset<T, service_provider_applicationFindFirstOrThrowArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Service_provider_applications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {service_provider_applicationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Service_provider_applications
+     * const service_provider_applications = await prisma.service_provider_application.findMany()
+     * 
+     * // Get first 10 Service_provider_applications
+     * const service_provider_applications = await prisma.service_provider_application.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const service_provider_applicationWithIdOnly = await prisma.service_provider_application.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends service_provider_applicationFindManyArgs>(args?: SelectSubset<T, service_provider_applicationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Service_provider_application.
+     * @param {service_provider_applicationCreateArgs} args - Arguments to create a Service_provider_application.
+     * @example
+     * // Create one Service_provider_application
+     * const Service_provider_application = await prisma.service_provider_application.create({
+     *   data: {
+     *     // ... data to create a Service_provider_application
+     *   }
+     * })
+     * 
+     */
+    create<T extends service_provider_applicationCreateArgs>(args: SelectSubset<T, service_provider_applicationCreateArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Service_provider_applications.
+     * @param {service_provider_applicationCreateManyArgs} args - Arguments to create many Service_provider_applications.
+     * @example
+     * // Create many Service_provider_applications
+     * const service_provider_application = await prisma.service_provider_application.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends service_provider_applicationCreateManyArgs>(args?: SelectSubset<T, service_provider_applicationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Service_provider_applications and returns the data saved in the database.
+     * @param {service_provider_applicationCreateManyAndReturnArgs} args - Arguments to create many Service_provider_applications.
+     * @example
+     * // Create many Service_provider_applications
+     * const service_provider_application = await prisma.service_provider_application.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Service_provider_applications and only return the `id`
+     * const service_provider_applicationWithIdOnly = await prisma.service_provider_application.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends service_provider_applicationCreateManyAndReturnArgs>(args?: SelectSubset<T, service_provider_applicationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Service_provider_application.
+     * @param {service_provider_applicationDeleteArgs} args - Arguments to delete one Service_provider_application.
+     * @example
+     * // Delete one Service_provider_application
+     * const Service_provider_application = await prisma.service_provider_application.delete({
+     *   where: {
+     *     // ... filter to delete one Service_provider_application
+     *   }
+     * })
+     * 
+     */
+    delete<T extends service_provider_applicationDeleteArgs>(args: SelectSubset<T, service_provider_applicationDeleteArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Service_provider_application.
+     * @param {service_provider_applicationUpdateArgs} args - Arguments to update one Service_provider_application.
+     * @example
+     * // Update one Service_provider_application
+     * const service_provider_application = await prisma.service_provider_application.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends service_provider_applicationUpdateArgs>(args: SelectSubset<T, service_provider_applicationUpdateArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Service_provider_applications.
+     * @param {service_provider_applicationDeleteManyArgs} args - Arguments to filter Service_provider_applications to delete.
+     * @example
+     * // Delete a few Service_provider_applications
+     * const { count } = await prisma.service_provider_application.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends service_provider_applicationDeleteManyArgs>(args?: SelectSubset<T, service_provider_applicationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Service_provider_applications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {service_provider_applicationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Service_provider_applications
+     * const service_provider_application = await prisma.service_provider_application.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends service_provider_applicationUpdateManyArgs>(args: SelectSubset<T, service_provider_applicationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Service_provider_applications and returns the data updated in the database.
+     * @param {service_provider_applicationUpdateManyAndReturnArgs} args - Arguments to update many Service_provider_applications.
+     * @example
+     * // Update many Service_provider_applications
+     * const service_provider_application = await prisma.service_provider_application.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Service_provider_applications and only return the `id`
+     * const service_provider_applicationWithIdOnly = await prisma.service_provider_application.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends service_provider_applicationUpdateManyAndReturnArgs>(args: SelectSubset<T, service_provider_applicationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Service_provider_application.
+     * @param {service_provider_applicationUpsertArgs} args - Arguments to update or create a Service_provider_application.
+     * @example
+     * // Update or create a Service_provider_application
+     * const service_provider_application = await prisma.service_provider_application.upsert({
+     *   create: {
+     *     // ... data to create a Service_provider_application
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Service_provider_application we want to update
+     *   }
+     * })
+     */
+    upsert<T extends service_provider_applicationUpsertArgs>(args: SelectSubset<T, service_provider_applicationUpsertArgs<ExtArgs>>): Prisma__service_provider_applicationClient<$Result.GetResult<Prisma.$service_provider_applicationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Service_provider_applications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {service_provider_applicationCountArgs} args - Arguments to filter Service_provider_applications to count.
+     * @example
+     * // Count the number of Service_provider_applications
+     * const count = await prisma.service_provider_application.count({
+     *   where: {
+     *     // ... the filter for the Service_provider_applications we want to count
+     *   }
+     * })
+    **/
+    count<T extends service_provider_applicationCountArgs>(
+      args?: Subset<T, service_provider_applicationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Service_provider_applicationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Service_provider_application.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Service_provider_applicationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Service_provider_applicationAggregateArgs>(args: Subset<T, Service_provider_applicationAggregateArgs>): Prisma.PrismaPromise<GetService_provider_applicationAggregateType<T>>
+
+    /**
+     * Group by Service_provider_application.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {service_provider_applicationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends service_provider_applicationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: service_provider_applicationGroupByArgs['orderBy'] }
+        : { orderBy?: service_provider_applicationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, service_provider_applicationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetService_provider_applicationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the service_provider_application model
+   */
+  readonly fields: service_provider_applicationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for service_provider_application.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__service_provider_applicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the service_provider_application model
+   */
+  interface service_provider_applicationFieldRefs {
+    readonly id: FieldRef<"service_provider_application", 'String'>
+    readonly userId: FieldRef<"service_provider_application", 'String'>
+    readonly businessName: FieldRef<"service_provider_application", 'String'>
+    readonly description: FieldRef<"service_provider_application", 'String'>
+    readonly category: FieldRef<"service_provider_application", 'String'>
+    readonly status: FieldRef<"service_provider_application", 'ApplicationStatus'>
+    readonly createdAt: FieldRef<"service_provider_application", 'DateTime'>
+    readonly updatedAt: FieldRef<"service_provider_application", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * service_provider_application findUnique
+   */
+  export type service_provider_applicationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * Filter, which service_provider_application to fetch.
+     */
+    where: service_provider_applicationWhereUniqueInput
+  }
+
+  /**
+   * service_provider_application findUniqueOrThrow
+   */
+  export type service_provider_applicationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * Filter, which service_provider_application to fetch.
+     */
+    where: service_provider_applicationWhereUniqueInput
+  }
+
+  /**
+   * service_provider_application findFirst
+   */
+  export type service_provider_applicationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * Filter, which service_provider_application to fetch.
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of service_provider_applications to fetch.
+     */
+    orderBy?: service_provider_applicationOrderByWithRelationInput | service_provider_applicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for service_provider_applications.
+     */
+    cursor?: service_provider_applicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` service_provider_applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` service_provider_applications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of service_provider_applications.
+     */
+    distinct?: Service_provider_applicationScalarFieldEnum | Service_provider_applicationScalarFieldEnum[]
+  }
+
+  /**
+   * service_provider_application findFirstOrThrow
+   */
+  export type service_provider_applicationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * Filter, which service_provider_application to fetch.
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of service_provider_applications to fetch.
+     */
+    orderBy?: service_provider_applicationOrderByWithRelationInput | service_provider_applicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for service_provider_applications.
+     */
+    cursor?: service_provider_applicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` service_provider_applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` service_provider_applications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of service_provider_applications.
+     */
+    distinct?: Service_provider_applicationScalarFieldEnum | Service_provider_applicationScalarFieldEnum[]
+  }
+
+  /**
+   * service_provider_application findMany
+   */
+  export type service_provider_applicationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * Filter, which service_provider_applications to fetch.
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of service_provider_applications to fetch.
+     */
+    orderBy?: service_provider_applicationOrderByWithRelationInput | service_provider_applicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing service_provider_applications.
+     */
+    cursor?: service_provider_applicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` service_provider_applications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` service_provider_applications.
+     */
+    skip?: number
+    distinct?: Service_provider_applicationScalarFieldEnum | Service_provider_applicationScalarFieldEnum[]
+  }
+
+  /**
+   * service_provider_application create
+   */
+  export type service_provider_applicationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a service_provider_application.
+     */
+    data: XOR<service_provider_applicationCreateInput, service_provider_applicationUncheckedCreateInput>
+  }
+
+  /**
+   * service_provider_application createMany
+   */
+  export type service_provider_applicationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many service_provider_applications.
+     */
+    data: service_provider_applicationCreateManyInput | service_provider_applicationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * service_provider_application createManyAndReturn
+   */
+  export type service_provider_applicationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * The data used to create many service_provider_applications.
+     */
+    data: service_provider_applicationCreateManyInput | service_provider_applicationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * service_provider_application update
+   */
+  export type service_provider_applicationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a service_provider_application.
+     */
+    data: XOR<service_provider_applicationUpdateInput, service_provider_applicationUncheckedUpdateInput>
+    /**
+     * Choose, which service_provider_application to update.
+     */
+    where: service_provider_applicationWhereUniqueInput
+  }
+
+  /**
+   * service_provider_application updateMany
+   */
+  export type service_provider_applicationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update service_provider_applications.
+     */
+    data: XOR<service_provider_applicationUpdateManyMutationInput, service_provider_applicationUncheckedUpdateManyInput>
+    /**
+     * Filter which service_provider_applications to update
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * Limit how many service_provider_applications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * service_provider_application updateManyAndReturn
+   */
+  export type service_provider_applicationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * The data used to update service_provider_applications.
+     */
+    data: XOR<service_provider_applicationUpdateManyMutationInput, service_provider_applicationUncheckedUpdateManyInput>
+    /**
+     * Filter which service_provider_applications to update
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * Limit how many service_provider_applications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * service_provider_application upsert
+   */
+  export type service_provider_applicationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the service_provider_application to update in case it exists.
+     */
+    where: service_provider_applicationWhereUniqueInput
+    /**
+     * In case the service_provider_application found by the `where` argument doesn't exist, create a new service_provider_application with this data.
+     */
+    create: XOR<service_provider_applicationCreateInput, service_provider_applicationUncheckedCreateInput>
+    /**
+     * In case the service_provider_application was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<service_provider_applicationUpdateInput, service_provider_applicationUncheckedUpdateInput>
+  }
+
+  /**
+   * service_provider_application delete
+   */
+  export type service_provider_applicationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+    /**
+     * Filter which service_provider_application to delete.
+     */
+    where: service_provider_applicationWhereUniqueInput
+  }
+
+  /**
+   * service_provider_application deleteMany
+   */
+  export type service_provider_applicationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which service_provider_applications to delete
+     */
+    where?: service_provider_applicationWhereInput
+    /**
+     * Limit how many service_provider_applications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * service_provider_application without action
+   */
+  export type service_provider_applicationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the service_provider_application
+     */
+    select?: service_provider_applicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the service_provider_application
+     */
+    omit?: service_provider_applicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: service_provider_applicationInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -17149,6 +18387,20 @@ export namespace Prisma {
   export type ProviderWalletScalarFieldEnum = (typeof ProviderWalletScalarFieldEnum)[keyof typeof ProviderWalletScalarFieldEnum]
 
 
+  export const Service_provider_applicationScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    businessName: 'businessName',
+    description: 'description',
+    category: 'category',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Service_provider_applicationScalarFieldEnum = (typeof Service_provider_applicationScalarFieldEnum)[keyof typeof Service_provider_applicationScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -17286,6 +18538,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ApplicationStatus'
+   */
+  export type EnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ApplicationStatus[]'
+   */
+  export type ListEnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -17323,6 +18589,7 @@ export namespace Prisma {
     sentMessages?: MessageListRelationFilter
     providerWallet?: XOR<ProviderWalletNullableScalarRelationFilter, ProviderWalletWhereInput> | null
     servicesProvided?: ServiceListRelationFilter
+    service_provider_application?: Service_provider_applicationListRelationFilter
     sessions?: SessionListRelationFilter
     supportMessagesAsUser?: SupportMessageListRelationFilter
     providerTransactions?: TransactionListRelationFilter
@@ -17347,6 +18614,7 @@ export namespace Prisma {
     sentMessages?: MessageOrderByRelationAggregateInput
     providerWallet?: ProviderWalletOrderByWithRelationInput
     servicesProvided?: ServiceOrderByRelationAggregateInput
+    service_provider_application?: service_provider_applicationOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
     supportMessagesAsUser?: SupportMessageOrderByRelationAggregateInput
     providerTransactions?: TransactionOrderByRelationAggregateInput
@@ -17374,6 +18642,7 @@ export namespace Prisma {
     sentMessages?: MessageListRelationFilter
     providerWallet?: XOR<ProviderWalletNullableScalarRelationFilter, ProviderWalletWhereInput> | null
     servicesProvided?: ServiceListRelationFilter
+    service_provider_application?: Service_provider_applicationListRelationFilter
     sessions?: SessionListRelationFilter
     supportMessagesAsUser?: SupportMessageListRelationFilter
     providerTransactions?: TransactionListRelationFilter
@@ -18302,6 +19571,76 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ProviderWallet"> | Date | string
   }
 
+  export type service_provider_applicationWhereInput = {
+    AND?: service_provider_applicationWhereInput | service_provider_applicationWhereInput[]
+    OR?: service_provider_applicationWhereInput[]
+    NOT?: service_provider_applicationWhereInput | service_provider_applicationWhereInput[]
+    id?: StringFilter<"service_provider_application"> | string
+    userId?: StringFilter<"service_provider_application"> | string
+    businessName?: StringFilter<"service_provider_application"> | string
+    description?: StringFilter<"service_provider_application"> | string
+    category?: StringFilter<"service_provider_application"> | string
+    status?: EnumApplicationStatusFilter<"service_provider_application"> | $Enums.ApplicationStatus
+    createdAt?: DateTimeFilter<"service_provider_application"> | Date | string
+    updatedAt?: DateTimeFilter<"service_provider_application"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type service_provider_applicationOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    businessName?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type service_provider_applicationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: service_provider_applicationWhereInput | service_provider_applicationWhereInput[]
+    OR?: service_provider_applicationWhereInput[]
+    NOT?: service_provider_applicationWhereInput | service_provider_applicationWhereInput[]
+    userId?: StringFilter<"service_provider_application"> | string
+    businessName?: StringFilter<"service_provider_application"> | string
+    description?: StringFilter<"service_provider_application"> | string
+    category?: StringFilter<"service_provider_application"> | string
+    status?: EnumApplicationStatusFilter<"service_provider_application"> | $Enums.ApplicationStatus
+    createdAt?: DateTimeFilter<"service_provider_application"> | Date | string
+    updatedAt?: DateTimeFilter<"service_provider_application"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type service_provider_applicationOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    businessName?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: service_provider_applicationCountOrderByAggregateInput
+    _max?: service_provider_applicationMaxOrderByAggregateInput
+    _min?: service_provider_applicationMinOrderByAggregateInput
+  }
+
+  export type service_provider_applicationScalarWhereWithAggregatesInput = {
+    AND?: service_provider_applicationScalarWhereWithAggregatesInput | service_provider_applicationScalarWhereWithAggregatesInput[]
+    OR?: service_provider_applicationScalarWhereWithAggregatesInput[]
+    NOT?: service_provider_applicationScalarWhereWithAggregatesInput | service_provider_applicationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"service_provider_application"> | string
+    userId?: StringWithAggregatesFilter<"service_provider_application"> | string
+    businessName?: StringWithAggregatesFilter<"service_provider_application"> | string
+    description?: StringWithAggregatesFilter<"service_provider_application"> | string
+    category?: StringWithAggregatesFilter<"service_provider_application"> | string
+    status?: EnumApplicationStatusWithAggregatesFilter<"service_provider_application"> | $Enums.ApplicationStatus
+    createdAt?: DateTimeWithAggregatesFilter<"service_provider_application"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"service_provider_application"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -18320,6 +19659,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -18344,6 +19684,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -18368,6 +19709,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -18392,6 +19734,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -19397,6 +20740,82 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type service_provider_applicationCreateInput = {
+    id: string
+    businessName: string
+    description: string
+    category: string
+    status?: $Enums.ApplicationStatus
+    createdAt?: Date | string
+    updatedAt: Date | string
+    user: UserCreateNestedOneWithoutService_provider_applicationInput
+  }
+
+  export type service_provider_applicationUncheckedCreateInput = {
+    id: string
+    userId: string
+    businessName: string
+    description: string
+    category: string
+    status?: $Enums.ApplicationStatus
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type service_provider_applicationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutService_provider_applicationNestedInput
+  }
+
+  export type service_provider_applicationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type service_provider_applicationCreateManyInput = {
+    id: string
+    userId: string
+    businessName: string
+    description: string
+    category: string
+    status?: $Enums.ApplicationStatus
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type service_provider_applicationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type service_provider_applicationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -19479,6 +20898,12 @@ export namespace Prisma {
     none?: ServiceWhereInput
   }
 
+  export type Service_provider_applicationListRelationFilter = {
+    every?: service_provider_applicationWhereInput
+    some?: service_provider_applicationWhereInput
+    none?: service_provider_applicationWhereInput
+  }
+
   export type SessionListRelationFilter = {
     every?: SessionWhereInput
     some?: SessionWhereInput
@@ -19515,6 +20940,10 @@ export namespace Prisma {
   }
 
   export type ServiceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type service_provider_applicationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20227,6 +21656,56 @@ export namespace Prisma {
     totalWithdrawn?: SortOrder
   }
 
+  export type EnumApplicationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
+  }
+
+  export type service_provider_applicationCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    businessName?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type service_provider_applicationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    businessName?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type service_provider_applicationMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    businessName?: SortOrder
+    description?: SortOrder
+    category?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumApplicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.ApplicationStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumApplicationStatusFilter<$PrismaModel>
+    _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
+  }
+
   export type AccountCreateNestedManyWithoutUserInput = {
     create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
     connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
@@ -20266,6 +21745,13 @@ export namespace Prisma {
     connectOrCreate?: ServiceCreateOrConnectWithoutProviderInput | ServiceCreateOrConnectWithoutProviderInput[]
     createMany?: ServiceCreateManyProviderInputEnvelope
     connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+  }
+
+  export type service_provider_applicationCreateNestedManyWithoutUserInput = {
+    create?: XOR<service_provider_applicationCreateWithoutUserInput, service_provider_applicationUncheckedCreateWithoutUserInput> | service_provider_applicationCreateWithoutUserInput[] | service_provider_applicationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: service_provider_applicationCreateOrConnectWithoutUserInput | service_provider_applicationCreateOrConnectWithoutUserInput[]
+    createMany?: service_provider_applicationCreateManyUserInputEnvelope
+    connect?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -20335,6 +21821,13 @@ export namespace Prisma {
     connectOrCreate?: ServiceCreateOrConnectWithoutProviderInput | ServiceCreateOrConnectWithoutProviderInput[]
     createMany?: ServiceCreateManyProviderInputEnvelope
     connect?: ServiceWhereUniqueInput | ServiceWhereUniqueInput[]
+  }
+
+  export type service_provider_applicationUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<service_provider_applicationCreateWithoutUserInput, service_provider_applicationUncheckedCreateWithoutUserInput> | service_provider_applicationCreateWithoutUserInput[] | service_provider_applicationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: service_provider_applicationCreateOrConnectWithoutUserInput | service_provider_applicationCreateOrConnectWithoutUserInput[]
+    createMany?: service_provider_applicationCreateManyUserInputEnvelope
+    connect?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -20463,6 +21956,20 @@ export namespace Prisma {
     update?: ServiceUpdateWithWhereUniqueWithoutProviderInput | ServiceUpdateWithWhereUniqueWithoutProviderInput[]
     updateMany?: ServiceUpdateManyWithWhereWithoutProviderInput | ServiceUpdateManyWithWhereWithoutProviderInput[]
     deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+  }
+
+  export type service_provider_applicationUpdateManyWithoutUserNestedInput = {
+    create?: XOR<service_provider_applicationCreateWithoutUserInput, service_provider_applicationUncheckedCreateWithoutUserInput> | service_provider_applicationCreateWithoutUserInput[] | service_provider_applicationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: service_provider_applicationCreateOrConnectWithoutUserInput | service_provider_applicationCreateOrConnectWithoutUserInput[]
+    upsert?: service_provider_applicationUpsertWithWhereUniqueWithoutUserInput | service_provider_applicationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: service_provider_applicationCreateManyUserInputEnvelope
+    set?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    disconnect?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    delete?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    connect?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    update?: service_provider_applicationUpdateWithWhereUniqueWithoutUserInput | service_provider_applicationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: service_provider_applicationUpdateManyWithWhereWithoutUserInput | service_provider_applicationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: service_provider_applicationScalarWhereInput | service_provider_applicationScalarWhereInput[]
   }
 
   export type SessionUpdateManyWithoutUserNestedInput = {
@@ -20599,6 +22106,20 @@ export namespace Prisma {
     update?: ServiceUpdateWithWhereUniqueWithoutProviderInput | ServiceUpdateWithWhereUniqueWithoutProviderInput[]
     updateMany?: ServiceUpdateManyWithWhereWithoutProviderInput | ServiceUpdateManyWithWhereWithoutProviderInput[]
     deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
+  }
+
+  export type service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<service_provider_applicationCreateWithoutUserInput, service_provider_applicationUncheckedCreateWithoutUserInput> | service_provider_applicationCreateWithoutUserInput[] | service_provider_applicationUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: service_provider_applicationCreateOrConnectWithoutUserInput | service_provider_applicationCreateOrConnectWithoutUserInput[]
+    upsert?: service_provider_applicationUpsertWithWhereUniqueWithoutUserInput | service_provider_applicationUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: service_provider_applicationCreateManyUserInputEnvelope
+    set?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    disconnect?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    delete?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    connect?: service_provider_applicationWhereUniqueInput | service_provider_applicationWhereUniqueInput[]
+    update?: service_provider_applicationUpdateWithWhereUniqueWithoutUserInput | service_provider_applicationUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: service_provider_applicationUpdateManyWithWhereWithoutUserInput | service_provider_applicationUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: service_provider_applicationScalarWhereInput | service_provider_applicationScalarWhereInput[]
   }
 
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -21083,6 +22604,24 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProviderWalletInput, UserUpdateWithoutProviderWalletInput>, UserUncheckedUpdateWithoutProviderWalletInput>
   }
 
+  export type UserCreateNestedOneWithoutService_provider_applicationInput = {
+    create?: XOR<UserCreateWithoutService_provider_applicationInput, UserUncheckedCreateWithoutService_provider_applicationInput>
+    connectOrCreate?: UserCreateOrConnectWithoutService_provider_applicationInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumApplicationStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ApplicationStatus
+  }
+
+  export type UserUpdateOneRequiredWithoutService_provider_applicationNestedInput = {
+    create?: XOR<UserCreateWithoutService_provider_applicationInput, UserUncheckedCreateWithoutService_provider_applicationInput>
+    connectOrCreate?: UserCreateOrConnectWithoutService_provider_applicationInput
+    upsert?: UserUpsertWithoutService_provider_applicationInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutService_provider_applicationInput, UserUpdateWithoutService_provider_applicationInput>, UserUncheckedUpdateWithoutService_provider_applicationInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -21314,6 +22853,23 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedEnumApplicationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusFilter<$PrismaModel> | $Enums.ApplicationStatus
+  }
+
+  export type NestedEnumApplicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApplicationStatus | EnumApplicationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApplicationStatus[] | ListEnumApplicationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumApplicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.ApplicationStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumApplicationStatusFilter<$PrismaModel>
+    _max?: NestedEnumApplicationStatusFilter<$PrismaModel>
+  }
+
   export type AccountCreateWithoutUserInput = {
     id: string
     accountId: string
@@ -21506,6 +23062,36 @@ export namespace Prisma {
 
   export type ServiceCreateManyProviderInputEnvelope = {
     data: ServiceCreateManyProviderInput | ServiceCreateManyProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type service_provider_applicationCreateWithoutUserInput = {
+    id: string
+    businessName: string
+    description: string
+    category: string
+    status?: $Enums.ApplicationStatus
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type service_provider_applicationUncheckedCreateWithoutUserInput = {
+    id: string
+    businessName: string
+    description: string
+    category: string
+    status?: $Enums.ApplicationStatus
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type service_provider_applicationCreateOrConnectWithoutUserInput = {
+    where: service_provider_applicationWhereUniqueInput
+    create: XOR<service_provider_applicationCreateWithoutUserInput, service_provider_applicationUncheckedCreateWithoutUserInput>
+  }
+
+  export type service_provider_applicationCreateManyUserInputEnvelope = {
+    data: service_provider_applicationCreateManyUserInput | service_provider_applicationCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -21823,6 +23409,36 @@ export namespace Prisma {
     operatingHours?: StringNullableFilter<"Service"> | string | null
   }
 
+  export type service_provider_applicationUpsertWithWhereUniqueWithoutUserInput = {
+    where: service_provider_applicationWhereUniqueInput
+    update: XOR<service_provider_applicationUpdateWithoutUserInput, service_provider_applicationUncheckedUpdateWithoutUserInput>
+    create: XOR<service_provider_applicationCreateWithoutUserInput, service_provider_applicationUncheckedCreateWithoutUserInput>
+  }
+
+  export type service_provider_applicationUpdateWithWhereUniqueWithoutUserInput = {
+    where: service_provider_applicationWhereUniqueInput
+    data: XOR<service_provider_applicationUpdateWithoutUserInput, service_provider_applicationUncheckedUpdateWithoutUserInput>
+  }
+
+  export type service_provider_applicationUpdateManyWithWhereWithoutUserInput = {
+    where: service_provider_applicationScalarWhereInput
+    data: XOR<service_provider_applicationUpdateManyMutationInput, service_provider_applicationUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type service_provider_applicationScalarWhereInput = {
+    AND?: service_provider_applicationScalarWhereInput | service_provider_applicationScalarWhereInput[]
+    OR?: service_provider_applicationScalarWhereInput[]
+    NOT?: service_provider_applicationScalarWhereInput | service_provider_applicationScalarWhereInput[]
+    id?: StringFilter<"service_provider_application"> | string
+    userId?: StringFilter<"service_provider_application"> | string
+    businessName?: StringFilter<"service_provider_application"> | string
+    description?: StringFilter<"service_provider_application"> | string
+    category?: StringFilter<"service_provider_application"> | string
+    status?: EnumApplicationStatusFilter<"service_provider_application"> | $Enums.ApplicationStatus
+    createdAt?: DateTimeFilter<"service_provider_application"> | Date | string
+    updatedAt?: DateTimeFilter<"service_provider_application"> | Date | string
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -21952,6 +23568,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
     studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
@@ -21975,6 +23592,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
     studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
@@ -22014,6 +23632,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
     studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
@@ -22037,6 +23656,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
     studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
@@ -22059,6 +23679,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -22082,6 +23703,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -22121,6 +23743,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -22144,6 +23767,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -22201,6 +23825,7 @@ export namespace Prisma {
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -22224,6 +23849,7 @@ export namespace Prisma {
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -22279,6 +23905,7 @@ export namespace Prisma {
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -22302,6 +23929,7 @@ export namespace Prisma {
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -22325,6 +23953,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -22348,6 +23977,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -22407,6 +24037,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -22430,6 +24061,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -22532,6 +24164,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -22555,6 +24188,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -22626,6 +24260,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -22649,6 +24284,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -22938,6 +24574,7 @@ export namespace Prisma {
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -22961,6 +24598,7 @@ export namespace Prisma {
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -23027,6 +24665,7 @@ export namespace Prisma {
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -23050,6 +24689,7 @@ export namespace Prisma {
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -23074,6 +24714,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
     studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
@@ -23097,6 +24738,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
     studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
@@ -23136,6 +24778,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
     studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
@@ -23159,6 +24802,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
     studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
@@ -23211,6 +24855,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
@@ -23234,6 +24879,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
@@ -23262,6 +24908,7 @@ export namespace Prisma {
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -23285,6 +24932,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -23359,6 +25007,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
@@ -23382,6 +25031,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
@@ -23416,6 +25066,7 @@ export namespace Prisma {
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -23439,6 +25090,7 @@ export namespace Prisma {
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
     providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
@@ -23461,6 +25113,7 @@ export namespace Prisma {
     studentBookings?: BookingCreateNestedManyWithoutStudentInput
     sentMessages?: MessageCreateNestedManyWithoutSenderInput
     servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
@@ -23484,6 +25137,7 @@ export namespace Prisma {
     studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
     sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
     servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    service_provider_application?: service_provider_applicationUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
     providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
@@ -23523,6 +25177,7 @@ export namespace Prisma {
     studentBookings?: BookingUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUpdateManyWithoutSenderNestedInput
     servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
     providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
@@ -23545,6 +25200,119 @@ export namespace Prisma {
     providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
     studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
     sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
+    service_provider_application?: service_provider_applicationUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUncheckedUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserCreateWithoutService_provider_applicationInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    providerBookings?: BookingCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageCreateNestedManyWithoutSenderInput
+    providerWallet?: ProviderWalletCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceCreateNestedManyWithoutProviderInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    supportMessagesAsUser?: SupportMessageCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutService_provider_applicationInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    phoneNumber?: string | null
+    location?: string | null
+    bio?: string | null
+    role?: $Enums.Role
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    providerBookings?: BookingUncheckedCreateNestedManyWithoutProviderInput
+    studentBookings?: BookingUncheckedCreateNestedManyWithoutStudentInput
+    sentMessages?: MessageUncheckedCreateNestedManyWithoutSenderInput
+    providerWallet?: ProviderWalletUncheckedCreateNestedOneWithoutProviderInput
+    servicesProvided?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    supportMessagesAsUser?: SupportMessageUncheckedCreateNestedManyWithoutUserInput
+    providerTransactions?: TransactionUncheckedCreateNestedManyWithoutProviderInput
+    studentTransactions?: TransactionUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutService_provider_applicationInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutService_provider_applicationInput, UserUncheckedCreateWithoutService_provider_applicationInput>
+  }
+
+  export type UserUpsertWithoutService_provider_applicationInput = {
+    update: XOR<UserUpdateWithoutService_provider_applicationInput, UserUncheckedUpdateWithoutService_provider_applicationInput>
+    create: XOR<UserCreateWithoutService_provider_applicationInput, UserUncheckedCreateWithoutService_provider_applicationInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutService_provider_applicationInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutService_provider_applicationInput, UserUncheckedUpdateWithoutService_provider_applicationInput>
+  }
+
+  export type UserUpdateWithoutService_provider_applicationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUpdateManyWithoutSenderNestedInput
+    providerWallet?: ProviderWalletUpdateOneWithoutProviderNestedInput
+    servicesProvided?: ServiceUpdateManyWithoutProviderNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    supportMessagesAsUser?: SupportMessageUpdateManyWithoutUserNestedInput
+    providerTransactions?: TransactionUpdateManyWithoutProviderNestedInput
+    studentTransactions?: TransactionUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutService_provider_applicationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    providerBookings?: BookingUncheckedUpdateManyWithoutProviderNestedInput
+    studentBookings?: BookingUncheckedUpdateManyWithoutStudentNestedInput
+    sentMessages?: MessageUncheckedUpdateManyWithoutSenderNestedInput
+    providerWallet?: ProviderWalletUncheckedUpdateOneWithoutProviderNestedInput
     servicesProvided?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     supportMessagesAsUser?: SupportMessageUncheckedUpdateManyWithoutUserNestedInput
@@ -23605,6 +25373,16 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+  }
+
+  export type service_provider_applicationCreateManyUserInput = {
+    id: string
+    businessName: string
+    description: string
+    category: string
+    status?: $Enums.ApplicationStatus
+    createdAt?: Date | string
+    updatedAt: Date | string
   }
 
   export type SessionCreateManyUserInput = {
@@ -23831,6 +25609,36 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type service_provider_applicationUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type service_provider_applicationUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type service_provider_applicationUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    businessName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SessionUpdateWithoutUserInput = {

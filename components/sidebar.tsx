@@ -12,7 +12,8 @@ import {
     User as UserIcon,
     Settings,
     LifeBuoy,
-    MessageCircle
+    MessageCircle,
+    Calendar
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -72,6 +73,12 @@ export function Sidebar() {
             href: "/services",
             icon: Briefcase,
             active: pathname.startsWith("/services"),
+        },
+        {
+            title: "My Bookings",
+            href: "/bookings",
+            icon: Calendar,
+            active: pathname.startsWith("/bookings"),
         },
         {
             title: "Announcements",

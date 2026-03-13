@@ -13,7 +13,8 @@ import {
     Settings,
     LifeBuoy,
     MessageCircle,
-    Calendar
+    Calendar,
+    ShoppingCart
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -27,6 +28,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { signOut } from "@/lib/auth-client"
+import { useCartStore } from "@/lib/cart-store"
 
 interface SidebarProps {
     /** When true, sidebar is always visible (e.g. inside mobile sheet). When false, hidden on mobile, visible on md+. */
@@ -37,6 +39,8 @@ export function Sidebar({ forceVisible }: SidebarProps = {}) {
     const pathname = usePathname()
     const { data: session, isPending } = useSession()
     const [unreadCount, setUnreadCount] = useState(0)
+    const { getTotalItems } = useCartStore()
+    const cartItemCount = getTotalItems()
 
     const fetchUnreadCount = () => {
         if (!session?.user?.id) return
@@ -78,6 +82,12 @@ export function Sidebar({ forceVisible }: SidebarProps = {}) {
             href: "/services",
             icon: Briefcase,
             active: pathname.startsWith("/services"),
+        },
+        {
+            title: "Cart",
+            href: "/cart",
+            icon: ShoppingCart,
+            active: pathname.startsWith("/cart"),
         },
         {
             title: "My Bookings",
@@ -140,6 +150,14 @@ export function Sidebar({ forceVisible }: SidebarProps = {}) {
                                 title={`${unreadCount} unread message${unreadCount === 1 ? "" : "s"}`}
                             >
                                 {unreadCount > 99 ? "99+" : unreadCount}
+                            </span>
+                        )}
+                        {item.href === "/cart" && cartItemCount > 0 && (
+                            <span
+                                className="flex h-6 min-w-6 items-center justify-center rounded-full bg-green-500 px-1.5 text-xs font-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ring-2 ring-white"
+                                title={`${cartItemCount} item${cartItemCount === 1 ? "" : "s"} in cart`}
+                            >
+                                {cartItemCount > 99 ? "99+" : cartItemCount}
                             </span>
                         )}
                     </Link>

@@ -1,4 +1,3 @@
-
 import { prisma } from "@/lib/prisma"
 import { ServiceCard } from "@/components/service-card"
 import { ServiceSearch } from "@/components/service-search"
@@ -55,13 +54,13 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
         <div className="container py-6 sm:py-8 max-w-7xl mx-auto px-4 md:px-6 min-w-0">
             <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <div className="flex flex-col gap-2">
-                    <h1 className="inline-block text-2xl sm:text-4xl md:text-5xl font-black tracking-tight">
-                        <span className="bg-yellow-300 border-4 border-black px-3 py-1.5 sm:px-4 sm:py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] inline-block -rotate-1">
-                            SERVICES
+                    <h1 className="inline-block text-4xl sm:text-5xl font-black tracking-tight">
+                        <span className="bg-yellow-300 border-4 border-black px-4 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] inline-block -rotate-1">
+                            BROWSE SERVICES
                         </span>
                     </h1>
-                    <p className="text-sm sm:text-base md:text-lg font-bold mt-2 sm:mt-4">
-                        Browse available services from verified providers in your area.
+                    <p className="text-lg font-bold mt-4">
+                        Find the perfect service for your needs.
                     </p>
                 </div>
 
@@ -78,7 +77,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
                     <p className="font-bold text-sm sm:text-base text-muted-foreground">
                         {query || category
                             ? "Try adjusting your search or filters."
-                            : "Check back later for new listings."}
+                            : "Check back later for new services."}
                     </p>
                 </div>
             ) : (
@@ -92,11 +91,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
                             category={service.category}
                             status={service.status}
                             price={service.price}
-                            provider={{
-                                name: service.provider.name,
-                                image: service.provider.image,
-                                location: service.provider.location,
-                            }}
+                            provider={service.provider}
                         />
                     ))}
                 </div>

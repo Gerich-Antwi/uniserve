@@ -1,11 +1,10 @@
-
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Calendar, Clock, MapPin, Phone, User as UserIcon } from "lucide-react"
+import { Clock, User as UserIcon } from "lucide-react"
 import Link from "next/link"
 import { ContactProvider } from "@/components/contact-provider"
 
@@ -81,6 +80,13 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                                     <span>{service.operatingHours}</span>
                                 </div>
                             )}
+                            
+                            {/* Book Now Button */}
+                            <Link href={`/book/${service.id}`} className="w-full mt-4">
+                                <button className="w-full bg-black text-white px-8 py-4 font-black text-xl border-4 border-black hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                                    BOOK NOW →
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
@@ -97,21 +103,21 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                 </div>
 
                 {/* Sidebar / Provider Info */}
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                     <Card className="sticky top-20 bg-purple-100">
-                        <CardHeader>
-                            <CardTitle className="text-lg">About the Provider</CardTitle>
+                        <CardHeader className="p-3 sm:p-6">
+                            <CardTitle className="text-base sm:text-lg">About the Provider</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <Avatar className="h-12 w-12">
+                        <CardContent className="space-y-3 sm:space-y-4 p-3 sm:p-6">
+                            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                                <Avatar className="h-10 w-10 sm:h-12 sm:w-12 shrink-0">
                                     <AvatarImage src={service.provider.image || ""} alt={service.provider.name} />
                                     <AvatarFallback>
                                         <UserIcon className="h-6 w-6" />
                                     </AvatarFallback>
                                 </Avatar>
-                                <div>
-                                    <div className="font-black">{service.provider.name}</div>
+                                <div className="min-w-0 flex-1">
+                                    <div className="font-black truncate">{service.provider.name}</div>
                                     <div className="text-xs font-bold text-muted-foreground">Joined {service.provider.createdAt.toLocaleDateString()}</div>
                                 </div>
                             </div>

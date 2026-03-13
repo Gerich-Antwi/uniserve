@@ -4,14 +4,16 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useSession } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react"
 import {
-    Home,
     Briefcase,
     Bell,
     LogOut,
     User as UserIcon,
     Settings,
-    LifeBuoy
+    LifeBuoy,
+    MessageCircle,
+    Calendar
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -26,18 +28,51 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { signOut } from "@/lib/auth-client"
 
-export function Sidebar() {
+interface SidebarProps {
+    /** When true, sidebar is always visible (e.g. inside mobile sheet). When false, hidden on mobile, visible on md+. */
+    forceVisible?: boolean
+}
+
+export function Sidebar({ forceVisible }: SidebarProps = {}) {
     const pathname = usePathname()
-    // Using better-auth useSession
     const { data: session, isPending } = useSession()
+    const [unreadCount, setUnreadCount] = useState(0)
+
+    const fetchUnreadCount = () => {
+        if (!session?.user?.id) return
+        fetch("/api/messages/unread-count")
+            .then((res) => res.json())
+            .then((data) => setUnreadCount(Number(data.count) || 0))
+            .catch(() => setUnreadCount(0))
+    }
+
+    useEffect(() => {
+        if (!session?.user?.id) {
+            setUnreadCount(0)
+            return
+        }
+        fetchUnreadCount()
+        const interval = setInterval(fetchUnreadCount, 30000)
+        const onRefetch = () => {
+            fetch("/api/messages/unread-count")
+                .then((res) => res.json())
+                .then((data) => setUnreadCount(Number(data.count) || 0))
+                .catch(() => setUnreadCount(0))
+        }
+        window.addEventListener("refetch-unread-count", onRefetch)
+        return () => {
+            clearInterval(interval)
+            window.removeEventListener("refetch-unread-count", onRefetch)
+        }
+    }, [session?.user?.id])
+
+    useEffect(() => {
+        if (session?.user?.id && pathname.startsWith("/chat")) {
+            fetchUnreadCount()
+        }
+    }, [pathname, session?.user?.id])
 
     const navItems = [
-        {
-            title: "Home",
-            href: "/",
-            icon: Home,
-            active: pathname === "/",
-        },
         {
             title: "Services",
             href: "/services",
@@ -45,10 +80,22 @@ export function Sidebar() {
             active: pathname.startsWith("/services"),
         },
         {
+            title: "My Bookings",
+            href: "/bookings",
+            icon: Calendar,
+            active: pathname.startsWith("/bookings"),
+        },
+        {
             title: "Announcements",
             href: "/announcements",
             icon: Bell,
             active: pathname.startsWith("/announcements"),
+        },
+        {
+            title: "Messages",
+            href: "/chat",
+            icon: MessageCircle,
+            active: pathname.startsWith("/chat"),
         },
         {
             title: "Support",
@@ -59,7 +106,10 @@ export function Sidebar() {
     ]
 
     return (
-        <aside className="w-56 border-r-4 border-black bg-white flex flex-col h-screen sticky top-0 hidden md:flex">
+        <aside className={cn(
+            "w-56 border-r-4 border-black bg-white flex flex-col h-screen sticky top-0",
+            !forceVisible && "hidden md:flex"
+        )}>
             {/* Logo */}
             <div className="p-6 border-b-4 border-black">
                 <Link href="/" className="flex items-center gap-1">
@@ -76,14 +126,22 @@ export function Sidebar() {
                         key={item.href}
                         href={item.href}
                         className={cn(
-                            "flex items-center gap-3 px-4 py-3 font-bold text-sm transition-all border-2",
+                            "flex items-center gap-3 px-4 py-3 font-bold text-sm transition-all border-2 relative",
                             item.active
                                 ? "bg-pink-100 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-y-0.5"
                                 : "border-transparent text-muted-foreground hover:bg-gray-100 hover:text-black"
                         )}
                     >
-                        <item.icon className="w-5 h-5" />
-                        {item.title}
+                        <item.icon className="w-5 h-5 shrink-0" />
+                        <span className="flex-1 truncate">{item.title}</span>
+                        {item.href === "/chat" && (Number(unreadCount) || 0) > 0 && (
+                            <span
+                                className="flex h-6 min-w-6 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ring-2 ring-white animate-pulse"
+                                title={`${unreadCount} unread message${unreadCount === 1 ? "" : "s"}`}
+                            >
+                                {unreadCount > 99 ? "99+" : unreadCount}
+                            </span>
+                        )}
                     </Link>
                 ))}
             </div>

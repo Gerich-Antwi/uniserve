@@ -18,7 +18,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-import { BookingStatus } from "@/lib/generated/prisma/enums"
+import { BookingStatus } from "@/lib/generated/prisma/client"
 import type { Prisma } from "@/lib/generated/prisma/client"
 
 type BookingWithRelations = Prisma.BookingGetPayload<{

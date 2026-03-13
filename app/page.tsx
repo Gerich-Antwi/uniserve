@@ -9,7 +9,7 @@ import { LandingOnlyWhenGuest } from "@/components/landing-only-when-guest";
 export default function Home() {
   return (
     <LandingOnlyWhenGuest>
-      <div className="bg-white min-h-screen relative">
+      <div className="bg-white min-h-screen relative min-w-0 overflow-x-hidden">
         <Navbar />
         <Hero />
         <Features />

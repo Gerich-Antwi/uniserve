@@ -1,5 +1,8 @@
+import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { ProviderBookings } from "@/components/provider-bookings"
+import { headers } from "next/headers"
+import { redirect } from "next/navigation"
 
 export const dynamic = "force-dynamic"
 

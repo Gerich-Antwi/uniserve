@@ -4,11 +4,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Calendar, Clock, MapPin, Phone, User as UserIcon } from "lucide-react"
+import { Clock, User as UserIcon } from "lucide-react"
 import Link from "next/link"
-import { BookServiceButton } from "@/components/book-service-button"
-import { auth } from "@/lib/auth"
-import { headers } from "next/headers"
+import { ContactProvider } from "@/components/contact-provider"
 
 export const dynamic = 'force-dynamic'
 
@@ -18,9 +16,6 @@ interface PageProps {
 
 export default async function ServiceDetailsPage({ params }: PageProps) {
     const { id } = await params
-    const session = await auth.api.getSession({
-        headers: await headers()
-    })
 
     const service = await prisma.service.findUnique({
         where: { id },
@@ -134,18 +129,10 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                             )}
 
                             <div className="space-y-3 pt-2 border-t-2 border-black">
-                                {service.providerId !== session?.user?.id ? (
-                                    <BookServiceButton 
-                                        serviceId={service.id}
-                                        serviceName={service.title}
-                                        providerId={service.providerId}
-                                        currentUserId={session?.user?.id}
-                                    />
-                                ) : (
-                                    <div className="p-4 bg-yellow-100 border-2 border-black font-bold text-center">
-                                        This is your service
-                                    </div>
-                                )}
+                                <ContactProvider
+                                    phoneNumber={service.provider.phoneNumber}
+                                    location={service.provider.location}
+                                />
                             </div>
                         </CardContent>
 

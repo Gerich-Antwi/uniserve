@@ -1,7 +1,4 @@
-import { redirect } from "next/navigation"
-import { headers } from "next/headers"
 import { prisma } from "@/lib/prisma"
-import { auth } from "@/lib/auth"
 import { ProviderBookings } from "@/components/provider-bookings"
 
 export const dynamic = "force-dynamic"
@@ -15,14 +12,19 @@ export default async function BookingsPage() {
     redirect("/auth/sign-in")
   }
 
+  const userId = session.user.id
+
+  // Fetch bookings where user is the PROVIDER only
   const bookings = await prisma.booking.findMany({
     where: {
-      providerId: session.user.id,
+      providerId: userId,  // Only bookings where I'm the provider
     },
     include: {
       student: true,
       service: true,
+      provider: true,
       conversation: { select: { id: true } },
+      transactions: true,
     },
     orderBy: [
       { status: "desc" },
@@ -42,7 +44,7 @@ export default async function BookingsPage() {
             View your bookings - both as student and service provider
           </p>
         </header>
-        <ProviderBookings bookings={bookings as any} />
+        <ProviderBookings bookings={bookings as any} currentUserId={userId} />
       </section>
     </main>
   )

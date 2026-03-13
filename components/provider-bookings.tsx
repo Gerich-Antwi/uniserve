@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { format } from "date-fns"
-import { MessageCircle, CheckCircle2, Clock3 } from "lucide-react"
+import { MessageCircle, CheckCircle2, Clock3, DollarSign } from "lucide-react"
 
 import { BookingStatus } from "@/lib/generated/prisma/client"
 import type { Prisma } from "@/lib/generated/prisma/client"
@@ -23,16 +24,25 @@ import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 type BookingWithRelations = Prisma.BookingGetPayload<{
-  include: { student: true; service: true; conversation: { select: { id: true } } }
+  include: { 
+    student: true
+    service: true
+    provider: true
+    conversation: { select: { id: true } }
+    transactions: true
+  }
 }>
 
 interface ProviderBookingsProps {
   bookings: BookingWithRelations[]
+  currentUserId?: string
 }
 
-export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
+export function ProviderBookings({ bookings: initial, currentUserId }: ProviderBookingsProps) {
+  const router = useRouter()
   const [bookings, setBookings] = useState(initial)
   const [loadingId, setLoadingId] = useState<string | null>(null)
+  const [payingId, setPayingId] = useState<string | null>(null)
 
   const handleMarkAttended = async (id: string) => {
     try {
@@ -41,13 +51,42 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
         method: "POST",
       })
       if (!res.ok) {
-        // soft error – future devs can plug in toast system if needed
         console.error("Failed to mark booking as attended")
         return
       }
       setBookings((prev) => prev.map((b) => b.id === id ? { ...b, status: BookingStatus.ATTENDED } : b))
     } finally {
       setLoadingId(null)
+    }
+  }
+
+  const handlePayNow = async (booking: BookingWithRelations) => {
+    try {
+      setPayingId(booking.id)
+      
+      // Initialize payment
+      const paymentResponse = await fetch("/api/payments/initialize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          bookingId: booking.id,
+          studentId: booking.studentId,
+        }),
+      })
+
+      const paymentData = await paymentResponse.json()
+
+      if (paymentData.success) {
+        // Redirect to Paystack
+        window.location.href = paymentData.authorizationUrl
+      } else {
+        alert("Failed to initialize payment")
+        setPayingId(null)
+      }
+    } catch (error) {
+      console.error("Payment error:", error)
+      alert("Failed to initialize payment")
+      setPayingId(null)
     }
   }
 
@@ -65,10 +104,10 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
   }
 
   const sortedBookings = [...bookings].sort((a, b) => {
-    if (a.status === BookingStatus.PENDING && b.status === BookingStatus.ATTENDED) return -1;
-    if (a.status === BookingStatus.ATTENDED && b.status === BookingStatus.PENDING) return 1;
-    return new Date(b.bookedAt).getTime() - new Date(a.bookedAt).getTime();
-  });
+    if (a.status === BookingStatus.PENDING && b.status === BookingStatus.ATTENDED) return -1
+    if (a.status === BookingStatus.ATTENDED && b.status === BookingStatus.PENDING) return 1
+    return new Date(b.bookedAt).getTime() - new Date(a.bookedAt).getTime()
+  })
 
   return (
     <section className="space-y-3 sm:space-y-4">
@@ -109,7 +148,6 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
                     {format(new Date(booking.bookedAt), "dd MMM yyyy, HH:mm")}
                   </span>
                 </div>
-              </div>
 
               <div className="mt-2 sm:mt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
                 {booking.conversation ? (
@@ -189,11 +227,10 @@ export function ProviderBookings({ bookings: initial }: ProviderBookingsProps) {
                   </Button>
                 )}
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          )
+        })}
       </div>
     </section>
   )
 }
-

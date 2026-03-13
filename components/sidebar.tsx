@@ -28,7 +28,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { signOut } from "@/lib/auth-client"
 
-export function Sidebar() {
+interface SidebarProps {
+    /** When true, sidebar is always visible (e.g. inside mobile sheet). When false, hidden on mobile, visible on md+. */
+    forceVisible?: boolean
+}
+
+export function Sidebar({ forceVisible }: SidebarProps = {}) {
     const pathname = usePathname()
     const { data: session, isPending } = useSession()
     const [unreadCount, setUnreadCount] = useState(0)
@@ -101,7 +106,10 @@ export function Sidebar() {
     ]
 
     return (
-        <aside className="w-56 border-r-4 border-black bg-white hidden md:flex flex-col h-screen sticky top-0">
+        <aside className={cn(
+            "w-56 border-r-4 border-black bg-white flex flex-col h-screen sticky top-0",
+            !forceVisible && "hidden md:flex"
+        )}>
             {/* Logo */}
             <div className="p-6 border-b-4 border-black">
                 <Link href="/" className="flex items-center gap-1">

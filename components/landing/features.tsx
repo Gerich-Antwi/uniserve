@@ -215,33 +215,33 @@ export default function Features() {
       {/* Services - Horizontal Scroll with Neo-Brutalism */}
       <section
        ref={sectionRef}
-      className="py-24 bg-white border-b-8 border-black"
+      className="py-12 sm:py-16 md:py-24 bg-white border-b-8 border-black"
       >
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
           <div className="text-center">
-            <h2 className="features-heading inline-block text-5xl sm:text-6xl font-black mb-4 bg-yellow-300 border-6 border-black px-8 py-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <h2 className="features-heading inline-block text-3xl sm:text-5xl md:text-6xl font-black mb-4 bg-yellow-300 border-4 sm:border-6 border-black px-4 sm:px-6 md:px-8 py-3 sm:py-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               WHAT WE OFFER
             </h2>
-            <p className="text-xl font-bold mt-8 max-w-2xl mx-auto">
-              All the essentials, zero hassle 
+            <p className="text-base sm:text-lg md:text-xl font-bold mt-4 sm:mt-8 max-w-2xl mx-auto px-2 sm:px-0">
+              All the essentials, zero hassle
             </p>
           </div>
 
         </div>
 
         <div className="relative">
-          <div className="flex gap-8 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-8 scrollbar-hide">
+          <div className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 scrollbar-hide snap-x snap-mandatory">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.id}
-                  className="services-card  shrink-0 w-80 sm:w-96"
+                  className="services-card shrink-0 w-[280px] sm:w-80 md:w-96 snap-start"
                 >
                   <Link href={`/services`}>
                     <div
-                      className={`group relative h-500px border-6 border-black ${service.rotation} hover:rotate-0 transition-all shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 overflow-hidden`}
+                      className={`group relative min-h-[320px] sm:min-h-[380px] border-4 sm:border-6 border-black ${service.rotation} hover:rotate-0 transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 overflow-hidden`}
                     >
                       {/* Image */}
                       <div className="absolute inset-0">
@@ -263,28 +263,28 @@ export default function Features() {
                       </div>
 
                       {/* Content */}
-                      <div className="relative z-10 h-full p-6 flex flex-col">
+                      <div className="relative z-10 h-full p-4 sm:p-6 flex flex-col">
                         {/* Icon Badge */}
                         <div
-                          className={`w-20 h-20 ${service.color} border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-4`}
+                          className={`w-14 h-14 sm:w-20 sm:h-20 ${service.color} border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-3 sm:mb-4`}
                         >
-                          <Icon className="text-black" size={36} />
+                          <Icon className="text-black w-7 h-7 sm:w-9 sm:h-9" />
                         </div>
 
                         {/* Service Name */}
                         <div className="mt-auto">
-                          <div className="bg-white border-4 border-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-3">
-                            <h3 className="text-3xl font-black mb-1">
+                          <div className="bg-white border-4 border-black p-3 sm:p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-2 sm:mb-3">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-1">
                               {service.name}
                             </h3>
-                            <p className="font-bold text-sm">
+                            <p className="font-bold text-xs sm:text-sm">
                               {service.description}
                             </p>
                           </div>
 
                           {/* Action Button */}
                           <div
-                            className={`${service.color} border-4 border-black px-4 py-3 font-black text-sm flex items-center justify-between group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all`}
+                            className={`${service.color} border-4 border-black px-3 sm:px-4 py-2 sm:py-3 font-black text-xs sm:text-sm flex items-center justify-between group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all`}
                           >
                             <span>LEARN MORE</span>
                             <ArrowRight
@@ -303,9 +303,9 @@ export default function Features() {
         </div>
 
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 sm:mt-12 px-4">
           <Link href="/services" className="inline-block">
-            <div className="bg-pink-300 border-4 border-black px-8 py-4 font-black text-lg hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-1 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <div className="bg-pink-300 border-4 border-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-black text-sm sm:text-base md:text-lg hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-1 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
               VIEW ALL SERVICES →
             </div>
           </Link>
@@ -315,32 +315,32 @@ export default function Features() {
       {/* Features Grid - WHY WE ROCK */}
       <section 
       ref={rocksectionRef}
-      className="py-24 bg-lime-100 border-b-8 border-black">
+      className="py-12 sm:py-16 md:py-24 bg-lime-100 border-b-8 border-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="rock-heading inline-block text-5xl sm:text-6xl font-black mb-4 bg-white border-6 border-black px-8 py-4 -rotate-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="rock-heading inline-block text-3xl sm:text-5xl md:text-6xl font-black mb-4 bg-white border-4 sm:border-6 border-black px-4 sm:px-6 md:px-8 py-3 sm:py-4 -rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               WHY WE ROCK
             </h2>
-            <p className="text-xl font-bold mt-8">
+            <p className="text-base sm:text-lg md:text-xl font-bold mt-4 sm:mt-8 px-2">
               Because your time is precious ⏰
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={index}
-                  className={`features-card ${feature.color} border-6 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${index % 2 === 0 ? "rotate-1" : "-rotate-1"} hover:rotate-0`}
+                  className={`features-card ${feature.color} border-4 sm:border-6 border-black p-4 sm:p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all ${index % 2 === 0 ? "rotate-1" : "-rotate-1"} hover:rotate-0`}
                 >
-                  <div className="w-16 h-16 bg-black border-4 border-black flex items-center justify-center mb-6 rotate-12">
-                    <Icon className="text-white" size={32} />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black border-4 border-black flex items-center justify-center mb-4 sm:mb-6 rotate-12">
+                    <Icon className="text-white w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-2xl font-black mb-3 uppercase">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-black mb-2 sm:mb-3 uppercase">
                     {feature.title}
                   </h3>
-                  <p className="font-bold text-lg">{feature.description}</p>
+                  <p className="font-bold text-sm sm:text-base md:text-lg">{feature.description}</p>
                 </div>
               );
             })}

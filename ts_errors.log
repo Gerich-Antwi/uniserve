@@ -1,0 +1,18 @@
+﻿.next/dev/types/validator.ts(162,31): error TS2344: Type 'typeof import("C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/app/api/provider/bookings/[bookingId]/attend/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/provider/bookings/[bookingId]/attend">'.
+  Types of property 'POST' are incompatible.
+    Type '({ params }: RouteParams) => Promise<NextResponse<unknown>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ bookingId: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__0' and 'request' are incompatible.
+        Property 'params' is missing in type 'NextRequest' but required in type 'RouteParams'.
+.next/dev/types/validator.ts(179,39): error TS2306: File 'C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/app/dashboard/route.ts' is not a module.
+app/services/page.tsx(6,10): error TS2305: Module '"@prisma/client"' has no exported member 'Prisma'.
+components/provider-conversation-shell.tsx(34,5): error TS2345: Argument of type '{ id: string; createdAt: Date; content: string; conversationId: string; senderId: string; }[]' is not assignable to parameter of type 'MessagePayload[] | (() => MessagePayload[])'.
+  Type '{ id: string; createdAt: Date; content: string; conversationId: string; senderId: string; }[]' is not assignable to type 'MessagePayload[]'.
+    Type '{ id: string; createdAt: Date; content: string; conversationId: string; senderId: string; }' is not assignable to type 'MessagePayload'.
+      Types of property 'createdAt' are incompatible.
+        Type 'Date' is not assignable to type 'string'.
+components/ui/resizable.tsx(12,51): error TS2339: Property 'PanelGroup' does not exist on type 'typeof import("C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+components/ui/resizable.tsx(14,25): error TS2339: Property 'PanelGroup' does not exist on type 'typeof import("C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+components/ui/resizable.tsx(35,51): error TS2339: Property 'PanelResizeHandle' does not exist on type 'typeof import("C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+components/ui/resizable.tsx(39,25): error TS2339: Property 'PanelResizeHandle' does not exist on type 'typeof import("C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+components/ui/resizable.tsx(52,26): error TS2339: Property 'PanelResizeHandle' does not exist on type 'typeof import("C:/Users/dell/OneDrive/Desktop/Web_Development Group Project/uniserve/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+components/ui/sidebar.tsx(8,29): error TS2307: Cannot find module '@/hooks/use-mobile' or its corresponding type declarations.

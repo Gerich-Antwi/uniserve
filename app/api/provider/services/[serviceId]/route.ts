@@ -1,5 +1,7 @@
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
+import { prisma } from "@/lib/prisma"
+import { NextResponse } from "next/server"
 
 export async function PUT(req: Request, { params }: { params: Promise<{ serviceId: string }> }) {
   try {
@@ -14,7 +16,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ serviceI
     const userId = session.user.id
     const { serviceId } = await params
     const body = await req.json()
-    const { title, description, category, price, operatingHours } = body
+    const { title, description, category, price, operatingHours, imageUrl } = body
 
     if (!serviceId) return new NextResponse("Service ID is required", { status: 400 })
 
@@ -29,6 +31,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ serviceI
         category,
         price,
         operatingHours,
+        imageUrl,
       },
     })
 

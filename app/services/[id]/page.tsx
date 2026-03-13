@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Clock, User as UserIcon } from "lucide-react"
 import Link from "next/link"
 import { ContactProvider } from "@/components/contact-provider"
+import Image from "next/image"
 
 export const dynamic = 'force-dynamic'
 
@@ -67,6 +68,14 @@ export default async function ServiceDetailsPage({ params }: PageProps) {
                         <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6">
                             {service.title}
                         </h1>
+                        <div className="relative aspect-video w-full mb-6 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+                            <Image 
+                                src={service.imageUrl || "https://furntech.org.za/wp-content/uploads/2017/05/placeholder-image.png"} 
+                                alt={service.title} 
+                                fill 
+                                className="object-cover"
+                            />
+                        </div>
                         <div className="flex flex-col gap-3 mb-6 p-4 bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                             {service.price && (
                                 <div className="text-2xl font-black flex items-center gap-2">

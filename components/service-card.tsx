@@ -1,11 +1,10 @@
 
 import Link from "next/link"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Phone } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Star, ArrowRight, Check, MapPin } from "lucide-react"
 
-// Define Service type locally or import from Prisma client/types
-// For now, inline interface based on schema
 interface ServiceCardProps {
     id: string
     title: string
@@ -13,6 +12,7 @@ interface ServiceCardProps {
     category: string
     status: string
     price: string | null
+    imageUrl?: string | null
     provider: {
         name: string
         image: string | null
@@ -29,50 +29,64 @@ const categoryColors: Record<string, string> = {
     "Tutoring": "bg-yellow-300",
 }
 
-export function ServiceCard({ id, title, description, category, status, price, provider }: ServiceCardProps) {
-    const categoryColor = categoryColors[category] || "bg-purple-200"
-    const statusColor = status === "Available"
-        ? "bg-green-300 text-black"
-        : "bg-yellow-300 text-black"
+export function ServiceCard({ id, title, description, category, status, price, imageUrl, provider }: ServiceCardProps) {
+    const categoryBg = categoryColors[category] || "bg-pink-300"
+    const statusBg = status === "Available" ? "bg-green-400" : "bg-yellow-400"
 
     return (
-        <Link href={`/services/${id}`}>
-            <Card className="h-full cursor-pointer overflow-hidden group bg-white">
-                <CardHeader className="pb-3">
-                    <div className="flex flex-wrap items-start gap-2 mb-2">
-                        <Badge variant="outline" className={`${categoryColor} border-black font-black whitespace-normal text-left`}>
-                            {category}
-                        </Badge>
-                        <Badge variant="outline" className={`${statusColor} border-black font-black whitespace-normal text-left`}>
-                            {status}
-                        </Badge>
+        <article className="group relative border-[3px] border-black bg-white shadow-[8px_8px_0_0_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0_0_#000] transition-all overflow-hidden flex flex-col h-full">
+            {/* Header with image */}
+            <div className="relative aspect-video w-full border-b-[3px] border-black bg-slate-50 overflow-hidden">
+                <Image 
+                    src={imageUrl || "https://furntech.org.za/wp-content/uploads/2017/05/placeholder-image.png"} 
+                    alt={title} 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                
+                {/* Tilted Verified Badge Overlay - Match Photo */}
+                <div className="absolute top-3 right-3 bg-[#86efac] border-[3px] border-black px-3 py-1 shadow-[4px_4px_0_0_#000] flex items-center gap-1.5 -rotate-2 z-10">
+                    <Check className="w-4 h-4 text-black stroke-[4px]" />
+                    <span className="text-xs font-black uppercase tracking-tight text-black">Verified</span>
+                </div>
+            </div>
+
+            {/* Content Body - Light colored background */}
+            <CardContent className={`${categoryBg} p-6 flex-grow flex flex-col gap-4 bg-opacity-30`}>
+                {/* Category name - Simple text */}
+                <span className="text-xs font-black uppercase tracking-widest text-black/60">
+                    {category}
+                </span>
+
+                {/* Service Title - Large & Bold */}
+                <Link href={`/services/${id}`} className="block">
+                    <h3 className="text-2xl font-black uppercase leading-none tracking-tight text-black hover:underline decoration-4">
+                        {title}
+                    </h3>
+                </Link>
+
+                <div className="flex items-end justify-between mt-2">
+                    {/* Rating Box - Yellow with border */}
+                    <div className="bg-yellow-400 border-[3px] border-black px-3 py-2 flex items-center gap-2 shadow-[2px_2px_0_0_#000]">
+                        <Star className="w-4 h-4 fill-black text-black" />
+                        <span className="font-black text-sm">4.6 <span className="opacity-60">(92)</span></span>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-pink-500 transition-colors whitespace-normal leading-tight">{title}</CardTitle>
-                </CardHeader>
-                <CardContent className="pb-3">
-                    <p className="text-muted-foreground text-sm font-bold line-clamp-2 min-h-[2.5rem]">
-                        {description}
-                    </p>
-                    {price && (
-                        <div className="mt-3 font-black text-foreground flex items-center gap-1">
-                            <span className="inline-block bg-yellow-300 border-2 border-black px-2 py-0.5 text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                                {price}
-                            </span>
-                        </div>
-                    )}
-                </CardContent>
-                <CardFooter className="pt-3 border-t-4 border-black bg-muted/30 flex justify-between items-center text-xs font-bold group-hover:bg-accent/30 transition-colors">
-                    <div className="flex items-center gap-2">
-                        <div className="font-black text-foreground">{provider.name}</div>
+
+                    {/* Price - Large Text */}
+                    <div className="text-2xl font-black tracking-tighter text-black">
+                        {price || "FREE"}
                     </div>
-                    {provider.location && (
-                        <div className="flex items-center gap-1">
-                            <MapPin className="h-3 w-3" />
-                            <span className="truncate max-w-[100px]">{provider.location}</span>
-                        </div>
-                    )}
-                </CardFooter>
-            </Card>
-        </Link>
+                </div>
+            </CardContent>
+
+            {/* Solid Black Footer - Match Photo */}
+            <Link href={`/services/${id}`} className="block">
+                <div className="bg-black py-4 flex items-center justify-center gap-2 group/btn">
+                    <span className="text-white text-sm font-black uppercase tracking-widest transition-all group-hover:tracking-[0.2em]">
+                        View Details →
+                    </span>
+                </div>
+            </Link>
+        </article>
     )
 }

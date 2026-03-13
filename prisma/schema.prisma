@@ -81,6 +81,7 @@ model Service {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   operatingHours String?
+  imageUrl       String?
   bookings       Booking[]
   provider       User      @relation("ServiceProvider", fields: [providerId], references: [id], onDelete: Cascade)
 

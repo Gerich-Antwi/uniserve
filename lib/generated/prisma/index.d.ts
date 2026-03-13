@@ -437,8 +437,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 7.4.2
-   * Query Engine version: 94a226be1cf2967af2541cca5529f0f7ba866919
+   * Prisma Client JS version: 7.5.0
+   * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
    */
   export type PrismaVersion = {
     client: string
@@ -3259,6 +3259,11 @@ export namespace Prisma {
      * Skip the first `n` Users.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
     distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
   }
 
@@ -4607,6 +4612,11 @@ export namespace Prisma {
      * Skip the first `n` Sessions.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sessions.
+     */
     distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
   }
 
@@ -5769,6 +5779,11 @@ export namespace Prisma {
      * Skip the first `n` Accounts.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Accounts.
+     */
     distinct?: AccountScalarFieldEnum | AccountScalarFieldEnum[]
   }
 
@@ -6008,6 +6023,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     operatingHours: string | null
+    imageUrl: string | null
   }
 
   export type ServiceMaxAggregateOutputType = {
@@ -6021,6 +6037,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     operatingHours: string | null
+    imageUrl: string | null
   }
 
   export type ServiceCountAggregateOutputType = {
@@ -6034,6 +6051,7 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     operatingHours: number
+    imageUrl: number
     _all: number
   }
 
@@ -6049,6 +6067,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     operatingHours?: true
+    imageUrl?: true
   }
 
   export type ServiceMaxAggregateInputType = {
@@ -6062,6 +6081,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     operatingHours?: true
+    imageUrl?: true
   }
 
   export type ServiceCountAggregateInputType = {
@@ -6075,6 +6095,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     operatingHours?: true
+    imageUrl?: true
     _all?: true
   }
 
@@ -6161,6 +6182,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     operatingHours: string | null
+    imageUrl: string | null
     _count: ServiceCountAggregateOutputType | null
     _min: ServiceMinAggregateOutputType | null
     _max: ServiceMaxAggregateOutputType | null
@@ -6191,6 +6213,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     operatingHours?: boolean
+    imageUrl?: boolean
     bookings?: boolean | Service$bookingsArgs<ExtArgs>
     provider?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
@@ -6207,6 +6230,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     operatingHours?: boolean
+    imageUrl?: boolean
     provider?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -6221,6 +6245,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     operatingHours?: boolean
+    imageUrl?: boolean
     provider?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -6235,9 +6260,10 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     operatingHours?: boolean
+    imageUrl?: boolean
   }
 
-  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "category" | "status" | "price" | "providerId" | "createdAt" | "updatedAt" | "operatingHours", ExtArgs["result"]["service"]>
+  export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "category" | "status" | "price" | "providerId" | "createdAt" | "updatedAt" | "operatingHours" | "imageUrl", ExtArgs["result"]["service"]>
   export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bookings?: boolean | Service$bookingsArgs<ExtArgs>
     provider?: boolean | UserDefaultArgs<ExtArgs>
@@ -6267,6 +6293,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       operatingHours: string | null
+      imageUrl: string | null
     }, ExtArgs["result"]["service"]>
     composites: {}
   }
@@ -6702,6 +6729,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Service", 'DateTime'>
     readonly updatedAt: FieldRef<"Service", 'DateTime'>
     readonly operatingHours: FieldRef<"Service", 'String'>
+    readonly imageUrl: FieldRef<"Service", 'String'>
   }
     
 
@@ -6898,6 +6926,11 @@ export namespace Prisma {
      * Skip the first `n` Services.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Services.
+     */
     distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
   }
 
@@ -8045,6 +8078,11 @@ export namespace Prisma {
      * Skip the first `n` Bookings.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Bookings.
+     */
     distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
   }
 
@@ -9143,6 +9181,11 @@ export namespace Prisma {
      * Skip the first `n` Conversations.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Conversations.
+     */
     distinct?: ConversationScalarFieldEnum | ConversationScalarFieldEnum[]
   }
 
@@ -10232,6 +10275,11 @@ export namespace Prisma {
      * Skip the first `n` MessageGroups.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MessageGroups.
+     */
     distinct?: MessageGroupScalarFieldEnum | MessageGroupScalarFieldEnum[]
   }
 
@@ -11311,6 +11359,11 @@ export namespace Prisma {
      * Skip the first `n` Messages.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Messages.
+     */
     distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
   }
 
@@ -12347,6 +12400,11 @@ export namespace Prisma {
      * Skip the first `n` Verifications.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Verifications.
+     */
     distinct?: VerificationScalarFieldEnum | VerificationScalarFieldEnum[]
   }
 
@@ -13433,6 +13491,11 @@ export namespace Prisma {
      * Skip the first `n` Announcements.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Announcements.
+     */
     distinct?: AnnouncementScalarFieldEnum | AnnouncementScalarFieldEnum[]
   }
 
@@ -14489,6 +14552,11 @@ export namespace Prisma {
      * Skip the first `n` SupportMessages.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SupportMessages.
+     */
     distinct?: SupportMessageScalarFieldEnum | SupportMessageScalarFieldEnum[]
   }
 
@@ -15726,6 +15794,11 @@ export namespace Prisma {
      * Skip the first `n` Transactions.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Transactions.
+     */
     distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
@@ -16869,6 +16942,11 @@ export namespace Prisma {
      * Skip the first `n` ProviderWallets.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProviderWallets.
+     */
     distinct?: ProviderWalletScalarFieldEnum | ProviderWalletScalarFieldEnum[]
   }
 
@@ -17966,6 +18044,11 @@ export namespace Prisma {
      * Skip the first `n` service_provider_applications.
      */
     skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of service_provider_applications.
+     */
     distinct?: Service_provider_applicationScalarFieldEnum | Service_provider_applicationScalarFieldEnum[]
   }
 
@@ -18258,7 +18341,8 @@ export namespace Prisma {
     providerId: 'providerId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    operatingHours: 'operatingHours'
+    operatingHours: 'operatingHours',
+    imageUrl: 'imageUrl'
   };
 
   export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
@@ -18862,6 +18946,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
     operatingHours?: StringNullableFilter<"Service"> | string | null
+    imageUrl?: StringNullableFilter<"Service"> | string | null
     bookings?: BookingListRelationFilter
     provider?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -18877,6 +18962,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     operatingHours?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     bookings?: BookingOrderByRelationAggregateInput
     provider?: UserOrderByWithRelationInput
   }
@@ -18895,6 +18981,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
     operatingHours?: StringNullableFilter<"Service"> | string | null
+    imageUrl?: StringNullableFilter<"Service"> | string | null
     bookings?: BookingListRelationFilter
     provider?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -18910,6 +18997,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     operatingHours?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     _count?: ServiceCountOrderByAggregateInput
     _max?: ServiceMaxOrderByAggregateInput
     _min?: ServiceMinOrderByAggregateInput
@@ -18929,6 +19017,7 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
     operatingHours?: StringNullableWithAggregatesFilter<"Service"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"Service"> | string | null
   }
 
   export type BookingWhereInput = {
@@ -19980,6 +20069,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
     bookings?: BookingCreateNestedManyWithoutServiceInput
     provider: UserCreateNestedOneWithoutServicesProvidedInput
   }
@@ -19995,6 +20085,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
     bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
   }
 
@@ -20008,6 +20099,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bookings?: BookingUpdateManyWithoutServiceNestedInput
     provider?: UserUpdateOneRequiredWithoutServicesProvidedNestedInput
   }
@@ -20023,6 +20115,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
   }
 
@@ -20037,6 +20130,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
   }
 
   export type ServiceUpdateManyMutationInput = {
@@ -20049,6 +20143,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ServiceUncheckedUpdateManyInput = {
@@ -20062,6 +20157,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BookingCreateInput = {
@@ -21191,6 +21287,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     operatingHours?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type ServiceMaxOrderByAggregateInput = {
@@ -21204,6 +21301,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     operatingHours?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type ServiceMinOrderByAggregateInput = {
@@ -21217,6 +21315,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     operatingHours?: SortOrder
+    imageUrl?: SortOrder
   }
 
   export type EnumBookingStatusFilter<$PrismaModel = never> = {
@@ -23039,6 +23138,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
     bookings?: BookingCreateNestedManyWithoutServiceInput
   }
 
@@ -23052,6 +23152,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
     bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
   }
 
@@ -23407,6 +23508,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
     operatingHours?: StringNullableFilter<"Service"> | string | null
+    imageUrl?: StringNullableFilter<"Service"> | string | null
   }
 
   export type service_provider_applicationUpsertWithWhereUniqueWithoutUserInput = {
@@ -23999,6 +24101,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
     provider: UserCreateNestedOneWithoutServicesProvidedInput
   }
 
@@ -24013,6 +24116,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
   }
 
   export type ServiceCreateOrConnectWithoutBookingsInput = {
@@ -24216,6 +24320,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     provider?: UserUpdateOneRequiredWithoutServicesProvidedNestedInput
   }
 
@@ -24230,6 +24335,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUpsertWithoutStudentBookingsInput = {
@@ -25373,6 +25479,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     operatingHours?: string | null
+    imageUrl?: string | null
   }
 
   export type service_provider_applicationCreateManyUserInput = {
@@ -25583,6 +25690,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bookings?: BookingUpdateManyWithoutServiceNestedInput
   }
 
@@ -25596,6 +25704,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
   }
 
@@ -25609,6 +25718,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     operatingHours?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type service_provider_applicationUpdateWithoutUserInput = {

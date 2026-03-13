@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
-import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
+import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
   try {
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const userId = session.user.id
     const body = await req.json()
-    const { title, description, category, price, operatingHours } = body
+    const { title, description, category, price, operatingHours, imageUrl } = body
 
     if (!title || !description || !category) {
       return new NextResponse("Title, description, and category are required", { status: 400 })
@@ -28,6 +28,7 @@ export async function POST(req: Request) {
         category,
         price,
         operatingHours,
+        imageUrl,
         status: "Available",
         providerId: userId,
       },

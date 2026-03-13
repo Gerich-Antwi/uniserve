@@ -54,7 +54,8 @@ export default function Footer() {
           scrub:true
 
         },
-         x: 200,
+         x: 550,
+        // y: -250,
          opacity: 0,
       });
 
@@ -69,47 +70,47 @@ export default function Footer() {
       {/* Final CTA Section */}
       <section 
       ref={sectionRef}
-      className="py-16 sm:py-24 md:py-32 bg-cyan-300 border-b-8 border-black relative overflow-hidden">
-        {/* Decorative elements - hidden or scaled on very small screens */}
+      className="py-32 bg-cyan-300 border-b-8 border-black relative overflow-hidden">
+        {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="box1 absolute top-10 sm:top-20 left-4 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-pink-400 border-4 border-black rotate-45 animate-float" style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
-          <div className="box2 absolute top-40 sm:top-60 right-4 sm:right-20 w-16 h-16 sm:w-24 sm:h-24 bg-yellow-300 rounded-full border-4 border-black animate-float " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
-          <div className="box3 absolute bottom-4 sm:bottom-10 left-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-orange-400 border-4 border-black " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
-          <div className="box4 absolute bottom-16 sm:bottom-20 right-1/4 sm:right-1/3 w-14 h-14 sm:w-20 sm:h-20 bg-lime-300 border-4 border-black rotate-12 " style={{ "--float-rotate": "12deg" } as React.CSSProperties} />
+          <div className="box1 absolute top-30 left-10 w-20 h-20 bg-pink-400 border-4 border-black rotate-45 animate-float" style={{ "--float-rotate": "45deg" } as React.CSSProperties} />
+          <div className="box2 absolute top-70 right-20 w-24 h-24 bg-yellow-300 rounded-full border-4 border-black animate-float " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+          <div className="box3 absolute bottom-10 left-1/4 w-16 h-16 bg-orange-400 border-4 border-black " style={{ "--float-rotate": "0deg" } as React.CSSProperties} />
+          <div className="box4 absolute bottom-18 right-1/3  w-20 h-20 bg-lime-300 border-4 border-black rotate-12 " style={{ "--float-rotate": "12deg" } as React.CSSProperties} />
         </div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 sm:mb-8 leading-tight">
-            <span className="inline-block bg-white border-4 sm:border-6 border-black px-3 py-2 sm:px-6 sm:py-3 rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-2 sm:mb-4">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-tight">
+            <span className="inline-block bg-white border-6 border-black px-6 py-3 rotate-2 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mb-4">
               READY TO
             </span>
             <br />
-            <span className="inline-block bg-pink-400 border-4 sm:border-6 border-black px-3 py-2 sm:px-6 sm:py-3 -rotate-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <span className="inline-block bg-pink-400 border-6 border-black px-6 py-3 -rotate-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               UPGRADE YOUR
             </span>
             <br />
-            <span className="inline-block bg-yellow-300 border-4 sm:border-6 border-black px-3 py-2 sm:px-6 sm:py-3 rotate-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mt-2 sm:mt-4">
+            <span className="inline-block bg-yellow-300 border-6 border-black px-6 py-3 rotate-1 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] mt-4">
               CAMPUS LIFE?
             </span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-8 sm:mb-12 px-2">
+          <p className="text-2xl font-bold mb-12">
             Join 10,000+ students living their best life
           </p>
           <Link href="/auth/sign-up" className="inline-block">
-            <div className="bg-black text-white px-6 py-4 sm:px-8 sm:py-5 md:px-12 md:py-6 font-black text-base sm:text-lg md:text-xl lg:text-2xl border-4 sm:border-[6px] border-black hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sm:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] -rotate-1 hover:rotate-0 active:translate-y-0.5 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="bg-black text-white px-12 py-6 font-black text-2xl border-6 border-black hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-all shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] -rotate-1 hover:rotate-0 active:translate-y-0.5 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
               GET STARTED FREE &rarr;
             </div>
           </Link>
-          <p className="mt-6 sm:mt-8 font-bold text-sm sm:text-base md:text-lg px-2">
+          <p className="mt-8 font-bold text-lg">
             No credit card &bull; No BS &bull; Just vibes
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-10 sm:py-12 md:py-16">
+      <footer className="bg-black text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="inline-block bg-yellow-300 text-black border-4 border-white px-4 py-2 font-black text-xl mb-4 rotate-2">
                 CAMPUS
@@ -193,8 +194,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="pt-6 sm:pt-8 border-t-4 border-white text-center">
-            <p className="font-black text-xs sm:text-sm md:text-lg px-2">
+          <div className="pt-8 border-t-4 border-white text-center">
+            <p className="font-black text-lg">
               &copy; 2026 CAMPUSSERVICES &bull; MADE WITH &hearts; BY STUDENTS
             </p>
           </div>

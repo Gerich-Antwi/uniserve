@@ -1,3 +1,4 @@
+import { getImageKitUrl } from "@/lib/imagekit/config";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
@@ -34,16 +35,23 @@ export default async function AnnouncementsPage({ searchParams }: PageProps) {
   });
 
   return (
-    <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-4xl min-w-0">
-      <div className="mb-6 sm:mb-8">
-        <div className="inline-block bg-cyan-300 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] px-4 py-2 sm:px-6 sm:py-3 -rotate-1 mb-3 sm:mb-4">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-black uppercase">Campus Announcements</h1>
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="mb-8">
+        <div className="inline-block bg-cyan-300 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] px-6 py-3 -rotate-1 mb-4">
+          <h1 className="text-3xl font-black uppercase">Campus Announcements</h1>
         </div>
-        <p className="text-muted-foreground font-bold text-sm sm:text-base md:text-lg">
+        <p className="text-muted-foreground font-bold text-lg">
           Stay updated with the latest events, internships, and campus news
         </p>
         
-       
+        {/* Test ImageKit image */}
+        <div className="mt-4">
+          <img 
+            src={getImageKitUrl('image_a4645388.png', 'w-400,h-300')} 
+            alt="Test" 
+            className="rounded-lg"
+          />
+        </div>
       </div>
 
       {/* Search Bar */}

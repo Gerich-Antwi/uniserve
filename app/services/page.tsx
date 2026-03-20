@@ -52,7 +52,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
     })
 
     return (
-        <div className="container py-8 max-w-7xl mx-auto px-4 md:px-6">
+        <div className="container py-12 max-w-[1400px] mx-auto px-4 md:px-8">
             <div className="flex flex-col gap-6 mb-8">
                 <div className="flex flex-col gap-2">
                     <h1 className="inline-block text-4xl sm:text-5xl font-black tracking-tight">
@@ -82,10 +82,11 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
                     </p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {services.map((service) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch pt-4">
+                    {services.map((service, index) => (
                         <ServiceCard
                             key={service.id}
+                            index={index}
                             id={service.id}
                             title={service.title}
                             description={service.description}

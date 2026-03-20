@@ -218,6 +218,19 @@ export function ProviderServicesManager({ initialServices }: ProviderServicesMan
               className="group flex flex-col justify-between overflow-hidden rounded-2xl border-4 border-black bg-white p-5 shadow-[6px_6px_0_0_#000] hover:-translate-y-1 transition-transform"
             >
               <div>
+                {service.category.trim().toLowerCase().includes("academic") && (
+                  <div className="mb-4 overflow-hidden rounded-xl border-4 border-black bg-gray-100 shadow-[4px_4px_0_0_#000]">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                      <div className="h-full aspect-square mx-auto overflow-hidden bg-gray-100">
+                        <img
+                          src="/images/academics.png"
+                          alt="Academics"
+                          className="w-full h-full object-cover object-bottom"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <header className="flex items-start justify-between gap-2 mb-3">
                   <h3 className="text-lg font-black uppercase tracking-tight flex-1">
                     {service.title}

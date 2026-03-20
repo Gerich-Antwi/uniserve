@@ -9,6 +9,7 @@ interface ServiceCardProps {
     category: string
     status: string
     price: string | null
+    imageUrl?: string | null
     provider: {
         name: string
         image: string | null

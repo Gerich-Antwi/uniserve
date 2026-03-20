@@ -3,7 +3,7 @@ import { headers } from "next/headers"
 
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
-import { BookingStatus } from "@/lib/generated/prisma/enums"
+import { BookingStatus } from "@/lib/generated/prisma/client"
 
 interface RouteParams {
   params: Promise<{ bookingId: string }>

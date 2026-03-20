@@ -1,4 +1,3 @@
-
 import { prisma } from "@/lib/prisma"
 import { ServiceCard } from "@/components/service-card"
 import { ServiceSearch } from "@/components/service-search"
@@ -10,12 +9,16 @@ export const dynamic = 'force-dynamic'
 interface SearchParams {
     q?: string
     category?: string
+    page?: string
 }
 
 export default async function ServicesPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
     const params = await searchParams
     const query = params.q
     const category = params.category
+    const page = parseInt(params.page || '1', 10)
+    const take = 6
+    const skip = (page - 1) * take
 
     // 1. Fetch distinct categories
     const categoriesData = await prisma.service.findMany({
@@ -40,16 +43,19 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
         ]
     }
 
-    // 3. Fetch filtered services
-    const services = await prisma.service.findMany({
-        where,
-        include: {
-            provider: true,
-        },
-        orderBy: {
-            createdAt: 'desc',
-        },
-    })
+    // 3. Fetch filtered services with pagination
+    const [services, totalServices] = await Promise.all([
+        prisma.service.findMany({
+            where,
+            include: { provider: true },
+            orderBy: { createdAt: 'desc' },
+            take,
+            skip,
+        }),
+        prisma.service.count({ where })
+    ])
+
+    const totalPages = Math.ceil(totalServices / take)
 
     return (
         <div className="container py-12 max-w-[1400px] mx-auto px-4 md:px-8">
@@ -65,11 +71,43 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
                     </p>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
-                    <ServiceSearch />
+                    <div className="flex flex-col md:flex-row gap-8 justify-between items-start md:items-center">
+                        <ServiceSearch />
+                    </div>
+
+                    <CategoryFilter categories={categories} />
                 </div>
 
-                <CategoryFilter categories={categories} />
+                {services.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-20 text-center border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                        <p className="font-black text-2xl mb-4">No services found.</p>
+                        <p className="font-bold text-muted-foreground">
+                            {query || category
+                                ? "Try adjusting your search or filters."
+                                : "Check back later for new listings."}
+                        </p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {services.map((service) => (
+                            <ServiceCard
+                                key={service.id}
+                                id={service.id}
+                                title={service.title}
+                                description={service.description}
+                                category={service.category}
+                                status={service.status}
+                                price={service.price}
+                                imageUrl={service.imageUrl}
+                                provider={{
+                                    name: service.provider.name,
+                                    image: service.provider.image,
+                                    location: service.provider.location,
+                                }}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
 
             {services.length === 0 ? (

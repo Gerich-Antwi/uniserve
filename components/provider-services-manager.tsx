@@ -327,35 +327,28 @@ export function ProviderServicesManager({ initialServices }: ProviderServicesMan
           </p>
         </section>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {services.map((service) => {
-            const categoryBg = categoryColors[service.category] || "bg-pink-300"
-            
-            return (
-              <article
-                key={service.id}
-                className="group relative border-[3px] border-black bg-white shadow-[6px_6px_0_0_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[8px_8px_0_0_#000] transition-all overflow-hidden flex flex-col h-full"
-              >
-                {/* Header with image */}
-                <div className="relative aspect-video w-full border-b-[3px] border-black bg-slate-50 overflow-hidden">
-                  <Image src={service.imageUrl || "https://furntech.org.za/wp-content/uploads/2017/05/placeholder-image.png"} alt={service.title} fill className="object-cover" />
-                  
-                  {/* Tilted Verified Badge Overlay */}
-                  <div className="absolute top-3 right-3 bg-[#86efac] border-2 border-black px-2 py-1 shadow-[2px_2px_0_0_#000] flex items-center gap-1 -rotate-2 z-10">
-                    <Check className="w-3 h-3 text-black stroke-[3px]" />
-                    <span className="text-[10px] font-black uppercase tracking-tight">Verified</span>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((service) => (
+            <article
+              key={service.id}
+              className="group flex flex-col justify-between overflow-hidden rounded-2xl border-4 border-black bg-white p-5 shadow-[6px_6px_0_0_#000] hover:-translate-y-1 transition-transform"
+            >
+              <div>
+                {service.category.trim().toLowerCase().includes("academic") && (
+                  <div className="mb-4 overflow-hidden rounded-xl border-4 border-black bg-gray-100 shadow-[4px_4px_0_0_#000]">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                      <div className="h-full aspect-square mx-auto overflow-hidden bg-gray-100">
+                        <img
+                          src="/images/academics.png"
+                          alt="Academics"
+                          className="w-full h-full object-cover object-bottom"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                {/* Content Body Match Photo */}
-                <CardContent className={`${categoryBg} p-5 flex-grow flex flex-col gap-3 bg-opacity-30`}>
-                  {/* Category text */}
-                  <span className="text-[10px] font-black uppercase tracking-widest text-black/60">
-                    {service.category}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-black uppercase leading-none tracking-tight text-black line-clamp-2">
+                )}
+                <header className="flex items-start justify-between gap-2 mb-3">
+                  <h3 className="text-lg font-black uppercase tracking-tight flex-1">
                     {service.title}
                   </h3>
 

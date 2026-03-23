@@ -90,7 +90,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        {services.map((service) => (
+                        {services.map((service, index) => (
                             <ServiceCard
                                 key={service.id}
                                 id={service.id}
@@ -100,6 +100,7 @@ export default async function ServicesPage({ searchParams }: { searchParams: Pro
                                 status={service.status}
                                 price={service.price}
                                 imageUrl={service.imageUrl}
+                                index={index}
                                 provider={{
                                     name: service.provider.name,
                                     image: service.provider.image,
